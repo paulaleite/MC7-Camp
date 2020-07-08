@@ -10,23 +10,32 @@ import UIKit
 import SpriteKit
 
 class MainMenu: SKScene {
-
-/* UI Connections */
-var buttonPlay: StartButtonNode!
-
+    
+    /* UI Connections */
+    var buttons = [StartButtonNode]()
+//    var configButton: ConfigButtonNode!
+    var playButton: StartButtonNode!
+    var configButton: StartButtonNode!
+    
     override func didMove(to view: SKView) {
         /* Setup your scene here */
-
+        
         /* Set UI connections */
-        buttonPlay = self.childNode(withName: "buttonPlay") as? StartButtonNode
-        buttonPlay.isUserInteractionEnabled = true
+        playButton = self.childNode(withName: "buttonPlay") as? StartButtonNode
+        buttons.append(playButton)
         
-//        buttonPlay.selectedHandler = {
-//            self.loadGame()
-//        }
+        configButton = self.childNode(withName: "configButton") as? StartButtonNode
+        buttons.append(configButton)
         
-         addTapGestureRecognizer()
-
+        
+//        buttonPlay = self.childNode(withName: "buttonPlay") as? StartButtonNode
+//        buttonPlay.isUserInteractionEnabled = true
+        
+//        configButton = self.childNode(withName: "configButton") as? ConfigButtonNode
+//        configButton.isUserInteractionEnabled = true
+        
+        addTapGestureRecognizer()
+        
     }
     
     override func didUpdateFocus(in context: UIFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) {
@@ -34,10 +43,10 @@ var buttonPlay: StartButtonNode!
         let nextItem = context.nextFocusedItem
         
         if let prevButton = prevItem as? StartButtonNode {
-          prevButton.buttonDidLoseFocus()
+            prevButton.buttonDidLoseFocus()
         }
         if let nextButton = nextItem as? StartButtonNode {
-          nextButton.buttonDidGetFocus()
+            nextButton.buttonDidGetFocus()
         }
     }
     
@@ -45,11 +54,11 @@ var buttonPlay: StartButtonNode!
         let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.tapped(sender:)))
         self.view?.addGestureRecognizer(tapRecognizer)
     }
-
+    
     @objc func tapped(sender:AnyObject) {
-//        if let focussedItem = UIScreen.main.focusedItem as? StartButtonNode {
-//            focussedItem.positionedMenuButton?.tapped()
-//        }
+        //        if let focussedItem = UIScreen.main.focusedItem as? StartButtonNode {
+        //            focussedItem.positionedMenuButton?.tapped()
+        //        }
         print("tapped")
         self.loadGame()
     }
@@ -60,21 +69,21 @@ var buttonPlay: StartButtonNode!
             print("Could not get Skview")
             return
         }
-
+        
         /* 2) Load Game scene */
         guard let scene = GameChoices(fileNamed: "GameChoices") else {
             print("Could not make GameChoices, check the name is spelled correctly")
             return
         }
-
+        
         /* 3) Ensure correct aspect mode */
         scene.scaleMode = .aspectFill
-
+        
         /* Show debug */
         skView.showsPhysics = true
         skView.showsDrawCount = true
         skView.showsFPS = true
-
+        
         /* 4) Start game scene */
         skView.presentScene(scene)
     }

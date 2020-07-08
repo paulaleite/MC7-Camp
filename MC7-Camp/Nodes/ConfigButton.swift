@@ -60,11 +60,11 @@ class ConfigButtonNode: SKSpriteNode {
     }
     
     func buttonDidGetFocus() {
-        print("ganhou focus")
+        print("ganhou focus config button")
     }
     
     func buttonDidLoseFocus() {
-        print("perdeu focus")
+        print("perdeu focus config button")
     }
     
 }

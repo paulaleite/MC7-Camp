@@ -59,25 +59,12 @@ class StartButtonNode: SKSpriteNode {
         self.isUserInteractionEnabled = true
     }
     
-    // MARK: - Touch handling
-//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-////        selectedHandler()
-//        print("tocado")
-//        state = .StartButtonNodeStateSelected
-//    }
-//
-//
-//    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-////        selectedHandler()
-//        state = .StartButtonNodeStateActive
-//    }
-    
     func buttonDidGetFocus() {
-        print("ganhou focus")
+        print("ganhou focus start button")
     }
     
     func buttonDidLoseFocus() {
-        print("perdeu focus")
+        print("perdeu focus start button")
     }
     
 }
