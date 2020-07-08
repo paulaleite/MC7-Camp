@@ -13,6 +13,12 @@ enum StartButtonNodeState {
 
 class StartButtonNode: SKSpriteNode {
     
+    override var canBecomeFocused: Bool {
+        get {
+            return true
+        }
+    }
+    
     /* Setup a dummy action closure */
     var selectedHandler: () -> Void = { print("No button action set") }
     
@@ -50,17 +56,27 @@ class StartButtonNode: SKSpriteNode {
         
         /* Enable touch on button node */
         self.isUserInteractionEnabled = true
-        
     }
     
     // MARK: - Touch handling
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        state = .StartButtonNodeStateSelected
+//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+////        selectedHandler()
+//        print("tocado")
+//        state = .StartButtonNodeStateSelected
+//    }
+//
+//
+//    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+////        selectedHandler()
+//        state = .StartButtonNodeStateActive
+//    }
+    
+    func buttonDidGetFocus() {
+        print("ganhou focus")
     }
     
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        selectedHandler()
-        state = .StartButtonNodeStateActive
+    func buttonDidLoseFocus() {
+        print("perdeu focus")
     }
     
 }
