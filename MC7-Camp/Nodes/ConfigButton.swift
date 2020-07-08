@@ -1,5 +1,5 @@
 //
-//  StartButton.swift
+//  ConfigButton.swift
 //  MC7-Camp
 //
 //  Created by Paula Leite on 08/07/20.
@@ -8,11 +8,11 @@
 
 import SpriteKit
 
-enum StartButtonNodeState {
-    case StartButtonNodeStateActive, StartButtonNodeStateSelected, StartButtonNodeStateHidden
+enum ConfigButtonNodeState {
+    case ConfigButtonNodeStateActive, ConfigButtonNodeStateSelected, ConfigButtonNodeStateHidden
 }
 
-class StartButtonNode: SKSpriteNode {
+class ConfigButtonNode: SKSpriteNode {
     
     override var canBecomeFocused: Bool {
         get {
@@ -24,21 +24,21 @@ class StartButtonNode: SKSpriteNode {
     var selectedHandler: () -> Void = { print("No button action set") }
     
     /* Button state management */
-    var state: StartButtonNodeState = .StartButtonNodeStateActive {
+    var state: ConfigButtonNodeState = .ConfigButtonNodeStateActive {
         didSet {
             switch state {
-            case .StartButtonNodeStateActive:
+            case .ConfigButtonNodeStateActive:
                 /* Enable touch */
                 self.isUserInteractionEnabled = true
                 
                 /* Visible */
                 self.alpha = 1
                 break
-            case .StartButtonNodeStateSelected:
+            case .ConfigButtonNodeStateSelected:
                 /* Semi transparent */
                 self.alpha = 0.7
                 break
-            case .StartButtonNodeStateHidden:
+            case .ConfigButtonNodeStateHidden:
                 /* Disable touch */
                 self.isUserInteractionEnabled = false
                 
@@ -58,19 +58,6 @@ class StartButtonNode: SKSpriteNode {
         /* Enable touch on button node */
         self.isUserInteractionEnabled = true
     }
-    
-    // MARK: - Touch handling
-//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-////        selectedHandler()
-//        print("tocado")
-//        state = .StartButtonNodeStateSelected
-//    }
-//
-//
-//    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-////        selectedHandler()
-//        state = .StartButtonNodeStateActive
-//    }
     
     func buttonDidGetFocus() {
         print("ganhou focus")
