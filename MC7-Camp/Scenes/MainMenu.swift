@@ -12,29 +12,115 @@ import SpriteKit
 class MainMenu: SKScene {
     
     /* UI Connections */
-    var buttons = [StartButtonNode]()
-//    var configButton: ConfigButtonNode!
-    var playButton: StartButtonNode!
-    var configButton: StartButtonNode!
+    var buttons = [MenuButtonNode]()
+    var shacks = [MenuButtonNode]()
+    var numberOfPlayers = Int()
+    var colorName = String()
+    var playButton = MenuButtonNode()
+    var configButton = MenuButtonNode()
+    var shack1 = MenuButtonNode()
+    var shack2 = MenuButtonNode()
+    var shack3 = MenuButtonNode()
     
     override func didMove(to view: SKView) {
         /* Setup your scene here */
         
         /* Set UI connections */
-        playButton = self.childNode(withName: "buttonPlay") as? StartButtonNode
-        buttons.append(playButton)
-        
-        configButton = self.childNode(withName: "configButton") as? StartButtonNode
-        buttons.append(configButton)
-        
-        
-//        buttonPlay = self.childNode(withName: "buttonPlay") as? StartButtonNode
-//        buttonPlay.isUserInteractionEnabled = true
-        
-//        configButton = self.childNode(withName: "configButton") as? ConfigButtonNode
-//        configButton.isUserInteractionEnabled = true
+        setupButtons()
+        numberOfPlayers = 2
+        colorName = "white"
+        setupBackground(numberOfPlayers: numberOfPlayers, colorName: colorName)
         
         addTapGestureRecognizer()
+        
+    }
+    
+    func setupButtons() {
+        playButton = MenuButtonNode(name: "playButton@1x")
+        playButton.position = CGPoint(x: 813, y: -353.5)
+        playButton.zPosition = 0
+        addChild(playButton)
+        buttons.append(playButton)
+        
+        configButton = MenuButtonNode(name: "configButton@1x")
+        configButton.position = CGPoint(x: -828, y: -420.5)
+        configButton.zPosition = 0
+        addChild(configButton)
+        buttons.append(configButton)
+        
+        for button in buttons {
+            button.isUserInteractionEnabled = true
+        }
+    }
+    
+    func setupBackground(numberOfPlayers: Int, colorName: String) {
+        let background = SKSpriteNode(imageNamed: "mainBackground@1x")
+        background.position = CGPoint(x: 0, y: 0)
+        background.zPosition = -1
+        addChild(background)
+        
+        let firstShack = "FirstRoom@1x"
+        let firstShackName = colorName + firstShack
+        let secoundShack = "SecoundRoom@1x"
+        let secoundShackName = colorName + secoundShack
+        let thirdShack = "ThirdRoom@1x"
+        let thirdShackName = colorName + thirdShack
+        let forthShack = "ForthRoom@1x"
+        let forthShackName = colorName + forthShack
+        
+        if numberOfPlayers == 2 {
+            shack2 = MenuButtonNode(name: secoundShackName)
+            shack2.position = CGPoint(x: -95, y: 90)
+            shack2.zPosition = 0
+            addChild(shack2)
+            shacks.append(shack2)
+            
+            shack3 = MenuButtonNode(name: thirdShackName)
+            shack3.position = CGPoint(x: 486, y: 98.5)
+            shack3.zPosition = 0
+            addChild(shack3)
+            shacks.append(shack3)
+        } else if numberOfPlayers == 3 {
+            shack1 = MenuButtonNode(name: firstShackName)
+            shack1.position = CGPoint(x: -529, y: -54)
+            shack1.zPosition = 0
+            addChild(shack1)
+            shacks.append(shack1)
+            
+            shack2 = MenuButtonNode(name: secoundShackName)
+            shack2.position = CGPoint(x: -95, y: 90)
+            shack2.zPosition = 0
+            addChild(shack2)
+            shacks.append(shack2)
+            
+            shack3 = MenuButtonNode(name: thirdShackName)
+            shack3.position = CGPoint(x: 486, y: 98.5)
+            shack3.zPosition = 0
+            addChild(shack3)
+            shacks.append(shack3)
+        } else if numberOfPlayers == 4 {
+            shack1 = MenuButtonNode(name: firstShackName)
+            shack1.position = CGPoint(x: -529, y: -54)
+            shack1.zPosition = 0
+            addChild(shack1)
+            shacks.append(shack1)
+            
+            shack2 = MenuButtonNode(name: secoundShackName)
+            shack2.position = CGPoint(x: -95, y: 90)
+            shack2.zPosition = 0
+            addChild(shack2)
+            shacks.append(shack2)
+            
+            shack3 = MenuButtonNode(name: thirdShackName)
+            shack3.position = CGPoint(x: 486, y: 98.5)
+            shack3.zPosition = 0
+            addChild(shack3)
+            shacks.append(shack3)
+        }
+        
+        for shack in shacks {
+            shack.isUserInteractionEnabled = true
+        }
         
     }
     
@@ -42,10 +128,11 @@ class MainMenu: SKScene {
         let prevItem = context.previouslyFocusedItem
         let nextItem = context.nextFocusedItem
         
-        if let prevButton = prevItem as? StartButtonNode {
+        if let prevButton = prevItem as? MenuButtonNode {
             prevButton.buttonDidLoseFocus()
         }
-        if let nextButton = nextItem as? StartButtonNode {
+        
+        if let nextButton = nextItem as? MenuButtonNode {
             nextButton.buttonDidGetFocus()
         }
     }
@@ -55,24 +142,38 @@ class MainMenu: SKScene {
         self.view?.addGestureRecognizer(tapRecognizer)
     }
     
-    @objc func tapped(sender:AnyObject) {
-        //        if let focussedItem = UIScreen.main.focusedItem as? StartButtonNode {
-        //            focussedItem.positionedMenuButton?.tapped()
-        //        }
+    @objc func tapped(sender: AnyObject) {
+        if let focussedItem = UIScreen.main.focusedItem as? MenuButtonNode {
+            if focussedItem == playButton {
+                /* Load Game scene */
+                guard let scene = GameChoices(fileNamed: "GameChoices") else {
+                    print("Could not make GameChoices, check the name is spelled correctly")
+                    return
+                }
+                loadScreens(scene: scene)
+            } else if focussedItem == configButton {
+                /* Load Configuration scene */
+                guard let scene = GameConfiguration(fileNamed: "GameConfiguration") else {
+                    print("Could not make GameConfiguration, check the name is spelled correctly")
+                    return
+                }
+                loadScreens(scene: scene)
+            } else {
+                /* Load Personal View scene */
+                guard let scene = PersonalView(fileNamed: "PersonalView") else {
+                    print("Could not make PersonalView, check the name is spelled correctly")
+                    return
+                }
+                loadScreens(scene: scene)
+            }
+        }
         print("tapped")
-        self.loadGame()
     }
     
-    func loadGame() {
-        /* 1) Grab reference to our SpriteKit view */
+    func loadScreens(scene: SKScene) {
+        /* Grab reference to our SpriteKit view */
         guard let skView = self.view as SKView? else {
             print("Could not get Skview")
-            return
-        }
-        
-        /* 2) Load Game scene */
-        guard let scene = GameChoices(fileNamed: "GameChoices") else {
-            print("Could not make GameChoices, check the name is spelled correctly")
             return
         }
         

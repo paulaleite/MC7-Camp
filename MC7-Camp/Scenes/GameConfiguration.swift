@@ -1,22 +1,22 @@
 //
-//  GameChoices.swift
+//  GameConfiguration.swift
 //  MC7-Camp
 //
-//  Created by Paula Leite on 08/07/20.
+//  Created by Paula Leite on 09/07/20.
 //  Copyright © 2020 Paula Leite. All rights reserved.
 //
 
 import Foundation
 import SpriteKit
 
-class GameChoices: SKScene {
+class GameConfiguration: SKScene {
     override func didMove(to view: SKView) {
-        print("Inside Game Choices.")
+        print("Inside Game Configuration.")
         setupBackground()
     }
     
     func setupBackground() {
-        let background = SKSpriteNode(imageNamed: "chooseGame")
+        let background = SKSpriteNode(imageNamed: "gameConfiguration")
         background.position = CGPoint(x: 0, y: 0)
         background.zPosition = -1
         addChild(background)
