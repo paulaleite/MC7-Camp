@@ -12,27 +12,21 @@ import SpriteKit
 class MainMenu: SKScene {
     
     /* UI Connections */
-    var buttons = [StartButtonNode]()
-//    var configButton: ConfigButtonNode!
-    var playButton: StartButtonNode!
-    var configButton: StartButtonNode!
+    var buttons = [MenuButtonNode]()
+    var playButton: MenuButtonNode!
+    var configButton: MenuButtonNode!
     
     override func didMove(to view: SKView) {
         /* Setup your scene here */
         
         /* Set UI connections */
-        playButton = self.childNode(withName: "buttonPlay") as? StartButtonNode
+        playButton = self.childNode(withName: "buttonPlay") as? MenuButtonNode
         buttons.append(playButton)
         
-        configButton = self.childNode(withName: "configButton") as? StartButtonNode
+        
+        configButton = self.childNode(withName: "configButton") as? MenuButtonNode
         buttons.append(configButton)
         
-        
-//        buttonPlay = self.childNode(withName: "buttonPlay") as? StartButtonNode
-//        buttonPlay.isUserInteractionEnabled = true
-        
-//        configButton = self.childNode(withName: "configButton") as? ConfigButtonNode
-//        configButton.isUserInteractionEnabled = true
         
         addTapGestureRecognizer()
         
@@ -42,10 +36,11 @@ class MainMenu: SKScene {
         let prevItem = context.previouslyFocusedItem
         let nextItem = context.nextFocusedItem
         
-        if let prevButton = prevItem as? StartButtonNode {
+        if let prevButton = prevItem as? MenuButtonNode {
             prevButton.buttonDidLoseFocus()
         }
-        if let nextButton = nextItem as? StartButtonNode {
+        
+        if let nextButton = nextItem as? MenuButtonNode {
             nextButton.buttonDidGetFocus()
         }
     }
@@ -55,15 +50,18 @@ class MainMenu: SKScene {
         self.view?.addGestureRecognizer(tapRecognizer)
     }
     
-    @objc func tapped(sender:AnyObject) {
-        //        if let focussedItem = UIScreen.main.focusedItem as? StartButtonNode {
-        //            focussedItem.positionedMenuButton?.tapped()
-        //        }
+    @objc func tapped(sender: AnyObject) {
+        if let focussedItem = UIScreen.main.focusedItem as? MenuButtonNode {
+            if focussedItem.name == "buttonPlay" {
+                self.loadGames()
+            } else {
+                self.loadConfiguration()
+            }
+        }
         print("tapped")
-        self.loadGame()
     }
     
-    func loadGame() {
+    func loadGames() {
         /* 1) Grab reference to our SpriteKit view */
         guard let skView = self.view as SKView? else {
             print("Could not get Skview")
@@ -73,6 +71,31 @@ class MainMenu: SKScene {
         /* 2) Load Game scene */
         guard let scene = GameChoices(fileNamed: "GameChoices") else {
             print("Could not make GameChoices, check the name is spelled correctly")
+            return
+        }
+        
+        /* 3) Ensure correct aspect mode */
+        scene.scaleMode = .aspectFill
+        
+        /* Show debug */
+        skView.showsPhysics = true
+        skView.showsDrawCount = true
+        skView.showsFPS = true
+        
+        /* 4) Start game scene */
+        skView.presentScene(scene)
+    }
+    
+    func loadConfiguration() {
+        /* 1) Grab reference to our SpriteKit view */
+        guard let skView = self.view as SKView? else {
+            print("Could not get Skview")
+            return
+        }
+        
+        /* 2) Load Game scene */
+        guard let scene = GameConfiguration(fileNamed: "GameConfiguration") else {
+            print("Could not make GameConfiguration, check the name is spelled correctly")
             return
         }
         
