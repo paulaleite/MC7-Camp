@@ -27,16 +27,6 @@ class MenuButtonNode: SKSpriteNode {
     /* Setup a dummy action closure */
     var selectedHandler: () -> Void = { print("No button action set") }
     
-    /* Support for NSKeyedArchiver (loading objects from SK Scene Editor */
-//    required init?(coder aDecoder: NSCoder) {
-//
-//        /* Call parent initializer e.g. SKSpriteNode */
-//        super.init(coder: aDecoder)
-//
-//        /* Enable touch on button node */
-//        self.isUserInteractionEnabled = true
-//    }
-    
     func buttonDidGetFocus() {
         effectNode = self.addGlow()
     }

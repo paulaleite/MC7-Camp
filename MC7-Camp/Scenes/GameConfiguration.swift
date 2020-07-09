@@ -12,6 +12,14 @@ import SpriteKit
 class GameConfiguration: SKScene {
     override func didMove(to view: SKView) {
         print("Inside Game Configuration.")
+        setupBackground()
+    }
+    
+    func setupBackground() {
+        let background = SKSpriteNode(imageNamed: "gameConfiguration")
+        background.position = CGPoint(x: 0, y: 0)
+        background.zPosition = -1
+        addChild(background)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

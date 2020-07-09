@@ -31,6 +31,9 @@
 		1EFEB6A924B7A49600E0FECF /* whiteSecoundRoom@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EFEB6A624B7A49600E0FECF /* whiteSecoundRoom@1x.png */; };
 		1EFEB6AA24B7A49600E0FECF /* whiteFirstRoom@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EFEB6A724B7A49600E0FECF /* whiteFirstRoom@1x.png */; };
 		1EFEB6AB24B7A49600E0FECF /* whiteThirdRoom@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EFEB6A824B7A49600E0FECF /* whiteThirdRoom@1x.png */; };
+		1EFEB6AD24B7B8CE00E0FECF /* PersonalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EFEB6AC24B7B8CE00E0FECF /* PersonalView.swift */; };
+		1EFEB6AF24B7B95C00E0FECF /* individualViewBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EFEB6AE24B7B95C00E0FECF /* individualViewBackground.png */; };
+		1EFEB6B124B7BA3000E0FECF /* PersonalView.sks in Resources */ = {isa = PBXBuildFile; fileRef = 1EFEB6B024B7BA3000E0FECF /* PersonalView.sks */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +63,9 @@
 		1EFEB6A624B7A49600E0FECF /* whiteSecoundRoom@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "whiteSecoundRoom@1x.png"; sourceTree = "<group>"; };
 		1EFEB6A724B7A49600E0FECF /* whiteFirstRoom@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "whiteFirstRoom@1x.png"; sourceTree = "<group>"; };
 		1EFEB6A824B7A49600E0FECF /* whiteThirdRoom@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "whiteThirdRoom@1x.png"; sourceTree = "<group>"; };
+		1EFEB6AC24B7B8CE00E0FECF /* PersonalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalView.swift; sourceTree = "<group>"; };
+		1EFEB6AE24B7B95C00E0FECF /* individualViewBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = individualViewBackground.png; sourceTree = "<group>"; };
+		1EFEB6B024B7BA3000E0FECF /* PersonalView.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = PersonalView.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +82,7 @@
 		1E6598BF24B6438D0085FEC0 /* assets.atlas */ = {
 			isa = PBXGroup;
 			children = (
+				1EFEB6AE24B7B95C00E0FECF /* individualViewBackground.png */,
 				1EFEB6A724B7A49600E0FECF /* whiteFirstRoom@1x.png */,
 				1EFEB6A624B7A49600E0FECF /* whiteSecoundRoom@1x.png */,
 				1EFEB6A824B7A49600E0FECF /* whiteThirdRoom@1x.png */,
@@ -99,6 +106,8 @@
 				1E6598D224B662F90085FEC0 /* GameChoices.sks */,
 				1E70A89824B7824F00D0E44D /* GameConfiguration.sks */,
 				1E70A89C24B782D000D0E44D /* GameConfiguration.swift */,
+				1EFEB6AC24B7B8CE00E0FECF /* PersonalView.swift */,
+				1EFEB6B024B7BA3000E0FECF /* PersonalView.sks */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -225,7 +234,9 @@
 				1E6598D524B663450085FEC0 /* chooseGame.png in Resources */,
 				1E78B00E24B62FF9007E0F75 /* LaunchScreen.storyboard in Resources */,
 				1E6598D324B662F90085FEC0 /* GameChoices.sks in Resources */,
+				1EFEB6AF24B7B95C00E0FECF /* individualViewBackground.png in Resources */,
 				1E70A89924B7824F00D0E44D /* GameConfiguration.sks in Resources */,
+				1EFEB6B124B7BA3000E0FECF /* PersonalView.sks in Resources */,
 				1E6598C524B643A00085FEC0 /* mainMenu@1x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -240,6 +251,7 @@
 				1E6598CB24B646700085FEC0 /* GameScene.swift in Sources */,
 				1E6598C724B643F90085FEC0 /* MenuButtonNode.swift in Sources */,
 				1E78B01824B63467007E0F75 /* GameChoices.swift in Sources */,
+				1EFEB6AD24B7B8CE00E0FECF /* PersonalView.swift in Sources */,
 				1E78B00624B62FF7007E0F75 /* GameViewController.swift in Sources */,
 				1E70A8A024B7847800D0E44D /* SKSpriteNodeExtension.swift in Sources */,
 				1E70A89D24B782D000D0E44D /* GameConfiguration.swift in Sources */,
