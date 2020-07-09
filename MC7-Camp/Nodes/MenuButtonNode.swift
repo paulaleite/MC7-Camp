@@ -12,6 +12,12 @@ class MenuButtonNode: SKSpriteNode {
     
     var effectNode: SKEffectNode?
     
+    convenience init(name: String) {
+        self.init()
+        let node = SKSpriteNode(imageNamed: name)
+        addChild(node)
+    }
+    
     override var canBecomeFocused: Bool {
         get {
             return true
@@ -22,14 +28,14 @@ class MenuButtonNode: SKSpriteNode {
     var selectedHandler: () -> Void = { print("No button action set") }
     
     /* Support for NSKeyedArchiver (loading objects from SK Scene Editor */
-    required init?(coder aDecoder: NSCoder) {
-        
-        /* Call parent initializer e.g. SKSpriteNode */
-        super.init(coder: aDecoder)
-        
-        /* Enable touch on button node */
-        self.isUserInteractionEnabled = true
-    }
+//    required init?(coder aDecoder: NSCoder) {
+//
+//        /* Call parent initializer e.g. SKSpriteNode */
+//        super.init(coder: aDecoder)
+//
+//        /* Enable touch on button node */
+//        self.isUserInteractionEnabled = true
+//    }
     
     func buttonDidGetFocus() {
         effectNode = self.addGlow()

@@ -27,6 +27,10 @@
 		1E78B00E24B62FF9007E0F75 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E78B00C24B62FF9007E0F75 /* LaunchScreen.storyboard */; };
 		1E78B01624B63253007E0F75 /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E78B01524B63253007E0F75 /* MainMenu.swift */; };
 		1E78B01824B63467007E0F75 /* GameChoices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E78B01724B63467007E0F75 /* GameChoices.swift */; };
+		1EFEB6A524B7A36700E0FECF /* mainBackground@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EFEB6A424B7A36700E0FECF /* mainBackground@1x.png */; };
+		1EFEB6A924B7A49600E0FECF /* whiteSecoundRoom@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EFEB6A624B7A49600E0FECF /* whiteSecoundRoom@1x.png */; };
+		1EFEB6AA24B7A49600E0FECF /* whiteFirstRoom@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EFEB6A724B7A49600E0FECF /* whiteFirstRoom@1x.png */; };
+		1EFEB6AB24B7A49600E0FECF /* whiteThirdRoom@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EFEB6A824B7A49600E0FECF /* whiteThirdRoom@1x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +56,10 @@
 		1E78B00F24B62FF9007E0F75 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1E78B01524B63253007E0F75 /* MainMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
 		1E78B01724B63467007E0F75 /* GameChoices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameChoices.swift; sourceTree = "<group>"; };
+		1EFEB6A424B7A36700E0FECF /* mainBackground@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mainBackground@1x.png"; sourceTree = "<group>"; };
+		1EFEB6A624B7A49600E0FECF /* whiteSecoundRoom@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "whiteSecoundRoom@1x.png"; sourceTree = "<group>"; };
+		1EFEB6A724B7A49600E0FECF /* whiteFirstRoom@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "whiteFirstRoom@1x.png"; sourceTree = "<group>"; };
+		1EFEB6A824B7A49600E0FECF /* whiteThirdRoom@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "whiteThirdRoom@1x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,7 +76,11 @@
 		1E6598BF24B6438D0085FEC0 /* assets.atlas */ = {
 			isa = PBXGroup;
 			children = (
+				1EFEB6A724B7A49600E0FECF /* whiteFirstRoom@1x.png */,
+				1EFEB6A624B7A49600E0FECF /* whiteSecoundRoom@1x.png */,
+				1EFEB6A824B7A49600E0FECF /* whiteThirdRoom@1x.png */,
 				1E6598C224B643A00085FEC0 /* mainMenu@1x.png */,
+				1EFEB6A424B7A36700E0FECF /* mainBackground@1x.png */,
 				1E6598C824B645230085FEC0 /* playButton@1x.png */,
 				1E6598D624B665590085FEC0 /* configButton@1x.png */,
 				1E6598D424B663450085FEC0 /* chooseGame.png */,
@@ -203,9 +215,13 @@
 				1E78B00B24B62FF9007E0F75 /* Assets.xcassets in Resources */,
 				1E70A89B24B782AF00D0E44D /* gameConfiguration.png in Resources */,
 				1E6598BE24B641A50085FEC0 /* MainMenu.sks in Resources */,
+				1EFEB6AB24B7A49600E0FECF /* whiteThirdRoom@1x.png in Resources */,
+				1EFEB6AA24B7A49600E0FECF /* whiteFirstRoom@1x.png in Resources */,
 				1E6598D724B665590085FEC0 /* configButton@1x.png in Resources */,
 				1E70A8A624B78FAE00D0E44D /* playShadow.png in Resources */,
+				1EFEB6A924B7A49600E0FECF /* whiteSecoundRoom@1x.png in Resources */,
 				1E6598CF24B652CF0085FEC0 /* Main.storyboard in Resources */,
+				1EFEB6A524B7A36700E0FECF /* mainBackground@1x.png in Resources */,
 				1E6598D524B663450085FEC0 /* chooseGame.png in Resources */,
 				1E78B00E24B62FF9007E0F75 /* LaunchScreen.storyboard in Resources */,
 				1E6598D324B662F90085FEC0 /* GameChoices.sks in Resources */,
