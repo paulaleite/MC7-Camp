@@ -21,6 +21,14 @@ class MainMenu: SKScene {
     var shack1 = MenuButtonNode()
     var shack2 = MenuButtonNode()
     var shack3 = MenuButtonNode()
+    var background = SKSpriteNode()
+    
+    let backgroundImages = [
+        SKSpriteNode(imageNamed: "mainBackground@1x"),
+        SKSpriteNode(imageNamed: "mainBackground1@1x"),
+        SKSpriteNode(imageNamed: "mainBackground2@1x")
+    ]
+    private var imageTimer: Timer?
     
     override func didMove(to view: SKView) {
         /* Setup your scene here */
@@ -29,10 +37,20 @@ class MainMenu: SKScene {
         setupButtons()
         numberOfPlayers = 3
         colorName = "white"
-        setupBackground(numberOfPlayers: numberOfPlayers, colorName: colorName)
+        
+        setupBackground()
+        
+        setupShacks(numberOfPlayers: numberOfPlayers, colorName: colorName)
         
         addTapGestureRecognizer()
         
+    }
+    
+    func setupBackground() {
+        background = SKSpriteNode(imageNamed: "mainBackground@1x")
+        background.position = CGPoint(x: 960, y: 540)
+        background.zPosition = -1
+        addChild(background)
     }
     
     func setupButtons() {
@@ -53,12 +71,7 @@ class MainMenu: SKScene {
         }
     }
     
-    func setupBackground(numberOfPlayers: Int, colorName: String) {
-        let background = SKSpriteNode(imageNamed: "mainBackground@1x")
-        background.position = CGPoint(x: 960, y: 540)
-        background.zPosition = -1
-        addChild(background)
-        
+    func setupShacks(numberOfPlayers: Int, colorName: String) {
         let firstShack = "FirstRoom@1x"
         let firstShackName = colorName + firstShack
         let secoundShack = "SecoundRoom@1x"
@@ -121,7 +134,6 @@ class MainMenu: SKScene {
         for shack in shacks {
             shack.isUserInteractionEnabled = true
         }
-        
     }
     
     override func didUpdateFocus(in context: UIFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) {
