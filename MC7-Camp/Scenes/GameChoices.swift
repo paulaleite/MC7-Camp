@@ -88,8 +88,8 @@ class GameChoices: SKScene {
                     //TODO: Aqui deve sair do servidor como membro
                     /* Load Main scene */
                     guard let size = self.view?.frame.size else { return }
-                    let scene = MessGame(size: size)
-                    print("Could not make MainMenu, check the name is spelled correctly")
+                    let scene = PickTeam(size: size)
+                    print("Could not make Pick Teams, check the name is spelled correctly")
                     self.loadScreens(scene: scene)
                 }))
                 if let vc = self.scene?.view?.window?.rootViewController {
