@@ -32,7 +32,12 @@ class MainMenu: SKScene {
     
     override func didMove(to view: SKView) {
         /* Setup your scene here */
+        let timer = Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { (Timer) in
+            return
+        }
         
+        RunLoop.main.add(timer, forMode: RunLoop.Mode.common)
+//        NotificationCenter.default.addObserver(self, selector: #selector(trocarBackground), name: .twoDaysPassed, object: timer)
         /* Set UI connections */
         setupButtons()
         numberOfPlayers = 3
@@ -44,6 +49,9 @@ class MainMenu: SKScene {
         
         addTapGestureRecognizer()
         
+    }
+    @objc func trocarBackground(){
+        print("iaubsdf")
     }
     
     func setupBackground() {
@@ -197,4 +205,5 @@ class MainMenu: SKScene {
         /* 4) Start game scene */
         skView.presentScene(scene)
     }
+
 }
