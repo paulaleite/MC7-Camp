@@ -27,7 +27,7 @@ class MainMenu: SKScene {
         
         /* Set UI connections */
         setupButtons()
-        numberOfPlayers = 2
+        numberOfPlayers = 3
         colorName = "white"
         setupBackground(numberOfPlayers: numberOfPlayers, colorName: colorName)
         
@@ -37,13 +37,13 @@ class MainMenu: SKScene {
     
     func setupButtons() {
         playButton = MenuButtonNode(name: "playButton@1x")
-        playButton.position = CGPoint(x: 813, y: -353.5)
+        playButton.position = CGPoint(x: 1773, y: 186.5)
         playButton.zPosition = 0
         addChild(playButton)
         buttons.append(playButton)
         
         configButton = MenuButtonNode(name: "configButton@1x")
-        configButton.position = CGPoint(x: -828, y: -420.5)
+        configButton.position = CGPoint(x: 132, y: 119.5)
         configButton.zPosition = 0
         addChild(configButton)
         buttons.append(configButton)
@@ -55,7 +55,7 @@ class MainMenu: SKScene {
     
     func setupBackground(numberOfPlayers: Int, colorName: String) {
         let background = SKSpriteNode(imageNamed: "mainBackground@1x")
-        background.position = CGPoint(x: 0, y: 0)
+        background.position = CGPoint(x: 960, y: 540)
         background.zPosition = -1
         addChild(background)
         
@@ -70,49 +70,49 @@ class MainMenu: SKScene {
         
         if numberOfPlayers == 2 {
             shack2 = MenuButtonNode(name: secoundShackName)
-            shack2.position = CGPoint(x: -95, y: 90)
+            shack2.position = CGPoint(x: 865, y: 630)
             shack2.zPosition = 0
             addChild(shack2)
             shacks.append(shack2)
             
             shack3 = MenuButtonNode(name: thirdShackName)
-            shack3.position = CGPoint(x: 486, y: 98.5)
+            shack3.position = CGPoint(x: 1446, y: 638.5)
             shack3.zPosition = 0
             addChild(shack3)
             shacks.append(shack3)
         } else if numberOfPlayers == 3 {
             shack1 = MenuButtonNode(name: firstShackName)
-            shack1.position = CGPoint(x: -529, y: -54)
+            shack1.position = CGPoint(x: 431, y: 486)
             shack1.zPosition = 0
             addChild(shack1)
             shacks.append(shack1)
             
             shack2 = MenuButtonNode(name: secoundShackName)
-            shack2.position = CGPoint(x: -95, y: 90)
+            shack2.position = CGPoint(x: 865, y: 630)
             shack2.zPosition = 0
             addChild(shack2)
             shacks.append(shack2)
             
             shack3 = MenuButtonNode(name: thirdShackName)
-            shack3.position = CGPoint(x: 486, y: 98.5)
+            shack3.position = CGPoint(x: 1446, y: 638.5)
             shack3.zPosition = 0
             addChild(shack3)
             shacks.append(shack3)
         } else if numberOfPlayers == 4 {
             shack1 = MenuButtonNode(name: firstShackName)
-            shack1.position = CGPoint(x: -529, y: -54)
+            shack1.position = CGPoint(x: 431, y: 486)
             shack1.zPosition = 0
             addChild(shack1)
             shacks.append(shack1)
             
             shack2 = MenuButtonNode(name: secoundShackName)
-            shack2.position = CGPoint(x: -95, y: 90)
+            shack2.position = CGPoint(x: 865, y: 630)
             shack2.zPosition = 0
             addChild(shack2)
             shacks.append(shack2)
             
             shack3 = MenuButtonNode(name: thirdShackName)
-            shack3.position = CGPoint(x: 486, y: 98.5)
+            shack3.position = CGPoint(x: 1446, y: 638.5)
             shack3.zPosition = 0
             addChild(shack3)
             shacks.append(shack3)
@@ -146,24 +146,21 @@ class MainMenu: SKScene {
         if let focussedItem = UIScreen.main.focusedItem as? MenuButtonNode {
             if focussedItem == playButton {
                 /* Load Game scene */
-                guard let scene = GameChoices(fileNamed: "GameChoices") else {
-                    print("Could not make GameChoices, check the name is spelled correctly")
-                    return
-                }
+                guard let size = view?.frame.size else { return }
+                let scene = GameChoices(size: size)
+                print("Could not make GameChoices, check the name is spelled correctly")
                 loadScreens(scene: scene)
             } else if focussedItem == configButton {
                 /* Load Configuration scene */
-                guard let scene = GameConfiguration(fileNamed: "GameConfiguration") else {
-                    print("Could not make GameConfiguration, check the name is spelled correctly")
-                    return
-                }
+                guard let size = view?.frame.size else { return }
+                let scene = GameConfiguration(size: size)
+                print("Could not make GameConfiguration, check the name is spelled correctly")
                 loadScreens(scene: scene)
             } else {
                 /* Load Personal View scene */
-                guard let scene = PersonalView(fileNamed: "PersonalView") else {
-                    print("Could not make PersonalView, check the name is spelled correctly")
-                    return
-                }
+                guard let size = view?.frame.size else { return }
+                let scene = PersonalView(size: size)
+                print("Could not make PersonalView, check the name is spelled correctly")
                 loadScreens(scene: scene)
             }
         }
