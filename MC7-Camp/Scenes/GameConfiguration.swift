@@ -17,7 +17,7 @@ class GameConfiguration: SKScene {
     
     func setupBackground() {
         let background = SKSpriteNode(imageNamed: "gameConfiguration")
-        background.position = CGPoint(x: 0, y: 0)
+        background.position = CGPoint(x: 960, y: 540)
         background.zPosition = -1
         addChild(background)
     }
