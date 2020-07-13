@@ -11,10 +11,12 @@ import SpriteKit
 class MenuButtonNode: SKSpriteNode {
     
     var effectNode: SKEffectNode?
+//    var node = SKSpriteNode()
     
     convenience init(name: String) {
         self.init()
         let node = SKSpriteNode(imageNamed: name)
+//        node.texture = SKTexture(imageNamed: name)
         addChild(node)
     }
     
