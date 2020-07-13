@@ -121,28 +121,28 @@ class PickTeam: SKScene {
             team1flag1.zPosition = 0
             addChild(team1flag1)
             teamButtons.append(team1flag1)
+            team1flag1.selected = true
             
             team2flag1 = MenuButtonNode(name: "button_no_selection")
             team2flag1.position = CGPoint(x: 1500, y: 726)
             team2flag1.zPosition = 0
             addChild(team2flag1)
             teamButtons.append(team2flag1)
-            
-            user1 = [team1flag1, team2flag1, Selection.none]
+            team2flag1.selected = false
             
             team1flag2 = MenuButtonNode(name: "button_selected")
             team1flag2.position = CGPoint(x: 1020, y: 540)
             team1flag2.zPosition = 0
             addChild(team1flag2)
             teamButtons.append(team1flag2)
+            team1flag2.selected = true
             
             team2flag2 = MenuButtonNode(name: "button_no_selection")
             team2flag2.position = CGPoint(x: 1500, y: 540)
             team2flag2.zPosition = 0
             addChild(team2flag2)
             teamButtons.append(team2flag2)
-            
-            user2 = [team1flag2, team2flag2, Selection.none]
+            team2flag2.selected = false
             
         } else {
             team1flag1 = MenuButtonNode(name: "button_no_selection")
@@ -223,22 +223,41 @@ class PickTeam: SKScene {
                 let scene = GameChoices(size: size)
                 print("Could not make Game Choices, check the name is spelled correctly")
                 loadScreens(scene: scene)
-            } else if focussedItem == team2flag1 && (team1flag1.texture ==  SKTexture(imageNamed: "button_selected") || team1flag1.texture ==  nil){
-                changeButtonSelection(button1: focussedItem, button2: team1flag1)
-//                user1 = [team1flag1, team2flag1, Selection.team1]
+            } else if focussedItem == team1flag1 || focussedItem == team2flag1 {
+                if team1flag1.selected == true  {
+                    changeButtonToSelected(button: team2flag1)
+                    changeButtonToNotSelection(button: team1flag1)
+                } else if team1flag1.selected == false {
+                    changeButtonToSelected(button: team1flag1)
+                    changeButtonToNotSelection(button: team2flag1)
+                }
+            } else if focussedItem == team1flag2 || focussedItem == team2flag2 {
+                if team1flag2.selected == true && team2flag2.selected == false {
+                    changeButtonToNotSelection(button: team1flag2)
+                    changeButtonToSelected(button: team2flag2)
+                } else if team1flag2.selected == false && team2flag2.selected == true {
+                    changeButtonToSelected(button: team1flag2)
+                    changeButtonToNotSelection(button: team2flag2)
+                }
             }
         }
         print("tapped")
     }
     
-    func changeButtonSelection(button1: MenuButtonNode, button2: MenuButtonNode) {
+    func changeButtonToSelected(button: MenuButtonNode) {
         let texture = SKTexture(imageNamed: "button_selected")
         let changesTexture = SKAction.setTexture(texture, resize: false)
-        button1.run(changesTexture)
-        
-        let texture2 = SKTexture(imageNamed: "button_no_selection")
-        let changesTexture2 = SKAction.setTexture(texture2, resize: false)
-        button2.run(changesTexture2)
+        button.run(changesTexture)
+        button.selected = true
+        print("selected")
+    }
+    
+    func changeButtonToNotSelection(button: MenuButtonNode) {
+        let texture = SKTexture(imageNamed: "button_no_selection")
+        let changesTexture = SKAction.setTexture(texture, resize: true)
+        button.run(changesTexture)
+        button.selected = false
+        print("not selected")
     }
     
     //    func setupRightSwipedGestureRecognizer(flag: MenuButtonNode) {
