@@ -9,6 +9,12 @@
 import Foundation
 import SpriteKit
 
+enum Selection {
+    case none
+    case team1
+    case team2
+}
+
 class PickTeam: SKScene {
     var backButton = MenuButtonNode()
     var buttons = [MenuButtonNode]()
@@ -33,6 +39,9 @@ class PickTeam: SKScene {
     var team2flag3 = MenuButtonNode()
     var team2flag4 = MenuButtonNode()
     
+    var user1 = [Any]()
+    var user2 = [Any]()
+    var user3 = [Any]()
     
     override func didMove(to view: SKView) {
         setupBackground()
@@ -107,17 +116,11 @@ class PickTeam: SKScene {
         }
         
         if numberOfPlayers == 2 {
-            team1flag1 = MenuButtonNode(name: "button_no_selection")
+            team1flag1 = MenuButtonNode(name: "button_selected")
             team1flag1.position = CGPoint(x: 1020, y: 726)
             team1flag1.zPosition = 0
             addChild(team1flag1)
             teamButtons.append(team1flag1)
-            
-            team1flag2 = MenuButtonNode(name: "button_no_selection")
-            team1flag2.position = CGPoint(x: 1020, y: 540)
-            team1flag2.zPosition = 0
-            addChild(team1flag2)
-            teamButtons.append(team1flag2)
             
             team2flag1 = MenuButtonNode(name: "button_no_selection")
             team2flag1.position = CGPoint(x: 1500, y: 726)
@@ -125,11 +128,22 @@ class PickTeam: SKScene {
             addChild(team2flag1)
             teamButtons.append(team2flag1)
             
+            user1 = [team1flag1, team2flag1, Selection.none]
+            
+            team1flag2 = MenuButtonNode(name: "button_selected")
+            team1flag2.position = CGPoint(x: 1020, y: 540)
+            team1flag2.zPosition = 0
+            addChild(team1flag2)
+            teamButtons.append(team1flag2)
+            
             team2flag2 = MenuButtonNode(name: "button_no_selection")
             team2flag2.position = CGPoint(x: 1500, y: 540)
             team2flag2.zPosition = 0
             addChild(team2flag2)
             teamButtons.append(team2flag2)
+            
+            user2 = [team1flag2, team2flag2, Selection.none]
+            
         } else {
             team1flag1 = MenuButtonNode(name: "button_no_selection")
             team1flag1.position = CGPoint(x: 1020, y: 726)
@@ -209,17 +223,22 @@ class PickTeam: SKScene {
                 let scene = GameChoices(size: size)
                 print("Could not make Game Choices, check the name is spelled correctly")
                 loadScreens(scene: scene)
-            } else if focussedItem == team1flag1 {
-                changeButtonSelection(button: focussedItem)
+            } else if focussedItem == team2flag1 && (team1flag1.texture ==  SKTexture(imageNamed: "button_selected") || team1flag1.texture ==  nil){
+                changeButtonSelection(button1: focussedItem, button2: team1flag1)
+//                user1 = [team1flag1, team2flag1, Selection.team1]
             }
         }
         print("tapped")
     }
     
-    func changeButtonSelection(button: MenuButtonNode) {
+    func changeButtonSelection(button1: MenuButtonNode, button2: MenuButtonNode) {
         let texture = SKTexture(imageNamed: "button_selected")
         let changesTexture = SKAction.setTexture(texture, resize: false)
-        button.run(changesTexture)
+        button1.run(changesTexture)
+        
+        let texture2 = SKTexture(imageNamed: "button_no_selection")
+        let changesTexture2 = SKAction.setTexture(texture2, resize: false)
+        button2.run(changesTexture2)
     }
     
     //    func setupRightSwipedGestureRecognizer(flag: MenuButtonNode) {
