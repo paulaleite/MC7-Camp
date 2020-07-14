@@ -15,6 +15,8 @@ class GameChoices: SKScene {
     var backButton = MenuButtonNode()
     var messGameButton = MenuButtonNode()
     var ballGameButton = MenuButtonNode()
+    var backgroundImage = String()
+    var nameGameChosen = String()
     
     override func didMove(to view: SKView) {
         print("Inside Game Choices.")
@@ -82,14 +84,17 @@ class GameChoices: SKScene {
                 print("Could not make MainMenu, check the name is spelled correctly")
                 loadScreens(scene: scene)
             } else if focussedItem == messGameButton {
+                
                 let alert = UIAlertController(title: "Jogar o Jogo da Bagunça", message: "Você tem certeza de que deseja jogar esse jogo?", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "Cancelar", style: .cancel, handler: { _ in }))
                 alert.addAction(UIAlertAction(title: "Confirmar", style: .default, handler: { (_) in
-                    //TODO: Aqui deve sair do servidor como membro
-                    /* Load Main scene */
+                    /* Load Pick Players scene */
                     guard let size = self.view?.frame.size else { return }
-                    let scene = PickTeam(size: size)
-                    print("Could not make Pick Teams, check the name is spelled correctly")
+                    self.backgroundImage = "chooseParticipants"
+                    self.nameGameChosen = "Bagunca"
+                    let scene = PickPlayersTeams(size: size)
+                    scene.backgroundImage = self.backgroundImage
+                    scene.nameGameChosen = self.nameGameChosen
                     self.loadScreens(scene: scene)
                 }))
                 if let vc = self.scene?.view?.window?.rootViewController {
@@ -99,11 +104,13 @@ class GameChoices: SKScene {
                 let alert = UIAlertController(title: "Jogar o Jogo de Basquete", message: "Você tem certeza de que deseja jogar esse jogo?", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "Cancelar", style: .cancel, handler: { _ in }))
                 alert.addAction(UIAlertAction(title: "Confirmar", style: .default, handler: { (_) in
-                    //TODO: Aqui deve sair do servidor como membro
-                    /* Load Main scene */
+                    /* Load Pick Team scene */
                     guard let size = self.view?.frame.size else { return }
-                    let scene = BallGame(size: size)
-                    print("Could not make BallGame, check the name is spelled correctly")
+                    self.backgroundImage = "chooseParticipants"
+                    self.nameGameChosen = "Basquete"
+                    let scene = PickPlayersTeams(size: size)
+                    scene.backgroundImage = self.backgroundImage
+                    scene.nameGameChosen = self.nameGameChosen
                     self.loadScreens(scene: scene)
                 }))
                 if let vc = self.scene?.view?.window?.rootViewController {
