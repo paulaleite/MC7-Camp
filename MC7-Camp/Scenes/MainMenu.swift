@@ -29,8 +29,6 @@ class MainMenu: SKScene {
         SKSpriteNode(imageNamed: "mainBackground3@1x")
     ]
     private var backgroundTimer:Timer?
-    var isBackgroundTimerActive: Bool = Bool()
-    var playedAGame: Bool = true
     
     override func didMove(to view: SKView) {
         /* Setup your scene here */
@@ -46,30 +44,25 @@ class MainMenu: SKScene {
         
     }
     func observeBackgroundChangeTimer(){
-        if playedAGame{
             NotificationCenter.default.addObserver(self, selector: #selector(scheduleBackgroundChange), name:  UIApplication.didBecomeActiveNotification, object: nil)
-        }
     }
     
     @objc func scheduleBackgroundChange() {
-        let date = Date.init(timeIntervalSinceNow: 5)
+        let date = Date.init(timeIntervalSinceNow: 240)
         backgroundTimer = Timer(fireAt: date, interval: 0, target: self, selector: #selector(changeBackground), userInfo: nil, repeats: false)
         guard let backgroundTimer = backgroundTimer else {
             return
         }
-        isBackgroundTimerActive = true
         print(backgroundTimer.fireDate)
         RunLoop.main.add(backgroundTimer, forMode: RunLoop.Mode.common)
         print("new background change scheduled at:", backgroundTimer.fireDate.description(with: .current))
     }
     @objc func changeBackground(){
         if background.texture?.description == backgroundImages[0].texture?.description {
-            print("true")
             background.texture = backgroundImages[1].texture
-            observeBackgroundChangeTimer()
+            scheduleBackgroundChange()
         } else if background.texture?.description == backgroundImages[1].texture?.description {
             background.texture = backgroundImages[2].texture
-            isBackgroundTimerActive = false
         }
     }
 //problema: quando o usuário entrar, como vai se comportar o timer? ele vai saber? Testar isso. Caso não role, fazer conta com data que eu coloco no userDefaults qunado acaba um jogo?
