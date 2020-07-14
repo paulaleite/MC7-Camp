@@ -25,20 +25,16 @@ class MainMenu: SKScene {
     
     let backgroundImages = [
         SKSpriteNode(imageNamed: "mainBackground@1x"),
-        SKSpriteNode(imageNamed: "mainBackground1@1x"),
-        SKSpriteNode(imageNamed: "mainBackground2@1x")
+        SKSpriteNode(imageNamed: "mainBackground2@1x"),
+        SKSpriteNode(imageNamed: "mainBackground3@1x")
     ]
-    private var imageTimer: Timer?
+    private var backgroundTimer:Timer?
+    var isBackgroundTimerActive: Bool = Bool()
+    var playedAGame: Bool = true
     
     override func didMove(to view: SKView) {
         /* Setup your scene here */
-        let timer = Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { (Timer) in
-            return
-        }
-        
-        RunLoop.main.add(timer, forMode: RunLoop.Mode.common)
-//        NotificationCenter.default.addObserver(self, selector: #selector(trocarBackground), name: .twoDaysPassed, object: timer)
-        /* Set UI connections */
+        observeBackgroundChangeTimer()
         setupButtons()
         numberOfPlayers = 3
         colorName = "white"
@@ -46,13 +42,37 @@ class MainMenu: SKScene {
         setupBackground()
         
         setupShacks(numberOfPlayers: numberOfPlayers, colorName: colorName)
-        
         addTapGestureRecognizer()
         
     }
-    @objc func trocarBackground(){
-        print("iaubsdf")
+    func observeBackgroundChangeTimer(){
+        if playedAGame{
+            NotificationCenter.default.addObserver(self, selector: #selector(scheduleBackgroundChange), name:  UIApplication.didBecomeActiveNotification, object: nil)
+        }
     }
+    
+    @objc func scheduleBackgroundChange() {
+        let date = Date.init(timeIntervalSinceNow: 5)
+        backgroundTimer = Timer(fireAt: date, interval: 0, target: self, selector: #selector(changeBackground), userInfo: nil, repeats: false)
+        guard let backgroundTimer = backgroundTimer else {
+            return
+        }
+        isBackgroundTimerActive = true
+        print(backgroundTimer.fireDate)
+        RunLoop.main.add(backgroundTimer, forMode: RunLoop.Mode.common)
+        print("new background change scheduled at:", backgroundTimer.fireDate.description(with: .current))
+    }
+    @objc func changeBackground(){
+        if background.texture?.description == backgroundImages[0].texture?.description {
+            print("true")
+            background.texture = backgroundImages[1].texture
+            observeBackgroundChangeTimer()
+        } else if background.texture?.description == backgroundImages[1].texture?.description {
+            background.texture = backgroundImages[2].texture
+            isBackgroundTimerActive = false
+        }
+    }
+//problema: quando o usuário entrar, como vai se comportar o timer? ele vai saber? Testar isso. Caso não role, fazer conta com data que eu coloco no userDefaults qunado acaba um jogo?
     
     func setupBackground() {
         background = SKSpriteNode(imageNamed: "mainBackground@1x")
