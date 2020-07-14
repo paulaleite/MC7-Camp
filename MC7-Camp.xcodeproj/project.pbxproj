@@ -26,8 +26,10 @@
 		1EDC300F24BCEC4A000AE1A5 /* flag1.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EDC300C24BCEC4A000AE1A5 /* flag1.png */; };
 		1EDC301024BCEC4A000AE1A5 /* flag3.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EDC300D24BCEC4A000AE1A5 /* flag3.png */; };
 		1EDC301124BCEC4A000AE1A5 /* flag2.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EDC300E24BCEC4A000AE1A5 /* flag2.png */; };
-		1EDC301424BCED6C000AE1A5 /* button_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EDC301224BCED6B000AE1A5 /* button_selected.png */; };
-		1EDC301524BCED6C000AE1A5 /* button_no_selection.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EDC301324BCED6B000AE1A5 /* button_no_selection.png */; };
+		1EDC301B24BE29D6000AE1A5 /* botaoTime.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EDC301824BE29D5000AE1A5 /* botaoTime.png */; };
+		1EDC301C24BE29D6000AE1A5 /* button_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EDC301924BE29D5000AE1A5 /* button_selected.png */; };
+		1EDC301D24BE29D6000AE1A5 /* button_not_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EDC301A24BE29D6000AE1A5 /* button_not_selected.png */; };
+		1EDC301F24BE29F1000AE1A5 /* Teste.sks in Resources */ = {isa = PBXBuildFile; fileRef = 1EDC301E24BE29F1000AE1A5 /* Teste.sks */; };
 		1EF64EBE24B8DEEF006762DE /* mainBackground2@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EF64EBC24B8DEEF006762DE /* mainBackground2@1x.png */; };
 		1EF64EBF24B8DEEF006762DE /* mainBackground3@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EF64EBD24B8DEEF006762DE /* mainBackground3@1x.png */; };
 		1EF64EC124B8E01D006762DE /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF64EC024B8E01D006762DE /* DateExtension.swift */; };
@@ -71,8 +73,10 @@
 		1EDC300C24BCEC4A000AE1A5 /* flag1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flag1.png; sourceTree = "<group>"; };
 		1EDC300D24BCEC4A000AE1A5 /* flag3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flag3.png; sourceTree = "<group>"; };
 		1EDC300E24BCEC4A000AE1A5 /* flag2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flag2.png; sourceTree = "<group>"; };
-		1EDC301224BCED6B000AE1A5 /* button_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_selected.png; sourceTree = "<group>"; };
-		1EDC301324BCED6B000AE1A5 /* button_no_selection.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_no_selection.png; sourceTree = "<group>"; };
+		1EDC301824BE29D5000AE1A5 /* botaoTime.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = botaoTime.png; sourceTree = "<group>"; };
+		1EDC301924BE29D5000AE1A5 /* button_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_selected.png; sourceTree = "<group>"; };
+		1EDC301A24BE29D6000AE1A5 /* button_not_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_not_selected.png; sourceTree = "<group>"; };
+		1EDC301E24BE29F1000AE1A5 /* Teste.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Teste.sks; sourceTree = "<group>"; };
 		1EF64EBC24B8DEEF006762DE /* mainBackground2@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mainBackground2@1x.png"; sourceTree = "<group>"; };
 		1EF64EBD24B8DEEF006762DE /* mainBackground3@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mainBackground3@1x.png"; sourceTree = "<group>"; };
 		1EF64EC024B8E01D006762DE /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
@@ -108,10 +112,11 @@
 		1E6598BF24B6438D0085FEC0 /* assets.atlas */ = {
 			isa = PBXGroup;
 			children = (
+				1EDC301A24BE29D6000AE1A5 /* button_not_selected.png */,
+				1EDC301924BE29D5000AE1A5 /* button_selected.png */,
+				1EDC301824BE29D5000AE1A5 /* botaoTime.png */,
 				1EF64EDC24B912C2006762DE /* teste.png */,
 				1EDC300A24BCEC06000AE1A5 /* chooseTeam.png */,
-				1EDC301324BCED6B000AE1A5 /* button_no_selection.png */,
-				1EDC301224BCED6B000AE1A5 /* button_selected.png */,
 				1EDC300C24BCEC4A000AE1A5 /* flag1.png */,
 				1EDC300E24BCEC4A000AE1A5 /* flag2.png */,
 				1EDC300D24BCEC4A000AE1A5 /* flag3.png */,
@@ -146,6 +151,7 @@
 				1EF64ECE24B903F0006762DE /* MessGame.swift */,
 				1EF64ED024B90524006762DE /* BallGame.swift */,
 				1EF64ED424B909E2006762DE /* PickTeam.swift */,
+				1EDC301E24BE29F1000AE1A5 /* Teste.sks */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -259,14 +265,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1EDC301424BCED6C000AE1A5 /* button_selected.png in Resources */,
 				1EDC301124BCEC4A000AE1A5 /* flag2.png in Resources */,
 				1E6598C924B645230085FEC0 /* playButton@1x.png in Resources */,
 				1EF64EBE24B8DEEF006762DE /* mainBackground2@1x.png in Resources */,
 				1E78B00B24B62FF9007E0F75 /* Assets.xcassets in Resources */,
 				1E70A89B24B782AF00D0E44D /* gameConfiguration.png in Resources */,
 				1EFEB6AB24B7A49600E0FECF /* whiteThirdRoom@1x.png in Resources */,
+				1EDC301F24BE29F1000AE1A5 /* Teste.sks in Resources */,
 				1EF64EC924B8FC1F006762DE /* ballGameButton.png in Resources */,
+				1EDC301D24BE29D6000AE1A5 /* button_not_selected.png in Resources */,
 				1EFEB6AA24B7A49600E0FECF /* whiteFirstRoom@1x.png in Resources */,
 				1EDC300F24BCEC4A000AE1A5 /* flag1.png in Resources */,
 				1E6598D724B665590085FEC0 /* configButton@1x.png in Resources */,
@@ -274,9 +281,9 @@
 				1EFEB6A924B7A49600E0FECF /* whiteSecoundRoom@1x.png in Resources */,
 				1EDC301024BCEC4A000AE1A5 /* flag3.png in Resources */,
 				1E6598CF24B652CF0085FEC0 /* Main.storyboard in Resources */,
-				1EDC301524BCED6C000AE1A5 /* button_no_selection.png in Resources */,
 				1EF64EBF24B8DEEF006762DE /* mainBackground3@1x.png in Resources */,
 				1EF64EC824B8FC1F006762DE /* messButton.png in Resources */,
+				1EDC301B24BE29D6000AE1A5 /* botaoTime.png in Resources */,
 				1EF64ED324B909C5006762DE /* pickTeamBackground.png in Resources */,
 				1EFEB6A524B7A36700E0FECF /* mainBackground@1x.png in Resources */,
 				1EF64EC324B8FB33006762DE /* chooseGame.png in Resources */,
@@ -284,6 +291,7 @@
 				1E78B00E24B62FF9007E0F75 /* LaunchScreen.storyboard in Resources */,
 				1EF64EC724B8FC1F006762DE /* backButton.png in Resources */,
 				1EFEB6AF24B7B95C00E0FECF /* individualViewBackground.png in Resources */,
+				1EDC301C24BE29D6000AE1A5 /* button_selected.png in Resources */,
 				1E6598C524B643A00085FEC0 /* mainMenu@1x.png in Resources */,
 				1EF64EDD24B912C2006762DE /* teste.png in Resources */,
 			);
