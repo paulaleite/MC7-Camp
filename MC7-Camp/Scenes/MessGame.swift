@@ -11,7 +11,7 @@ import SpriteKit
 
 class MessGame: SKScene {
     override func didMove(to view: SKView) {
-        print("Inside Ball Game.")
+        print("Inside Mess Game.")
         setupBackground()
     }
     

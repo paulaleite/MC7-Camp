@@ -1,34 +1,25 @@
 //
-//  PickTeam.swift
+//  PickPlayers.swift
 //  MC7-Camp
 //
-//  Created by Paula Leite on 10/07/20.
+//  Created by Paula Leite on 14/07/20.
 //  Copyright © 2020 Paula Leite. All rights reserved.
 //
 
 import Foundation
 import SpriteKit
 
-enum Selection {
-    case none
-    case team1
-    case team2
-}
-
-class PickTeam: SKScene {
+class PickPlayersTeams: SKScene {
+    var backgroundImage = String()
+    var nameGameChosen = String()
+    
     var backButton = MenuButtonNode()
     var buttons = [MenuButtonNode]()
-    var flags = [MenuButtonNode]()
     var teamButtons = [MenuButtonNode]()
     var playButton = MenuButtonNode()
     
     var numberOfPlayers = Int()
     var colorName = [String]()
-    
-    var flag1 = MenuButtonNode()
-    var flag2 = MenuButtonNode()
-    var flag3 = MenuButtonNode()
-    var flag4 = MenuButtonNode()
     var nameOfFlags = [String]()
     
     var flag1Selected = MenuButtonNode()
@@ -40,59 +31,14 @@ class PickTeam: SKScene {
     var flag3Team = MenuButtonNode()
     var flag4Team = MenuButtonNode()
     
-    var user1 = [Any]()
-    var user2 = [Any]()
-    var user3 = [Any]()
-    
     override func didMove(to view: SKView) {
         setupBackground()
         setupUIButtons()
         
-        numberOfPlayers = 2
-        setupFlags(numberOfPlayers: numberOfPlayers)
+        numberOfPlayers = 3
         setupTeamButtons(numberOfPlayers: numberOfPlayers)
         
         addTapGestureRecognizer()
-    }
-    
-    func setupFlags(numberOfPlayers: Int) {
-        var i = 0
-        let nameFlag = "flag"
-        while(i < numberOfPlayers) {
-            let colorFlag = nameFlag + "\(i + 1)"
-            nameOfFlags.append(colorFlag)
-            i = i + 1
-        }
-        
-        if numberOfPlayers == 2 {
-            flag1 = MenuButtonNode(name: nameOfFlags[0])
-            flag1.position = CGPoint(x: 352, y: 725)
-            flag1.zPosition = 0
-            addChild(flag1)
-            flags.append(flag1)
-            
-            flag2 = MenuButtonNode(name: nameOfFlags[1])
-            flag2.position = CGPoint(x: 352, y: 540)
-            flag2.zPosition = 0
-            addChild(flag2)
-        } else {
-            flag1 = MenuButtonNode(name: nameOfFlags[0])
-            flag1.position = CGPoint(x: 352, y: 725)
-            flag1.zPosition = 0
-            addChild(flag1)
-            flags.append(flag1)
-            
-            flag2 = MenuButtonNode(name: nameOfFlags[1])
-            flag2.position = CGPoint(x: 352, y: 540)
-            flag2.zPosition = 0
-            addChild(flag2)
-            flags.append(flag2)
-            
-            flag3 = MenuButtonNode(name: nameOfFlags[2])
-            flag3.position = CGPoint(x: 352, y: 353)
-            flag3.zPosition = 0
-            addChild(flag3)
-        }
     }
     
     func setupUIButtons() {
@@ -124,62 +70,62 @@ class PickTeam: SKScene {
         
         if numberOfPlayers == 2 {
             flag1Team = MenuButtonNode(name: "botaoTime")
-            flag1Team.position = CGPoint(x: 1219, y: 700)
+            flag1Team.position = CGPoint(x: 914, y: 600)
             flag1Team.zPosition = 0
             addChild(flag1Team)
             teamButtons.append(flag1Team)
-            flag1Team.selectedTeam1 = true
+            flag1Team.participating = true
             
-            flag1Selected = MenuButtonNode(name: "button_selected")
-            flag1Selected.position = CGPoint(x: 992.5, y: 700)
+            flag1Selected = MenuButtonNode(name: nameOfFlags[0])
+            flag1Selected.position = CGPoint(x: 761, y: 600)
             flag1Selected.zPosition = 1
             addChild(flag1Selected)
             
             flag2Team = MenuButtonNode(name: "botaoTime")
-            flag2Team.position = CGPoint(x: 1219, y: 519)
+            flag2Team.position = CGPoint(x: 914, y: 420)
             flag2Team.zPosition = 0
             addChild(flag2Team)
             teamButtons.append(flag2Team)
-            flag2Team.selectedTeam1 = true
+            flag2Team.participating = true
             
-            flag2Selected = MenuButtonNode(name: "button_selected")
-            flag2Selected.position = CGPoint(x: 992.5, y: 519)
+            flag2Selected = MenuButtonNode(name: nameOfFlags[1])
+            flag2Selected.position = CGPoint(x: 761, y: 420)
             flag2Selected.zPosition = 1
             addChild(flag2Selected)
         } else {
             flag1Team = MenuButtonNode(name: "botaoTime")
-            flag1Team.position = CGPoint(x: 1219, y: 700)
+            flag1Team.position = CGPoint(x: 914, y: 600)
             flag1Team.zPosition = 0
             addChild(flag1Team)
             teamButtons.append(flag1Team)
-            flag1Team.selectedTeam1 = true
+            flag1Team.participating = true
             
-            flag1Selected = MenuButtonNode(name: "button_selected")
-            flag1Selected.position = CGPoint(x: 992.5, y: 700)
+            flag1Selected = MenuButtonNode(name: nameOfFlags[0])
+            flag1Selected.position = CGPoint(x: 761, y: 600)
             flag1Selected.zPosition = 1
             addChild(flag1Selected)
             
             flag2Team = MenuButtonNode(name: "botaoTime")
-            flag2Team.position = CGPoint(x: 1219, y: 519)
+            flag2Team.position = CGPoint(x: 914, y: 420)
             flag2Team.zPosition = 0
             addChild(flag2Team)
             teamButtons.append(flag2Team)
-            flag2Team.selectedTeam1 = true
+            flag2Team.participating = true
             
-            flag2Selected = MenuButtonNode(name: "button_selected")
-            flag2Selected.position = CGPoint(x: 992.5, y: 519)
+            flag2Selected = MenuButtonNode(name: nameOfFlags[1])
+            flag2Selected.position = CGPoint(x: 761, y: 420)
             flag2Selected.zPosition = 1
             addChild(flag2Selected)
             
             flag3Team = MenuButtonNode(name: "botaoTime")
-            flag3Team.position = CGPoint(x: 1219, y: 344)
+            flag3Team.position = CGPoint(x: 914, y: 245)
             flag3Team.zPosition = 0
             addChild(flag3Team)
             teamButtons.append(flag3Team)
-            flag3Team.selectedTeam1 = true
+            flag3Team.participating = true
             
-            flag3Selected = MenuButtonNode(name: "button_selected")
-            flag3Selected.position = CGPoint(x: 992.5, y: 344)
+            flag3Selected = MenuButtonNode(name: nameOfFlags[2])
+            flag3Selected.position = CGPoint(x: 761, y: 245)
             flag3Selected.zPosition = 1
             addChild(flag3Selected)
         }
@@ -190,7 +136,8 @@ class PickTeam: SKScene {
     }
     
     func setupBackground() {
-        let background = SKSpriteNode(imageNamed: "chooseTeam")
+//        guard let backgroundImage = gameChosen?.backgroundImage else { return }
+        let background = SKSpriteNode(imageNamed: backgroundImage)
         background.position = CGPoint(x: 960, y: 540)
         background.zPosition = -1
         addChild(background)
@@ -222,34 +169,50 @@ class PickTeam: SKScene {
                 let scene = GameChoices(size: size)
                 loadScreens(scene: scene)
             } else if focussedItem == playButton {
-                /* Load BallGame scene */
-                guard let size = view?.frame.size else { return }
-                let scene = BallGame(size: size)
-                // I need to send which players are playing.
-                loadScreens(scene: scene)
+                if backgroundImage == "chooseParticipants" && nameGameChosen == "Bagunca" {
+                    /* Load BallGame scene */
+                    guard let size = view?.frame.size else { return }
+                    let scene = MessGame(size: size)
+                    // I need to send which players are playing.
+                    loadScreens(scene: scene)
+                } else if backgroundImage == "chooseParticipants" && nameGameChosen == "Basquete" {
+                    self.backgroundImage = "chooseTeam"
+                    self.nameGameChosen = "Basquete"
+                    let scene = PickPlayersTeams(size: size)
+                    scene.backgroundImage = self.backgroundImage
+                    scene.nameGameChosen = self.nameGameChosen
+                    self.loadScreens(scene: scene)
+                } else if backgroundImage == "chooseTeam" && nameGameChosen == "Basquete" {
+                    /* Load BallGame scene */
+                    guard let size = view?.frame.size else { return }
+                    let scene = BallGame(size: size)
+                    // I need to send which players are playing.
+                    loadScreens(scene: scene)
+                }
+                
             } else if focussedItem == flag1Team {
-                if flag1Team.selectedTeam1 == true {
-                    flag1Selected.position = CGPoint(x: 1440, y: 700)
-                    flag1Team.selectedTeam1 = false
+                if flag1Team.participating == true {
+                    flag1Selected.position = CGPoint(x: 1208, y: 600)
+                    flag1Team.participating = false
                 } else {
-                    flag1Selected.position = CGPoint(x: 992.5, y: 700)
-                    flag1Team.selectedTeam1 = true
+                    flag1Selected.position = CGPoint(x: 761, y: 600)
+                    flag1Team.participating = true
                 }
             } else if focussedItem == flag2Team {
-                if flag2Team.selectedTeam1 == true {
-                    flag2Selected.position = CGPoint(x: 1440, y: 519)
-                    flag2Team.selectedTeam1 = false
+                if flag2Team.participating == true {
+                    flag2Selected.position = CGPoint(x: 1208, y: 420)
+                    flag2Team.participating = false
                 } else {
-                    flag2Selected.position = CGPoint(x: 992.5, y: 519)
-                    flag2Team.selectedTeam1 = true
+                    flag2Selected.position = CGPoint(x: 761, y: 420)
+                    flag2Team.participating = true
                 }
             } else if focussedItem == flag3Team {
-                if flag3Team.selectedTeam1 == true {
-                    flag3Selected.position = CGPoint(x: 1440, y: 344)
-                    flag3Team.selectedTeam1 = false
+                if flag3Team.participating == true {
+                    flag3Selected.position = CGPoint(x: 1208, y: 245)
+                    flag3Team.participating = false
                 } else {
-                    flag3Selected.position = CGPoint(x: 992.5, y: 344)
-                    flag3Team.selectedTeam1 = true
+                    flag3Selected.position = CGPoint(x: 761, y: 245)
+                    flag3Team.participating = true
                 }
             }
         }
