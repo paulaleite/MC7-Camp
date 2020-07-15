@@ -9,7 +9,7 @@
 import Foundation
 import SpriteKit
 
-class BallGame: SKScene {
+class CompetetiveGame: SKScene {
     override func didMove(to view: SKView) {
         print("Inside Ball Game.")
         setupBackground()
