@@ -9,7 +9,9 @@
 import Foundation
 import SpriteKit
 
-class MessGame: SKScene {
+class ColaboritveGame: SKScene {
+    var participating = [Int]()
+    
     override func didMove(to view: SKView) {
         print("Inside Mess Game.")
         setupBackground()
