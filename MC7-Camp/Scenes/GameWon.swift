@@ -1,30 +1,27 @@
 //
-//  BallGame.swift
+//  GameWon.swift
 //  MC7-Camp
 //
-//  Created by Paula Leite on 10/07/20.
+//  Created by Paula Leite on 15/07/20.
 //  Copyright © 2020 Paula Leite. All rights reserved.
 //
 
 import Foundation
 import SpriteKit
 
-class CompetitiveGame: SKScene {
-    var participating = [Int]()
-    
-    var backButton = MenuButtonNode()
-    var team1Won = MenuButtonNode()
-    var team2Won = MenuButtonNode()
+class GameWon: SKScene {
+    var teamWon = String()
     
     var teamButtons = [MenuButtonNode]()
+    var mainMenu = MenuButtonNode()
+    var newGame = MenuButtonNode()
     
 //    var buttons = [MenuButtonNode]()
     
     override func didMove(to view: SKView) {
-        print("Inside Ball Game.")
+        print("Game Finished")
         setupBackground()
-        setupUIButtons()
-        setupTeamButtons()
+        setupButtons()
         
         addTapGestureRecognizer()
     }
@@ -36,32 +33,8 @@ class CompetitiveGame: SKScene {
         addChild(background)
     }
     
-    func setupUIButtons() {
-        backButton = MenuButtonNode(name: "backButton")
-        backButton.position = CGPoint(x: 90, y: 102.5)
-        backButton.zPosition = 0
-        addChild(backButton)
-//        buttons.append(backButton)
+    func setupButtons() {
         
-        backButton.isUserInteractionEnabled = true
-    }
-    
-    func setupTeamButtons() {
-        team1Won = MenuButtonNode(name: "team1")
-        team1Won.position = CGPoint(x: 640, y: 220)
-        team1Won.zPosition = 0
-        addChild(team1Won)
-        teamButtons.append(team1Won)
-        
-        team2Won = MenuButtonNode(name: "team2")
-        team2Won.position = CGPoint(x: 1280, y: 220)
-        team2Won.zPosition = 0
-        addChild(team2Won)
-        teamButtons.append(team2Won)
-        
-        for button in teamButtons {
-            button.isUserInteractionEnabled = true
-        }
     }
     
     override func didUpdateFocus(in context: UIFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) {
@@ -84,23 +57,16 @@ class CompetitiveGame: SKScene {
     
     @objc func tapped(sender: AnyObject) {
         if let focussedItem = UIScreen.main.focusedItem as? MenuButtonNode {
-            if focussedItem == backButton {
-                /* Load Game Choices scene */
+            if focussedItem == mainMenu {
+                /* Load Main Menu scene */
+                guard let size = view?.frame.size else { return }
+                let scene = MainMenu(size: size)
+                loadScreens(scene: scene)
+            } else if focussedItem == newGame {
+                /* Load GameChoices scene */
                 guard let size = view?.frame.size else { return }
                 let scene = GameChoices(size: size)
                 loadScreens(scene: scene)
-            } else if focussedItem == team1Won {
-                /* Load Game Won scene */
-                guard let size = self.view?.frame.size else { return }
-                let scene = GameWon(size: size)
-                scene.teamWon = "team1"
-                self.loadScreens(scene: scene)
-            } else if focussedItem == team2Won {
-                /* Load Game Won scene */
-                guard let size = self.view?.frame.size else { return }
-                let scene = GameWon(size: size)
-                scene.teamWon = "team2"
-                self.loadScreens(scene: scene)
             }
         }
         print("tapped")
