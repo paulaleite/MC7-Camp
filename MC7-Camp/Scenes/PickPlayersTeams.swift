@@ -9,10 +9,9 @@
 import Foundation
 import SpriteKit
 
-class PickPlayers: SKScene {
+class PickPlayersTeams: SKScene {
     var backgroundImage = String()
     var nameGameChosen = String()
-    var participating = [Int]()
     
     var backButton = MenuButtonNode()
     var buttons = [MenuButtonNode]()
@@ -77,7 +76,6 @@ class PickPlayers: SKScene {
             teamButtons.append(flag1Team)
             flag1Team.participating = true
             
-            
             flag1Selected = MenuButtonNode(name: nameOfFlags[0])
             flag1Selected.position = CGPoint(x: 761, y: 600)
             flag1Selected.zPosition = 1
@@ -94,8 +92,6 @@ class PickPlayers: SKScene {
             flag2Selected.position = CGPoint(x: 761, y: 420)
             flag2Selected.zPosition = 1
             addChild(flag2Selected)
-            
-            participating = [1, 1]
         } else {
             flag1Team = MenuButtonNode(name: "botaoTime")
             flag1Team.position = CGPoint(x: 914, y: 600)
@@ -132,8 +128,6 @@ class PickPlayers: SKScene {
             flag3Selected.position = CGPoint(x: 761, y: 245)
             flag3Selected.zPosition = 1
             addChild(flag3Selected)
-            
-            participating = [1, 1, 1]
         }
         
         for teamButton in teamButtons {
@@ -143,7 +137,7 @@ class PickPlayers: SKScene {
     
     func setupBackground() {
 //        guard let backgroundImage = gameChosen?.backgroundImage else { return }
-        let background = SKSpriteNode(imageNamed: "chooseParticipants")
+        let background = SKSpriteNode(imageNamed: backgroundImage)
         background.position = CGPoint(x: 960, y: 540)
         background.zPosition = -1
         addChild(background)
@@ -175,50 +169,50 @@ class PickPlayers: SKScene {
                 let scene = GameChoices(size: size)
                 loadScreens(scene: scene)
             } else if focussedItem == playButton {
-                if nameGameChosen == "Bagunca" {
-                    /* Load Colaborative GAme scene */
+                if backgroundImage == "chooseParticipants" && nameGameChosen == "Bagunca" {
+                    /* Load BallGame scene */
                     guard let size = view?.frame.size else { return }
-                    let scene = ColaboritveGame(size: size)
-                    scene.participating = self.participating
+                    let scene = MessGame(size: size)
                     // I need to send which players are playing.
                     loadScreens(scene: scene)
-                } else if nameGameChosen == "Basquete" {
-                    /* Load Colaborative GAme scene */
+                } else if backgroundImage == "chooseParticipants" && nameGameChosen == "Basquete" {
+                    self.backgroundImage = "chooseTeam"
+                    self.nameGameChosen = "Basquete"
+                    let scene = PickPlayersTeams(size: size)
+                    scene.backgroundImage = self.backgroundImage
+                    scene.nameGameChosen = self.nameGameChosen
+                    self.loadScreens(scene: scene)
+                } else if backgroundImage == "chooseTeam" && nameGameChosen == "Basquete" {
+                    /* Load BallGame scene */
                     guard let size = view?.frame.size else { return }
-                    let scene = PickTeam(size: size)
+                    let scene = BallGame(size: size)
                     // I need to send which players are playing.
-                    scene.participating = self.participating
                     loadScreens(scene: scene)
                 }
+                
             } else if focussedItem == flag1Team {
                 if flag1Team.participating == true {
                     flag1Selected.position = CGPoint(x: 1208, y: 600)
                     flag1Team.participating = false
-                    participating[0] = 0
                 } else {
                     flag1Selected.position = CGPoint(x: 761, y: 600)
                     flag1Team.participating = true
-                    participating[0] = 1
                 }
             } else if focussedItem == flag2Team {
                 if flag2Team.participating == true {
                     flag2Selected.position = CGPoint(x: 1208, y: 420)
                     flag2Team.participating = false
-                    participating[1] = 0
                 } else {
                     flag2Selected.position = CGPoint(x: 761, y: 420)
                     flag2Team.participating = true
-                    participating[1] = 1
                 }
             } else if focussedItem == flag3Team {
                 if flag3Team.participating == true {
                     flag3Selected.position = CGPoint(x: 1208, y: 245)
                     flag3Team.participating = false
-                    participating[2] = 0
                 } else {
                     flag3Selected.position = CGPoint(x: 761, y: 245)
                     flag3Team.participating = true
-                    participating[2] = 1
                 }
             }
         }
