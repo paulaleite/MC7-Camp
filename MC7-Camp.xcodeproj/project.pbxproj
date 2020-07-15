@@ -7,12 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1E40F47124BF768D00679E8E /* gameIllustration.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E40F47024BF768D00679E8E /* gameIllustration.png */; };
-		1E40F47A24BF7A1900679E8E /* team2.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E40F47824BF7A1900679E8E /* team2.png */; };
-		1E40F47B24BF7A1900679E8E /* team1.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E40F47924BF7A1900679E8E /* team1.png */; };
-		1E40F47D24BF7A3000679E8E /* MyScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 1E40F47C24BF7A3000679E8E /* MyScene.sks */; };
-		1E40F47F24BF7CD000679E8E /* GameWon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E40F47E24BF7CD000679E8E /* GameWon.swift */; };
-		1E40F48124BF7F4800679E8E /* PickTeam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E40F48024BF7F4800679E8E /* PickTeam.swift */; };
 		1E6598C524B643A00085FEC0 /* mainMenu@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E6598C224B643A00085FEC0 /* mainMenu@1x.png */; };
 		1E6598C724B643F90085FEC0 /* MenuButtonNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E6598C624B643F90085FEC0 /* MenuButtonNode.swift */; };
 		1E6598C924B645230085FEC0 /* playButton@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E6598C824B645230085FEC0 /* playButton@1x.png */; };
@@ -34,7 +28,7 @@
 		1EDC301B24BE29D6000AE1A5 /* botaoTime.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EDC301824BE29D5000AE1A5 /* botaoTime.png */; };
 		1EDC301C24BE29D6000AE1A5 /* button_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EDC301924BE29D5000AE1A5 /* button_selected.png */; };
 		1EDC301D24BE29D6000AE1A5 /* button_not_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EDC301A24BE29D6000AE1A5 /* button_not_selected.png */; };
-		1EDC302124BE37E8000AE1A5 /* PickPlayers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EDC302024BE37E8000AE1A5 /* PickPlayers.swift */; };
+		1EDC302124BE37E8000AE1A5 /* PickPlayersTeams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EDC302024BE37E8000AE1A5 /* PickPlayersTeams.swift */; };
 		1EDC302524BE3CD1000AE1A5 /* chooseParticipants.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EDC302424BE3CD1000AE1A5 /* chooseParticipants.png */; };
 		1EDC302724BE40CE000AE1A5 /* chooseTeam.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EDC302624BE40CE000AE1A5 /* chooseTeam.png */; };
 		1EF64EBE24B8DEEF006762DE /* mainBackground2@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EF64EBC24B8DEEF006762DE /* mainBackground2@1x.png */; };
@@ -45,8 +39,8 @@
 		1EF64EC824B8FC1F006762DE /* messButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EF64EC524B8FC1F006762DE /* messButton.png */; };
 		1EF64EC924B8FC1F006762DE /* ballGameButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EF64EC624B8FC1F006762DE /* ballGameButton.png */; };
 		1EF64ECD24B8FCD3006762DE /* positionTestGames.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EF64ECC24B8FCD3006762DE /* positionTestGames.png */; };
-		1EF64ECF24B903F0006762DE /* ColaboritveGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF64ECE24B903F0006762DE /* ColaboritveGame.swift */; };
-		1EF64ED124B90524006762DE /* CompetitiveGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF64ED024B90524006762DE /* CompetitiveGame.swift */; };
+		1EF64ECF24B903F0006762DE /* MessGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF64ECE24B903F0006762DE /* MessGame.swift */; };
+		1EF64ED124B90524006762DE /* BallGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF64ED024B90524006762DE /* BallGame.swift */; };
 		1EF64ED324B909C5006762DE /* pickTeamBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EF64ED224B909C5006762DE /* pickTeamBackground.png */; };
 		1EF64EDD24B912C2006762DE /* teste.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EF64EDC24B912C2006762DE /* teste.png */; };
 		1EFEB6A524B7A36700E0FECF /* mainBackground@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EFEB6A424B7A36700E0FECF /* mainBackground@1x.png */; };
@@ -58,12 +52,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1E40F47024BF768D00679E8E /* gameIllustration.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gameIllustration.png; sourceTree = "<group>"; };
-		1E40F47824BF7A1900679E8E /* team2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = team2.png; sourceTree = "<group>"; };
-		1E40F47924BF7A1900679E8E /* team1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = team1.png; sourceTree = "<group>"; };
-		1E40F47C24BF7A3000679E8E /* MyScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MyScene.sks; sourceTree = "<group>"; };
-		1E40F47E24BF7CD000679E8E /* GameWon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameWon.swift; sourceTree = "<group>"; };
-		1E40F48024BF7F4800679E8E /* PickTeam.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PickTeam.swift; path = ../../../../.Trash/PickTeam.swift; sourceTree = "<group>"; };
 		1E6598C224B643A00085FEC0 /* mainMenu@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mainMenu@1x.png"; sourceTree = "<group>"; };
 		1E6598C624B643F90085FEC0 /* MenuButtonNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuButtonNode.swift; sourceTree = "<group>"; };
 		1E6598C824B645230085FEC0 /* playButton@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "playButton@1x.png"; sourceTree = "<group>"; };
@@ -87,7 +75,7 @@
 		1EDC301824BE29D5000AE1A5 /* botaoTime.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = botaoTime.png; sourceTree = "<group>"; };
 		1EDC301924BE29D5000AE1A5 /* button_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_selected.png; sourceTree = "<group>"; };
 		1EDC301A24BE29D6000AE1A5 /* button_not_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_not_selected.png; sourceTree = "<group>"; };
-		1EDC302024BE37E8000AE1A5 /* PickPlayers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickPlayers.swift; sourceTree = "<group>"; };
+		1EDC302024BE37E8000AE1A5 /* PickPlayersTeams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickPlayersTeams.swift; sourceTree = "<group>"; };
 		1EDC302424BE3CD1000AE1A5 /* chooseParticipants.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chooseParticipants.png; sourceTree = "<group>"; };
 		1EDC302624BE40CE000AE1A5 /* chooseTeam.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chooseTeam.png; sourceTree = "<group>"; };
 		1EF64EBC24B8DEEF006762DE /* mainBackground2@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mainBackground2@1x.png"; sourceTree = "<group>"; };
@@ -98,8 +86,8 @@
 		1EF64EC524B8FC1F006762DE /* messButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = messButton.png; sourceTree = "<group>"; };
 		1EF64EC624B8FC1F006762DE /* ballGameButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ballGameButton.png; sourceTree = "<group>"; };
 		1EF64ECC24B8FCD3006762DE /* positionTestGames.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = positionTestGames.png; sourceTree = "<group>"; };
-		1EF64ECE24B903F0006762DE /* ColaboritveGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColaboritveGame.swift; sourceTree = "<group>"; };
-		1EF64ED024B90524006762DE /* CompetitiveGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompetitiveGame.swift; sourceTree = "<group>"; };
+		1EF64ECE24B903F0006762DE /* MessGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessGame.swift; sourceTree = "<group>"; };
+		1EF64ED024B90524006762DE /* BallGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BallGame.swift; sourceTree = "<group>"; };
 		1EF64ED224B909C5006762DE /* pickTeamBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pickTeamBackground.png; sourceTree = "<group>"; };
 		1EF64EDC24B912C2006762DE /* teste.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = teste.png; sourceTree = "<group>"; };
 		1EFEB6A424B7A36700E0FECF /* mainBackground@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mainBackground@1x.png"; sourceTree = "<group>"; };
@@ -137,9 +125,6 @@
 				1EFEB6AE24B7B95C00E0FECF /* individualViewBackground.png */,
 				1EFEB6A724B7A49600E0FECF /* whiteFirstRoom@1x.png */,
 				1EFEB6A624B7A49600E0FECF /* whiteSecoundRoom@1x.png */,
-				1E40F47024BF768D00679E8E /* gameIllustration.png */,
-				1E40F47924BF7A1900679E8E /* team1.png */,
-				1E40F47824BF7A1900679E8E /* team2.png */,
 				1EFEB6A824B7A49600E0FECF /* whiteThirdRoom@1x.png */,
 				1E6598C224B643A00085FEC0 /* mainMenu@1x.png */,
 				1EFEB6A424B7A36700E0FECF /* mainBackground@1x.png */,
@@ -164,12 +149,9 @@
 				1E78B01524B63253007E0F75 /* MainMenu.swift */,
 				1E70A89C24B782D000D0E44D /* GameConfiguration.swift */,
 				1EFEB6AC24B7B8CE00E0FECF /* PersonalView.swift */,
-				1EF64ECE24B903F0006762DE /* ColaboritveGame.swift */,
-				1EF64ED024B90524006762DE /* CompetitiveGame.swift */,
-				1E40F48024BF7F4800679E8E /* PickTeam.swift */,
-				1EDC302024BE37E8000AE1A5 /* PickPlayers.swift */,
-				1E40F47C24BF7A3000679E8E /* MyScene.sks */,
-				1E40F47E24BF7CD000679E8E /* GameWon.swift */,
+				1EF64ECE24B903F0006762DE /* MessGame.swift */,
+				1EF64ED024B90524006762DE /* BallGame.swift */,
+				1EDC302024BE37E8000AE1A5 /* PickPlayersTeams.swift */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -284,17 +266,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				1EDC301124BCEC4A000AE1A5 /* flag2.png in Resources */,
-				1E40F47D24BF7A3000679E8E /* MyScene.sks in Resources */,
 				1E6598C924B645230085FEC0 /* playButton@1x.png in Resources */,
 				1EF64EBE24B8DEEF006762DE /* mainBackground2@1x.png in Resources */,
 				1E78B00B24B62FF9007E0F75 /* Assets.xcassets in Resources */,
 				1EDC302524BE3CD1000AE1A5 /* chooseParticipants.png in Resources */,
-				1E40F47A24BF7A1900679E8E /* team2.png in Resources */,
 				1E70A89B24B782AF00D0E44D /* gameConfiguration.png in Resources */,
 				1EFEB6AB24B7A49600E0FECF /* whiteThirdRoom@1x.png in Resources */,
 				1EF64EC924B8FC1F006762DE /* ballGameButton.png in Resources */,
 				1EDC301D24BE29D6000AE1A5 /* button_not_selected.png in Resources */,
-				1E40F47124BF768D00679E8E /* gameIllustration.png in Resources */,
 				1EFEB6AA24B7A49600E0FECF /* whiteFirstRoom@1x.png in Resources */,
 				1EDC300F24BCEC4A000AE1A5 /* flag1.png in Resources */,
 				1E6598D724B665590085FEC0 /* configButton@1x.png in Resources */,
@@ -304,7 +283,6 @@
 				1EF64EBF24B8DEEF006762DE /* mainBackground3@1x.png in Resources */,
 				1EF64EC824B8FC1F006762DE /* messButton.png in Resources */,
 				1EDC301B24BE29D6000AE1A5 /* botaoTime.png in Resources */,
-				1E40F47B24BF7A1900679E8E /* team1.png in Resources */,
 				1EDC302724BE40CE000AE1A5 /* chooseTeam.png in Resources */,
 				1EF64ED324B909C5006762DE /* pickTeamBackground.png in Resources */,
 				1EFEB6A524B7A36700E0FECF /* mainBackground@1x.png in Resources */,
@@ -328,15 +306,13 @@
 			files = (
 				1E6598CB24B646700085FEC0 /* GameScene.swift in Sources */,
 				1EF64EC124B8E01D006762DE /* DateExtension.swift in Sources */,
-				1E40F47F24BF7CD000679E8E /* GameWon.swift in Sources */,
-				1EF64ED124B90524006762DE /* CompetitiveGame.swift in Sources */,
+				1EF64ED124B90524006762DE /* BallGame.swift in Sources */,
 				1E6598C724B643F90085FEC0 /* MenuButtonNode.swift in Sources */,
 				1E78B01824B63467007E0F75 /* GameChoices.swift in Sources */,
 				1EFEB6AD24B7B8CE00E0FECF /* PersonalView.swift in Sources */,
-				1EDC302124BE37E8000AE1A5 /* PickPlayers.swift in Sources */,
-				1EF64ECF24B903F0006762DE /* ColaboritveGame.swift in Sources */,
+				1EDC302124BE37E8000AE1A5 /* PickPlayersTeams.swift in Sources */,
+				1EF64ECF24B903F0006762DE /* MessGame.swift in Sources */,
 				1E78B00624B62FF7007E0F75 /* GameViewController.swift in Sources */,
-				1E40F48124BF7F4800679E8E /* PickTeam.swift in Sources */,
 				1E70A8A024B7847800D0E44D /* SKSpriteNodeExtension.swift in Sources */,
 				1E70A89D24B782D000D0E44D /* GameConfiguration.swift in Sources */,
 				1E78AFFE24B62FF7007E0F75 /* AppDelegate.swift in Sources */,

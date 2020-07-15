@@ -15,7 +15,7 @@ class GameChoices: SKScene {
     var backButton = MenuButtonNode()
     var messGameButton = MenuButtonNode()
     var ballGameButton = MenuButtonNode()
-    
+    var backgroundImage = String()
     var nameGameChosen = String()
     
     override func didMove(to view: SKView) {
@@ -90,8 +90,11 @@ class GameChoices: SKScene {
                 alert.addAction(UIAlertAction(title: "Confirmar", style: .default, handler: { (_) in
                     /* Load Pick Players scene */
                     guard let size = self.view?.frame.size else { return }
-                    let scene = PickPlayers(size: size)
-                    scene.nameGameChosen = "Bagunca"
+                    self.backgroundImage = "chooseParticipants"
+                    self.nameGameChosen = "Bagunca"
+                    let scene = PickPlayersTeams(size: size)
+                    scene.backgroundImage = self.backgroundImage
+                    scene.nameGameChosen = self.nameGameChosen
                     self.loadScreens(scene: scene)
                 }))
                 if let vc = self.scene?.view?.window?.rootViewController {
@@ -103,8 +106,11 @@ class GameChoices: SKScene {
                 alert.addAction(UIAlertAction(title: "Confirmar", style: .default, handler: { (_) in
                     /* Load Pick Team scene */
                     guard let size = self.view?.frame.size else { return }
-                    let scene = PickPlayers(size: size)
-                    scene.nameGameChosen = "Basquete"
+                    self.backgroundImage = "chooseParticipants"
+                    self.nameGameChosen = "Basquete"
+                    let scene = PickPlayersTeams(size: size)
+                    scene.backgroundImage = self.backgroundImage
+                    scene.nameGameChosen = self.nameGameChosen
                     self.loadScreens(scene: scene)
                 }))
                 if let vc = self.scene?.view?.window?.rootViewController {
