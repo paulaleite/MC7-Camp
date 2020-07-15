@@ -28,11 +28,14 @@ class MainMenu: SKScene {
         SKSpriteNode(imageNamed: "mainBackground2@1x"),
         SKSpriteNode(imageNamed: "mainBackground3@1x")
     ]
-    private var backgroundTimer:Timer?
+//    private var backgroundTimer:Timer?
+    
+    let defaults = UserDefaults.standard
     
     override func didMove(to view: SKView) {
         /* Setup your scene here */
-        observeBackgroundChangeTimer()
+//        observeBackgroundChangeTimer()
+        
         setupButtons()
         numberOfPlayers = 3
         colorName = "white"
@@ -43,32 +46,48 @@ class MainMenu: SKScene {
         addTapGestureRecognizer()
         
     }
-    func observeBackgroundChangeTimer(){
-            NotificationCenter.default.addObserver(self, selector: #selector(scheduleBackgroundChange), name:  UIApplication.didBecomeActiveNotification, object: nil)
-    }
+//    func observeBackgroundChangeTimer(){
+//            NotificationCenter.default.addObserver(self, selector: #selector(scheduleBackgroundChange), name:  UIApplication.didBecomeActiveNotification, object: nil)
+//    }
     
-    @objc func scheduleBackgroundChange() {
-        let date = Date.init(timeIntervalSinceNow: 240)
-        backgroundTimer = Timer(fireAt: date, interval: 0, target: self, selector: #selector(changeBackground), userInfo: nil, repeats: false)
-        guard let backgroundTimer = backgroundTimer else {
-            return
-        }
-        print(backgroundTimer.fireDate)
-        RunLoop.main.add(backgroundTimer, forMode: RunLoop.Mode.common)
-        print("new background change scheduled at:", backgroundTimer.fireDate.description(with: .current))
+    
+    func lastPlayedDate(){
+        defaults.set(Date(), forKey: "LastPlayed")
+        let date = defaults.object(forKey: "LastPlayed") as? Date ?? Date(timeIntervalSince1970: 60)
+        print(date)
     }
-    @objc func changeBackground(){
-        if background.texture?.description == backgroundImages[0].texture?.description {
-            background.texture = backgroundImages[1].texture
-            scheduleBackgroundChange()
-        } else if background.texture?.description == backgroundImages[1].texture?.description {
-            background.texture = backgroundImages[2].texture
-        }
-    }
+        
+//        backgroundTimer = Timer(fireAt: date, interval: 0, target: self, selector: #selector(changeBackground), userInfo: nil, repeats: false)
+//        guard let backgroundTimer = backgroundTimer else {
+//            return
+//        }
+//        print(backgroundTimer.fireDate)
+//        RunLoop.main.add(backgroundTimer, forMode: RunLoop.Mode.common)
+//        print("new background change scheduled at:", backgroundTimer.fireDate.description(with: .current))
+//    }
+//    @objc func changeBackground(){
+//        if background.texture?.description == backgroundImages[0].texture?.description {
+//            background.texture = backgroundImages[1].texture
+//            scheduleBackgroundChange()
+//        } else if background.texture?.description == backgroundImages[1].texture?.description {
+//            background.texture = backgroundImages[2].texture
+//        }
+//    }
 //problema: quando o usuário entrar, como vai se comportar o timer? ele vai saber? Testar isso. Caso não role, fazer conta com data que eu coloco no userDefaults qunado acaba um jogo?
+
     
     func setupBackground() {
-        background = SKSpriteNode(imageNamed: "mainBackground@1x")
+        let date = defaults.object(forKey: "LastPlayed") as? Date ?? Date(timeIntervalSince1970: 70)
+        print(date)
+        let timeSincePLayed = date.timeIntervalSince(date)
+        if timeSincePLayed <= 60 {
+             background = SKSpriteNode(imageNamed: "mainBackground@1x")
+        } else if timeSincePLayed <= 120 {
+             background = SKSpriteNode(imageNamed: "mainBackground2@1x")
+        } else {
+            background = SKSpriteNode(imageNamed: "mainBackground3@1x")
+        }
+
         background.position = CGPoint(x: 960, y: 540)
         background.zPosition = -1
         addChild(background)
@@ -179,6 +198,7 @@ class MainMenu: SKScene {
         if let focussedItem = UIScreen.main.focusedItem as? MenuButtonNode {
             if focussedItem == playButton {
                 /* Load Game scene */
+                lastPlayedDate()
                 guard let size = view?.frame.size else { return }
                 let scene = GameChoices(size: size)
                 print("Could not make GameChoices, check the name is spelled correctly")
