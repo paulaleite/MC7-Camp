@@ -172,7 +172,7 @@ class PickPlayersTeams: SKScene {
                 if backgroundImage == "chooseParticipants" && nameGameChosen == "Bagunca" {
                     /* Load BallGame scene */
                     guard let size = view?.frame.size else { return }
-                    let scene = MessGame(size: size)
+                    let scene = ColaboritveGame(size: size)
                     // I need to send which players are playing.
                     loadScreens(scene: scene)
                 } else if backgroundImage == "chooseParticipants" && nameGameChosen == "Basquete" {
@@ -185,7 +185,7 @@ class PickPlayersTeams: SKScene {
                 } else if backgroundImage == "chooseTeam" && nameGameChosen == "Basquete" {
                     /* Load BallGame scene */
                     guard let size = view?.frame.size else { return }
-                    let scene = BallGame(size: size)
+                    let scene = CompetitiveGame(size: size)
                     // I need to send which players are playing.
                     loadScreens(scene: scene)
                 }
