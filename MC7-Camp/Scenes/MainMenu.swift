@@ -5,6 +5,7 @@
 //  Created by Paula Leite on 08/07/20.
 //  Copyright © 2020 Paula Leite. All rights reserved.
 //
+// TEST BACKGROUND BUTTON HAS TO GO AWAY, FUNCTION ATTACHED TO IT SHOULD BE CALLED WHEN YOU RUN A GAME - setting user defaults to be implemented in appropriate screens
 
 import UIKit
 import SpriteKit
@@ -22,14 +23,14 @@ class MainMenu: SKScene {
     var shack2 = MenuButtonNode()
     var shack3 = MenuButtonNode()
     var background = SKSpriteNode()
-    
+
     let backgroundImages = [
         SKSpriteNode(imageNamed: "mainBackground@1x"),
         SKSpriteNode(imageNamed: "mainBackground2@1x"),
         SKSpriteNode(imageNamed: "mainBackground3@1x")
     ]
-//    private var backgroundTimer:Timer?
-    
+    //test button - remove it!
+    var testBackgroundButton = MenuButtonNode()
     let defaults = UserDefaults.standard
     
     override func didMove(to view: SKView) {
@@ -46,48 +47,22 @@ class MainMenu: SKScene {
         addTapGestureRecognizer()
         
     }
-//    func observeBackgroundChangeTimer(){
-//            NotificationCenter.default.addObserver(self, selector: #selector(scheduleBackgroundChange), name:  UIApplication.didBecomeActiveNotification, object: nil)
-//    }
-    
     
     func lastPlayedDate(){
-        defaults.set(Date(), forKey: "LastPlayed")
-        let date = defaults.object(forKey: "LastPlayed") as? Date ?? Date(timeIntervalSince1970: 60)
-        print(date)
+        defaults.set(Date(timeIntervalSinceNow: -10800), forKey: "LastPlayed")
     }
         
-//        backgroundTimer = Timer(fireAt: date, interval: 0, target: self, selector: #selector(changeBackground), userInfo: nil, repeats: false)
-//        guard let backgroundTimer = backgroundTimer else {
-//            return
-//        }
-//        print(backgroundTimer.fireDate)
-//        RunLoop.main.add(backgroundTimer, forMode: RunLoop.Mode.common)
-//        print("new background change scheduled at:", backgroundTimer.fireDate.description(with: .current))
-//    }
-//    @objc func changeBackground(){
-//        if background.texture?.description == backgroundImages[0].texture?.description {
-//            background.texture = backgroundImages[1].texture
-//            scheduleBackgroundChange()
-//        } else if background.texture?.description == backgroundImages[1].texture?.description {
-//            background.texture = backgroundImages[2].texture
-//        }
-//    }
-//problema: quando o usuário entrar, como vai se comportar o timer? ele vai saber? Testar isso. Caso não role, fazer conta com data que eu coloco no userDefaults qunado acaba um jogo?
-
-    
     func setupBackground() {
-        let date = defaults.object(forKey: "LastPlayed") as? Date ?? Date(timeIntervalSince1970: 70)
-        print(date)
-        let timeSincePLayed = date.timeIntervalSince(date)
-        if timeSincePLayed <= 60 {
+        let lastPlayedDate = defaults.object(forKey: "LastPlayed") as? Date
+        let rightNow = Date(timeIntervalSinceNow: -10800)
+        let timeSincePLayed = rightNow.timeIntervalSince(lastPlayedDate ?? Date(timeIntervalSinceReferenceDate: 0))
+        if timeSincePLayed <= 259200 {
              background = SKSpriteNode(imageNamed: "mainBackground@1x")
-        } else if timeSincePLayed <= 120 {
+        } else if timeSincePLayed <= 518400 {
              background = SKSpriteNode(imageNamed: "mainBackground2@1x")
         } else {
             background = SKSpriteNode(imageNamed: "mainBackground3@1x")
         }
-
         background.position = CGPoint(x: 960, y: 540)
         background.zPosition = -1
         addChild(background)
@@ -105,6 +80,13 @@ class MainMenu: SKScene {
         configButton.zPosition = 0
         addChild(configButton)
         buttons.append(configButton)
+        
+        //test background change button - remove it!
+        testBackgroundButton = MenuButtonNode(name: "configButton@1x")
+        testBackgroundButton.position = CGPoint(x:700,y:150)
+        testBackgroundButton.zPosition = 0
+        addChild(testBackgroundButton)
+        buttons.append(testBackgroundButton)
         
         for button in buttons {
             button.isUserInteractionEnabled = true
@@ -209,6 +191,9 @@ class MainMenu: SKScene {
                 let scene = GameConfiguration(size: size)
                 print("Could not make GameConfiguration, check the name is spelled correctly")
                 loadScreens(scene: scene)
+                //test button condition - remove it!
+            } else if focussedItem == testBackgroundButton  {
+                lastPlayedDate()
             } else {
                 /* Load Personal View scene */
                 guard let size = view?.frame.size else { return }
