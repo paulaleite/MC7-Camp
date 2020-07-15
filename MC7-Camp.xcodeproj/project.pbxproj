@@ -33,6 +33,7 @@
 		1EDC302724BE40CE000AE1A5 /* chooseTeam.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EDC302624BE40CE000AE1A5 /* chooseTeam.png */; };
 		1EF1790424BFA6DF0055C380 /* GameWon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF1790324BFA6DF0055C380 /* GameWon.swift */; };
 		1EF1790624BFA8110055C380 /* PickTeam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF1790524BFA8110055C380 /* PickTeam.swift */; };
+		1EF1790A24BFA9D50055C380 /* Camp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1EF1790824BFA9D50055C380 /* Camp.xcdatamodeld */; };
 		1EF64EBE24B8DEEF006762DE /* mainBackground2@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EF64EBC24B8DEEF006762DE /* mainBackground2@1x.png */; };
 		1EF64EBF24B8DEEF006762DE /* mainBackground3@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EF64EBD24B8DEEF006762DE /* mainBackground3@1x.png */; };
 		1EF64EC124B8E01D006762DE /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF64EC024B8E01D006762DE /* DateExtension.swift */; };
@@ -82,6 +83,7 @@
 		1EDC302624BE40CE000AE1A5 /* chooseTeam.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chooseTeam.png; sourceTree = "<group>"; };
 		1EF1790324BFA6DF0055C380 /* GameWon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameWon.swift; path = "../../../../Desktop/MC7-Camp/MC7-Camp/Scenes/GameWon.swift"; sourceTree = "<group>"; };
 		1EF1790524BFA8110055C380 /* PickTeam.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickTeam.swift; sourceTree = "<group>"; };
+		1EF1790924BFA9D50055C380 /* Camp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Camp.xcdatamodel; sourceTree = "<group>"; };
 		1EF64EBC24B8DEEF006762DE /* mainBackground2@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mainBackground2@1x.png"; sourceTree = "<group>"; };
 		1EF64EBD24B8DEEF006762DE /* mainBackground3@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mainBackground3@1x.png"; sourceTree = "<group>"; };
 		1EF64EC024B8E01D006762DE /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
@@ -198,6 +200,7 @@
 		1E78AFFC24B62FF7007E0F75 /* MC7-Camp */ = {
 			isa = PBXGroup;
 			children = (
+				1EF1790724BFA9BE0055C380 /* Core Data */,
 				1E70A89E24B7846800D0E44D /* Extensions */,
 				1E6598D124B6552C0085FEC0 /* Nodes */,
 				1E6598D024B654FB0085FEC0 /* Scenes */,
@@ -211,6 +214,14 @@
 				1E6598CE24B652CF0085FEC0 /* Main.storyboard */,
 			);
 			path = "MC7-Camp";
+			sourceTree = "<group>";
+		};
+		1EF1790724BFA9BE0055C380 /* Core Data */ = {
+			isa = PBXGroup;
+			children = (
+				1EF1790824BFA9D50055C380 /* Camp.xcdatamodeld */,
+			);
+			path = "Core Data";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -320,6 +331,7 @@
 				1EDC302124BE37E8000AE1A5 /* PickPlayers.swift in Sources */,
 				1EF64ECF24B903F0006762DE /* ColaborativeGame.swift in Sources */,
 				1E78B00624B62FF7007E0F75 /* GameViewController.swift in Sources */,
+				1EF1790A24BFA9D50055C380 /* Camp.xcdatamodeld in Sources */,
 				1EF1790624BFA8110055C380 /* PickTeam.swift in Sources */,
 				1E70A8A024B7847800D0E44D /* SKSpriteNodeExtension.swift in Sources */,
 				1E70A89D24B782D000D0E44D /* GameConfiguration.swift in Sources */,
@@ -514,6 +526,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		1EF1790824BFA9D50055C380 /* Camp.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				1EF1790924BFA9D50055C380 /* Camp.xcdatamodel */,
+			);
+			currentVersion = 1EF1790924BFA9D50055C380 /* Camp.xcdatamodel */;
+			path = Camp.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 1E78AFF224B62FF7007E0F75 /* Project object */;
 }
