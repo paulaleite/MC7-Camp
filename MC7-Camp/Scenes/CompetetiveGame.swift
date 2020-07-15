@@ -1,5 +1,5 @@
 //
-//  MessGame.swift
+//  BallGame.swift
 //  MC7-Camp
 //
 //  Created by Paula Leite on 10/07/20.
@@ -9,9 +9,9 @@
 import Foundation
 import SpriteKit
 
-class MessGame: SKScene {
+class CompetetiveGame: SKScene {
     override func didMove(to view: SKView) {
-        print("Inside Mess Game.")
+        print("Inside Ball Game.")
         setupBackground()
     }
     
