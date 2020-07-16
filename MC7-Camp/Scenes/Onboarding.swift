@@ -8,6 +8,7 @@
 
 import Foundation
 import SpriteKit
+import CoreData
 
 class Onboarding: SKScene{
     
@@ -23,9 +24,11 @@ class Onboarding: SKScene{
     var doneSettingUpButton = MenuButtonNode()
     var buttons = [MenuButtonNode]()
     var numberOfFamilyMembers:Int = 0
-    
+    var context: NSManagedObjectContext?
     
     override func didMove(to view: SKView) {
+        context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+  
         setupBackground()
         setupUI()
         addTapGestureRecognizer()
@@ -37,6 +40,7 @@ class Onboarding: SKScene{
         background.zPosition = -1
         addChild(background)
     }
+    
     func setupUI() {
         askAmountOfMembersLabel.fontColor = .black
         askAmountOfMembersLabel.fontSize = 60
@@ -109,8 +113,30 @@ class Onboarding: SKScene{
                 }
             } else {
                 //dismissar
+                guard let size = view?.frame.size else { return }
+                let scene = MainMenu(size: size)
+                loadScreens(scene: scene)
             }
         }
         print("tapped")
+    }
+   
+    func loadScreens(scene: SKScene) {
+        /* Grab reference to our SpriteKit view */
+        guard let skView = self.view as SKView? else {
+            print("Could not get Skview")
+            return
+        }
+        
+        /* 3) Ensure correct aspect mode */
+        scene.scaleMode = .aspectFill
+        
+        /* Show debug */
+        skView.showsPhysics = true
+        skView.showsDrawCount = true
+        skView.showsFPS = true
+        
+        /* 4) Start game scene */
+        skView.presentScene(scene)
     }
 }
