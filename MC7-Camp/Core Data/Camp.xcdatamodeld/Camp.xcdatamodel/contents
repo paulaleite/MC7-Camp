@@ -1,14 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19E287" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19F101" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Family" representedClassName="Family" syncable="YES" codeGenerationType="class">
         <attribute name="familyName" optional="YES" attributeType="String"/>
+        <relationship name="familyMember" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="FamilyMember" inverseName="family" inverseEntity="FamilyMember"/>
     </entity>
     <entity name="FamilyMember" representedClassName="FamilyMember" syncable="YES" codeGenerationType="class">
         <attribute name="flagName" optional="YES" attributeType="String"/>
-        <relationship name="family" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Family"/>
+        <relationship name="family" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Family" inverseName="familyMember" inverseEntity="Family"/>
+        <relationship name="reward" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Reward" inverseName="familyMember" inverseEntity="Reward"/>
+    </entity>
+    <entity name="Reward" representedClassName="Reward" syncable="YES" codeGenerationType="class">
+        <attribute name="imageName" optional="YES" attributeType="String"/>
+        <relationship name="familyMember" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="FamilyMember" inverseName="reward" inverseEntity="FamilyMember"/>
     </entity>
     <elements>
-        <element name="Family" positionX="-63" positionY="-18" width="128" height="58"/>
-        <element name="FamilyMember" positionX="-64.8984375" positionY="179.21875" width="128" height="73"/>
+        <element name="Family" positionX="-63" positionY="-18" width="128" height="73"/>
+        <element name="FamilyMember" positionX="0.44921875" positionY="216.984375" width="128" height="88"/>
+        <element name="Reward" positionX="134.85546875" positionY="48.35546875" width="128" height="73"/>
     </elements>
 </model>
