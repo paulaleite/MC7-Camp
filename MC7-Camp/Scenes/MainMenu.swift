@@ -8,6 +8,7 @@
 
 import UIKit
 import SpriteKit
+import CoreData
 
 class MainMenu: SKScene {
     
@@ -23,16 +24,26 @@ class MainMenu: SKScene {
     var shack3 = MenuButtonNode()
     var background = SKSpriteNode()
     
+    var familyMembers: [FamilyMember] = []
+    var familyMember: FamilyMember?
+    var families: [Family] = []
+    var family: Family?
+    var rewards: [Reward] = []
+    var reward: Reward?
+    
+    var context: NSManagedObjectContext?
+    
+    
     let backgroundImages = [
         SKSpriteNode(imageNamed: "mainBackground@1x"),
         SKSpriteNode(imageNamed: "mainBackground1@1x"),
         SKSpriteNode(imageNamed: "mainBackground2@1x")
     ]
-    private var imageTimer: Timer?
     
     override func didMove(to view: SKView) {
         /* Setup your scene here */
-        
+        context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        callOnboarding()
         /* Set UI connections */
         setupButtons()
         numberOfPlayers = 3
@@ -44,6 +55,28 @@ class MainMenu: SKScene {
         
         addTapGestureRecognizer()
         
+    }
+    
+    func callOnboarding() {
+        do{
+            guard let context = context else {
+                return
+            }
+            familyMembers = try context.fetch(FamilyMember.fetchRequest())
+            families = try context.fetch(Family.fetchRequest())
+            rewards = try context.fetch(Reward.fetchRequest())
+            
+            if familyMembers.count == 0 {
+                guard let size = view?.frame.size else { return }
+                let scene = Onboarding(size: size)
+                loadScreens(scene: scene)
+            }
+            
+            (UIApplication.shared.delegate as! AppDelegate).saveContext()
+            
+        }catch let error{
+            print(error.localizedDescription)
+        }
     }
     
     func setupBackground() {
@@ -159,20 +192,17 @@ class MainMenu: SKScene {
             if focussedItem == playButton {
                 /* Load Game scene */
                 guard let size = view?.frame.size else { return }
-                let scene = GameChoices(size: size)
-                print("Could not make GameChoices, check the name is spelled correctly")
+                let scene = GameChoices(size: size)            
                 loadScreens(scene: scene)
             } else if focussedItem == configButton {
                 /* Load Configuration scene */
                 guard let size = view?.frame.size else { return }
                 let scene = GameConfiguration(size: size)
-                print("Could not make GameConfiguration, check the name is spelled correctly")
                 loadScreens(scene: scene)
             } else {
                 /* Load Personal View scene */
                 guard let size = view?.frame.size else { return }
                 let scene = PersonalView(size: size)
-                print("Could not make PersonalView, check the name is spelled correctly")
                 loadScreens(scene: scene)
             }
         }
