@@ -23,7 +23,7 @@ class Onboarding: SKScene{
     var decreaseAmountOfMembersButton = MenuButtonNode()
     var doneSettingUpButton = MenuButtonNode()
     var buttons = [MenuButtonNode]()
-    var numberOfFamilyMembers:Int = 0
+    var numberOfFamilyMembers: Int64 = 0
     var context: NSManagedObjectContext?
     
     override func didMove(to view: SKView) {
@@ -112,13 +112,34 @@ class Onboarding: SKScene{
                     updateNumberOfMembersLabel()
                 }
             } else {
-                //dismissar
+                saveData()
                 guard let size = view?.frame.size else { return }
                 let scene = MainMenu(size: size)
                 loadScreens(scene: scene)
             }
         }
         print("tapped")
+    }
+    
+    func saveData() {
+        do {
+            guard let context = context else { return }
+            families = try context.fetch(Family.fetchRequest())
+            
+            if self.numberOfFamilyMembers != 0 {
+                guard let families = NSEntityDescription.insertNewObject(forEntityName: "Family", into: context) as? Family else { return }
+                
+                families.numberOfFamilyMembers = self.numberOfFamilyMembers
+                families.familyName = nil
+                
+                self.families.append(families)
+            }
+            
+            (UIApplication.shared.delegate as! AppDelegate).saveContext()
+            
+        } catch let error {
+            print(error.localizedDescription)
+        }
     }
    
     func loadScreens(scene: SKScene) {

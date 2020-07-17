@@ -15,7 +15,7 @@ class MainMenu: SKScene {
     /* UI Connections */
     var buttons = [MenuButtonNode]()
     var shacks = [MenuButtonNode]()
-    var numberOfPlayers = Int()
+    var numberOfPlayers = Int64()
     var colorName = String()
     var playButton = MenuButtonNode()
     var configButton = MenuButtonNode()
@@ -23,6 +23,8 @@ class MainMenu: SKScene {
     var shack2 = MenuButtonNode()
     var shack3 = MenuButtonNode()
     var background = SKSpriteNode()
+    
+    var nameOfFlags = [String]()
     
     var familyMembers: [FamilyMember] = []
     var familyMember: FamilyMember?
@@ -44,29 +46,42 @@ class MainMenu: SKScene {
         /* Setup your scene here */
         context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         callOnboarding()
-        /* Set UI connections */
-        setupButtons()
-        numberOfPlayers = 3
-        colorName = "white"
-        
-        setupBackground()
-        
-        setupShacks(numberOfPlayers: numberOfPlayers, colorName: colorName)
-        
-        addTapGestureRecognizer()
         
     }
     
-    func callOnboarding() {
-        do{
-            guard let context = context else {
-                return
-            }
-            familyMembers = try context.fetch(FamilyMember.fetchRequest())
-            families = try context.fetch(Family.fetchRequest())
-            rewards = try context.fetch(Reward.fetchRequest())
+    override func sceneDidLoad() {
+        context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        
+        /* Set UI connections */
+        setupButtons()
+        
+        setupBackground()
+        
+        setupShacks()
+        
+        addTapGestureRecognizer()
+    }
+    
+    func fetchNumberOfFamilyMembers() {
+        do {
+            guard let context = context else { return }
             
-            if familyMembers.count == 0 {
+            families = try context.fetch(Family.fetchRequest())
+            
+            self.numberOfPlayers = families[0].numberOfFamilyMembers
+            
+        } catch let error {
+            print(error.localizedDescription)
+        }
+    }
+    
+    func callOnboarding() {
+        do {
+            guard let context = context else { return }
+            
+            families = try context.fetch(Family.fetchRequest())
+            
+            if families.count == 0 {
                 guard let size = view?.frame.size else { return }
                 let scene = Onboarding(size: size)
                 loadScreens(scene: scene)
@@ -74,7 +89,7 @@ class MainMenu: SKScene {
             
             (UIApplication.shared.delegate as! AppDelegate).saveContext()
             
-        }catch let error{
+        } catch let error{
             print(error.localizedDescription)
         }
     }
@@ -104,60 +119,62 @@ class MainMenu: SKScene {
         }
     }
     
-    func setupShacks(numberOfPlayers: Int, colorName: String) {
-        let firstShack = "FirstRoom@1x"
-        let firstShackName = colorName + firstShack
-        let secoundShack = "SecoundRoom@1x"
-        let secoundShackName = colorName + secoundShack
-        let thirdShack = "ThirdRoom@1x"
-        let thirdShackName = colorName + thirdShack
-        let forthShack = "ForthRoom@1x"
-        let forthShackName = colorName + forthShack
+    func setupShacks() {
+        fetchNumberOfFamilyMembers()
+        
+        let nameFlag = "shack"
+        var i: Int64 = 0
+        while(i < numberOfPlayers) {
+            let colorFlag = nameFlag + "\(i + 1)"
+            nameOfFlags.append(colorFlag)
+            
+            i = i + 1
+        }
         
         if numberOfPlayers == 2 {
-            shack2 = MenuButtonNode(name: secoundShackName)
+            shack2 = MenuButtonNode(name: nameOfFlags[0])
             shack2.position = CGPoint(x: 865, y: 630)
             shack2.zPosition = 0
             addChild(shack2)
             shacks.append(shack2)
             
-            shack3 = MenuButtonNode(name: thirdShackName)
+            shack3 = MenuButtonNode(name: nameOfFlags[1])
             shack3.position = CGPoint(x: 1446, y: 638.5)
             shack3.zPosition = 0
             addChild(shack3)
             shacks.append(shack3)
         } else if numberOfPlayers == 3 {
-            shack1 = MenuButtonNode(name: firstShackName)
+            shack1 = MenuButtonNode(name: nameOfFlags[0])
             shack1.position = CGPoint(x: 431, y: 486)
             shack1.zPosition = 0
             addChild(shack1)
             shacks.append(shack1)
             
-            shack2 = MenuButtonNode(name: secoundShackName)
+            shack2 = MenuButtonNode(name: nameOfFlags[1])
             shack2.position = CGPoint(x: 865, y: 630)
             shack2.zPosition = 0
             addChild(shack2)
             shacks.append(shack2)
             
-            shack3 = MenuButtonNode(name: thirdShackName)
+            shack3 = MenuButtonNode(name: nameOfFlags[2])
             shack3.position = CGPoint(x: 1446, y: 638.5)
             shack3.zPosition = 0
             addChild(shack3)
             shacks.append(shack3)
         } else if numberOfPlayers == 4 {
-            shack1 = MenuButtonNode(name: firstShackName)
+            shack1 = MenuButtonNode(name: nameOfFlags[0])
             shack1.position = CGPoint(x: 431, y: 486)
             shack1.zPosition = 0
             addChild(shack1)
             shacks.append(shack1)
             
-            shack2 = MenuButtonNode(name: secoundShackName)
+            shack2 = MenuButtonNode(name: nameOfFlags[1])
             shack2.position = CGPoint(x: 865, y: 630)
             shack2.zPosition = 0
             addChild(shack2)
             shacks.append(shack2)
             
-            shack3 = MenuButtonNode(name: thirdShackName)
+            shack3 = MenuButtonNode(name: nameOfFlags[3])
             shack3.position = CGPoint(x: 1446, y: 638.5)
             shack3.zPosition = 0
             addChild(shack3)
