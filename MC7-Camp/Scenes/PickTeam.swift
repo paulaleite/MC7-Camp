@@ -32,6 +32,8 @@ class PickTeam: SKScene {
     var flag4Team = MenuButtonNode()
     var teamFlag1 = MenuButtonNode()
     
+    var teamPerson = [Int]()
+    
     override func didMove(to view: SKView) {
         setupBackground()
         setupUIButtons()
@@ -97,6 +99,8 @@ class PickTeam: SKScene {
             flag2Selected.position = CGPoint(x: 761, y: 420)
             flag2Selected.zPosition = 1
             addChild(flag2Selected)
+            
+            teamPerson = [1, 1]
         } else {
             flag1Team = MenuButtonNode(name: "botaoTime")
             flag1Team.position = CGPoint(x: 914, y: 600)
@@ -133,6 +137,8 @@ class PickTeam: SKScene {
             flag3Selected.position = CGPoint(x: 761, y: 245)
             flag3Selected.zPosition = 1
             addChild(flag3Selected)
+            
+            teamPerson = [1, 1, 1]
         }
         
         for teamButton in teamButtons {
@@ -173,9 +179,10 @@ class PickTeam: SKScene {
                 let scene = GameChoices(size: size)
                 loadScreens(scene: scene)
             } else if focussedItem == playButton {
-                    /* Load MessGame scene */
+                /* Load MessGame scene *//* Load Colaborative GAme scene */
                 guard let size = view?.frame.size else { return }
                 let scene = CompetetiveGame(size: size)
+                scene.teamPerson = self.participating
                 // I need to send which players are playing.
                 loadScreens(scene: scene)
                 
@@ -183,25 +190,31 @@ class PickTeam: SKScene {
                 if flag1Team.selectedTeam1 == true {
                     flag1Selected.position = CGPoint(x: 1208, y: 600)
                     flag1Team.selectedTeam1 = false
+                    teamPerson[0] = 2
                 } else {
                     flag1Selected.position = CGPoint(x: 761, y: 600)
                     flag1Team.selectedTeam1 = true
+                    teamPerson[0] = 1
                 }
             } else if focussedItem == flag2Team {
                 if flag2Team.selectedTeam1 == true {
                     flag2Selected.position = CGPoint(x: 1208, y: 420)
                     flag2Team.selectedTeam1 = false
+                    teamPerson[1] = 2
                 } else {
                     flag2Selected.position = CGPoint(x: 761, y: 420)
                     flag2Team.selectedTeam1 = true
+                    teamPerson[1] = 1
                 }
             } else if focussedItem == flag3Team {
                 if flag3Team.selectedTeam1 == true {
                     flag3Selected.position = CGPoint(x: 1208, y: 245)
                     flag3Team.selectedTeam1 = false
+                    teamPerson[2] = 2
                 } else {
                     flag3Selected.position = CGPoint(x: 761, y: 245)
                     flag3Team.selectedTeam1 = true
+                    teamPerson[2] = 1
                 }
             }
         }

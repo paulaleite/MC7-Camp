@@ -22,6 +22,7 @@
 		1E78B00E24B62FF9007E0F75 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E78B00C24B62FF9007E0F75 /* LaunchScreen.storyboard */; };
 		1E78B01624B63253007E0F75 /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E78B01524B63253007E0F75 /* MainMenu.swift */; };
 		1E78B01824B63467007E0F75 /* GameChoices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E78B01724B63467007E0F75 /* GameChoices.swift */; };
+		1EA884C424C249660024F018 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA884C324C249660024F018 /* CoreDataManager.swift */; };
 		1EDC300F24BCEC4A000AE1A5 /* flag1.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EDC300C24BCEC4A000AE1A5 /* flag1.png */; };
 		1EDC301024BCEC4A000AE1A5 /* flag3.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EDC300D24BCEC4A000AE1A5 /* flag3.png */; };
 		1EDC301124BCEC4A000AE1A5 /* flag2.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EDC300E24BCEC4A000AE1A5 /* flag2.png */; };
@@ -76,8 +77,9 @@
 		1E78B00F24B62FF9007E0F75 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1E78B01524B63253007E0F75 /* MainMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
 		1E78B01724B63467007E0F75 /* GameChoices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameChoices.swift; sourceTree = "<group>"; };
-		1EA884B624C21F770024F018 /* Family+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Family+CoreDataClass.swift"; sourceTree = "<group>"; };
-		1EA884B724C21F770024F018 /* Family+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Family+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		1EA884BE24C2466F0024F018 /* Family+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Family+CoreDataClass.swift"; sourceTree = "<group>"; };
+		1EA884BF24C2466F0024F018 /* Family+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Family+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		1EA884C324C249660024F018 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		1EDC300C24BCEC4A000AE1A5 /* flag1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flag1.png; sourceTree = "<group>"; };
 		1EDC300D24BCEC4A000AE1A5 /* flag3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flag3.png; sourceTree = "<group>"; };
 		1EDC300E24BCEC4A000AE1A5 /* flag2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flag2.png; sourceTree = "<group>"; };
@@ -218,6 +220,7 @@
 		1E78AFFC24B62FF7007E0F75 /* MC7-Camp */ = {
 			isa = PBXGroup;
 			children = (
+				1EA884C224C249520024F018 /* Managers */,
 				1EF1790724BFA9BE0055C380 /* Core Data */,
 				1E70A89E24B7846800D0E44D /* Extensions */,
 				1E6598D124B6552C0085FEC0 /* Nodes */,
@@ -234,6 +237,14 @@
 			path = "MC7-Camp";
 			sourceTree = "<group>";
 		};
+		1EA884C224C249520024F018 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				1EA884C324C249660024F018 /* CoreDataManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
 		1EF1790724BFA9BE0055C380 /* Core Data */ = {
 			isa = PBXGroup;
 			children = (
@@ -241,8 +252,8 @@
 				E36CEE1324C0C1E20064F262 /* FamilyMember+CoreDataProperties.swift */,
 				E36CEE1424C0C1E20064F262 /* Reward+CoreDataClass.swift */,
 				E36CEE1524C0C1E20064F262 /* Reward+CoreDataProperties.swift */,
-				1EA884B624C21F770024F018 /* Family+CoreDataClass.swift */,
-				1EA884B724C21F770024F018 /* Family+CoreDataProperties.swift */,
+				1EA884BE24C2466F0024F018 /* Family+CoreDataClass.swift */,
+				1EA884BF24C2466F0024F018 /* Family+CoreDataProperties.swift */,
 				1EF1790824BFA9D50055C380 /* Camp.xcdatamodeld */,
 			);
 			path = "Core Data";
@@ -354,6 +365,7 @@
 				1E6598C724B643F90085FEC0 /* MenuButtonNode.swift in Sources */,
 				1E78B01824B63467007E0F75 /* GameChoices.swift in Sources */,
 				E36CEE1F24C0C8200064F262 /* Onboarding.swift in Sources */,
+				1EA884C424C249660024F018 /* CoreDataManager.swift in Sources */,
 				1EFEB6AD24B7B8CE00E0FECF /* PersonalView.swift in Sources */,
 				1EDC302124BE37E8000AE1A5 /* PickPlayers.swift in Sources */,
 				1EF64ECF24B903F0006762DE /* ColaborativeGame.swift in Sources */,

@@ -11,14 +11,12 @@ import SpriteKit
 class MenuButtonNode: SKSpriteNode {
     
     var effectNode: SKEffectNode?
-//    var node = SKSpriteNode()
     var selectedTeam1: Bool?
     var participating: Bool?
     
     convenience init(name: String) {
         self.init()
         let node = SKSpriteNode(imageNamed: name)
-//        node.texture = SKTexture(imageNamed: name)
         addChild(node)
     }
     

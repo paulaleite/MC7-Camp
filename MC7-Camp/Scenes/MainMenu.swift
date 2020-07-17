@@ -34,7 +34,9 @@ class MainMenu: SKScene {
     var reward: Reward?
     
     var context: NSManagedObjectContext?
+    var coreDataManager: CoreDataManager?
     
+    var didGoToOnboarding = false
     
     let backgroundImages = [
         SKSpriteNode(imageNamed: "mainBackground@1x"),
@@ -51,7 +53,6 @@ class MainMenu: SKScene {
     }
     
     override func sceneDidLoad() {
-        context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         
         /* Set UI connections */
         setupButtons()
@@ -61,17 +62,22 @@ class MainMenu: SKScene {
         setupShacks()
     }
     
-    func fetchNumberOfFamilyMembers() {
-        do {
-            guard let context = context else { return }
-            
-            families = try context.fetch(Family.fetchRequest())
-            
-            self.numberOfPlayers = families[0].numberOfFamilyMembers
-            
-        } catch let error {
-            print(error.localizedDescription)
-        }
+    func fetchNumberOfPlayersFromCoreData() -> Int64 {
+        context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        coreDataManager = CoreDataManager(context: context!)
+        
+        guard let numberPlayers = coreDataManager?.fetchNumberOfPlayersFromCoreData() else { return 1 }
+        
+        return numberPlayers
+    }
+    
+    func fetchNameOfShacksFromCoreData() -> [String] {
+        
+        context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        coreDataManager = CoreDataManager(context: context!)
+        
+        guard let nameOfShacks = coreDataManager?.fetchShacksFromCoreData() else { return ["Error with shacks"] }
+        return nameOfShacks
     }
     
     func callOnboarding() {
@@ -84,6 +90,7 @@ class MainMenu: SKScene {
                 guard let size = view?.frame.size else { return }
                 let scene = Onboarding(size: size)
                 loadScreens(scene: scene)
+                self.didGoToOnboarding = scene.didGoToOnboarding
             }
             
             (UIApplication.shared.delegate as! AppDelegate).saveContext()
@@ -119,16 +126,8 @@ class MainMenu: SKScene {
     }
     
     func setupShacks() {
-        fetchNumberOfFamilyMembers()
-        
-        let nameFlag = "shack"
-        var i: Int64 = 0
-        while(i < numberOfPlayers) {
-            let colorFlag = nameFlag + "\(i + 1)"
-            nameOfFlags.append(colorFlag)
-            
-            i = i + 1
-        }
+        self.nameOfFlags = fetchNameOfShacksFromCoreData()
+        self.numberOfPlayers = fetchNumberOfPlayersFromCoreData()
         
         if numberOfPlayers == 2 {
             shack2 = MenuButtonNode(name: nameOfFlags[0])

@@ -26,6 +26,8 @@ class Onboarding: SKScene{
     var numberOfFamilyMembers: Int64 = 0
     var context: NSManagedObjectContext?
     
+    var didGoToOnboarding = Bool()
+    
     override func didMove(to view: SKView) {
         context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
   
@@ -125,17 +127,33 @@ class Onboarding: SKScene{
         do {
             guard let context = context else { return }
             families = try context.fetch(Family.fetchRequest())
+            familyMembers = try context.fetch(FamilyMember.fetchRequest())
             
             if self.numberOfFamilyMembers != 0 {
-                guard let families = NSEntityDescription.insertNewObject(forEntityName: "Family", into: context) as? Family else { return }
+                guard let family = NSEntityDescription.insertNewObject(forEntityName: "Family", into: context) as? Family else { return }
                 
-                families.numberOfFamilyMembers = self.numberOfFamilyMembers
-                families.familyName = nil
                 
-                self.families.append(families)
+                family.numberOfFamilyMembers = self.numberOfFamilyMembers
+                family.familyName = nil
+                
+                var i = 0
+                let nameFlag = "shack"
+                while i < family.numberOfFamilyMembers {
+                    guard let familyMember = NSEntityDescription.insertNewObject(forEntityName: "FamilyMember", into: context) as? FamilyMember else { return }
+                    
+                    let colorFlag = nameFlag + "\(i + 1)"
+                    familyMember.flagName = colorFlag
+                    family.familyMember = familyMember
+                    
+                    self.familyMembers.append(familyMember)
+                    i = i + 1
+                }
+                
+                self.families.append(family)
             }
             
             (UIApplication.shared.delegate as! AppDelegate).saveContext()
+            didGoToOnboarding = true
             
         } catch let error {
             print(error.localizedDescription)
