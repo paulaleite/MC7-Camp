@@ -8,6 +8,7 @@
 
 import Foundation
 import SpriteKit
+import CoreData
 
 class PickPlayers: SKScene {
     var backgroundImage = String()
@@ -19,7 +20,6 @@ class PickPlayers: SKScene {
     var teamButtons = [MenuButtonNode]()
     var playButton = MenuButtonNode()
     
-    var numberOfPlayers = Int()
     var colorName = [String]()
     var nameOfFlags = [String]()
     
@@ -32,14 +32,34 @@ class PickPlayers: SKScene {
     var flag3Team = MenuButtonNode()
     var flag4Team = MenuButtonNode()
     
+    var families: [Family] = []
+    var family: Family?
+    var numberOfPlayers = Int64()
+    var context: NSManagedObjectContext?
+    
     override func didMove(to view: SKView) {
+        context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        
         setupBackground()
         setupUIButtons()
         
         numberOfPlayers = 3
-        setupTeamButtons(numberOfPlayers: numberOfPlayers)
+        setupTeamButtons()
         
         addTapGestureRecognizer()
+    }
+    
+    func fetchNumberOfFamilyMembers() {
+        do {
+            guard let context = context else { return }
+            
+            families = try context.fetch(Family.fetchRequest())
+            
+            self.numberOfPlayers = families[0].numberOfFamilyMembers
+            
+        } catch let error {
+            print(error.localizedDescription)
+        }
     }
     
     func setupUIButtons() {
@@ -60,7 +80,8 @@ class PickPlayers: SKScene {
         }
     }
     
-    func setupTeamButtons(numberOfPlayers: Int) {
+    func setupTeamButtons() {
+        fetchNumberOfFamilyMembers()
         var i = 0
         let nameFlag = "flag"
         while(i < numberOfPlayers) {
@@ -76,7 +97,6 @@ class PickPlayers: SKScene {
             addChild(flag1Team)
             teamButtons.append(flag1Team)
             flag1Team.participating = true
-            
             
             flag1Selected = MenuButtonNode(name: nameOfFlags[0])
             flag1Selected.position = CGPoint(x: 761, y: 600)
@@ -142,7 +162,6 @@ class PickPlayers: SKScene {
     }
     
     func setupBackground() {
-//        guard let backgroundImage = gameChosen?.backgroundImage else { return }
         let background = SKSpriteNode(imageNamed: "chooseParticipants")
         background.position = CGPoint(x: 960, y: 540)
         background.zPosition = -1

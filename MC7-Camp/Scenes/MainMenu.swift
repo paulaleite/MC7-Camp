@@ -47,6 +47,7 @@ class MainMenu: SKScene {
         context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         callOnboarding()
         
+        addTapGestureRecognizer()
     }
     
     override func sceneDidLoad() {
@@ -58,8 +59,6 @@ class MainMenu: SKScene {
         setupBackground()
         
         setupShacks()
-        
-        addTapGestureRecognizer()
     }
     
     func fetchNumberOfFamilyMembers() {

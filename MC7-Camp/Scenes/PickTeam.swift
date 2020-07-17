@@ -20,7 +20,6 @@ class PickTeam: SKScene {
     var playButton = MenuButtonNode()
     
     var numberOfPlayers = Int()
-    var colorName = [String]()
     var nameOfFlags = [String]()
     
     var flag1Selected = MenuButtonNode()
@@ -61,7 +60,7 @@ class PickTeam: SKScene {
     }
     
     func setupTeamButtons(peopleParticipating: [Int]) {
-//        numberOfPlayers = participating.count
+        numberOfPlayers = participating.count
         
         let nameFlag = "flag"
         var i = 0
