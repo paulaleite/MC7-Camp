@@ -17,7 +17,7 @@ class GameChoices: SKScene {
     var ballGameButton = MenuButtonNode()
     
     var nameGameChosen = String()
-    
+
     override func didMove(to view: SKView) {
         print("Inside Game Choices.")
         setupBackground()
