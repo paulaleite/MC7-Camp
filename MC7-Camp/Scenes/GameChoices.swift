@@ -81,7 +81,6 @@ class GameChoices: SKScene {
                 /* Load Main scene */
                 guard let size = view?.frame.size else { return }
                 let scene = MainMenu(size: size)
-                print("Could not make MainMenu, check the name is spelled correctly")
                 loadScreens(scene: scene)
             } else if focussedItem == messGameButton {
                 
