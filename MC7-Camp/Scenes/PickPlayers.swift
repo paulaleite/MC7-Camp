@@ -23,14 +23,7 @@ class PickPlayers: SKScene {
     var colorName = [String]()
     var nameOfFlags = [String]()
     
-    var flag1Selected = MenuButtonNode()
-    var flag2Selected = MenuButtonNode()
-    var flag3Selected = MenuButtonNode()
-    var flag4Selected = MenuButtonNode()
-    var flag1Team = MenuButtonNode()
-    var flag2Team = MenuButtonNode()
-    var flag3Team = MenuButtonNode()
-    var flag4Team = MenuButtonNode()
+    var flagButtons = [MenuButtonNode]()
     
     var numberOfPlayers = Int64()
     var context: NSManagedObjectContext?
@@ -81,76 +74,19 @@ class PickPlayers: SKScene {
     func setupTeamButtons() {
         fetchDataFromCoreData()
         
-        if numberOfPlayers == 2 {
-            flag1Team = MenuButtonNode(name: "botaoTime")
-            flag1Team.position = CGPoint(x: 914, y: 600)
-            flag1Team.zPosition = 0
-            addChild(flag1Team)
-            teamButtons.append(flag1Team)
-            flag1Team.participating = true
+        for i in 0 ..< Int(numberOfPlayers) {
+            let flagSelected = MenuButtonNode(name: nameOfFlags[i])
+            flagSelected.position = CGPoint(x: 761, y: 600 - (180  * i))
+            flagSelected.zPosition = 1
+            addChild(flagSelected)
+            flagButtons.append(flagSelected)
+            flagSelected.participating = true
             
-            flag1Selected = MenuButtonNode(name: nameOfFlags[0])
-            flag1Selected.position = CGPoint(x: 761, y: 600)
-            flag1Selected.zPosition = 1
-            addChild(flag1Selected)
-            
-            flag2Team = MenuButtonNode(name: "botaoTime")
-            flag2Team.position = CGPoint(x: 914, y: 420)
-            flag2Team.zPosition = 0
-            addChild(flag2Team)
-            teamButtons.append(flag2Team)
-            flag2Team.participating = true
-            
-            flag2Selected = MenuButtonNode(name: nameOfFlags[1])
-            flag2Selected.position = CGPoint(x: 761, y: 420)
-            flag2Selected.zPosition = 1
-            addChild(flag2Selected)
-            
-            participating = [1, 1]
-        } else {
-            
-            flag1Team = MenuButtonNode(name: "botaoTime")
-//            flag1Team.name = "teste2"
-            flag1Team.position = CGPoint(x: 914, y: 600)
-            flag1Team.zPosition = 0
-            addChild(flag1Team)
-            teamButtons.append(flag1Team)
-            flag1Team.participating = true
-            
-            flag1Selected = MenuButtonNode(name: nameOfFlags[0])
-            flag1Selected.position = CGPoint(x: 761, y: 600)
-            flag1Selected.zPosition = 1
-            addChild(flag1Selected)
-            
-            flag2Team = MenuButtonNode(name: "botaoTime")
-            flag2Team.position = CGPoint(x: 914, y: 420)
-            flag2Team.zPosition = 0
-            addChild(flag2Team)
-            teamButtons.append(flag2Team)
-            flag2Team.participating = true
-            
-            flag2Selected = MenuButtonNode(name: nameOfFlags[1])
-            flag2Selected.position = CGPoint(x: 761, y: 420)
-            flag2Selected.zPosition = 1
-            addChild(flag2Selected)
-            
-            flag3Team = MenuButtonNode(name: "botaoTime")
-            flag3Team.position = CGPoint(x: 914, y: 245)
-            flag3Team.zPosition = 0
-            addChild(flag3Team)
-            teamButtons.append(flag3Team)
-            flag3Team.participating = true
-            
-            flag3Selected = MenuButtonNode(name: nameOfFlags[2])
-            flag3Selected.position = CGPoint(x: 761, y: 245)
-            flag3Selected.zPosition = 1
-            addChild(flag3Selected)
-            
-            participating = [1, 1, 1]
+            participating.append(1)
         }
         
-        for teamButton in teamButtons {
-            teamButton.isUserInteractionEnabled = true
+        for flagButton in flagButtons {
+            flagButton.isUserInteractionEnabled = true
         }
     }
     
@@ -181,6 +117,7 @@ class PickPlayers: SKScene {
     
     @objc func tapped(sender: AnyObject) {
         if let focussedItem = UIScreen.main.focusedItem as? MenuButtonNode {
+            
             if focussedItem == backButton {
                 /* Load Game Choices scene */
                 guard let size = view?.frame.size else { return }
@@ -202,35 +139,21 @@ class PickPlayers: SKScene {
                     scene.participating = self.participating
                     loadScreens(scene: scene)
                 }
-            } else if focussedItem == flag1Team {
-                if flag1Team.participating == true {
-                    flag1Selected.position = CGPoint(x: 1208, y: 600)
-                    flag1Team.participating = false
-                    participating[0] = 0
-                } else {
-                    flag1Selected.position = CGPoint(x: 761, y: 600)
-                    flag1Team.participating = true
-                    participating[0] = 1
+            }
+            
+            for i in 0 ..< flagButtons.count {
+                let button = flagButtons[i]
+                if button != focussedItem {
+                    continue
                 }
-            } else if focussedItem == flag2Team {
-                if flag2Team.participating == true {
-                    flag2Selected.position = CGPoint(x: 1208, y: 420)
-                    flag2Team.participating = false
-                    participating[1] = 0
+                if button.participating == true {
+                    button.position = CGPoint(x: 1208, y: button.position.y)
+                    button.participating = false
+                    participating[i] = 0
                 } else {
-                    flag2Selected.position = CGPoint(x: 761, y: 420)
-                    flag2Team.participating = true
-                    participating[1] = 1
-                }
-            } else if focussedItem == flag3Team {
-                if flag3Team.participating == true {
-                    flag3Selected.position = CGPoint(x: 1208, y: 245)
-                    flag3Team.participating = false
-                    participating[2] = 0
-                } else {
-                    flag3Selected.position = CGPoint(x: 761, y: 245)
-                    flag3Team.participating = true
-                    participating[2] = 1
+                    button.position = CGPoint(x: 761, y: button.position.y)
+                    button.participating = true
+                    participating[i] = 1
                 }
             }
         }

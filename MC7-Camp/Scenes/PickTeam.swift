@@ -17,9 +17,10 @@ class PickTeam: SKScene {
     
     var backButton = MenuButtonNode()
     var buttons = [MenuButtonNode]()
+    var playButton = MenuButtonNode()
+    
     var teamButtons = [MenuButtonNode]()
     var flagButtons = [MenuButtonNode]()
-    var playButton = MenuButtonNode()
     
     var teamPerson = [Int]()
     var numberOfPlayers = Int64()
@@ -61,17 +62,12 @@ class PickTeam: SKScene {
         
         guard let nameFlags = coreDataManager?.fetchFlagsFromCoreData() else { return  }
         self.nameOfFlags = nameFlags
-        
-//        guard let numberPlayers = coreDataManager?.fetchNumberOfPlayersFromCoreData() else { return }
-//
-//        self.numberOfPlayers = numberPlayers
     }
     
     func setupTeamButtons(peopleParticipating: [Int]) {
         fetchDataFromCoreData()
         print(participating)
         
-//        let nameFlag = "flag"
         var i = 0
         while(i < participating.count) {
             if participating[i] == 1 {
@@ -82,11 +78,6 @@ class PickTeam: SKScene {
         }
         
         for i in 0 ..< activeFlags.count {
-//            let flagTeam = MenuButtonNode(name: "botaoTime")
-//            flagTeam.position = CGPoint(x: 914, y: 600 - (180  * i))
-//            addChild(flagTeam)
-//            teamButtons.append(flagTeam)
-            
             let flagSelected = MenuButtonNode(name: activeFlags[i])
             flagSelected.position = CGPoint(x: 761, y: 600 - (180  * i))
             flagSelected.zPosition = 1
