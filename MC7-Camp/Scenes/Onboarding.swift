@@ -137,13 +137,17 @@ class Onboarding: SKScene{
                 family.familyName = nil
                 
                 var i = 0
-                let nameFlag = "shack"
+                let nameShack = "shack"
+                let nameFlag = "flag"
                 while i < family.numberOfFamilyMembers {
                     guard let familyMember = NSEntityDescription.insertNewObject(forEntityName: "FamilyMember", into: context) as? FamilyMember else { return }
                     
-                    let colorFlag = nameFlag + "\(i + 1)"
-                    familyMember.flagName = colorFlag
-                    family.familyMember = familyMember
+                    let nameShack = nameShack + "\(i + 1)"
+                    familyMember.shackName = nameShack
+                    let nameFlag = nameFlag + "\(i + 1)"
+                    familyMember.flagName = nameFlag
+                    
+//                    family.familyMember = familyMember
                     
                     self.familyMembers.append(familyMember)
                     i = i + 1

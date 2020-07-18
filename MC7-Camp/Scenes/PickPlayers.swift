@@ -32,10 +32,9 @@ class PickPlayers: SKScene {
     var flag3Team = MenuButtonNode()
     var flag4Team = MenuButtonNode()
     
-    var families: [Family] = []
-    var family: Family?
     var numberOfPlayers = Int64()
     var context: NSManagedObjectContext?
+    var coreDataManager: CoreDataManager?
     
     override func didMove(to view: SKView) {
         context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -49,17 +48,16 @@ class PickPlayers: SKScene {
         addTapGestureRecognizer()
     }
     
-    func fetchNumberOfFamilyMembers() {
-        do {
-            guard let context = context else { return }
-            
-            families = try context.fetch(Family.fetchRequest())
-            
-            self.numberOfPlayers = families[0].numberOfFamilyMembers
-            
-        } catch let error {
-            print(error.localizedDescription)
-        }
+    func fetchDataFromCoreData() {
+        context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        coreDataManager = CoreDataManager(context: context!)
+        
+        guard let nameFlags = coreDataManager?.fetchFlagsFromCoreData() else { return  }
+        self.nameOfFlags = nameFlags
+        
+        guard let numberPlayers = coreDataManager?.fetchNumberOfPlayersFromCoreData() else { return }
+        
+        self.numberOfPlayers = numberPlayers
     }
     
     func setupUIButtons() {
@@ -81,14 +79,7 @@ class PickPlayers: SKScene {
     }
     
     func setupTeamButtons() {
-        fetchNumberOfFamilyMembers()
-        var i = 0
-        let nameFlag = "flag"
-        while(i < numberOfPlayers) {
-            let colorFlag = nameFlag + "\(i + 1)"
-            nameOfFlags.append(colorFlag)
-            i = i + 1
-        }
+        fetchDataFromCoreData()
         
         if numberOfPlayers == 2 {
             flag1Team = MenuButtonNode(name: "botaoTime")
@@ -117,7 +108,9 @@ class PickPlayers: SKScene {
             
             participating = [1, 1]
         } else {
+            
             flag1Team = MenuButtonNode(name: "botaoTime")
+//            flag1Team.name = "teste2"
             flag1Team.position = CGPoint(x: 914, y: 600)
             flag1Team.zPosition = 0
             addChild(flag1Team)

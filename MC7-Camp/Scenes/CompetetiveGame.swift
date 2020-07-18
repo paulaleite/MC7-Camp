@@ -15,6 +15,7 @@ class CompetetiveGame: SKScene {
     override func didMove(to view: SKView) {
         print("Inside Ball Game.")
         setupBackground()
+        print(teamPerson)
     }
     
     func setupBackground() {

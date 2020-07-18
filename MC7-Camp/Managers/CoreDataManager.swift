@@ -20,6 +20,7 @@ class CoreDataManager {
     var context: NSManagedObjectContext?
     
     var nameOfShacks = [String]()
+    var nameOfFlags = [String]()
     var numberOfPlayers = Int64()
     
     convenience init(context: NSManagedObjectContext) {
@@ -41,8 +42,8 @@ class CoreDataManager {
             
             var i = 0
             while i < families[0].numberOfFamilyMembers {
-                guard let memberFlag = familyMembers[i].flagName else { return ["Error with name of shacks"] }
-                nameOfShacks.append(memberFlag)
+                guard let memberShack = familyMembers[i].shackName else { return ["Error with name of shacks"] }
+                nameOfShacks.append(memberShack)
                 i = i + 1
             }
             
@@ -50,6 +51,32 @@ class CoreDataManager {
             print(error.localizedDescription)
         }
         return nameOfShacks
+    }
+    
+    func fetchFlagsFromCoreData() -> [String] {
+        
+        do {
+            guard let context = context else { return ["Error with context"] }
+            
+            families = try context.fetch(Family.fetchRequest())
+            familyMembers = try context.fetch(FamilyMember.fetchRequest())
+            
+            guard families.count > 0 else {
+                return ["Error with family count"]
+            }
+            
+            var i = 0
+            while i < families[0].numberOfFamilyMembers {
+                guard let memberFlag = familyMembers[i].flagName else { return ["Error with name of shacks"] }
+                nameOfFlags.append(memberFlag)
+                i = i + 1
+            }
+            
+        } catch let error {
+            print(error.localizedDescription)
+        }
+        
+        return nameOfFlags.reversed()
     }
     
     func fetchNumberOfPlayersFromCoreData() -> Int64 {

@@ -7,6 +7,7 @@
     </entity>
     <entity name="FamilyMember" representedClassName="FamilyMember" syncable="YES" codeGenerationType="class">
         <attribute name="flagName" optional="YES" attributeType="String"/>
+        <attribute name="shackName" optional="YES" attributeType="String"/>
         <relationship name="family" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Family" inverseName="familyMember" inverseEntity="Family"/>
         <relationship name="reward" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Reward" inverseName="familyMember" inverseEntity="Reward"/>
     </entity>
@@ -16,7 +17,7 @@
     </entity>
     <elements>
         <element name="Family" positionX="-63" positionY="-18" width="128" height="88"/>
-        <element name="FamilyMember" positionX="0.44921875" positionY="216.984375" width="128" height="88"/>
+        <element name="FamilyMember" positionX="0.44921875" positionY="216.984375" width="128" height="103"/>
         <element name="Reward" positionX="134.85546875" positionY="48.35546875" width="128" height="73"/>
     </elements>
 </model>
