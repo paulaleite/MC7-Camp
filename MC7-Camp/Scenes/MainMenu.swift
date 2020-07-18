@@ -24,7 +24,7 @@ class MainMenu: SKScene {
     var shack3 = MenuButtonNode()
     var background = SKSpriteNode()
     
-    var nameOfFlags = [String]()
+    var nameOfShacks = [String]()
     
     var familyMembers: [FamilyMember] = []
     var familyMember: FamilyMember?
@@ -34,7 +34,7 @@ class MainMenu: SKScene {
     var reward: Reward?
     
     var context: NSManagedObjectContext?
-    
+    var coreDataManager: CoreDataManager?
     
     let backgroundImages = [
         SKSpriteNode(imageNamed: "mainBackground@1x"),
@@ -51,8 +51,6 @@ class MainMenu: SKScene {
     }
     
     override func sceneDidLoad() {
-        context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-        
         /* Set UI connections */
         setupButtons()
         
@@ -61,17 +59,16 @@ class MainMenu: SKScene {
         setupShacks()
     }
     
-    func fetchNumberOfFamilyMembers() {
-        do {
-            guard let context = context else { return }
-            
-            families = try context.fetch(Family.fetchRequest())
-            
-            self.numberOfPlayers = families[0].numberOfFamilyMembers
-            
-        } catch let error {
-            print(error.localizedDescription)
-        }
+    func fetchDataFromCoreData() {
+        context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        coreDataManager = CoreDataManager(context: context!)
+        
+        guard let nameShacks = coreDataManager?.fetchShacksFromCoreData() else { return  }
+        self.nameOfShacks = nameShacks
+        
+        guard let numberPlayers = coreDataManager?.fetchNumberOfPlayersFromCoreData() else { return }
+        
+        self.numberOfPlayers = numberPlayers
     }
     
     func callOnboarding() {
@@ -119,66 +116,65 @@ class MainMenu: SKScene {
     }
     
     func setupShacks() {
-        fetchNumberOfFamilyMembers()
+        fetchDataFromCoreData()
         
-        let nameFlag = "shack"
-        var i: Int64 = 0
-        while(i < numberOfPlayers) {
-            let colorFlag = nameFlag + "\(i + 1)"
-            nameOfFlags.append(colorFlag)
-            
-            i = i + 1
+        for i in 0 ..< Int(numberOfPlayers) {
+            let shack = MenuButtonNode(name: nameOfShacks[i])
+            shack.position = CGPoint(x: 400 + (500 * i), y: 400 + (200  * i))
+            shack.zPosition = 1
+            addChild(shack)
+            shacks.append(shack)
         }
         
-        if numberOfPlayers == 2 {
-            shack2 = MenuButtonNode(name: nameOfFlags[0])
-            shack2.position = CGPoint(x: 865, y: 630)
-            shack2.zPosition = 0
-            addChild(shack2)
-            shacks.append(shack2)
-            
-            shack3 = MenuButtonNode(name: nameOfFlags[1])
-            shack3.position = CGPoint(x: 1446, y: 638.5)
-            shack3.zPosition = 0
-            addChild(shack3)
-            shacks.append(shack3)
-        } else if numberOfPlayers == 3 {
-            shack1 = MenuButtonNode(name: nameOfFlags[0])
-            shack1.position = CGPoint(x: 431, y: 486)
-            shack1.zPosition = 0
-            addChild(shack1)
-            shacks.append(shack1)
-            
-            shack2 = MenuButtonNode(name: nameOfFlags[1])
-            shack2.position = CGPoint(x: 865, y: 630)
-            shack2.zPosition = 0
-            addChild(shack2)
-            shacks.append(shack2)
-            
-            shack3 = MenuButtonNode(name: nameOfFlags[2])
-            shack3.position = CGPoint(x: 1446, y: 638.5)
-            shack3.zPosition = 0
-            addChild(shack3)
-            shacks.append(shack3)
-        } else if numberOfPlayers == 4 {
-            shack1 = MenuButtonNode(name: nameOfFlags[0])
-            shack1.position = CGPoint(x: 431, y: 486)
-            shack1.zPosition = 0
-            addChild(shack1)
-            shacks.append(shack1)
-            
-            shack2 = MenuButtonNode(name: nameOfFlags[1])
-            shack2.position = CGPoint(x: 865, y: 630)
-            shack2.zPosition = 0
-            addChild(shack2)
-            shacks.append(shack2)
-            
-            shack3 = MenuButtonNode(name: nameOfFlags[3])
-            shack3.position = CGPoint(x: 1446, y: 638.5)
-            shack3.zPosition = 0
-            addChild(shack3)
-            shacks.append(shack3)
-        }
+//        if numberOfPlayers == 2 {
+//            shack2 = MenuButtonNode(name: nameOfShacks[0])
+//            shack2.position = CGPoint(x: 865, y: 630)
+//            shack2.zPosition = 0
+//            addChild(shack2)
+//            shacks.append(shack2)
+//
+//            shack3 = MenuButtonNode(name: nameOfShacks[1])
+//            shack3.position = CGPoint(x: 1446, y: 638.5)
+//            shack3.zPosition = 0
+//            addChild(shack3)
+//            shacks.append(shack3)
+//        } else if numberOfPlayers == 3 {
+//            shack1 = MenuButtonNode(name: nameOfShacks[0])
+//            shack1.position = CGPoint(x: 431, y: 486)
+//            shack1.zPosition = 0
+//            addChild(shack1)
+//            shacks.append(shack1)
+//
+//            shack2 = MenuButtonNode(name: nameOfShacks[1])
+//            shack2.position = CGPoint(x: 865, y: 630)
+//            shack2.zPosition = 0
+//            addChild(shack2)
+//            shacks.append(shack2)
+//
+//            shack3 = MenuButtonNode(name: nameOfShacks[2])
+//            shack3.position = CGPoint(x: 1446, y: 638.5)
+//            shack3.zPosition = 0
+//            addChild(shack3)
+//            shacks.append(shack3)
+//        } else if numberOfPlayers == 4 {
+//            shack1 = MenuButtonNode(name: nameOfShacks[0])
+//            shack1.position = CGPoint(x: 431, y: 486)
+//            shack1.zPosition = 0
+//            addChild(shack1)
+//            shacks.append(shack1)
+//
+//            shack2 = MenuButtonNode(name: nameOfShacks[1])
+//            shack2.position = CGPoint(x: 865, y: 630)
+//            shack2.zPosition = 0
+//            addChild(shack2)
+//            shacks.append(shack2)
+//
+//            shack3 = MenuButtonNode(name: nameOfShacks[3])
+//            shack3.position = CGPoint(x: 1446, y: 638.5)
+//            shack3.zPosition = 0
+//            addChild(shack3)
+//            shacks.append(shack3)
+//        }
         
         for shack in shacks {
             shack.isUserInteractionEnabled = true

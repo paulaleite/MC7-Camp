@@ -10,9 +10,12 @@ import Foundation
 import SpriteKit
 
 class CompetetiveGame: SKScene {
+    var teamPerson = [Int]()
+    
     override func didMove(to view: SKView) {
         print("Inside Ball Game.")
         setupBackground()
+        print(teamPerson)
     }
     
     func setupBackground() {
