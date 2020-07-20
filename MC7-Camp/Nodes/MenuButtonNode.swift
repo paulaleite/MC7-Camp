@@ -14,13 +14,8 @@ class MenuButtonNode: SKSpriteNode {
     var selectedTeam1: Bool?
     var participating: Bool?
     var messQuantity: Int?
+    var selectedTeam: Int?
     
-//    convenience init(name: String) {
-//        self.init()
-//        let node = SKSpriteNode(imageNamed: name)
-//        node.name = "teste"
-//        addChild(node)
-//    }
     init(name: String) {
         let texture = SKTexture(imageNamed: name)
         super.init(texture: texture, color: .clear, size: texture.size())
