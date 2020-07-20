@@ -145,7 +145,7 @@ class PickTeam: SKScene {
                 /* Load MessGame scene *//* Load Colaborative GAme scene */
                 guard let size = view?.frame.size else { return }
                 let scene = CompetetiveGame(size: size)
-                scene.teamPerson = self.participating
+                scene.teamPerson = self.teamPerson
                 // I need to send which players are playing.
                 loadScreens(scene: scene)
             }
