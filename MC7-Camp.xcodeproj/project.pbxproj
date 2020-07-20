@@ -32,6 +32,7 @@
 		1EAE0C4F24C6199700830762 /* rejectButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EAE0C4C24C6199700830762 /* rejectButton.png */; };
 		1EAE0C5224C6297800830762 /* team1.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EAE0C5024C6297800830762 /* team1.png */; };
 		1EAE0C5324C6297800830762 /* team2.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EAE0C5124C6297800830762 /* team2.png */; };
+		1EAE0C5524C6349200830762 /* winningBoard.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EAE0C5424C6349200830762 /* winningBoard.png */; };
 		1EDC300F24BCEC4A000AE1A5 /* flag1.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EDC300C24BCEC4A000AE1A5 /* flag1.png */; };
 		1EDC301024BCEC4A000AE1A5 /* flag3.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EDC300D24BCEC4A000AE1A5 /* flag3.png */; };
 		1EDC301124BCEC4A000AE1A5 /* flag2.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EDC300E24BCEC4A000AE1A5 /* flag2.png */; };
@@ -94,6 +95,7 @@
 		1EAE0C4C24C6199700830762 /* rejectButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = rejectButton.png; path = ../../../../Desktop/rejectButton.png; sourceTree = "<group>"; };
 		1EAE0C5024C6297800830762 /* team1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = team1.png; path = ../../../../Desktop/team1.png; sourceTree = "<group>"; };
 		1EAE0C5124C6297800830762 /* team2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = team2.png; path = ../../../../Desktop/team2.png; sourceTree = "<group>"; };
+		1EAE0C5424C6349200830762 /* winningBoard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = winningBoard.png; path = ../../../../Desktop/winningBoard.png; sourceTree = "<group>"; };
 		1EDC300C24BCEC4A000AE1A5 /* flag1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flag1.png; sourceTree = "<group>"; };
 		1EDC300D24BCEC4A000AE1A5 /* flag3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flag3.png; sourceTree = "<group>"; };
 		1EDC300E24BCEC4A000AE1A5 /* flag2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flag2.png; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 		1E6598BF24B6438D0085FEC0 /* assets.atlas */ = {
 			isa = PBXGroup;
 			children = (
+				1EAE0C5424C6349200830762 /* winningBoard.png */,
 				1EAE0C5024C6297800830762 /* team1.png */,
 				1EAE0C5124C6297800830762 /* team2.png */,
 				1EAE0C4A24C6199700830762 /* confirmuButton.png */,
@@ -331,6 +334,7 @@
 				1EAE0C4E24C6199700830762 /* popUpSpace.png in Resources */,
 				1E6598C924B645230085FEC0 /* playButton@1x.png in Resources */,
 				1EF64EBE24B8DEEF006762DE /* mainBackground2@1x.png in Resources */,
+				1EAE0C5524C6349200830762 /* winningBoard.png in Resources */,
 				1E78B00B24B62FF9007E0F75 /* Assets.xcassets in Resources */,
 				1EDC302524BE3CD1000AE1A5 /* chooseParticipants.png in Resources */,
 				E3CD945F24C0D2650056F70A /* decreaseButtonImage.png in Resources */,

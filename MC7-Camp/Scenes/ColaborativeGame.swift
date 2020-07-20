@@ -171,8 +171,8 @@ class ColaborativeGame: SKScene {
                 /* Load Game Won scene */
                 guard let size = view?.frame.size else { return }
                 let scene = GameWon(size: size)
-                print(self.amountCleaned)
                 scene.amountCleaned = self.amountCleaned
+                scene.game = "Collaborative"
                 loadScreens(scene: scene)
             } else if focussedItem == backButton {
                 /* Load Game Choices scene */
