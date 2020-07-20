@@ -148,7 +148,6 @@ class PickTeam: SKScene {
                 scene.teamPerson = self.participating
                 // I need to send which players are playing.
                 loadScreens(scene: scene)
-                
             }
         }
         print("tapped")

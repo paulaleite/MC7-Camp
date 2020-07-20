@@ -9,6 +9,7 @@
 import Foundation
 import SpriteKit
 import CoreData
+import TVServices
 
 class Onboarding: SKScene{
     
@@ -27,6 +28,8 @@ class Onboarding: SKScene{
     var context: NSManagedObjectContext?
     
     var didGoToOnboarding = Bool()
+    
+    var tvUserData = TVUserManager()
     
     override func didMove(to view: SKView) {
         context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -122,6 +125,10 @@ class Onboarding: SKScene{
         }
         print("tapped")
     }
+    
+//    func getUserData() {
+//        tvUserData.userIdentifiersForCurrentProfile
+//    }
     
     func saveData() {
         do {
