@@ -11,19 +11,18 @@ import SpriteKit
 
 class GameWon: SKScene {
     var teamWon = String()
+    var playersThatWon = [Int]()
     var amountCleaned = Int()
     
     var teamButtons = [MenuButtonNode]()
     var mainMenu = MenuButtonNode()
     var newGame = MenuButtonNode()
     
-//    var buttons = [MenuButtonNode]()
-    
     override func didMove(to view: SKView) {
         print("Game Finished")
         setupBackground()
         setupButtons()
-        print(amountCleaned)
+        print(playersThatWon)
         
         addTapGestureRecognizer()
     }
