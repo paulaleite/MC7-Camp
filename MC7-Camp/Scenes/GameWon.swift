@@ -8,6 +8,7 @@
 
 import Foundation
 import SpriteKit
+import CoreData
 
 class GameWon: SKScene {
     var teamWon = Int()
@@ -20,12 +21,25 @@ class GameWon: SKScene {
     var newGame = MenuButtonNode()
     var gameWonLabel = SKLabelNode()
     
+    var context: NSManagedObjectContext?
+    var coreDataManager: CoreDataManager?
+    
     override func didMove(to view: SKView) {
         print("Game Finished")
         setupBackground()
         setupText()
         
+        
         addTapGestureRecognizer()
+    }
+    
+    func fetchDataFromCoreData() {
+        context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        coreDataManager = CoreDataManager(context: context!)
+        
+//        guard let saveData = coreDataManager?.addRewardToFamilyMember() else { return  }
+        
+        
     }
     
     func setupBackground() {

@@ -8,6 +8,7 @@
 
 import Foundation
 import SpriteKit
+import CoreData
 
 class ColaborativeGame: SKScene {
     var participating = [Int]()
@@ -27,6 +28,9 @@ class ColaborativeGame: SKScene {
     var totalSeconds = 5
     
     var timerLabel = SKLabelNode()
+    
+    var context: NSManagedObjectContext?
+    var coreDataManager: CoreDataManager?
     
     override func didMove(to view: SKView) {
         print("Inside Collaborative Game.")
@@ -97,6 +101,13 @@ class ColaborativeGame: SKScene {
         timerLabel.position = CGPoint(x: 960, y: 540)
         timerLabel.zPosition = 0
         addChild(timerLabel)
+    }
+    
+    func saveGame() {
+        context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        coreDataManager = CoreDataManager(context: context!)
+        
+        guard let saveGamePlayed = coreDataManager?.addToTimesPlayedMessGame() else { return  }
     }
     
     func setupUIButtons() {
@@ -173,6 +184,7 @@ class ColaborativeGame: SKScene {
                 let scene = GameWon(size: size)
                 scene.amountCleaned = self.amountCleaned
                 scene.game = "Collaborative"
+                saveGame()
                 loadScreens(scene: scene)
             } else if focussedItem == backButton {
                 /* Load Game Choices scene */

@@ -99,4 +99,49 @@ class CoreDataManager {
         
         return numberOfPlayers
     }
+    
+    func addRewardToFamilyMember(familyMemberIndexes: [Int]) {
+        
+        do {
+            guard let context = context else { return }
+            
+            familyMembers = try context.fetch(FamilyMember.fetchRequest())
+            for i in 0 ..< familyMemberIndexes.count {
+                //
+            }
+            
+            guard let reward = NSEntityDescription.insertNewObject(forEntityName: "Reard", into: context) as? Reward else { return }
+        
+            
+        } catch let error {
+            print(error.localizedDescription)
+        }
+    
+    }
+    
+    func addToTimesPlayedBasketballGame() {
+        do {
+            guard let context = context else { return }
+            
+            families = try context.fetch(Family.fetchRequest())
+            
+            families[0].timesPlayedBasketballGame += 1
+        
+        } catch let error {
+            print(error.localizedDescription)
+        }
+    }
+    
+    func addToTimesPlayedMessGame() {
+        do {
+            guard let context = context else { return }
+            
+            families = try context.fetch(Family.fetchRequest())
+            
+            families[0].timesPlayedMessGame += 1
+        
+        } catch let error {
+            print(error.localizedDescription)
+        }
+    }
 }
