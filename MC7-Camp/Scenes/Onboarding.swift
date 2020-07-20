@@ -126,10 +126,6 @@ class Onboarding: SKScene{
         print("tapped")
     }
     
-//    func getUserData() {
-//        tvUserData.userIdentifiersForCurrentProfile
-//    }
-    
     func saveData() {
         do {
             guard let context = context else { return }
@@ -153,8 +149,6 @@ class Onboarding: SKScene{
                     familyMember.shackName = nameShack
                     let nameFlag = nameFlag + "\(i + 1)"
                     familyMember.flagName = nameFlag
-                    
-//                    family.familyMember = familyMember
                     
                     self.familyMembers.append(familyMember)
                     i = i + 1
