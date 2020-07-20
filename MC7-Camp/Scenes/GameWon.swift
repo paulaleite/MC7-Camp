@@ -22,7 +22,7 @@ class GameWon: SKScene {
         print("Game Finished")
         setupBackground()
         setupButtons()
-        print(amountCleaned)
+        print(playersThatWon)
         
         addTapGestureRecognizer()
     }

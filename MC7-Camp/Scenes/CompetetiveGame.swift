@@ -12,6 +12,7 @@ import SpriteKit
 class CompetetiveGame: SKScene {
     var teamPerson = [Int]()
     var playersThatWon = [Int]()
+    var winningPlayers = [Int]()
     
     var backButton = MenuButtonNode()
     var confirmButton = MenuButtonNode()
@@ -24,7 +25,7 @@ class CompetetiveGame: SKScene {
     var explanationLabel = SKLabelNode()
     
     override func didMove(to view: SKView) {
-        print("Inside Collaborative Game.")
+        print("Inside Competitive Game.")
         print(teamPerson)
         setupBackground()
         setupUIButtons()
@@ -42,7 +43,7 @@ class CompetetiveGame: SKScene {
         explanationLabel.fontColor = .black
         explanationLabel.fontSize = 60
         explanationLabel.numberOfLines = 0
-        explanationLabel.text = "   Hoje nós vamos brincar de procurar\nbagunça pelo acampamento. Sua missão é\n   colocar o máximo de objetos em seus\n    lugares em 5 minutos. Vamos lá?"
+        explanationLabel.text = "   Hoje nós vamos brincar de jogar\nroupa suja na cesta de basquete. Sua missão é\n   que o seu time consiga a maior\n    quantidade de cestas! Vamos lá?"
         explanationLabel.position = CGPoint(x: 960, y: 540)
         explanationLabel.zPosition = 2
         addChild(explanationLabel)
@@ -86,7 +87,7 @@ class CompetetiveGame: SKScene {
             buttonSelected.position = CGPoint(x: 640 + (i * 640), y: 220)
             buttonSelected.zPosition = 1
             addChild(buttonSelected)
-            buttonSelected.selectedTeam = i
+            buttonSelected.selectedTeam = i + 1
             buttons.append(buttonSelected)
         }
         
@@ -133,6 +134,7 @@ class CompetetiveGame: SKScene {
                 /* Load Game Won scene */
                 guard let size = view?.frame.size else { return }
                 let scene = GameWon(size: size)
+                scene.playersThatWon = self.winningPlayers
                 loadScreens(scene: scene)
             } else if focussedItem == backButton {
                 /* Load Game Choices scene */
@@ -147,6 +149,17 @@ class CompetetiveGame: SKScene {
                     }
                     
                     // Preciso passar quem ganhou...
+                    for i in 0 ..< teamPerson.count {
+                        if button.selectedTeam == 1 {
+                            if teamPerson[i] == 1 {
+                                self.winningPlayers.append(i)
+                            }
+                        } else {
+                            if teamPerson[i] == 2 {
+                                self.winningPlayers.append(i)
+                            }
+                        }
+                    }
                     
                     setupConfirmButton()
                 }
