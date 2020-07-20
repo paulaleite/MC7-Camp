@@ -13,6 +13,7 @@ class MenuButtonNode: SKSpriteNode {
     var effectNode: SKEffectNode?
     var selectedTeam1: Bool?
     var participating: Bool?
+    var messQuantity: Int?
     
 //    convenience init(name: String) {
 //        self.init()

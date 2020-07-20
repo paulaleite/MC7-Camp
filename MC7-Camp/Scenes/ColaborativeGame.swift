@@ -11,29 +11,92 @@ import SpriteKit
 
 class ColaborativeGame: SKScene {
     var participating = [Int]()
+    var amountCleaned = Int()
     
     var backButton = MenuButtonNode()
-    var team1Won = MenuButtonNode()
-    var team2Won = MenuButtonNode()
+    var confirmButton = MenuButtonNode()
     
-    var teamButtons = [MenuButtonNode]()
+    var buttons = [MenuButtonNode]()
+    var buttonNames = [String]()
     
-//    var buttons = [MenuButtonNode]()
+    var beginGameButton = MenuButtonNode()
+    var rejectGameButton = MenuButtonNode()
+    var popUpBackground = SKSpriteNode()
+    var explanationLabel = SKLabelNode()
+    
+    var totalSeconds = 5
+    
+    var timerLabel = SKLabelNode()
     
     override func didMove(to view: SKView) {
-        print("Inside Ball Game.")
+        print("Inside Collaborative Game.")
         setupBackground()
         setupUIButtons()
-        setupTeamButtons()
+        popUpExplanation()
         
         addTapGestureRecognizer()
     }
     
+    func restartTimer(){
+        
+        let wait: SKAction = SKAction.wait(forDuration: 1)
+        let finishTimer:SKAction = SKAction.run {
+            
+            self.timerLabel.text = String(self.totalSeconds)
+            self.totalSeconds -= 1
+            
+            if self.totalSeconds >= 0 {
+                self.restartTimer()
+            } else {
+                self.timerLabel.numberOfLines = 0
+                self.timerLabel.text = "            Acabou o tempo,\nescolham a quantidade que limparam!"
+                self.timerLabel.fontSize = 60
+                self.setupMessButtons()
+            }
+            
+        }
+        
+        let seq: SKAction = SKAction.sequence([wait, finishTimer])
+        self.run(seq)
+
+    }
+    
+    func popUpExplanation() {
+        popUpBackground = SKSpriteNode(imageNamed: "popUpSpace")
+        popUpBackground.position = CGPoint(x: 960, y: 540)
+        popUpBackground.zPosition = 1
+        addChild(popUpBackground)
+        
+        explanationLabel.fontColor = .black
+        explanationLabel.fontSize = 60
+        explanationLabel.numberOfLines = 0
+        explanationLabel.text = "   Hoje nós vamos brincar de procurar\nbagunça pelo acampamento. Sua missão é\n   colocar o máximo de objetos em seus\n    lugares em 5 minutos. Vamos lá?"
+        explanationLabel.position = CGPoint(x: 960, y: 540)
+        explanationLabel.zPosition = 2
+        addChild(explanationLabel)
+        
+        beginGameButton = MenuButtonNode(name: "confirmuButton")
+        beginGameButton.position = CGPoint(x: 960, y: 340)
+        beginGameButton.zPosition = 2
+        addChild(beginGameButton)
+        
+        beginGameButton.isUserInteractionEnabled = true
+    }
+    
     func setupBackground() {
-        let background = SKSpriteNode(imageNamed: "gameIllustration")
+        let background = SKSpriteNode(imageNamed: "mainBackground@1x")
         background.position = CGPoint(x: 960, y: 540)
         background.zPosition = -1
         addChild(background)
+    }
+    
+    func setupTimer() {
+        timerLabel.fontColor = .black
+        timerLabel.fontSize = 120
+        timerLabel.text = String(self.totalSeconds + 1)
+        timerLabel.position = CGPoint(x: 960, y: 540)
+        timerLabel.zPosition = 0
+        addChild(timerLabel)
     }
     
     func setupUIButtons() {
@@ -41,27 +104,41 @@ class ColaborativeGame: SKScene {
         backButton.position = CGPoint(x: 90, y: 102.5)
         backButton.zPosition = 0
         addChild(backButton)
-//        buttons.append(backButton)
         
         backButton.isUserInteractionEnabled = true
     }
     
-    func setupTeamButtons() {
-        team1Won = MenuButtonNode(name: "team1")
-        team1Won.position = CGPoint(x: 640, y: 220)
-        team1Won.zPosition = 0
-        addChild(team1Won)
-        teamButtons.append(team1Won)
+    func setupMessButtons() {
         
-        team2Won = MenuButtonNode(name: "team2")
-        team2Won.position = CGPoint(x: 1280, y: 220)
-        team2Won.zPosition = 0
-        addChild(team2Won)
-        teamButtons.append(team2Won)
+        let quantity = "qtt"
+        var i = 1
+        while(i <= 3) {
+            let quantityName = quantity + "\(i)"
+            buttonNames.append(quantityName)
+            
+            i = i + 1
+        }
         
-        for button in teamButtons {
+        for i in 0 ..< 3 {
+            let buttonSelected = MenuButtonNode(name: buttonNames[i])
+            buttonSelected.position = CGPoint(x: 640 + (i * 320), y: 220)
+            buttonSelected.zPosition = 1
+            addChild(buttonSelected)
+            buttons.append(buttonSelected)
+        }
+        
+        for button in self.buttons {
             button.isUserInteractionEnabled = true
         }
+    }
+    
+    func setupConfirmButton() {
+        confirmButton = MenuButtonNode(name: "playButton")
+        confirmButton.position = CGPoint(x: 1773, y: 186.5)
+        confirmButton.zPosition = 0
+        addChild(confirmButton)
+        
+        confirmButton.isUserInteractionEnabled = true
     }
     
     override func didUpdateFocus(in context: UIFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) {
@@ -84,24 +161,36 @@ class ColaborativeGame: SKScene {
     
     @objc func tapped(sender: AnyObject) {
         if let focussedItem = UIScreen.main.focusedItem as? MenuButtonNode {
-            if focussedItem == backButton {
+            if focussedItem == beginGameButton {
+                popUpBackground.removeFromParent()
+                explanationLabel.removeFromParent()
+                beginGameButton.removeFromParent()
+                setupTimer()
+                restartTimer()
+            } else if focussedItem == confirmButton {
+                /* Load Game Won scene */
+                guard let size = view?.frame.size else { return }
+                let scene = GameWon(size: size)
+                print(self.amountCleaned)
+                scene.amountCleaned = self.amountCleaned
+                loadScreens(scene: scene)
+            } else if focussedItem == backButton {
                 /* Load Game Choices scene */
                 guard let size = view?.frame.size else { return }
                 let scene = GameChoices(size: size)
                 loadScreens(scene: scene)
-            } else if focussedItem == team1Won {
-                /* Load Game Won scene */
-                guard let size = self.view?.frame.size else { return }
-                let scene = GameWon(size: size)
-                scene.teamWon = "team1"
-                self.loadScreens(scene: scene)
-            } else if focussedItem == team2Won {
-                /* Load Game Won scene */
-                guard let size = self.view?.frame.size else { return }
-                let scene = GameWon(size: size)
-                scene.teamWon = "team2"
-                self.loadScreens(scene: scene)
+            } else {
+                for i in 0 ..< 3 {
+                    let button = buttons[i]
+                    if button != focussedItem {
+                        continue
+                    }
+                    self.amountCleaned = i
+                    setupConfirmButton()
+                }
             }
+            
+            
         }
         print("tapped")
     }

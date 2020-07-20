@@ -11,6 +11,7 @@ import SpriteKit
 
 class GameWon: SKScene {
     var teamWon = String()
+    var amountCleaned = Int()
     
     var teamButtons = [MenuButtonNode]()
     var mainMenu = MenuButtonNode()
@@ -22,6 +23,7 @@ class GameWon: SKScene {
         print("Game Finished")
         setupBackground()
         setupButtons()
+        print(amountCleaned)
         
         addTapGestureRecognizer()
     }
