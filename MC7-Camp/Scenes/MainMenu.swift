@@ -9,13 +9,14 @@
 
 import UIKit
 import SpriteKit
+import CoreData
 
 class MainMenu: SKScene {
     
     /* UI Connections */
     var buttons = [MenuButtonNode]()
     var shacks = [MenuButtonNode]()
-    var numberOfPlayers = Int()
+    var numberOfPlayers = Int64()
     var colorName = String()
     var playButton = MenuButtonNode()
     var configButton = MenuButtonNode()
@@ -24,28 +25,77 @@ class MainMenu: SKScene {
     var shack3 = MenuButtonNode()
     var background = SKSpriteNode()
 
+
+
+    
+    var nameOfShacks = [String]()
+    
+    var familyMembers: [FamilyMember] = []
+    var familyMember: FamilyMember?
+    var families: [Family] = []
+    var family: Family?
+    var rewards: [Reward] = []
+    var reward: Reward?
+    
+    var context: NSManagedObjectContext?
+    var coreDataManager: CoreDataManager?
+    
+
     let backgroundImages = [
         SKSpriteNode(imageNamed: "mainBackground@1x"),
         SKSpriteNode(imageNamed: "mainBackground2@1x"),
         SKSpriteNode(imageNamed: "mainBackground3@1x")
     ]
-    //test button - remove it!
-    var testBackgroundButton = MenuButtonNode()
+
     let defaults = UserDefaults.standard
     
     override func didMove(to view: SKView) {
         /* Setup your scene here */
-//        observeBackgroundChangeTimer()
+        context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        callOnboarding()
         
+        addTapGestureRecognizer()
+    }
+    
+    override func sceneDidLoad() {
+        /* Set UI connections */
+
         setupButtons()
-        numberOfPlayers = 3
-        colorName = "white"
         
         setupBackground()
         
-        setupShacks(numberOfPlayers: numberOfPlayers, colorName: colorName)
-        addTapGestureRecognizer()
+        setupShacks()
+    }
+    
+    func fetchDataFromCoreData() {
+        context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        coreDataManager = CoreDataManager(context: context!)
         
+        guard let nameShacks = coreDataManager?.fetchShacksFromCoreData() else { return  }
+        self.nameOfShacks = nameShacks
+        
+        guard let numberPlayers = coreDataManager?.fetchNumberOfPlayersFromCoreData() else { return }\
+        
+        self.numberOfPlayers = numberPlayers
+    }
+    
+    func callOnboarding() {
+        do {
+            guard let context = context else { return }
+            
+            families = try context.fetch(Family.fetchRequest())
+            
+            if families.count == 0 {
+                guard let size = view?.frame.size else { return }
+                let scene = Onboarding(size: size)
+                loadScreens(scene: scene)
+            }
+            
+            (UIApplication.shared.delegate as! AppDelegate).saveContext()
+            
+        } catch let error{
+            print(error.localizedDescription)
+        }
     }
     
     func lastPlayedDate(){
@@ -93,64 +143,15 @@ class MainMenu: SKScene {
         }
     }
     
-    func setupShacks(numberOfPlayers: Int, colorName: String) {
-        let firstShack = "FirstRoom@1x"
-        let firstShackName = colorName + firstShack
-        let secoundShack = "SecoundRoom@1x"
-        let secoundShackName = colorName + secoundShack
-        let thirdShack = "ThirdRoom@1x"
-        let thirdShackName = colorName + thirdShack
-        let forthShack = "ForthRoom@1x"
-        let forthShackName = colorName + forthShack
+    func setupShacks() {
+        fetchDataFromCoreData()
         
-        if numberOfPlayers == 2 {
-            shack2 = MenuButtonNode(name: secoundShackName)
-            shack2.position = CGPoint(x: 865, y: 630)
-            shack2.zPosition = 0
-            addChild(shack2)
-            shacks.append(shack2)
-            
-            shack3 = MenuButtonNode(name: thirdShackName)
-            shack3.position = CGPoint(x: 1446, y: 638.5)
-            shack3.zPosition = 0
-            addChild(shack3)
-            shacks.append(shack3)
-        } else if numberOfPlayers == 3 {
-            shack1 = MenuButtonNode(name: firstShackName)
-            shack1.position = CGPoint(x: 431, y: 486)
-            shack1.zPosition = 0
-            addChild(shack1)
-            shacks.append(shack1)
-            
-            shack2 = MenuButtonNode(name: secoundShackName)
-            shack2.position = CGPoint(x: 865, y: 630)
-            shack2.zPosition = 0
-            addChild(shack2)
-            shacks.append(shack2)
-            
-            shack3 = MenuButtonNode(name: thirdShackName)
-            shack3.position = CGPoint(x: 1446, y: 638.5)
-            shack3.zPosition = 0
-            addChild(shack3)
-            shacks.append(shack3)
-        } else if numberOfPlayers == 4 {
-            shack1 = MenuButtonNode(name: firstShackName)
-            shack1.position = CGPoint(x: 431, y: 486)
-            shack1.zPosition = 0
-            addChild(shack1)
-            shacks.append(shack1)
-            
-            shack2 = MenuButtonNode(name: secoundShackName)
-            shack2.position = CGPoint(x: 865, y: 630)
-            shack2.zPosition = 0
-            addChild(shack2)
-            shacks.append(shack2)
-            
-            shack3 = MenuButtonNode(name: thirdShackName)
-            shack3.position = CGPoint(x: 1446, y: 638.5)
-            shack3.zPosition = 0
-            addChild(shack3)
-            shacks.append(shack3)
+        for i in 0 ..< Int(numberOfPlayers) {
+            let shack = MenuButtonNode(name: nameOfShacks[i])
+            shack.position = CGPoint(x: 400 + (500 * i), y: 400 + (200  * i))
+            shack.zPosition = 1
+            addChild(shack)
+            shacks.append(shack)
         }
         
         for shack in shacks {
@@ -182,14 +183,12 @@ class MainMenu: SKScene {
                 /* Load Game scene */
                 lastPlayedDate()
                 guard let size = view?.frame.size else { return }
-                let scene = GameChoices(size: size)
-                print("Could not make GameChoices, check the name is spelled correctly")
+                let scene = GameChoices(size: size)            
                 loadScreens(scene: scene)
             } else if focussedItem == configButton {
                 /* Load Configuration scene */
                 guard let size = view?.frame.size else { return }
                 let scene = GameConfiguration(size: size)
-                print("Could not make GameConfiguration, check the name is spelled correctly")
                 loadScreens(scene: scene)
                 //test button condition - remove it!
             } else if focussedItem == testBackgroundButton  {
@@ -198,7 +197,6 @@ class MainMenu: SKScene {
                 /* Load Personal View scene */
                 guard let size = view?.frame.size else { return }
                 let scene = PersonalView(size: size)
-                print("Could not make PersonalView, check the name is spelled correctly")
                 loadScreens(scene: scene)
             }
         }

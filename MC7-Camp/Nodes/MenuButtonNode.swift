@@ -11,11 +11,22 @@ import SpriteKit
 class MenuButtonNode: SKSpriteNode {
     
     var effectNode: SKEffectNode?
+    var selectedTeam1: Bool?
+    var participating: Bool?
+    var messQuantity: Int?
+    var selectedTeam: Int?
     
-    convenience init(name: String) {
-        self.init()
-        let node = SKSpriteNode(imageNamed: name)
-        addChild(node)
+    init(name: String) {
+        let texture = SKTexture(imageNamed: name)
+        super.init(texture: texture, color: .clear, size: texture.size())
+    }
+    
+    init() {
+        super.init(texture: nil, color:. clear, size: .zero)
+    }
+    
+    required convenience init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     override var canBecomeFocused: Bool {
