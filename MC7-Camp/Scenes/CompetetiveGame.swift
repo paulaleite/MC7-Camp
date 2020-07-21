@@ -134,7 +134,7 @@ class CompetetiveGame: SKScene {
             } else if amountOfTimesPlayed[i] == 1.0 {
                 rewardName = nameReward + "\(amountOfTimesPlayed[i])"
                 coreDataManager?.addRewardToFamilyMember(familyMemberIndex: familyMemberIndexes[i], rewardImageName: rewardName, application: application)
-            } else if amountOfTimesPlayed[i] == 9.0 {
+            } else if amountOfTimesPlayed[i] == 6.0 {
                 rewardName = nameReward + "\(amountOfTimesPlayed[i])"
                 coreDataManager?.addRewardToFamilyMember(familyMemberIndex: familyMemberIndexes[i], rewardImageName: rewardName, application: application)
             }

@@ -127,9 +127,6 @@ class ColaborativeGame: SKScene {
             } else if amountOfTimesPlayed[i] == 1.0 {
                 rewardName = nameReward + "\(amountOfTimesPlayed[i])"
                 coreDataManager?.addRewardToFamilyMember(familyMemberIndex: i, rewardImageName: rewardName, application: application)
-            } else if amountOfTimesPlayed[i] == 9.0 {
-                rewardName = nameReward + "\(amountOfTimesPlayed[i])"
-                coreDataManager?.addRewardToFamilyMember(familyMemberIndex: i, rewardImageName: rewardName, application: application)
             }
         }
     }
