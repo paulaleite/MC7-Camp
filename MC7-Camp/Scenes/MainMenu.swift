@@ -5,6 +5,7 @@
 //  Created by Paula Leite on 08/07/20.
 //  Copyright © 2020 Paula Leite. All rights reserved.
 //
+// TEST BACKGROUND BUTTON HAS TO GO AWAY, FUNCTION ATTACHED TO IT SHOULD BE CALLED WHEN YOU RUN A GAME - setting user defaults to be implemented in appropriate screens
 
 import UIKit
 import SpriteKit
@@ -23,6 +24,9 @@ class MainMenu: SKScene {
     var shack2 = MenuButtonNode()
     var shack3 = MenuButtonNode()
     var background = SKSpriteNode()
+
+
+
     
     var nameOfShacks = [String]()
     
@@ -36,11 +40,14 @@ class MainMenu: SKScene {
     var context: NSManagedObjectContext?
     var coreDataManager: CoreDataManager?
     
+
     let backgroundImages = [
         SKSpriteNode(imageNamed: "mainBackground@1x"),
-        SKSpriteNode(imageNamed: "mainBackground1@1x"),
-        SKSpriteNode(imageNamed: "mainBackground2@1x")
+        SKSpriteNode(imageNamed: "mainBackground2@1x"),
+        SKSpriteNode(imageNamed: "mainBackground3@1x")
     ]
+
+    let defaults = UserDefaults.standard
     
     override func didMove(to view: SKView) {
         /* Setup your scene here */
@@ -52,6 +59,7 @@ class MainMenu: SKScene {
     
     override func sceneDidLoad() {
         /* Set UI connections */
+
         setupButtons()
         
         setupBackground()
@@ -66,7 +74,7 @@ class MainMenu: SKScene {
         guard let nameShacks = coreDataManager?.fetchShacksFromCoreData() else { return  }
         self.nameOfShacks = nameShacks
         
-        guard let numberPlayers = coreDataManager?.fetchNumberOfPlayersFromCoreData() else { return }
+        guard let numberPlayers = coreDataManager?.fetchNumberOfPlayersFromCoreData() else { return }\
         
         self.numberOfPlayers = numberPlayers
     }
@@ -90,8 +98,21 @@ class MainMenu: SKScene {
         }
     }
     
+    func lastPlayedDate(){
+        defaults.set(Date(timeIntervalSinceNow: -10800), forKey: "LastPlayed")
+    }
+        
     func setupBackground() {
-        background = SKSpriteNode(imageNamed: "mainBackground@1x")
+        let lastPlayedDate = defaults.object(forKey: "LastPlayed") as? Date
+        let rightNow = Date(timeIntervalSinceNow: -10800)
+        let timeSincePLayed = rightNow.timeIntervalSince(lastPlayedDate ?? Date(timeIntervalSinceReferenceDate: 0))
+        if timeSincePLayed <= 259200 {
+             background = SKSpriteNode(imageNamed: "mainBackground@1x")
+        } else if timeSincePLayed <= 518400 {
+             background = SKSpriteNode(imageNamed: "mainBackground2@1x")
+        } else {
+            background = SKSpriteNode(imageNamed: "mainBackground3@1x")
+        }
         background.position = CGPoint(x: 960, y: 540)
         background.zPosition = -1
         addChild(background)
@@ -109,6 +130,13 @@ class MainMenu: SKScene {
         configButton.zPosition = 0
         addChild(configButton)
         buttons.append(configButton)
+        
+        //test background change button - remove it!
+        testBackgroundButton = MenuButtonNode(name: "configButton@1x")
+        testBackgroundButton.position = CGPoint(x:700,y:150)
+        testBackgroundButton.zPosition = 0
+        addChild(testBackgroundButton)
+        buttons.append(testBackgroundButton)
         
         for button in buttons {
             button.isUserInteractionEnabled = true
@@ -153,6 +181,7 @@ class MainMenu: SKScene {
         if let focussedItem = UIScreen.main.focusedItem as? MenuButtonNode {
             if focussedItem == playButton {
                 /* Load Game scene */
+                lastPlayedDate()
                 guard let size = view?.frame.size else { return }
                 let scene = GameChoices(size: size)            
                 loadScreens(scene: scene)
@@ -161,6 +190,9 @@ class MainMenu: SKScene {
                 guard let size = view?.frame.size else { return }
                 let scene = GameConfiguration(size: size)
                 loadScreens(scene: scene)
+                //test button condition - remove it!
+            } else if focussedItem == testBackgroundButton  {
+                lastPlayedDate()
             } else {
                 /* Load Personal View scene */
                 guard let size = view?.frame.size else { return }
@@ -189,4 +221,5 @@ class MainMenu: SKScene {
         /* 4) Start game scene */
         skView.presentScene(scene)
     }
+
 }
