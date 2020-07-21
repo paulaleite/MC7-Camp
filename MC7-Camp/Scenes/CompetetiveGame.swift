@@ -11,6 +11,7 @@ import SpriteKit
 
 class CompetetiveGame: SKScene {
     var teamPerson = [Int]()
+    var teamWon = Int()
     var playersThatWon = [Int]()
     var winningPlayers = [Int]()
     
@@ -135,6 +136,8 @@ class CompetetiveGame: SKScene {
                 guard let size = view?.frame.size else { return }
                 let scene = GameWon(size: size)
                 scene.playersThatWon = self.winningPlayers
+                scene.game = "Competitive"
+                scene.teamWon = self.teamWon
                 loadScreens(scene: scene)
             } else if focussedItem == backButton {
                 /* Load Game Choices scene */
@@ -154,10 +157,12 @@ class CompetetiveGame: SKScene {
                             if teamPerson[i] == 1 {
                                 self.winningPlayers.append(i)
                             }
+                            self.teamWon = 1
                         } else {
                             if teamPerson[i] == 2 {
                                 self.winningPlayers.append(i)
                             }
+                            self.teamWon = 2
                         }
                     }
                     

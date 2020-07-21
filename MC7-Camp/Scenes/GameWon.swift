@@ -8,34 +8,61 @@
 
 import Foundation
 import SpriteKit
+import CoreData
 
 class GameWon: SKScene {
-    var teamWon = String()
+    var teamWon = Int()
     var playersThatWon = [Int]()
     var amountCleaned = Int()
+    var game = String()
     
     var teamButtons = [MenuButtonNode]()
     var mainMenu = MenuButtonNode()
     var newGame = MenuButtonNode()
+    var gameWonLabel = SKLabelNode()
+    
+    var context: NSManagedObjectContext?
+    var coreDataManager: CoreDataManager?
     
     override func didMove(to view: SKView) {
         print("Game Finished")
         setupBackground()
-        setupButtons()
-        print(playersThatWon)
+        setupText()
+        
         
         addTapGestureRecognizer()
     }
     
+    func fetchDataFromCoreData() {
+        context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        coreDataManager = CoreDataManager(context: context!)
+        
+//        guard let saveData = coreDataManager?.addRewardToFamilyMember() else { return  }
+        
+        
+    }
+    
     func setupBackground() {
-        let background = SKSpriteNode(imageNamed: "gameIllustration")
+        let background = SKSpriteNode(imageNamed: "winningBoard")
         background.position = CGPoint(x: 960, y: 540)
         background.zPosition = -1
         addChild(background)
     }
     
-    func setupButtons() {
+    func setupText() {
+        gameWonLabel.fontColor = .black
+        gameWonLabel.fontSize = 60
+        gameWonLabel.numberOfLines = 0
         
+        if game == "Collaborative" {
+            gameWonLabel.text = "Vocês são muito bons!"
+        } else {
+            gameWonLabel.text = "O time " + "\(teamWon) " + "venceu!"
+        }
+        
+        gameWonLabel.position = CGPoint(x: 960, y: 840)
+        gameWonLabel.zPosition = 1
+        addChild(gameWonLabel)
     }
     
     override func didUpdateFocus(in context: UIFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) {

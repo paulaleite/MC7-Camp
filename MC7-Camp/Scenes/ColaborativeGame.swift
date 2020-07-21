@@ -8,6 +8,7 @@
 
 import Foundation
 import SpriteKit
+import CoreData
 
 class ColaborativeGame: SKScene {
     var participating = [Int]()
@@ -27,6 +28,9 @@ class ColaborativeGame: SKScene {
     var totalSeconds = 5
     
     var timerLabel = SKLabelNode()
+    
+    var context: NSManagedObjectContext?
+    var coreDataManager: CoreDataManager?
     
     override func didMove(to view: SKView) {
         print("Inside Collaborative Game.")
@@ -58,7 +62,7 @@ class ColaborativeGame: SKScene {
         
         let seq: SKAction = SKAction.sequence([wait, finishTimer])
         self.run(seq)
-
+        
     }
     
     func popUpExplanation() {
@@ -97,6 +101,39 @@ class ColaborativeGame: SKScene {
         timerLabel.position = CGPoint(x: 960, y: 540)
         timerLabel.zPosition = 0
         addChild(timerLabel)
+    }
+    
+    func saveRewardsCoreData(familyMemberIndexes: [Int]) {
+        let application = UIApplication.shared.delegate as! AppDelegate
+        
+        context = application.persistentContainer.viewContext
+        coreDataManager = CoreDataManager(context: context!)
+        
+        coreDataManager?.addToTimesPlayedMessGame(familyMemberIndexes: familyMemberIndexes, application: application)
+        
+        guard let amountOfTimesPlayed = coreDataManager?.fetchTimesPlayedMessGame(familyMemberIndexes: familyMemberIndexes) else {
+            return
+        }
+        for i in 0 ..< familyMemberIndexes.count {
+            
+            // 1.0, 5.0, 10.0,
+            let nameReward = "rewardMess"
+            var rewardName = String()
+            
+            
+            if Int(amountOfTimesPlayed[i]) % 5 == 0 {
+                rewardName = nameReward + "\(amountOfTimesPlayed[i])"
+                coreDataManager?.addRewardToFamilyMember(familyMemberIndex: i, rewardImageName: rewardName, application: application)
+            } else if amountOfTimesPlayed[i] == 1.0 {
+                rewardName = nameReward + "\(amountOfTimesPlayed[i])"
+                coreDataManager?.addRewardToFamilyMember(familyMemberIndex: i, rewardImageName: rewardName, application: application)
+            } else if amountOfTimesPlayed[i] == 9.0 {
+                rewardName = nameReward + "\(amountOfTimesPlayed[i])"
+                coreDataManager?.addRewardToFamilyMember(familyMemberIndex: i, rewardImageName: rewardName, application: application)
+            }
+            
+        }
+        
     }
     
     func setupUIButtons() {
@@ -171,8 +208,9 @@ class ColaborativeGame: SKScene {
                 /* Load Game Won scene */
                 guard let size = view?.frame.size else { return }
                 let scene = GameWon(size: size)
-                print(self.amountCleaned)
                 scene.amountCleaned = self.amountCleaned
+                scene.game = "Collaborative"
+                saveRewardsCoreData(familyMemberIndexes: participating)
                 loadScreens(scene: scene)
             } else if focussedItem == backButton {
                 /* Load Game Choices scene */
