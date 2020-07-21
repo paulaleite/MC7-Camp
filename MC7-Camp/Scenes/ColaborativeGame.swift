@@ -131,9 +131,7 @@ class ColaborativeGame: SKScene {
                 rewardName = nameReward + "\(amountOfTimesPlayed[i])"
                 coreDataManager?.addRewardToFamilyMember(familyMemberIndex: i, rewardImageName: rewardName, application: application)
             }
-            
         }
-        
     }
     
     func setupUIButtons() {

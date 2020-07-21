@@ -108,15 +108,13 @@ class CoreDataManager {
             
             rewards = try context.fetch(Reward.fetchRequest())
             
-            guard let reward = NSEntityDescription.insertNewObject(forEntityName: "Reward", into: context) as? Reward else { return }
-            
             familyMembers = try context.fetch(FamilyMember.fetchRequest())
+            
+            guard let reward = NSEntityDescription.insertNewObject(forEntityName: "Reward", into: context) as? Reward else { return }
             
             reward.imageName = rewardImageName
             reward.familyMember = familyMembers[familyMemberIndex]
             self.rewards.append(reward)
-            
-            
     
             familyMembers[familyMemberIndex].reward = reward
             
@@ -127,16 +125,18 @@ class CoreDataManager {
     
     }
     
-    func addToTimesPlayedBasketballGame(familyMemberIndexes: [Int]) {
+    func addToTimesPlayedBasketballGame(familyMemberIndexes: [Int], application: AppDelegate) {
         do {
             guard let context = context else { return }
             
             familyMembers = try context.fetch(FamilyMember.fetchRequest())
             
             for i in 0 ..< familyMemberIndexes.count {
-                familyMembers[i].timesPlayedBasketballGame += 1
+                let index = familyMemberIndexes[i]
+                familyMembers[index].timesPlayedBasketballGame += 1.0
+                
             }
-        
+            application.saveContext()
         } catch let error {
             print(error.localizedDescription)
         }
@@ -150,7 +150,8 @@ class CoreDataManager {
             familyMembers = try context.fetch(FamilyMember.fetchRequest())
             
             for i in 0 ..< familyMemberIndexes.count {
-                self.numberOfTimesPlayed.append(familyMembers[i].timesPlayedBasketballGame)
+                let index = familyMemberIndexes[i]
+                self.numberOfTimesPlayed.append(familyMembers[index].timesPlayedBasketballGame)
             }
             
         } catch let error {
