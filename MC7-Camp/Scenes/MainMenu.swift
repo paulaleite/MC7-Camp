@@ -25,9 +25,6 @@ class MainMenu: SKScene {
     var shack3 = MenuButtonNode()
     var background = SKSpriteNode()
 
-
-
-    
     var nameOfShacks = [String]()
     
     var familyMembers: [FamilyMember] = []
@@ -74,7 +71,7 @@ class MainMenu: SKScene {
         guard let nameShacks = coreDataManager?.fetchShacksFromCoreData() else { return  }
         self.nameOfShacks = nameShacks
         
-        guard let numberPlayers = coreDataManager?.fetchNumberOfPlayersFromCoreData() else { return }\
+        guard let numberPlayers = coreDataManager?.fetchNumberOfPlayersFromCoreData() else { return }
         
         self.numberOfPlayers = numberPlayers
     }
@@ -131,13 +128,6 @@ class MainMenu: SKScene {
         addChild(configButton)
         buttons.append(configButton)
         
-        //test background change button - remove it!
-        testBackgroundButton = MenuButtonNode(name: "configButton@1x")
-        testBackgroundButton.position = CGPoint(x:700,y:150)
-        testBackgroundButton.zPosition = 0
-        addChild(testBackgroundButton)
-        buttons.append(testBackgroundButton)
-        
         for button in buttons {
             button.isUserInteractionEnabled = true
         }
@@ -191,8 +181,6 @@ class MainMenu: SKScene {
                 let scene = GameConfiguration(size: size)
                 loadScreens(scene: scene)
                 //test button condition - remove it!
-            } else if focussedItem == testBackgroundButton  {
-                lastPlayedDate()
             } else {
                 /* Load Personal View scene */
                 guard let size = view?.frame.size else { return }
