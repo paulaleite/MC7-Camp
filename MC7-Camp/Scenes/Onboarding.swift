@@ -138,8 +138,6 @@ class Onboarding: SKScene{
                 
                 family.numberOfFamilyMembers = self.numberOfFamilyMembers
                 family.familyName = "Goth"
-                family.timesPlayedBasketballGame = 0
-                family.timesPlayedMessGame = 0
                 
                 var i = 0
                 let nameShack = "shack"
@@ -151,6 +149,8 @@ class Onboarding: SKScene{
                     familyMember.shackName = nameShack
                     let nameFlag = nameFlag + "\(i + 1)"
                     familyMember.flagName = nameFlag
+                    familyMember.timesPlayedBasketballGame = 0.0
+                    familyMember.timesPlayedMessGame = 0.0
                     
                     self.familyMembers.append(familyMember)
                     i = i + 1

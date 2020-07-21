@@ -62,7 +62,7 @@ class ColaborativeGame: SKScene {
         
         let seq: SKAction = SKAction.sequence([wait, finishTimer])
         self.run(seq)
-
+        
     }
     
     func popUpExplanation() {
@@ -103,11 +103,37 @@ class ColaborativeGame: SKScene {
         addChild(timerLabel)
     }
     
-    func saveGame() {
-        context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    func saveRewardsCoreData(familyMemberIndexes: [Int]) {
+        let application = UIApplication.shared.delegate as! AppDelegate
+        
+        context = application.persistentContainer.viewContext
         coreDataManager = CoreDataManager(context: context!)
         
-        guard let saveGamePlayed = coreDataManager?.addToTimesPlayedMessGame() else { return  }
+        coreDataManager?.addToTimesPlayedMessGame(familyMemberIndexes: familyMemberIndexes, application: application)
+        
+        guard let amountOfTimesPlayed = coreDataManager?.fetchTimesPlayedMessGame(familyMemberIndexes: familyMemberIndexes) else {
+            return
+        }
+        for i in 0 ..< familyMemberIndexes.count {
+            
+            // 1.0, 5.0, 10.0,
+            let nameReward = "rewardMess"
+            var rewardName = String()
+            
+            
+            if Int(amountOfTimesPlayed[i]) % 5 == 0 {
+                rewardName = nameReward + "\(amountOfTimesPlayed[i])"
+                coreDataManager?.addRewardToFamilyMember(familyMemberIndex: i, rewardImageName: rewardName, application: application)
+            } else if amountOfTimesPlayed[i] == 1.0 {
+                rewardName = nameReward + "\(amountOfTimesPlayed[i])"
+                coreDataManager?.addRewardToFamilyMember(familyMemberIndex: i, rewardImageName: rewardName, application: application)
+            } else if amountOfTimesPlayed[i] == 9.0 {
+                rewardName = nameReward + "\(amountOfTimesPlayed[i])"
+                coreDataManager?.addRewardToFamilyMember(familyMemberIndex: i, rewardImageName: rewardName, application: application)
+            }
+            
+        }
+        
     }
     
     func setupUIButtons() {
@@ -184,7 +210,7 @@ class ColaborativeGame: SKScene {
                 let scene = GameWon(size: size)
                 scene.amountCleaned = self.amountCleaned
                 scene.game = "Collaborative"
-                saveGame()
+                saveRewardsCoreData(familyMemberIndexes: participating)
                 loadScreens(scene: scene)
             } else if focussedItem == backButton {
                 /* Load Game Choices scene */

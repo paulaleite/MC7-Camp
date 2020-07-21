@@ -29,8 +29,10 @@
 		1EBD189524C7593C0036AF9B /* qtt3.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EBD189324C7593C0036AF9B /* qtt3.png */; };
 		1EBD18A724C759FE0036AF9B /* team2.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EBD18A624C759FE0036AF9B /* team2.png */; };
 		1EBD18AB24C75A3C0036AF9B /* popUpSpace.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EBD18A824C75A3C0036AF9B /* popUpSpace.png */; };
-		1EBD18AC24C75A3C0036AF9B /* winningBoard 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EBD18A924C75A3C0036AF9B /* winningBoard 2.png */; };
+		1EBD18AC24C75A3C0036AF9B /* winningBoard.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EBD18A924C75A3C0036AF9B /* winningBoard.png */; };
 		1EBD18AD24C75A3C0036AF9B /* confirmuButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EBD18AA24C75A3C0036AF9B /* confirmuButton.png */; };
+		1EBD18B824C7662B0036AF9B /* rewardMess5.0.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EBD18B624C7662A0036AF9B /* rewardMess5.0.png */; };
+		1EBD18B924C7662B0036AF9B /* rewardMess1.0.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EBD18B724C7662A0036AF9B /* rewardMess1.0.png */; };
 		1EDC300F24BCEC4A000AE1A5 /* flag1.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EDC300C24BCEC4A000AE1A5 /* flag1.png */; };
 		1EDC301024BCEC4A000AE1A5 /* flag3.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EDC300D24BCEC4A000AE1A5 /* flag3.png */; };
 		1EDC301124BCEC4A000AE1A5 /* flag2.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EDC300E24BCEC4A000AE1A5 /* flag2.png */; };
@@ -56,7 +58,6 @@
 		1EFEB6AF24B7B95C00E0FECF /* individualViewBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EFEB6AE24B7B95C00E0FECF /* individualViewBackground.png */; };
 		E36CEE1124C0C1950064F262 /* GameWon.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36CEE1024C0C1950064F262 /* GameWon.swift */; };
 		E36CEE1F24C0C8200064F262 /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36CEE1E24C0C8200064F262 /* Onboarding.swift */; };
-		E36CEE2124C0CCCA0064F262 /* MyScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = E36CEE2024C0CCCA0064F262 /* MyScene.sks */; };
 		E3CD945E24C0D2650056F70A /* increaseButtonImage.png in Resources */ = {isa = PBXBuildFile; fileRef = E3CD945C24C0D2650056F70A /* increaseButtonImage.png */; };
 		E3CD945F24C0D2650056F70A /* decreaseButtonImage.png in Resources */ = {isa = PBXBuildFile; fileRef = E3CD945D24C0D2650056F70A /* decreaseButtonImage.png */; };
 /* End PBXBuildFile section */
@@ -80,18 +81,20 @@
 		1E78B01524B63253007E0F75 /* MainMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
 		1E78B01724B63467007E0F75 /* GameChoices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameChoices.swift; sourceTree = "<group>"; };
 		1EA884C324C249660024F018 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
-		1EA884C524C24F130024F018 /* FamilyMember+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FamilyMember+CoreDataClass.swift"; sourceTree = "<group>"; };
-		1EA884C624C24F130024F018 /* FamilyMember+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FamilyMember+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		1EA884C924C24F540024F018 /* ColaborativeGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColaborativeGame.swift; sourceTree = "<group>"; };
-		1EAE0C5624C63FBB00830762 /* Family+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Family+CoreDataClass.swift"; sourceTree = "<group>"; };
-		1EAE0C5724C63FBB00830762 /* Family+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Family+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		1EBD189024C7592C0036AF9B /* qtt1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = qtt1.png; sourceTree = "<group>"; };
 		1EBD189224C7593C0036AF9B /* qtt2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = qtt2.png; sourceTree = "<group>"; };
 		1EBD189324C7593C0036AF9B /* qtt3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = qtt3.png; sourceTree = "<group>"; };
 		1EBD18A624C759FE0036AF9B /* team2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = team2.png; sourceTree = "<group>"; };
 		1EBD18A824C75A3C0036AF9B /* popUpSpace.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = popUpSpace.png; sourceTree = "<group>"; };
-		1EBD18A924C75A3C0036AF9B /* winningBoard 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "winningBoard 2.png"; sourceTree = "<group>"; };
+		1EBD18A924C75A3C0036AF9B /* winningBoard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = winningBoard.png; sourceTree = "<group>"; };
 		1EBD18AA24C75A3C0036AF9B /* confirmuButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = confirmuButton.png; sourceTree = "<group>"; };
+		1EBD18AE24C7624D0036AF9B /* Family+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Family+CoreDataClass.swift"; sourceTree = "<group>"; };
+		1EBD18AF24C7624D0036AF9B /* Family+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Family+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		1EBD18B024C7624D0036AF9B /* FamilyMember+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FamilyMember+CoreDataClass.swift"; sourceTree = "<group>"; };
+		1EBD18B124C7624D0036AF9B /* FamilyMember+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FamilyMember+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		1EBD18B624C7662A0036AF9B /* rewardMess5.0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rewardMess5.0.png; sourceTree = "<group>"; };
+		1EBD18B724C7662A0036AF9B /* rewardMess1.0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rewardMess1.0.png; sourceTree = "<group>"; };
 		1EDC300C24BCEC4A000AE1A5 /* flag1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flag1.png; sourceTree = "<group>"; };
 		1EDC300D24BCEC4A000AE1A5 /* flag3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flag3.png; sourceTree = "<group>"; };
 		1EDC300E24BCEC4A000AE1A5 /* flag2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flag2.png; sourceTree = "<group>"; };
@@ -119,7 +122,6 @@
 		E36CEE1424C0C1E20064F262 /* Reward+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Reward+CoreDataClass.swift"; sourceTree = "<group>"; };
 		E36CEE1524C0C1E20064F262 /* Reward+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Reward+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E36CEE1E24C0C8200064F262 /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
-		E36CEE2024C0CCCA0064F262 /* MyScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MyScene.sks; sourceTree = "<group>"; };
 		E3CD945C24C0D2650056F70A /* increaseButtonImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = increaseButtonImage.png; sourceTree = "<group>"; };
 		E3CD945D24C0D2650056F70A /* decreaseButtonImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = decreaseButtonImage.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -138,9 +140,11 @@
 		1E6598BF24B6438D0085FEC0 /* assets.atlas */ = {
 			isa = PBXGroup;
 			children = (
+				1EBD18B724C7662A0036AF9B /* rewardMess1.0.png */,
+				1EBD18B624C7662A0036AF9B /* rewardMess5.0.png */,
 				1EBD18AA24C75A3C0036AF9B /* confirmuButton.png */,
 				1EBD18A824C75A3C0036AF9B /* popUpSpace.png */,
-				1EBD18A924C75A3C0036AF9B /* winningBoard 2.png */,
+				1EBD18A924C75A3C0036AF9B /* winningBoard.png */,
 				1EBD18A624C759FE0036AF9B /* team2.png */,
 				1EBD189224C7593C0036AF9B /* qtt2.png */,
 				1EBD189324C7593C0036AF9B /* qtt3.png */,
@@ -184,7 +188,6 @@
 				E36CEE1024C0C1950064F262 /* GameWon.swift */,
 				1EF1790524BFA8110055C380 /* PickTeam.swift */,
 				E36CEE1E24C0C8200064F262 /* Onboarding.swift */,
-				E36CEE2024C0CCCA0064F262 /* MyScene.sks */,
 				1EA884C924C24F540024F018 /* ColaborativeGame.swift */,
 			);
 			path = Scenes;
@@ -254,12 +257,12 @@
 		1EF1790724BFA9BE0055C380 /* Core Data */ = {
 			isa = PBXGroup;
 			children = (
-				1EA884C524C24F130024F018 /* FamilyMember+CoreDataClass.swift */,
-				1EA884C624C24F130024F018 /* FamilyMember+CoreDataProperties.swift */,
 				E36CEE1424C0C1E20064F262 /* Reward+CoreDataClass.swift */,
 				E36CEE1524C0C1E20064F262 /* Reward+CoreDataProperties.swift */,
-				1EAE0C5624C63FBB00830762 /* Family+CoreDataClass.swift */,
-				1EAE0C5724C63FBB00830762 /* Family+CoreDataProperties.swift */,
+				1EBD18AE24C7624D0036AF9B /* Family+CoreDataClass.swift */,
+				1EBD18AF24C7624D0036AF9B /* Family+CoreDataProperties.swift */,
+				1EBD18B024C7624D0036AF9B /* FamilyMember+CoreDataClass.swift */,
+				1EBD18B124C7624D0036AF9B /* FamilyMember+CoreDataProperties.swift */,
 				1EF1790824BFA9D50055C380 /* Camp.xcdatamodeld */,
 			);
 			path = "Core Data";
@@ -329,7 +332,7 @@
 				1EF64EBE24B8DEEF006762DE /* mainBackground2@1x.png in Resources */,
 				1E78B00B24B62FF9007E0F75 /* Assets.xcassets in Resources */,
 				1EDC302524BE3CD1000AE1A5 /* chooseParticipants.png in Resources */,
-				1EBD18AC24C75A3C0036AF9B /* winningBoard 2.png in Resources */,
+				1EBD18AC24C75A3C0036AF9B /* winningBoard.png in Resources */,
 				E3CD945F24C0D2650056F70A /* decreaseButtonImage.png in Resources */,
 				1E70A89B24B782AF00D0E44D /* gameConfiguration.png in Resources */,
 				1EFEB6AB24B7A49600E0FECF /* shack3.png in Resources */,
@@ -337,6 +340,7 @@
 				1EFEB6AA24B7A49600E0FECF /* shack1.png in Resources */,
 				1EDC300F24BCEC4A000AE1A5 /* flag1.png in Resources */,
 				1EBD189124C7592C0036AF9B /* qtt1.png in Resources */,
+				1EBD18B824C7662B0036AF9B /* rewardMess5.0.png in Resources */,
 				E3CD945E24C0D2650056F70A /* increaseButtonImage.png in Resources */,
 				1E6598D724B665590085FEC0 /* configButton@1x.png in Resources */,
 				1EFEB6A924B7A49600E0FECF /* shack2.png in Resources */,
@@ -347,8 +351,8 @@
 				1EF64EC824B8FC1F006762DE /* messButton.png in Resources */,
 				1EDC302724BE40CE000AE1A5 /* chooseTeam.png in Resources */,
 				1EFEB6A524B7A36700E0FECF /* mainBackground@1x.png in Resources */,
+				1EBD18B924C7662B0036AF9B /* rewardMess1.0.png in Resources */,
 				1EF64EC324B8FB33006762DE /* chooseGame.png in Resources */,
-				E36CEE2124C0CCCA0064F262 /* MyScene.sks in Resources */,
 				1E78B00E24B62FF9007E0F75 /* LaunchScreen.storyboard in Resources */,
 				1EF64EC724B8FC1F006762DE /* backButton.png in Resources */,
 				1EBD189524C7593C0036AF9B /* qtt3.png in Resources */,

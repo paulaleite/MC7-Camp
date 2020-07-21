@@ -3,13 +3,13 @@
     <entity name="Family" representedClassName="Family" syncable="YES" codeGenerationType="class">
         <attribute name="familyName" optional="YES" attributeType="String"/>
         <attribute name="numberOfFamilyMembers" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="timesPlayedBasketballGame" optional="YES" attributeType="Double" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="timesPlayedMessGame" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <relationship name="familyMember" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="FamilyMember" inverseName="family" inverseEntity="FamilyMember"/>
     </entity>
     <entity name="FamilyMember" representedClassName="FamilyMember" syncable="YES" codeGenerationType="class">
         <attribute name="flagName" optional="YES" attributeType="String"/>
         <attribute name="shackName" optional="YES" attributeType="String"/>
+        <attribute name="timesPlayedBasketballGame" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="timesPlayedMessGame" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <relationship name="family" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Family" inverseName="familyMember" inverseEntity="Family"/>
         <relationship name="reward" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Reward" inverseName="familyMember" inverseEntity="Reward"/>
     </entity>
@@ -18,8 +18,8 @@
         <relationship name="familyMember" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="FamilyMember" inverseName="reward" inverseEntity="FamilyMember"/>
     </entity>
     <elements>
-        <element name="Family" positionX="-63" positionY="-18" width="128" height="118"/>
-        <element name="FamilyMember" positionX="0.44921875" positionY="216.984375" width="128" height="103"/>
+        <element name="Family" positionX="-63" positionY="-18" width="128" height="88"/>
+        <element name="FamilyMember" positionX="0.44921875" positionY="216.984375" width="128" height="133"/>
         <element name="Reward" positionX="134.85546875" positionY="48.35546875" width="128" height="73"/>
     </elements>
 </model>

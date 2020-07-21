@@ -22,6 +22,7 @@ class CoreDataManager {
     var nameOfShacks = [String]()
     var nameOfFlags = [String]()
     var numberOfPlayers = Int64()
+    var numberOfTimesPlayed = [Double]()
     
     convenience init(context: NSManagedObjectContext) {
         self.init()
@@ -100,48 +101,97 @@ class CoreDataManager {
         return numberOfPlayers
     }
     
-    func addRewardToFamilyMember(familyMemberIndexes: [Int]) {
+    func addRewardToFamilyMember(familyMemberIndex: Int, rewardImageName: String, application: AppDelegate) {
         
+        do {
+            guard let context = context else { return }
+            
+            rewards = try context.fetch(Reward.fetchRequest())
+            
+            guard let reward = NSEntityDescription.insertNewObject(forEntityName: "Reward", into: context) as? Reward else { return }
+            
+            familyMembers = try context.fetch(FamilyMember.fetchRequest())
+            
+            reward.imageName = rewardImageName
+            reward.familyMember = familyMembers[familyMemberIndex]
+            self.rewards.append(reward)
+            
+            
+    
+            familyMembers[familyMemberIndex].reward = reward
+            
+            application.saveContext()
+        } catch let error {
+            print(error.localizedDescription)
+        }
+    
+    }
+    
+    func addToTimesPlayedBasketballGame(familyMemberIndexes: [Int]) {
         do {
             guard let context = context else { return }
             
             familyMembers = try context.fetch(FamilyMember.fetchRequest())
+            
             for i in 0 ..< familyMemberIndexes.count {
-                //
+                familyMembers[i].timesPlayedBasketballGame += 1
+            }
+        
+        } catch let error {
+            print(error.localizedDescription)
+        }
+    }
+    
+    func fetchTimesPlayedBasketballGame(familyMemberIndexes: [Int]) -> [Double] {
+        do {
+            
+            guard let context = context else { return [1] }
+            
+            familyMembers = try context.fetch(FamilyMember.fetchRequest())
+            
+            for i in 0 ..< familyMemberIndexes.count {
+                self.numberOfTimesPlayed.append(familyMembers[i].timesPlayedBasketballGame)
             }
             
-            guard let reward = NSEntityDescription.insertNewObject(forEntityName: "Reard", into: context) as? Reward else { return }
-        
-            
         } catch let error {
             print(error.localizedDescription)
         }
-    
+        
+        return numberOfTimesPlayed
     }
     
-    func addToTimesPlayedBasketballGame() {
+    func addToTimesPlayedMessGame(familyMemberIndexes: [Int], application: AppDelegate) {
         do {
             guard let context = context else { return }
             
-            families = try context.fetch(Family.fetchRequest())
+            familyMembers = try context.fetch(FamilyMember.fetchRequest())
             
-            families[0].timesPlayedBasketballGame += 1
-        
+            for i in 0 ..< familyMemberIndexes.count {
+                if familyMemberIndexes[i] == 1 {
+                    familyMembers[i].timesPlayedMessGame += 1.0
+                }
+            }
+            application.saveContext()
         } catch let error {
             print(error.localizedDescription)
         }
     }
     
-    func addToTimesPlayedMessGame() {
+    func fetchTimesPlayedMessGame(familyMemberIndexes: [Int]) -> [Double] {
         do {
-            guard let context = context else { return }
             
-            families = try context.fetch(Family.fetchRequest())
+            guard let context = context else { return [1] }
             
-            families[0].timesPlayedMessGame += 1
-        
+            familyMembers = try context.fetch(FamilyMember.fetchRequest())
+            
+            for i in 0 ..< familyMemberIndexes.count {
+                self.numberOfTimesPlayed.append(familyMembers[i].timesPlayedMessGame)
+            }
+            
         } catch let error {
             print(error.localizedDescription)
         }
+        
+        return numberOfTimesPlayed
     }
 }
