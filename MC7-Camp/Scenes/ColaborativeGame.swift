@@ -32,6 +32,8 @@ class ColaborativeGame: SKScene {
     var context: NSManagedObjectContext?
     var coreDataManager: CoreDataManager?
     
+    let defaults = UserDefaults.standard
+    
     override func didMove(to view: SKView) {
         print("Inside Collaborative Game.")
         setupBackground()
@@ -225,6 +227,13 @@ class ColaborativeGame: SKScene {
                     }
                     self.amountCleaned = i
                     setupConfirmButton()
+                }
+                if amountCleaned == 0 {
+                    defaults.set(Date(timeIntervalSinceNow: -518400), forKey: "LastPlayed")
+                } else if amountCleaned == 1 {
+                    defaults.set(Date(timeIntervalSinceNow: -259200), forKey: "LastPlayed")
+                } else {
+                    defaults.set(Date(timeIntervalSinceNow: 0), forKey: "LastPlayed")
                 }
             }
             

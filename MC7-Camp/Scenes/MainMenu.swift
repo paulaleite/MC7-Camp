@@ -96,12 +96,12 @@ class MainMenu: SKScene {
     }
     
     func lastPlayedDate(){
-        defaults.set(Date(timeIntervalSinceNow: -10800), forKey: "LastPlayed")
+        defaults.set(Date(timeIntervalSinceNow: 0), forKey: "LastPlayed")
     }
         
     func setupBackground() {
         let lastPlayedDate = defaults.object(forKey: "LastPlayed") as? Date
-        let rightNow = Date(timeIntervalSinceNow: -10800)
+        let rightNow = Date(timeIntervalSinceNow: 0)
         let timeSincePLayed = rightNow.timeIntervalSince(lastPlayedDate ?? Date(timeIntervalSinceReferenceDate: 0))
         if timeSincePLayed <= 259200 {
              background = SKSpriteNode(imageNamed: "mainBackground@1x")
@@ -171,7 +171,7 @@ class MainMenu: SKScene {
         if let focussedItem = UIScreen.main.focusedItem as? MenuButtonNode {
             if focussedItem == playButton {
                 /* Load Game scene */
-                lastPlayedDate()
+      
                 guard let size = view?.frame.size else { return }
                 let scene = GameChoices(size: size)            
                 loadScreens(scene: scene)
