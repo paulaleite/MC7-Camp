@@ -124,7 +124,7 @@ class CompetetiveGame: SKScene {
         for i in 0 ..< familyMemberIndexes.count {
             
             // 1.0, 5.0, 10.0,
-            let nameReward = "rewardMess"
+            let nameReward = "rewardBasketball"
             var rewardName = String()
             
             
@@ -134,7 +134,7 @@ class CompetetiveGame: SKScene {
             } else if amountOfTimesPlayed[i] == 1.0 {
                 rewardName = nameReward + "\(amountOfTimesPlayed[i])"
                 coreDataManager?.addRewardToFamilyMember(familyMemberIndex: familyMemberIndexes[i], rewardImageName: rewardName, application: application)
-            } else if amountOfTimesPlayed[i] == 6.0 {
+            } else if amountOfTimesPlayed[i] == 2.0 {
                 rewardName = nameReward + "\(amountOfTimesPlayed[i])"
                 coreDataManager?.addRewardToFamilyMember(familyMemberIndex: familyMemberIndexes[i], rewardImageName: rewardName, application: application)
             }

@@ -117,7 +117,7 @@ class CoreDataManager {
             reward.familyMember = familyMembers[familyMemberIndex]
             rewards.append(reward)
     
-            familyMembers[familyMemberIndex].reward = reward
+            familyMembers[familyMemberIndex].addToReward(reward)
             
             application.saveContext()
         } catch let error {
@@ -197,25 +197,25 @@ class CoreDataManager {
         return numberOfTimesPlayed
     }
     
-    func fetchBadgesWon(players: [Int]) -> [String] {
-        do {
-            guard let context = context else { return ["Error"] }
-            
-            familyMembers = try context.fetch(FamilyMember.fetchRequest())
-            
-            for i in 0 ..< players.count {
-                
-                guard let reward = familyMembers[i].reward?.imageName else { return ["Image not found"] }
-                
-                self.badgesWon.append(reward)
-            }
-            
-        } catch let error {
-            print(error.localizedDescription)
-        }
-        
-        return badgesWon
-    }
+//    func fetchBadgesWon(players: [Int]) -> [String] {
+//        do {
+//            guard let context = context else { return ["Error"] }
+//            
+//            familyMembers = try context.fetch(FamilyMember.fetchRequest())
+//            
+//            for i in 0 ..< players.count {
+//                
+//                guard let reward = familyMembers[i].reward else { return ["Image not found"] }
+//                
+//                self.badgesWon.append(reward)
+//            }
+//            
+//        } catch let error {
+//            print(error.localizedDescription)
+//        }
+//        
+//        return badgesWon
+//    }
     
     func fetchPlayerBadges(player: Int) -> [String] {
         do {
@@ -225,16 +225,13 @@ class CoreDataManager {
             familyMembers = try context.fetch(FamilyMember.fetchRequest())
             rewards = try context.fetch(Reward.fetchRequest())
             
-            let shackName = "shack" + "\(player + 1)"
+            guard let amountOfBadges = familyMembers[player].reward?.count else { return ["Not found amount of badges."] }
+            guard let playerRewards = familyMembers[player].reward?.array as? [Reward] else { return ["Couldn't get rewards"] }
             
-            for i in 0 ..< rewards.count {
-                if rewards[i].familyMember?.shackName == shackName {
-                    guard let badges = rewards[i].imageName else { return ["Image not found"]}
-                    self.badgesWon.append(badges)
-                }
+            for i in 0 ..< amountOfBadges {
+                guard let rewardImages = playerRewards[i].imageName else { return ["Couldn't get image names"] }
+                self.badgesWon.append(rewardImages)
             }
-            
-            
             
         } catch let error {
             print(error.localizedDescription)

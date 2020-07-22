@@ -25,8 +25,6 @@ class PersonalView: SKScene {
         setupUIButtons()
         
         showRewardsCoreData()
-        
-        
     }
     
     func setupBackground() {
