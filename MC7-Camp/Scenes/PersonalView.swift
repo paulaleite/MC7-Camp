@@ -16,15 +16,15 @@ class PersonalView: SKScene {
     var context: NSManagedObjectContext?
     var coreDataManager: CoreDataManager?
     
-    var backButton = MenuButtonNode()
+    var mainScreenButton = MenuButtonNode()
     
     override func didMove(to view: SKView) {
-        print("Inside Personal View.")
-        print(playerSelected)
         setupBackground()
         setupUIButtons()
         
         showRewardsCoreData()
+        
+        addTapGestureRecognizer()
     }
     
     func setupBackground() {
@@ -35,11 +35,12 @@ class PersonalView: SKScene {
     }
     
     func setupUIButtons() {
-        backButton = MenuButtonNode(name: "backButton")
-        backButton.position = CGPoint(x: 90, y: 102.5)
-        backButton.zPosition = 0
-        addChild(backButton)
-        backButton.isUserInteractionEnabled = true
+        mainScreenButton = MenuButtonNode(name: "backButton")
+        mainScreenButton.position = CGPoint(x: 90, y: 102.5)
+        mainScreenButton.zPosition = 0
+        addChild(mainScreenButton)
+        
+        mainScreenButton.isUserInteractionEnabled = true
     }
     
     func showRewardsCoreData() {
@@ -50,6 +51,7 @@ class PersonalView: SKScene {
         
         guard let badges = coreDataManager?.fetchPlayerBadges(player: playerSelected) else { return }
         
+        // Posicionar todas badges
         print(badges)
         
     }
@@ -74,16 +76,15 @@ class PersonalView: SKScene {
     
     @objc func tapped(sender: AnyObject) {
         if let focussedItem = UIScreen.main.focusedItem as? MenuButtonNode {
-            if focussedItem == backButton {
+            if focussedItem == mainScreenButton {
                 /* Load Game Choices scene */
                 guard let size = view?.frame.size else { return }
                 let scene = MainMenu(size: size)
-                loadScreens(scene: scene)
-            }
+                loadScreen(scene: scene)
         }
     }
     
-    func loadScreens(scene: SKScene) {
+    func loadScreen(scene: SKScene) {
         /* Grab reference to our SpriteKit view */
         guard let skView = self.view as SKView? else {
             print("Could not get Skview")
