@@ -29,8 +29,6 @@ class Onboarding: SKScene{
     
     var didGoToOnboarding = Bool()
     
-    var tvUserData = TVUserManager()
-    
     override func didMove(to view: SKView) {
         context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
   

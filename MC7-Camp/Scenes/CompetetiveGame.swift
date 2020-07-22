@@ -26,6 +26,7 @@ class CompetetiveGame: SKScene {
     var popUpBackground = SKSpriteNode()
     var explanationLabel = SKLabelNode()
     
+    let defaults = UserDefaults.standard
     var context: NSManagedObjectContext?
     var coreDataManager: CoreDataManager?
     
@@ -190,11 +191,13 @@ class CompetetiveGame: SKScene {
                                 self.winningPlayers.append(i)
                             }
                             self.teamWon = 1
+                            defaults.set(Date(timeIntervalSinceNow: 0), forKey: "LastPlayed")
                         } else {
                             if teamPerson[i] == 2 {
                                 self.winningPlayers.append(i)
                             }
                             self.teamWon = 2
+                            defaults.set(Date(timeIntervalSinceNow: 0), forKey: "LastPlayed")
                         }
                     }
                     

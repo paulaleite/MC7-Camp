@@ -42,7 +42,6 @@
 		1EF1790A24BFA9D50055C380 /* Camp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1EF1790824BFA9D50055C380 /* Camp.xcdatamodeld */; };
 		1EF64EBE24B8DEEF006762DE /* mainBackground2@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EF64EBC24B8DEEF006762DE /* mainBackground2@1x.png */; };
 		1EF64EBF24B8DEEF006762DE /* mainBackground3@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EF64EBD24B8DEEF006762DE /* mainBackground3@1x.png */; };
-		1EF64EC124B8E01D006762DE /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF64EC024B8E01D006762DE /* DateExtension.swift */; };
 		1EF64EC324B8FB33006762DE /* chooseGame.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EF64EC224B8FB33006762DE /* chooseGame.png */; };
 		1EF64EC724B8FC1F006762DE /* backButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EF64EC424B8FC1E006762DE /* backButton.png */; };
 		1EF64EC824B8FC1F006762DE /* messButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EF64EC524B8FC1F006762DE /* messButton.png */; };
@@ -103,7 +102,6 @@
 		1EF1790924BFA9D50055C380 /* Camp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Camp.xcdatamodel; sourceTree = "<group>"; };
 		1EF64EBC24B8DEEF006762DE /* mainBackground2@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mainBackground2@1x.png"; sourceTree = "<group>"; };
 		1EF64EBD24B8DEEF006762DE /* mainBackground3@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mainBackground3@1x.png"; sourceTree = "<group>"; };
-		1EF64EC024B8E01D006762DE /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		1EF64EC224B8FB33006762DE /* chooseGame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chooseGame.png; sourceTree = "<group>"; };
 		1EF64EC424B8FC1E006762DE /* backButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backButton.png; sourceTree = "<group>"; };
 		1EF64EC524B8FC1F006762DE /* messButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = messButton.png; sourceTree = "<group>"; };
@@ -203,7 +201,6 @@
 			isa = PBXGroup;
 			children = (
 				1E70A89F24B7847800D0E44D /* SKSpriteNodeExtension.swift */,
-				1EF64EC024B8E01D006762DE /* DateExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -368,7 +365,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1EF64EC124B8E01D006762DE /* DateExtension.swift in Sources */,
 				1EF64ED124B90524006762DE /* CompetetiveGame.swift in Sources */,
 				1E6598C724B643F90085FEC0 /* MenuButtonNode.swift in Sources */,
 				1E78B01824B63467007E0F75 /* GameChoices.swift in Sources */,
