@@ -169,6 +169,7 @@ class MainMenu: SKScene {
     
     @objc func tapped(sender: AnyObject) {
         if let focussedItem = UIScreen.main.focusedItem as? MenuButtonNode {
+            
             if focussedItem == playButton {
                 /* Load Game scene */
                 lastPlayedDate()
@@ -182,13 +183,18 @@ class MainMenu: SKScene {
                 loadScreens(scene: scene)
                 //test button condition - remove it!
             } else {
-                /* Load Personal View scene */
-                guard let size = view?.frame.size else { return }
-                let scene = PersonalView(size: size)
-                loadScreens(scene: scene)
+                for i in 0 ..< shacks.count {
+                    let button = shacks[i]
+                    if button != focussedItem {
+                        continue
+                    }
+                    guard let size = view?.frame.size else { return }
+                    let scene = PersonalView(size: size)
+                    scene.playerSelected = i
+                    loadScreens(scene: scene)
+                }
             }
         }
-        print("tapped")
     }
     
     func loadScreens(scene: SKScene) {

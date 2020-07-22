@@ -8,6 +8,7 @@
 
 import Foundation
 import SpriteKit
+import CoreData
 
 class CompetetiveGame: SKScene {
     var teamPerson = [Int]()
@@ -24,6 +25,9 @@ class CompetetiveGame: SKScene {
     var beginGameButton = MenuButtonNode()
     var popUpBackground = SKSpriteNode()
     var explanationLabel = SKLabelNode()
+    
+    var context: NSManagedObjectContext?
+    var coreDataManager: CoreDataManager?
     
     override func didMove(to view: SKView) {
         print("Inside Competitive Game.")
@@ -106,6 +110,34 @@ class CompetetiveGame: SKScene {
         confirmButton.isUserInteractionEnabled = true
     }
     
+    func saveRewardsCoreData(familyMemberIndexes: [Int]) {
+        let application = UIApplication.shared.delegate as! AppDelegate
+        
+        context = application.persistentContainer.viewContext
+        coreDataManager = CoreDataManager(context: context!)
+        
+        coreDataManager?.addToTimesPlayedBasketballGame(familyMemberIndexes: familyMemberIndexes, application: application)
+        
+        guard let amountOfTimesPlayed = coreDataManager?.fetchTimesPlayedBasketballGame(familyMemberIndexes: familyMemberIndexes) else {
+            return
+        }
+        for i in 0 ..< familyMemberIndexes.count {
+            
+            // 1.0, 5.0, 10.0,
+            let nameReward = "rewardBasketball"
+            var rewardName = String()
+            
+            
+            if Int(amountOfTimesPlayed[i]) % 5 == 0 {
+                rewardName = nameReward + "\(amountOfTimesPlayed[i])"
+                coreDataManager?.addRewardToFamilyMember(familyMemberIndex: familyMemberIndexes[i], rewardImageName: rewardName, application: application)
+            } else if amountOfTimesPlayed[i] == 1.0 {
+                rewardName = nameReward + "\(amountOfTimesPlayed[i])"
+                coreDataManager?.addRewardToFamilyMember(familyMemberIndex: familyMemberIndexes[i], rewardImageName: rewardName, application: application)
+            }
+        }
+    }
+    
     override func didUpdateFocus(in context: UIFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) {
         let prevItem = context.previouslyFocusedItem
         let nextItem = context.nextFocusedItem
@@ -138,6 +170,7 @@ class CompetetiveGame: SKScene {
                 scene.playersThatWon = self.winningPlayers
                 scene.game = "Competitive"
                 scene.teamWon = self.teamWon
+                saveRewardsCoreData(familyMemberIndexes: winningPlayers)
                 loadScreens(scene: scene)
             } else if focussedItem == backButton {
                 /* Load Game Choices scene */
@@ -151,7 +184,6 @@ class CompetetiveGame: SKScene {
                         continue
                     }
                     
-                    // Preciso passar quem ganhou...
                     for i in 0 ..< teamPerson.count {
                         if button.selectedTeam == 1 {
                             if teamPerson[i] == 1 {

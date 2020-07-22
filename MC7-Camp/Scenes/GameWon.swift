@@ -28,7 +28,8 @@ class GameWon: SKScene {
         print("Game Finished")
         setupBackground()
         setupText()
-        
+        setupUIButtons()
+        fetchDataFromCoreData()
         
         addTapGestureRecognizer()
     }
@@ -37,9 +38,18 @@ class GameWon: SKScene {
         context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         coreDataManager = CoreDataManager(context: context!)
         
-//        guard let saveData = coreDataManager?.addRewardToFamilyMember() else { return  }
+        guard let badgesWon = coreDataManager?.fetchBadgesWon(players: playersThatWon) else { return }
         
-        
+        positionBadges(badges: badgesWon)
+    }
+    
+    func positionBadges(badges: [String]) {
+        for i in 0 ..< badges.count {
+            let badge = SKSpriteNode(imageNamed: badges[i])
+            badge.position = CGPoint(x: 400 + (500 * i), y: 400 + (200  * i))
+            badge.zPosition = 1
+            addChild(badge)
+        }
     }
     
     func setupBackground() {
@@ -63,6 +73,15 @@ class GameWon: SKScene {
         gameWonLabel.position = CGPoint(x: 960, y: 840)
         gameWonLabel.zPosition = 1
         addChild(gameWonLabel)
+    }
+    
+    func setupUIButtons() {
+        mainMenu = MenuButtonNode(name: "playButton@1x")
+        mainMenu.position = CGPoint(x: 1773, y: 186.5)
+        mainMenu.zPosition = 0
+        addChild(mainMenu)
+        
+        mainMenu.isUserInteractionEnabled = true
     }
     
     override func didUpdateFocus(in context: UIFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) {
@@ -97,7 +116,6 @@ class GameWon: SKScene {
                 loadScreens(scene: scene)
             }
         }
-        print("tapped")
     }
     
     func loadScreens(scene: SKScene) {

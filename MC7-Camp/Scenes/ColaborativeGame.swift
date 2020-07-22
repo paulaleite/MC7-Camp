@@ -25,7 +25,7 @@ class ColaborativeGame: SKScene {
     var popUpBackground = SKSpriteNode()
     var explanationLabel = SKLabelNode()
     
-    var totalSeconds = 5
+    var totalSeconds = 2
     
     var timerLabel = SKLabelNode()
     
@@ -127,13 +127,8 @@ class ColaborativeGame: SKScene {
             } else if amountOfTimesPlayed[i] == 1.0 {
                 rewardName = nameReward + "\(amountOfTimesPlayed[i])"
                 coreDataManager?.addRewardToFamilyMember(familyMemberIndex: i, rewardImageName: rewardName, application: application)
-            } else if amountOfTimesPlayed[i] == 9.0 {
-                rewardName = nameReward + "\(amountOfTimesPlayed[i])"
-                coreDataManager?.addRewardToFamilyMember(familyMemberIndex: i, rewardImageName: rewardName, application: application)
             }
-            
         }
-        
     }
     
     func setupUIButtons() {
@@ -230,7 +225,6 @@ class ColaborativeGame: SKScene {
             
             
         }
-        print("tapped")
     }
     
     func loadScreens(scene: SKScene) {

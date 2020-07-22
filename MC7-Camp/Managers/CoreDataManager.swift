@@ -23,6 +23,7 @@ class CoreDataManager {
     var nameOfFlags = [String]()
     var numberOfPlayers = Int64()
     var numberOfTimesPlayed = [Double]()
+    var badgesWon = [String]()
     
     convenience init(context: NSManagedObjectContext) {
         self.init()
@@ -108,17 +109,15 @@ class CoreDataManager {
             
             rewards = try context.fetch(Reward.fetchRequest())
             
-            guard let reward = NSEntityDescription.insertNewObject(forEntityName: "Reward", into: context) as? Reward else { return }
-            
             familyMembers = try context.fetch(FamilyMember.fetchRequest())
+            
+            guard let reward = NSEntityDescription.insertNewObject(forEntityName: "Reward", into: context) as? Reward else { return }
             
             reward.imageName = rewardImageName
             reward.familyMember = familyMembers[familyMemberIndex]
-            self.rewards.append(reward)
-            
-            
+            rewards.append(reward)
     
-            familyMembers[familyMemberIndex].reward = reward
+            familyMembers[familyMemberIndex].addToReward(reward)
             
             application.saveContext()
         } catch let error {
@@ -127,16 +126,18 @@ class CoreDataManager {
     
     }
     
-    func addToTimesPlayedBasketballGame(familyMemberIndexes: [Int]) {
+    func addToTimesPlayedBasketballGame(familyMemberIndexes: [Int], application: AppDelegate) {
         do {
             guard let context = context else { return }
             
             familyMembers = try context.fetch(FamilyMember.fetchRequest())
             
             for i in 0 ..< familyMemberIndexes.count {
-                familyMembers[i].timesPlayedBasketballGame += 1
+                let index = familyMemberIndexes[i]
+                familyMembers[index].timesPlayedBasketballGame += 1.0
+                
             }
-        
+            application.saveContext()
         } catch let error {
             print(error.localizedDescription)
         }
@@ -150,7 +151,8 @@ class CoreDataManager {
             familyMembers = try context.fetch(FamilyMember.fetchRequest())
             
             for i in 0 ..< familyMemberIndexes.count {
-                self.numberOfTimesPlayed.append(familyMembers[i].timesPlayedBasketballGame)
+                let index = familyMemberIndexes[i]
+                self.numberOfTimesPlayed.append(familyMembers[index].timesPlayedBasketballGame)
             }
             
         } catch let error {
@@ -193,5 +195,48 @@ class CoreDataManager {
         }
         
         return numberOfTimesPlayed
+    }
+    
+    func fetchBadgesWon(players: [Int]) -> [String] {
+        do {
+            guard let context = context else { return ["Error"] }
+            
+            familyMembers = try context.fetch(FamilyMember.fetchRequest())
+            
+            for j in 0 ..< players.count {
+                guard let amountOfBadges = familyMembers[players[j]].reward?.count else { return ["Not found amount of badges."] }
+                guard let playerRewards = familyMembers[players[j]].reward?.array as? [Reward] else { return ["Couldn't get rewards"] }
+                guard let rewardImages = playerRewards[amountOfBadges - 1].imageName else { return ["Couldn't get image names"] }
+                self.badgesWon.append(rewardImages)
+            }
+            
+            
+        } catch let error {
+            print(error.localizedDescription)
+        }
+        
+        return badgesWon
+    }
+    
+    func fetchPlayerBadges(player: Int) -> [String] {
+        do {
+            
+            guard let context = context else { return ["Error"] }
+            
+            familyMembers = try context.fetch(FamilyMember.fetchRequest())
+            
+            guard let amountOfBadges = familyMembers[player].reward?.count else { return ["Not found amount of badges."] }
+            guard let playerRewards = familyMembers[player].reward?.array as? [Reward] else { return ["Couldn't get rewards"] }
+            
+            for i in 0 ..< amountOfBadges {
+                guard let rewardImages = playerRewards[i].imageName else { return ["Couldn't get image names"] }
+                self.badgesWon.append(rewardImages)
+            }
+            
+        } catch let error {
+            print(error.localizedDescription)
+        }
+        
+        return badgesWon
     }
 }

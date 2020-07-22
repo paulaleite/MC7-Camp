@@ -111,7 +111,6 @@ class GameChoices: SKScene {
                 }
             }
         }
-        print("tapped")
     }
     
     func loadScreens(scene: SKScene) {
