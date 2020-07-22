@@ -21,9 +21,7 @@ class PersonalView: SKScene {
     override func didMove(to view: SKView) {
         setupBackground()
         setupUIButtons()
-        
         showRewardsCoreData()
-        
         addTapGestureRecognizer()
     }
     
@@ -39,7 +37,6 @@ class PersonalView: SKScene {
         mainScreenButton.position = CGPoint(x: 90, y: 102.5)
         mainScreenButton.zPosition = 0
         addChild(mainScreenButton)
-        
         mainScreenButton.isUserInteractionEnabled = true
     }
     
@@ -52,7 +49,6 @@ class PersonalView: SKScene {
         guard let badges = coreDataManager?.fetchPlayerBadges(player: playerSelected) else { return }
         
         // Posicionar todas badges
-        print(badges)
         positionBadges(badges: badges)
         
     }

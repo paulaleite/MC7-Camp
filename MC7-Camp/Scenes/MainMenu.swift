@@ -19,10 +19,6 @@ class MainMenu: SKScene {
     var numberOfPlayers = Int64()
     var colorName = String()
     var playButton = MenuButtonNode()
-    var configButton = MenuButtonNode()
-    var shack1 = MenuButtonNode()
-    var shack2 = MenuButtonNode()
-    var shack3 = MenuButtonNode()
     var background = SKSpriteNode()
 
     var nameOfShacks = [String]()
@@ -122,12 +118,6 @@ class MainMenu: SKScene {
         addChild(playButton)
         buttons.append(playButton)
         
-        configButton = MenuButtonNode(name: "configButton@1x")
-        configButton.position = CGPoint(x: 132, y: 119.5)
-        configButton.zPosition = 0
-        addChild(configButton)
-        buttons.append(configButton)
-        
         for button in buttons {
             button.isUserInteractionEnabled = true
         }
@@ -176,12 +166,6 @@ class MainMenu: SKScene {
                 guard let size = view?.frame.size else { return }
                 let scene = GameChoices(size: size)            
                 loadScreens(scene: scene)
-            } else if focussedItem == configButton {
-                /* Load Configuration scene */
-                guard let size = view?.frame.size else { return }
-                let scene = GameConfiguration(size: size)
-                loadScreens(scene: scene)
-                //test button condition - remove it!
             } else {
                 for i in 0 ..< shacks.count {
                     let button = shacks[i]

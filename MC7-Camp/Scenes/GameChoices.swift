@@ -15,14 +15,11 @@ class GameChoices: SKScene {
     var backButton = MenuButtonNode()
     var messGameButton = MenuButtonNode()
     var ballGameButton = MenuButtonNode()
-    
     var nameGameChosen = String()
 
     override func didMove(to view: SKView) {
-        print("Inside Game Choices.")
         setupBackground()
         setupButtons()
-        
         addTapGestureRecognizer()
     }
     
@@ -83,32 +80,19 @@ class GameChoices: SKScene {
                 let scene = MainMenu(size: size)
                 loadScreens(scene: scene)
             } else if focussedItem == messGameButton {
-                
-                let alert = UIAlertController(title: "Jogar o Jogo da Bagunça", message: "Você tem certeza de que deseja jogar esse jogo?", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "Cancelar", style: .cancel, handler: { _ in }))
-                alert.addAction(UIAlertAction(title: "Confirmar", style: .default, handler: { (_) in
                     /* Load Pick Players scene */
                     guard let size = self.view?.frame.size else { return }
                     let scene = PickPlayers(size: size)
                     scene.nameGameChosen = "Bagunca"
-                    self.loadScreens(scene: scene)
-                }))
-                if let vc = self.scene?.view?.window?.rootViewController {
-                    vc.present(alert, animated: true, completion: nil)
-                }
+                    loadScreens(scene: scene)
+                
             } else {
-                let alert = UIAlertController(title: "Jogar o Jogo de Basquete", message: "Você tem certeza de que deseja jogar esse jogo?", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "Cancelar", style: .cancel, handler: { _ in }))
-                alert.addAction(UIAlertAction(title: "Confirmar", style: .default, handler: { (_) in
                     /* Load Pick Team scene */
                     guard let size = self.view?.frame.size else { return }
                     let scene = PickPlayers(size: size)
                     scene.nameGameChosen = "Basquete"
-                    self.loadScreens(scene: scene)
-                }))
-                if let vc = self.scene?.view?.window?.rootViewController {
-                    vc.present(alert, animated: true, completion: nil)
-                }
+                    loadScreens(scene: scene)
+                
             }
         }
     }
@@ -131,4 +115,5 @@ class GameChoices: SKScene {
         /* 4) Start game scene */
         skView.presentScene(scene)
     }
+
 }
