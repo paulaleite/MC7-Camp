@@ -100,12 +100,13 @@ class MainMenu: SKScene {
         let rightNow = Date(timeIntervalSinceNow: 0)
         let timeSincePLayed = rightNow.timeIntervalSince(lastPlayedDate ?? Date(timeIntervalSinceReferenceDate: 0))
         if timeSincePLayed <= 259200 {
-             background = SKSpriteNode(imageNamed: "mainBackground@1x")
+             background = SKSpriteNode(imageNamed: "mainBackground")
         } else if timeSincePLayed <= 518400 {
-             background = SKSpriteNode(imageNamed: "mainBackground2@1x")
+             background = SKSpriteNode(imageNamed: "mainBackground2")
         } else {
-            background = SKSpriteNode(imageNamed: "mainBackground3@1x")
+            background = SKSpriteNode(imageNamed: "mainMenuBackground3")
         }
+        background.size = self.size
         background.position = CGPoint(x: 960, y: 540)
         background.zPosition = -1
         addChild(background)

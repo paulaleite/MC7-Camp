@@ -39,6 +39,7 @@ class Onboarding: SKScene{
     
     func setupBackground() {
         background = SKSpriteNode(imageNamed: "mainBackground@1x")
+        background.size = self.size
         background.position = CGPoint(x: 960, y: 540)
         background.zPosition = -1
         addChild(background)
