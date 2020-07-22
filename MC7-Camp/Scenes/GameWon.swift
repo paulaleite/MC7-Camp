@@ -40,7 +40,16 @@ class GameWon: SKScene {
         
         guard let badgesWon = coreDataManager?.fetchBadgesWon(players: playersThatWon) else { return }
         
-        print(badgesWon)
+        positionBadges(badges: badgesWon)
+    }
+    
+    func positionBadges(badges: [String]) {
+        for i in 0 ..< badges.count {
+            let badge = SKSpriteNode(imageNamed: badges[i])
+            badge.position = CGPoint(x: 400 + (500 * i), y: 400 + (200  * i))
+            badge.zPosition = 1
+            addChild(badge)
+        }
     }
     
     func setupBackground() {
@@ -107,7 +116,6 @@ class GameWon: SKScene {
                 loadScreens(scene: scene)
             }
         }
-        print("tapped")
     }
     
     func loadScreens(scene: SKScene) {

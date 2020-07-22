@@ -225,7 +225,6 @@ class ColaborativeGame: SKScene {
             
             
         }
-        print("tapped")
     }
     
     func loadScreens(scene: SKScene) {

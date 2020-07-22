@@ -53,7 +53,17 @@ class PersonalView: SKScene {
         
         // Posicionar todas badges
         print(badges)
+        positionBadges(badges: badges)
         
+    }
+    
+    func positionBadges(badges: [String]) {
+        for i in 0 ..< badges.count {
+            let badge = SKSpriteNode(imageNamed: badges[i])
+            badge.position = CGPoint(x: 400 + (500 * i), y: 400 + (200  * i))
+            badge.zPosition = 1
+            addChild(badge)
+        }
     }
     
     override func didUpdateFocus(in context: UIFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) {

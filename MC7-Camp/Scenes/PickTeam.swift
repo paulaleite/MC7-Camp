@@ -150,7 +150,6 @@ class PickTeam: SKScene {
                 loadScreens(scene: scene)
             }
         }
-        print("tapped")
     }
     
     func loadScreens(scene: SKScene) {
