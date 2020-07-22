@@ -11,7 +11,7 @@
         <attribute name="timesPlayedBasketballGame" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="timesPlayedMessGame" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <relationship name="family" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Family" inverseName="familyMember" inverseEntity="Family"/>
-        <relationship name="reward" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Reward" inverseName="familyMember" inverseEntity="Reward"/>
+        <relationship name="reward" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Reward" inverseName="familyMember" inverseEntity="Reward"/>
     </entity>
     <entity name="Reward" representedClassName="Reward" syncable="YES" codeGenerationType="class">
         <attribute name="imageName" optional="YES" attributeType="String"/>

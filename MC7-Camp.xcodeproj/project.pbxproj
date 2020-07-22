@@ -66,6 +66,8 @@
 		1E6598C824B645230085FEC0 /* playButton@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "playButton@1x.png"; sourceTree = "<group>"; };
 		1E6598CE24B652CF0085FEC0 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		1E6598D624B665590085FEC0 /* configButton@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "configButton@1x.png"; sourceTree = "<group>"; };
+		1E6958C024C8AFA7006C9F8A /* FamilyMember+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FamilyMember+CoreDataClass.swift"; sourceTree = "<group>"; };
+		1E6958C124C8AFA7006C9F8A /* FamilyMember+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FamilyMember+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		1E70A89A24B782AF00D0E44D /* gameConfiguration.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gameConfiguration.png; sourceTree = "<group>"; };
 		1E70A89C24B782D000D0E44D /* GameConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameConfiguration.swift; sourceTree = "<group>"; };
 		1E70A89F24B7847800D0E44D /* SKSpriteNodeExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKSpriteNodeExtension.swift; sourceTree = "<group>"; };
@@ -88,8 +90,6 @@
 		1EBD18AA24C75A3C0036AF9B /* confirmuButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = confirmuButton.png; sourceTree = "<group>"; };
 		1EBD18AE24C7624D0036AF9B /* Family+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Family+CoreDataClass.swift"; sourceTree = "<group>"; };
 		1EBD18AF24C7624D0036AF9B /* Family+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Family+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		1EBD18B024C7624D0036AF9B /* FamilyMember+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FamilyMember+CoreDataClass.swift"; sourceTree = "<group>"; };
-		1EBD18B124C7624D0036AF9B /* FamilyMember+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FamilyMember+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		1EBD18B624C7662A0036AF9B /* rewardMess5.0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rewardMess5.0.png; sourceTree = "<group>"; };
 		1EBD18B724C7662A0036AF9B /* rewardMess1.0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rewardMess1.0.png; sourceTree = "<group>"; };
 		1EDC300C24BCEC4A000AE1A5 /* flag1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flag1.png; sourceTree = "<group>"; };
@@ -255,8 +255,8 @@
 				E36CEE1524C0C1E20064F262 /* Reward+CoreDataProperties.swift */,
 				1EBD18AE24C7624D0036AF9B /* Family+CoreDataClass.swift */,
 				1EBD18AF24C7624D0036AF9B /* Family+CoreDataProperties.swift */,
-				1EBD18B024C7624D0036AF9B /* FamilyMember+CoreDataClass.swift */,
-				1EBD18B124C7624D0036AF9B /* FamilyMember+CoreDataProperties.swift */,
+				1E6958C024C8AFA7006C9F8A /* FamilyMember+CoreDataClass.swift */,
+				1E6958C124C8AFA7006C9F8A /* FamilyMember+CoreDataProperties.swift */,
 				1EF1790824BFA9D50055C380 /* Camp.xcdatamodeld */,
 			);
 			path = "Core Data";
