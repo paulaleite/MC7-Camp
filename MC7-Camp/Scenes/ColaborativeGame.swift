@@ -25,7 +25,7 @@ class ColaborativeGame: SKScene {
     var popUpBackground = SKSpriteNode()
     var explanationLabel = SKLabelNode()
     
-    var totalSeconds = 2
+    var totalSeconds = 299
     
     var timerLabel = SKLabelNode()
     
@@ -35,7 +35,6 @@ class ColaborativeGame: SKScene {
     let defaults = UserDefaults.standard
     
     override func didMove(to view: SKView) {
-        print("Inside Collaborative Game.")
         setupBackground()
         setupUIButtons()
         popUpExplanation()
@@ -55,7 +54,7 @@ class ColaborativeGame: SKScene {
                 self.restartTimer()
             } else {
                 self.timerLabel.numberOfLines = 0
-                self.timerLabel.text = "            Acabou o tempo,\nescolham a quantidade que limparam!"
+                self.timerLabel.text = "            Acabou o tempo! \nQuanto vocês conseguiram arrumar?"
                 self.timerLabel.fontSize = 60
                 self.setupMessButtons()
             }

@@ -121,7 +121,6 @@ class Onboarding: SKScene{
                 loadScreens(scene: scene)
             }
         }
-        print("tapped")
     }
     
     func saveData() {

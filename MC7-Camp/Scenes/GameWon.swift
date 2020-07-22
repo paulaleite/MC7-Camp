@@ -25,12 +25,10 @@ class GameWon: SKScene {
     var coreDataManager: CoreDataManager?
     
     override func didMove(to view: SKView) {
-        print("Game Finished")
         setupBackground()
         setupText()
         setupUIButtons()
         fetchDataFromCoreData()
-        
         addTapGestureRecognizer()
     }
     

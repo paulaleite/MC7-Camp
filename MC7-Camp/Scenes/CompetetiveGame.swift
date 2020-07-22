@@ -31,12 +31,9 @@ class CompetetiveGame: SKScene {
     var coreDataManager: CoreDataManager?
     
     override func didMove(to view: SKView) {
-        print("Inside Competitive Game.")
-        print(teamPerson)
         setupBackground()
         setupUIButtons()
         popUpExplanation()
-        
         addTapGestureRecognizer()
     }
     
@@ -128,7 +125,6 @@ class CompetetiveGame: SKScene {
             let nameReward = "rewardBasketball"
             var rewardName = String()
             
-            
             if Int(amountOfTimesPlayed[i]) % 5 == 0 {
                 rewardName = nameReward + "\(amountOfTimesPlayed[i])"
                 coreDataManager?.addRewardToFamilyMember(familyMemberIndex: familyMemberIndexes[i], rewardImageName: rewardName, application: application)
@@ -184,7 +180,6 @@ class CompetetiveGame: SKScene {
                     if button != focussedItem {
                         continue
                     }
-                    
                     for i in 0 ..< teamPerson.count {
                         if button.selectedTeam == 1 {
                             if teamPerson[i] == 1 {
@@ -200,14 +195,10 @@ class CompetetiveGame: SKScene {
                             defaults.set(Date(timeIntervalSinceNow: 0), forKey: "LastPlayed")
                         }
                     }
-                    
                     setupConfirmButton()
                 }
             }
-            
-            
         }
-        print("tapped")
     }
     
     func loadScreens(scene: SKScene) {
@@ -216,7 +207,6 @@ class CompetetiveGame: SKScene {
             print("Could not get Skview")
             return
         }
-        
         /* 3) Ensure correct aspect mode */
         scene.scaleMode = .aspectFill
         

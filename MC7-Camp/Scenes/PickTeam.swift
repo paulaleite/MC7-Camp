@@ -66,7 +66,6 @@ class PickTeam: SKScene {
     
     func setupTeamButtons(peopleParticipating: [Int]) {
         fetchDataFromCoreData()
-        print(participating)
         
         var i = 0
         while(i < participating.count) {
