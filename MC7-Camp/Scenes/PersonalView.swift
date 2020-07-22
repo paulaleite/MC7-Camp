@@ -81,6 +81,7 @@ class PersonalView: SKScene {
                 guard let size = view?.frame.size else { return }
                 let scene = MainMenu(size: size)
                 loadScreen(scene: scene)
+            }
         }
     }
     

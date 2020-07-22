@@ -25,7 +25,7 @@ class ColaborativeGame: SKScene {
     var popUpBackground = SKSpriteNode()
     var explanationLabel = SKLabelNode()
     
-    var totalSeconds = 5
+    var totalSeconds = 2
     
     var timerLabel = SKLabelNode()
     

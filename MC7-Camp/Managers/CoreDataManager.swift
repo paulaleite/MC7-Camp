@@ -197,25 +197,26 @@ class CoreDataManager {
         return numberOfTimesPlayed
     }
     
-//    func fetchBadgesWon(players: [Int]) -> [String] {
-//        do {
-//            guard let context = context else { return ["Error"] }
-//            
-//            familyMembers = try context.fetch(FamilyMember.fetchRequest())
-//            
-//            for i in 0 ..< players.count {
-//                
-//                guard let reward = familyMembers[i].reward else { return ["Image not found"] }
-//                
-//                self.badgesWon.append(reward)
-//            }
-//            
-//        } catch let error {
-//            print(error.localizedDescription)
-//        }
-//        
-//        return badgesWon
-//    }
+    func fetchBadgesWon(players: [Int]) -> [String] {
+        do {
+            guard let context = context else { return ["Error"] }
+            
+            familyMembers = try context.fetch(FamilyMember.fetchRequest())
+            
+            for j in 0 ..< players.count {
+                guard let amountOfBadges = familyMembers[players[j]].reward?.count else { return ["Not found amount of badges."] }
+                guard let playerRewards = familyMembers[players[j]].reward?.array as? [Reward] else { return ["Couldn't get rewards"] }
+                guard let rewardImages = playerRewards[amountOfBadges - 1].imageName else { return ["Couldn't get image names"] }
+                self.badgesWon.append(rewardImages)
+            }
+            
+            
+        } catch let error {
+            print(error.localizedDescription)
+        }
+        
+        return badgesWon
+    }
     
     func fetchPlayerBadges(player: Int) -> [String] {
         do {
@@ -223,7 +224,6 @@ class CoreDataManager {
             guard let context = context else { return ["Error"] }
             
             familyMembers = try context.fetch(FamilyMember.fetchRequest())
-            rewards = try context.fetch(Reward.fetchRequest())
             
             guard let amountOfBadges = familyMembers[player].reward?.count else { return ["Not found amount of badges."] }
             guard let playerRewards = familyMembers[player].reward?.array as? [Reward] else { return ["Couldn't get rewards"] }
