@@ -73,10 +73,10 @@ class PickPlayers: SKScene {
     
     func setupTeamButtons() {
         fetchDataFromCoreData()
-        
+        let spaceBetweenFlags = 800/Int(numberOfPlayers)
         for i in 0 ..< Int(numberOfPlayers) {
             let flagSelected = MenuButtonNode(name: nameOfFlags[i])
-            flagSelected.position = CGPoint(x: 761, y: 600 - (180  * i))
+            flagSelected.position = CGPoint(x: 761, y: 800 - (spaceBetweenFlags  * i))
             flagSelected.zPosition = 1
             addChild(flagSelected)
             flagButtons.append(flagSelected)
