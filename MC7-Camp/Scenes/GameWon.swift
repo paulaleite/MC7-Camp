@@ -126,11 +126,6 @@ class GameWon: SKScene {
         /* 3) Ensure correct aspect mode */
         scene.scaleMode = .aspectFill
         
-        /* Show debug */
-        skView.showsPhysics = true
-        skView.showsDrawCount = true
-        skView.showsFPS = true
-        
         /* 4) Start game scene */
         skView.presentScene(scene)
     }
