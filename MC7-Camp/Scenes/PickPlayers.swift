@@ -34,11 +34,25 @@ class PickPlayers: SKScene {
         
         setupBackground()
         setupUIButtons()
-        
-        numberOfPlayers = 3
         setupTeamButtons()
+        checkAmountOfPlayers()
         
         addTapGestureRecognizer()
+    }
+    
+    func checkAmountOfPlayers() {
+        var peopleParticipating = [Int]()
+        for i in 0 ..< participating.count {
+            if participating[i] == 1 {
+                peopleParticipating.append(1)
+            }
+        }
+        
+        if peopleParticipating.count > 0 {
+            playButton.isUserInteractionEnabled = true
+        } else {
+            playButton.isUserInteractionEnabled = false
+        }
     }
     
     func fetchDataFromCoreData() {
@@ -58,17 +72,13 @@ class PickPlayers: SKScene {
         backButton.position = CGPoint(x: 120, y: 120)
         backButton.zPosition = 0
         addChild(backButton)
-        buttons.append(backButton)
+        backButton.isUserInteractionEnabled = true
         
         playButton = MenuButtonNode(name: "playButton")
         playButton.position = CGPoint(x: 1800, y: 120)
         playButton.zPosition = 0
         addChild(playButton)
-        buttons.append(playButton)
         
-        for button in buttons {
-            button.isUserInteractionEnabled = true
-        }
     }
     
     func setupTeamButtons() {
@@ -150,10 +160,12 @@ class PickPlayers: SKScene {
                     button.position = CGPoint(x: 761, y: button.position.y)
                     button.participating = false
                     participating[i] = 0
+                    checkAmountOfPlayers()
                 } else {
                     button.position = CGPoint(x: 1208, y: button.position.y)
                     button.participating = true
                     participating[i] = 1
+                    checkAmountOfPlayers()
                 }
             }
         }

@@ -176,12 +176,14 @@ class CompetetiveGame: SKScene {
                                 self.winningPlayers.append(i)
                             }
                             self.teamWon = 1
+                            button.position.y = 840
                             defaults.set(Date(timeIntervalSinceNow: 0), forKey: "LastPlayed")
                         } else {
                             if teamPerson[i] == 2 {
                                 self.winningPlayers.append(i)
                             }
                             self.teamWon = 2
+                            button.position.y = 840
                             defaults.set(Date(timeIntervalSinceNow: 0), forKey: "LastPlayed")
                         }
                     }
