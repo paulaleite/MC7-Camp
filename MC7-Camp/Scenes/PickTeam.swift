@@ -45,7 +45,7 @@ class PickTeam: SKScene {
         addChild(backButton)
         buttons.append(backButton)
         
-        playButton = MenuButtonNode(name: "playButton@")
+        playButton = MenuButtonNode(name: "playButton")
         playButton.position = CGPoint(x: 1800, y: 120)
         playButton.zPosition = 0
         addChild(playButton)
