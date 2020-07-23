@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		1E6598C724B643F90085FEC0 /* MenuButtonNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E6598C624B643F90085FEC0 /* MenuButtonNode.swift */; };
-		1E6598C924B645230085FEC0 /* playButton@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E6598C824B645230085FEC0 /* playButton@1x.png */; };
 		1E6598CF24B652CF0085FEC0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E6598CE24B652CF0085FEC0 /* Main.storyboard */; };
 		1E6598D724B665590085FEC0 /* configButton@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E6598D624B665590085FEC0 /* configButton@1x.png */; };
 		1E70A89B24B782AF00D0E44D /* gameConfiguration.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E70A89A24B782AF00D0E44D /* gameConfiguration.png */; };
@@ -39,12 +38,7 @@
 		1EF1790624BFA8110055C380 /* PickTeam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF1790524BFA8110055C380 /* PickTeam.swift */; };
 		1EF1790A24BFA9D50055C380 /* Camp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1EF1790824BFA9D50055C380 /* Camp.xcdatamodeld */; };
 		1EF64EBF24B8DEEF006762DE /* mainBackground3@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EF64EBD24B8DEEF006762DE /* mainBackground3@1x.png */; };
-		1EF64EC324B8FB33006762DE /* chooseGame.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EF64EC224B8FB33006762DE /* chooseGame.png */; };
-		1EF64EC724B8FC1F006762DE /* backButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EF64EC424B8FC1E006762DE /* backButton.png */; };
-		1EF64EC824B8FC1F006762DE /* messButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EF64EC524B8FC1F006762DE /* messButton.png */; };
-		1EF64EC924B8FC1F006762DE /* ballGameButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EF64EC624B8FC1F006762DE /* ballGameButton.png */; };
 		1EF64ED124B90524006762DE /* CompetetiveGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF64ED024B90524006762DE /* CompetetiveGame.swift */; };
-		1EF64EDD24B912C2006762DE /* teste.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EF64EDC24B912C2006762DE /* teste.png */; };
 		1EFEB6AD24B7B8CE00E0FECF /* PersonalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EFEB6AC24B7B8CE00E0FECF /* PersonalView.swift */; };
 		1EFEB6AF24B7B95C00E0FECF /* individualViewBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EFEB6AE24B7B95C00E0FECF /* individualViewBackground.png */; };
 		E36CEE1124C0C1950064F262 /* GameWon.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36CEE1024C0C1950064F262 /* GameWon.swift */; };
@@ -55,7 +49,6 @@
 
 /* Begin PBXFileReference section */
 		1E6598C624B643F90085FEC0 /* MenuButtonNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuButtonNode.swift; sourceTree = "<group>"; };
-		1E6598C824B645230085FEC0 /* playButton@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "playButton@1x.png"; sourceTree = "<group>"; };
 		1E6598CE24B652CF0085FEC0 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		1E6598D624B665590085FEC0 /* configButton@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "configButton@1x.png"; sourceTree = "<group>"; };
 		1E6958C024C8AFA7006C9F8A /* FamilyMember+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FamilyMember+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -92,12 +85,7 @@
 		1EF1790524BFA8110055C380 /* PickTeam.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickTeam.swift; sourceTree = "<group>"; };
 		1EF1790924BFA9D50055C380 /* Camp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Camp.xcdatamodel; sourceTree = "<group>"; };
 		1EF64EBD24B8DEEF006762DE /* mainBackground3@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mainBackground3@1x.png"; sourceTree = "<group>"; };
-		1EF64EC224B8FB33006762DE /* chooseGame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chooseGame.png; sourceTree = "<group>"; };
-		1EF64EC424B8FC1E006762DE /* backButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backButton.png; sourceTree = "<group>"; };
-		1EF64EC524B8FC1F006762DE /* messButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = messButton.png; sourceTree = "<group>"; };
-		1EF64EC624B8FC1F006762DE /* ballGameButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ballGameButton.png; sourceTree = "<group>"; };
 		1EF64ED024B90524006762DE /* CompetetiveGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompetetiveGame.swift; sourceTree = "<group>"; };
-		1EF64EDC24B912C2006762DE /* teste.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = teste.png; sourceTree = "<group>"; };
 		1EFEB6AC24B7B8CE00E0FECF /* PersonalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalView.swift; sourceTree = "<group>"; };
 		1EFEB6AE24B7B95C00E0FECF /* individualViewBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = individualViewBackground.png; sourceTree = "<group>"; };
 		E36CEE1024C0C1950064F262 /* GameWon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameWon.swift; sourceTree = "<group>"; };
@@ -135,17 +123,11 @@
 				1EDC302424BE3CD1000AE1A5 /* chooseParticipants.png */,
 				E3CD945D24C0D2650056F70A /* decreaseButtonImage.png */,
 				E3CD945C24C0D2650056F70A /* increaseButtonImage.png */,
-				1EF64EDC24B912C2006762DE /* teste.png */,
 				1EDC300C24BCEC4A000AE1A5 /* flag1.png */,
 				1EDC300E24BCEC4A000AE1A5 /* flag2.png */,
 				1EDC300D24BCEC4A000AE1A5 /* flag3.png */,
 				1EFEB6AE24B7B95C00E0FECF /* individualViewBackground.png */,
-				1EF64EC224B8FB33006762DE /* chooseGame.png */,
-				1EF64EC424B8FC1E006762DE /* backButton.png */,
-				1EF64EC524B8FC1F006762DE /* messButton.png */,
-				1EF64EC624B8FC1F006762DE /* ballGameButton.png */,
 				1EF64EBD24B8DEEF006762DE /* mainBackground3@1x.png */,
-				1E6598C824B645230085FEC0 /* playButton@1x.png */,
 				1E6598D624B665590085FEC0 /* configButton@1x.png */,
 				1E70A89A24B782AF00D0E44D /* gameConfiguration.png */,
 			);
@@ -301,13 +283,11 @@
 			files = (
 				1EDC301124BCEC4A000AE1A5 /* flag2.png in Resources */,
 				1EBD18AB24C75A3C0036AF9B /* popUpSpace.png in Resources */,
-				1E6598C924B645230085FEC0 /* playButton@1x.png in Resources */,
 				1E78B00B24B62FF9007E0F75 /* Assets.xcassets in Resources */,
 				1EDC302524BE3CD1000AE1A5 /* chooseParticipants.png in Resources */,
 				1EBD18AC24C75A3C0036AF9B /* winningBoard.png in Resources */,
 				E3CD945F24C0D2650056F70A /* decreaseButtonImage.png in Resources */,
 				1E70A89B24B782AF00D0E44D /* gameConfiguration.png in Resources */,
-				1EF64EC924B8FC1F006762DE /* ballGameButton.png in Resources */,
 				1EDC300F24BCEC4A000AE1A5 /* flag1.png in Resources */,
 				1EBD189124C7592C0036AF9B /* qtt1.png in Resources */,
 				1EBD18B824C7662B0036AF9B /* rewardMess5.0.png in Resources */,
@@ -317,17 +297,13 @@
 				1EBD18AD24C75A3C0036AF9B /* confirmuButton.png in Resources */,
 				1E6598CF24B652CF0085FEC0 /* Main.storyboard in Resources */,
 				1EF64EBF24B8DEEF006762DE /* mainBackground3@1x.png in Resources */,
-				1EF64EC824B8FC1F006762DE /* messButton.png in Resources */,
 				1EDC302724BE40CE000AE1A5 /* chooseTeam.png in Resources */,
 				1EBD18B924C7662B0036AF9B /* rewardMess1.0.png in Resources */,
-				1EF64EC324B8FB33006762DE /* chooseGame.png in Resources */,
 				1E78B00E24B62FF9007E0F75 /* LaunchScreen.storyboard in Resources */,
-				1EF64EC724B8FC1F006762DE /* backButton.png in Resources */,
 				1EBD189524C7593C0036AF9B /* qtt3.png in Resources */,
 				1EFEB6AF24B7B95C00E0FECF /* individualViewBackground.png in Resources */,
 				1EBD18A724C759FE0036AF9B /* team2.png in Resources */,
 				1EBD189424C7593C0036AF9B /* qtt2.png in Resources */,
-				1EF64EDD24B912C2006762DE /* teste.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

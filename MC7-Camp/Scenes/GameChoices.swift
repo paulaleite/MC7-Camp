@@ -24,7 +24,8 @@ class GameChoices: SKScene {
     }
     
     func setupBackground() {
-        let background = SKSpriteNode(imageNamed: "chooseGame")
+        let background = SKSpriteNode(imageNamed: "chooseGameBackground")
+        background.size = self.size
         background.position = CGPoint(x: 960, y: 540)
         background.zPosition = -1
         addChild(background)
@@ -32,18 +33,18 @@ class GameChoices: SKScene {
     
     func setupButtons() {
         backButton = MenuButtonNode(name: "backButton")
-        backButton.position = CGPoint(x: 90, y: 102.5)
+        backButton.position = CGPoint(x: 120, y: 120)
         backButton.zPosition = 0
         addChild(backButton)
         buttons.append(backButton)
         
-        messGameButton = MenuButtonNode(name: "messButton")
-        messGameButton.position = CGPoint(x: 805.5, y: 231)
+        messGameButton = MenuButtonNode(name: "basketballGameButton")
+        messGameButton.position = CGPoint(x: 800, y: 300)
         messGameButton.zPosition = 0
         addChild(messGameButton)
         buttons.append(messGameButton)
         
-        ballGameButton = MenuButtonNode(name: "ballGameButton")
+        ballGameButton = MenuButtonNode(name: "messGameButton")
         ballGameButton.position = CGPoint(x: 1186.5, y: 282)
         ballGameButton.zPosition = 0
         addChild(ballGameButton)

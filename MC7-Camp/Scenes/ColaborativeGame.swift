@@ -134,7 +134,7 @@ class ColaborativeGame: SKScene {
     
     func setupUIButtons() {
         backButton = MenuButtonNode(name: "backButton")
-        backButton.position = CGPoint(x: 90, y: 102.5)
+        backButton.position = CGPoint(x: 120, y: 120)
         backButton.zPosition = 0
         addChild(backButton)
         
@@ -167,7 +167,7 @@ class ColaborativeGame: SKScene {
     
     func setupConfirmButton() {
         confirmButton = MenuButtonNode(name: "playButton")
-        confirmButton.position = CGPoint(x: 1773, y: 186.5)
+        confirmButton.position = CGPoint(x: 1800, y: 120)
         confirmButton.zPosition = 0
         addChild(confirmButton)
         

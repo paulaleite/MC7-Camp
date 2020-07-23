@@ -68,7 +68,7 @@ class CompetetiveGame: SKScene {
     
     func setupUIButtons() {
         backButton = MenuButtonNode(name: "backButton")
-        backButton.position = CGPoint(x: 90, y: 102.5)
+        backButton.position = CGPoint(x: 120, y: 120)
         backButton.zPosition = 0
         addChild(backButton)
         backButton.isUserInteractionEnabled = true
