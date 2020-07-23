@@ -49,30 +49,30 @@ class Onboarding: SKScene{
         askAmountOfMembersLabel.fontColor = .black
         askAmountOfMembersLabel.fontSize = 60
         askAmountOfMembersLabel.text = "Quantos membros tem sua família?"
-        askAmountOfMembersLabel.position = CGPoint(x:960, y:860)
+        askAmountOfMembersLabel.position = CGPoint(x: 960, y: 860)
         askAmountOfMembersLabel.zPosition = 0
         addChild(askAmountOfMembersLabel)
         
         amountOfMembersLabel.fontColor = .black
         amountOfMembersLabel.fontSize = 120
         amountOfMembersLabel.text = String(numberOfFamilyMembers)
-        amountOfMembersLabel.position = CGPoint(x: 960, y:540)
+        amountOfMembersLabel.position = CGPoint(x: 960, y: 440)
         amountOfMembersLabel.zPosition = 0
         addChild(amountOfMembersLabel)
         
-        increaseAmountOfMembersButton = MenuButtonNode(name: "increaseButtonImage")
-        increaseAmountOfMembersButton.position = CGPoint(x: 1402.5, y: 540)
+        increaseAmountOfMembersButton = MenuButtonNode(name: "decreaseButtonImage")
+        increaseAmountOfMembersButton.position = CGPoint(x: 1402.5, y: 440)
         increaseAmountOfMembersButton.zPosition = 0
         addChild(increaseAmountOfMembersButton)
         buttons.append(increaseAmountOfMembersButton)
         
-        decreaseAmountOfMembersButton = MenuButtonNode(name: "decreaseButtonImage")
-        decreaseAmountOfMembersButton.position = CGPoint(x: 517.5, y:540)
+        decreaseAmountOfMembersButton = MenuButtonNode(name: "increaseButtonImage")
+        decreaseAmountOfMembersButton.position = CGPoint(x: 517.5, y: 440)
         addChild(decreaseAmountOfMembersButton)
         buttons.append(decreaseAmountOfMembersButton)
         
-        doneSettingUpButton = MenuButtonNode(name: "playButton@1x")
-        doneSettingUpButton.position = CGPoint (x: 960, y: 216)
+        doneSettingUpButton = MenuButtonNode(name: "playButton")
+        doneSettingUpButton.position = CGPoint(x: 1800, y: 120)
         addChild(doneSettingUpButton)
         buttons.append(doneSettingUpButton)
         

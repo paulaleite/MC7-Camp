@@ -25,7 +25,8 @@ class ColaborativeGame: SKScene {
     var popUpBackground = SKSpriteNode()
     var explanationLabel = SKLabelNode()
     
-    var totalSeconds = 300
+//    var totalSeconds = 300
+    var totalSeconds = 5
     
     var timerLabel = SKLabelNode()
     
@@ -97,7 +98,7 @@ class ColaborativeGame: SKScene {
         timerLabel.fontColor = .black
         timerLabel.fontSize = 120
         timerLabel.text = self.treatTime(totalInSeconds: (self.totalSeconds-1))
-        timerLabel.position = CGPoint(x: 960, y: 540)
+        timerLabel.position = CGPoint(x: 960, y: 400)
         timerLabel.zPosition = 0
         addChild(timerLabel)
     }
@@ -152,7 +153,7 @@ class ColaborativeGame: SKScene {
         
         for i in 0 ..< 3 {
             let buttonSelected = MenuButtonNode(name: buttonNames[i])
-            buttonSelected.position = CGPoint(x: 640 + (i * 320), y: 220)
+            buttonSelected.position = CGPoint(x: 540 + (i * 420), y: 220)
             buttonSelected.zPosition = 1
             addChild(buttonSelected)
             buttons.append(buttonSelected)
