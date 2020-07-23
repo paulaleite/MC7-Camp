@@ -80,9 +80,9 @@ class PickPlayers: SKScene {
             flagSelected.zPosition = 1
             addChild(flagSelected)
             flagButtons.append(flagSelected)
-            flagSelected.participating = true
+            flagSelected.participating = false
             
-            participating.append(1)
+            participating.append(0)
         }
         
         for flagButton in flagButtons {
@@ -147,11 +147,11 @@ class PickPlayers: SKScene {
                     continue
                 }
                 if button.participating == true {
-                    button.position = CGPoint(x: 1208, y: button.position.y)
+                    button.position = CGPoint(x: 761, y: button.position.y)
                     button.participating = false
                     participating[i] = 0
                 } else {
-                    button.position = CGPoint(x: 761, y: button.position.y)
+                    button.position = CGPoint(x: 1208, y: button.position.y)
                     button.participating = true
                     participating[i] = 1
                 }
