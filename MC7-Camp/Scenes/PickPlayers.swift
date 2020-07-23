@@ -55,13 +55,13 @@ class PickPlayers: SKScene {
     
     func setupUIButtons() {
         backButton = MenuButtonNode(name: "backButton")
-        backButton.position = CGPoint(x: 90, y: 102.5)
+        backButton.position = CGPoint(x: 120, y: 120)
         backButton.zPosition = 0
         addChild(backButton)
         buttons.append(backButton)
         
-        playButton = MenuButtonNode(name: "playButton@1x")
-        playButton.position = CGPoint(x: 1773, y: 186.5)
+        playButton = MenuButtonNode(name: "playButton")
+        playButton.position = CGPoint(x: 1800, y: 120)
         playButton.zPosition = 0
         addChild(playButton)
         buttons.append(playButton)

@@ -52,7 +52,8 @@ class CoreDataManager {
         } catch let error {
             print(error.localizedDescription)
         }
-        return nameOfShacks
+        
+        return nameOfShacks.reversed()
     }
     
     func fetchFlagsFromCoreData() -> [String] {

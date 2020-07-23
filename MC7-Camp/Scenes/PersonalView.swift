@@ -34,7 +34,7 @@ class PersonalView: SKScene {
     
     func setupUIButtons() {
         mainScreenButton = MenuButtonNode(name: "backButton")
-        mainScreenButton.position = CGPoint(x: 90, y: 102.5)
+        mainScreenButton.position = CGPoint(x: 120, y: 120)
         mainScreenButton.zPosition = 0
         addChild(mainScreenButton)
         mainScreenButton.isUserInteractionEnabled = true

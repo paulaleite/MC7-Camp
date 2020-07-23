@@ -74,8 +74,8 @@ class GameWon: SKScene {
     }
     
     func setupUIButtons() {
-        mainMenu = MenuButtonNode(name: "playButton@1x")
-        mainMenu.position = CGPoint(x: 1773, y: 186.5)
+        mainMenu = MenuButtonNode(name: "playButton")
+        mainMenu.position = CGPoint(x: 1800, y: 120)
         mainMenu.zPosition = 0
         addChild(mainMenu)
         
