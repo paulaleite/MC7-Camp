@@ -79,6 +79,7 @@ class PickTeam: SKScene {
         for i in 0 ..< activeFlags.count {
             let flagSelected = MenuButtonNode(name: activeFlags[i])
             flagSelected.position = CGPoint(x: 761, y: 600 - (180  * i))
+            
             flagSelected.zPosition = 1
             addChild(flagSelected)
             flagButtons.append(flagSelected)

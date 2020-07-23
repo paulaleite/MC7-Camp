@@ -12,6 +12,7 @@ import CoreData
 
 class PersonalView: SKScene {
     var playerSelected = Int()
+    var shackNames = [String]()
     
     var context: NSManagedObjectContext?
     var coreDataManager: CoreDataManager?
@@ -26,7 +27,10 @@ class PersonalView: SKScene {
     }
     
     func setupBackground() {
-        let background = SKSpriteNode(imageNamed: "individualViewBackground")
+//        let nameOfBackground = "individualViewBackground" + "\(shackNames[self.playerSelected])"
+        let nameOfBackground = "individualViewBackground" + "\(playerSelected + 1)"
+        
+        let background = SKSpriteNode(imageNamed: nameOfBackground)
         background.position = CGPoint(x: 960, y: 540)
         background.zPosition = -1
         addChild(background)
@@ -38,6 +42,17 @@ class PersonalView: SKScene {
         mainScreenButton.zPosition = 0
         addChild(mainScreenButton)
         mainScreenButton.isUserInteractionEnabled = true
+    }
+    
+    func shackNamesCoreData() {
+        let application = UIApplication.shared.delegate as! AppDelegate
+        
+        context = application.persistentContainer.viewContext
+        coreDataManager = CoreDataManager(context: context!)
+        
+        guard let shacks = coreDataManager?.fetchShacksFromCoreData() else { return }
+        
+        self.shackNames = shacks
     }
     
     func showRewardsCoreData() {

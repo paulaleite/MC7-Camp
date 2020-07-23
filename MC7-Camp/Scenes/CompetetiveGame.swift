@@ -24,7 +24,6 @@ class CompetetiveGame: SKScene {
     
     var beginGameButton = MenuButtonNode()
     var popUpBackground = SKSpriteNode()
-    var explanationLabel = SKLabelNode()
     
     let defaults = UserDefaults.standard
     var context: NSManagedObjectContext?
@@ -38,20 +37,12 @@ class CompetetiveGame: SKScene {
     }
     
     func popUpExplanation() {
-        popUpBackground = SKSpriteNode(imageNamed: "popUpSpace")
+        popUpBackground = SKSpriteNode(imageNamed: "popUpBasketball")
         popUpBackground.position = CGPoint(x: 960, y: 540)
         popUpBackground.zPosition = 1
         addChild(popUpBackground)
         
-        explanationLabel.fontColor = .black
-        explanationLabel.fontSize = 60
-        explanationLabel.numberOfLines = 0
-        explanationLabel.text = "   Hoje nós vamos brincar de jogar\nroupa suja na cesta de basquete. Sua missão é\n   que o seu time consiga a maior\n    quantidade de cestas! Vamos lá?"
-        explanationLabel.position = CGPoint(x: 960, y: 540)
-        explanationLabel.zPosition = 2
-        addChild(explanationLabel)
-        
-        beginGameButton = MenuButtonNode(name: "confirmuButton")
+        beginGameButton = MenuButtonNode(name: "confirmButton")
         beginGameButton.position = CGPoint(x: 960, y: 340)
         beginGameButton.zPosition = 2
         addChild(beginGameButton)
@@ -60,7 +51,7 @@ class CompetetiveGame: SKScene {
     }
     
     func setupBackground() {
-        let background = SKSpriteNode(imageNamed: "mainBackground")
+        let background = SKSpriteNode(imageNamed: "competetiveGameBackground")
         background.position = CGPoint(x: 960, y: 540)
         background.zPosition = -1
         addChild(background)
@@ -87,7 +78,7 @@ class CompetetiveGame: SKScene {
         
         for i in 0 ..< 2 {
             let buttonSelected = MenuButtonNode(name: buttonNames[i])
-            buttonSelected.position = CGPoint(x: 640 + (i * 640), y: 220)
+            buttonSelected.position = CGPoint(x: 770 + (i * 400), y: 220)
             buttonSelected.zPosition = 1
             addChild(buttonSelected)
             buttonSelected.selectedTeam = i + 1
@@ -157,7 +148,6 @@ class CompetetiveGame: SKScene {
         if let focussedItem = UIScreen.main.focusedItem as? MenuButtonNode {
             if focussedItem == beginGameButton {
                 popUpBackground.removeFromParent()
-                explanationLabel.removeFromParent()
                 beginGameButton.removeFromParent()
                 setupTeamButtons()
             } else if focussedItem == confirmButton {

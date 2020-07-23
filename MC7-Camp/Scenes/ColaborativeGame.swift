@@ -67,20 +67,12 @@ class ColaborativeGame: SKScene {
     }
     
     func popUpExplanation() {
-        popUpBackground = SKSpriteNode(imageNamed: "popUpSpace")
+        popUpBackground = SKSpriteNode(imageNamed: "popUpMess")
         popUpBackground.position = CGPoint(x: 960, y: 540)
         popUpBackground.zPosition = 1
         addChild(popUpBackground)
         
-        explanationLabel.fontColor = .black
-        explanationLabel.fontSize = 60
-        explanationLabel.numberOfLines = 0
-        explanationLabel.text = "   Hoje nós vamos brincar de procurar\nbagunça pelo acampamento. Sua missão é\n   colocar o máximo de objetos em seus\n    lugares em 5 minutos. Vamos lá?"
-        explanationLabel.position = CGPoint(x: 960, y: 540)
-        explanationLabel.zPosition = 2
-        addChild(explanationLabel)
-        
-        beginGameButton = MenuButtonNode(name: "confirmuButton")
+        beginGameButton = MenuButtonNode(name: "confirmButton")
         beginGameButton.position = CGPoint(x: 960, y: 340)
         beginGameButton.zPosition = 2
         addChild(beginGameButton)
@@ -89,7 +81,7 @@ class ColaborativeGame: SKScene {
     }
     
     func setupBackground() {
-        let background = SKSpriteNode(imageNamed: "mainBackground@1x")
+        let background = SKSpriteNode(imageNamed: "mainMenuBackground")
         background.position = CGPoint(x: 960, y: 540)
         background.zPosition = -1
         addChild(background)

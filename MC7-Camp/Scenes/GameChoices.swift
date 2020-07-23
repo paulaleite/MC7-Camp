@@ -81,19 +81,18 @@ class GameChoices: SKScene {
                 let scene = MainMenu(size: size)
                 loadScreens(scene: scene)
             } else if focussedItem == messGameButton {
-                    /* Load Pick Players scene */
-                    guard let size = self.view?.frame.size else { return }
-                    let scene = PickPlayers(size: size)
-                    scene.nameGameChosen = "Bagunca"
-                    loadScreens(scene: scene)
+                /* Load Pick Team scene */
+                guard let size = self.view?.frame.size else { return }
+                let scene = PickPlayers(size: size)
+                scene.nameGameChosen = "Basquete"
+                loadScreens(scene: scene)
                 
             } else {
-                    /* Load Pick Team scene */
-                    guard let size = self.view?.frame.size else { return }
-                    let scene = PickPlayers(size: size)
-                    scene.nameGameChosen = "Basquete"
-                    loadScreens(scene: scene)
-                
+                /* Load Pick Players scene */
+                guard let size = self.view?.frame.size else { return }
+                let scene = PickPlayers(size: size)
+                scene.nameGameChosen = "Bagunca"
+                loadScreens(scene: scene)
             }
         }
     }
