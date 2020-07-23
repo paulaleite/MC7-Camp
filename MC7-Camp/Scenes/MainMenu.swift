@@ -132,25 +132,22 @@ class MainMenu: SKScene {
     func setupShacks() {
         fetchDataFromCoreData()
         
-//        let center = CGPoint(x: 960, y: 220)
-//        let radius: CGFloat = self.frame.size.height/2
-//        let count = 2
-//
-//        var angle = CGFloat(Double.pi)
-//        let step = CGFloat(Double.pi) / CGFloat(count)
+//        let radius: CGFloat = 500
+//        let center = CGPoint(x: -960, y: -198)
 //
 //        for i in 0 ..< Int(numberOfPlayers) {
 //            let shack = MenuButtonNode(name: nameOfShacks[i])
 //
-//            let x = cos(angle) * radius + center.x
-//            let y = sin(angle) * radius + center.y
+//            let coss = CGFloat(cos(Double(i * 45) * Double.pi / 180))
+//            let sinn = CGFloat(sin(Double(i * 45) * Double.pi / 180))
 //
-//            shack.position = CGPoint(x: x - shack.frame.midX, y: y - shack.frame.midY)
+//            shack.position.x = shack.position.x + (radius * coss) - center.x
+//            shack.position.y = shack.position.y + (radius * sinn) - center.y
+//
 //            shack.zPosition = 1
 //            addChild(shack)
-//            shacks.append(shack)
 //
-//            angle -= step
+//            shacks.append(shack)
 //        }
         
         if numberOfPlayers == 2 {
@@ -159,7 +156,7 @@ class MainMenu: SKScene {
             shack2.zPosition = 0
             addChild(shack2)
             shacks.append(shack2)
-            
+
             shack5 = MenuButtonNode(name: "shack5")
             shack5.position = CGPoint(x: 1500, y: 490)
             shack5.zPosition = 0
@@ -171,13 +168,13 @@ class MainMenu: SKScene {
             shack1.zPosition = 0
             addChild(shack1)
             shacks.append(shack1)
-            
+
             shack3 = MenuButtonNode(name: "shack3")
             shack3.position = CGPoint(x: 775, y: 540)
             shack3.zPosition = 0
             addChild(shack3)
             shacks.append(shack3)
-            
+
             shack6 = MenuButtonNode(name: "shack6")
             shack6.position = CGPoint(x: 1700, y: 380)
             shack6.zPosition = 0
@@ -189,19 +186,19 @@ class MainMenu: SKScene {
             shack1.zPosition = 0
             addChild(shack1)
             shacks.append(shack1)
-            
+
             shack3 = MenuButtonNode(name: "shack3")
             shack3.position = CGPoint(x: 775, y: 540)
             shack3.zPosition = 0
             addChild(shack3)
             shacks.append(shack3)
-            
+
             shack4 = MenuButtonNode(name: "shack4")
             shack4.position = CGPoint(x: 1200, y: 540)
             shack4.zPosition = 0
             addChild(shack4)
             shacks.append(shack4)
-            
+
             shack6 = MenuButtonNode(name: "shack6")
             shack6.position = CGPoint(x: 1700, y: 380)
             shack6.zPosition = 0
@@ -213,25 +210,25 @@ class MainMenu: SKScene {
             shack1.zPosition = 0
             addChild(shack1)
             shacks.append(shack1)
-            
+
             shack2 = MenuButtonNode(name: "shack2")
             shack2.position = CGPoint(x: 480, y: 490)
             shack2.zPosition = 0
             addChild(shack2)
             shacks.append(shack2)
-            
+
             shack3 = MenuButtonNode(name: "shack3")
             shack3.position = CGPoint(x: 775, y: 540)
             shack3.zPosition = 0
             addChild(shack3)
             shacks.append(shack3)
-            
+
             shack5 = MenuButtonNode(name: "shack5")
             shack5.position = CGPoint(x: 1500, y: 490)
             shack5.zPosition = 0
             addChild(shack5)
             shacks.append(shack5)
-            
+
             shack6 = MenuButtonNode(name: "shack6")
             shack6.position = CGPoint(x: 1700, y: 380)
             shack6.zPosition = 0
@@ -243,31 +240,31 @@ class MainMenu: SKScene {
             shack1.zPosition = 0
             addChild(shack1)
             shacks.append(shack1)
-            
+
             shack2 = MenuButtonNode(name: "shack2")
             shack2.position = CGPoint(x: 480, y: 490)
             shack2.zPosition = 0
             addChild(shack2)
             shacks.append(shack2)
-            
+
             shack3 = MenuButtonNode(name: "shack3")
             shack3.position = CGPoint(x: 775, y: 540)
             shack3.zPosition = 0
             addChild(shack3)
             shacks.append(shack3)
-            
+
             shack4 = MenuButtonNode(name: "shack4")
             shack4.position = CGPoint(x: 1200, y: 540)
             shack4.zPosition = 0
             addChild(shack4)
             shacks.append(shack4)
-            
+
             shack5 = MenuButtonNode(name: "shack5")
             shack5.position = CGPoint(x: 1500, y: 490)
             shack5.zPosition = 0
             addChild(shack5)
             shacks.append(shack5)
-            
+
             shack6 = MenuButtonNode(name: "shack6")
             shack6.position = CGPoint(x: 1700, y: 380)
             shack6.zPosition = 0
