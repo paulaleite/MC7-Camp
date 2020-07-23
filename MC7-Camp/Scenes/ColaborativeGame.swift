@@ -25,7 +25,7 @@ class ColaborativeGame: SKScene {
     var popUpBackground = SKSpriteNode()
     var explanationLabel = SKLabelNode()
     
-    var totalSeconds = 299
+    var totalSeconds = 300
     
     var timerLabel = SKLabelNode()
     
@@ -42,14 +42,20 @@ class ColaborativeGame: SKScene {
         addTapGestureRecognizer()
     }
     
+    func treatTime(totalInSeconds: Int) -> String {
+        let minutes = totalSeconds / 60 % 60
+        let seconds = totalSeconds % 60
+        return String(format:"%02i:%02i",minutes, seconds)
+    }
+    
     func restartTimer(){
         
         let wait: SKAction = SKAction.wait(forDuration: 1)
+        
         let finishTimer:SKAction = SKAction.run {
-            
-            self.timerLabel.text = String(self.totalSeconds)
+  
             self.totalSeconds -= 1
-            
+                      self.timerLabel.text = self.treatTime(totalInSeconds: self.totalSeconds)
             if self.totalSeconds >= 0 {
                 self.restartTimer()
             } else {
@@ -90,7 +96,7 @@ class ColaborativeGame: SKScene {
     func setupTimer() {
         timerLabel.fontColor = .black
         timerLabel.fontSize = 120
-        timerLabel.text = String(self.totalSeconds + 1)
+        timerLabel.text = self.treatTime(totalInSeconds: (self.totalSeconds-1))
         timerLabel.position = CGPoint(x: 960, y: 540)
         timerLabel.zPosition = 0
         addChild(timerLabel)
@@ -236,11 +242,6 @@ class ColaborativeGame: SKScene {
         
         /* 3) Ensure correct aspect mode */
         scene.scaleMode = .aspectFill
-        
-        /* Show debug */
-        skView.showsPhysics = true
-        skView.showsDrawCount = true
-        skView.showsFPS = true
         
         /* 4) Start game scene */
         skView.presentScene(scene)
