@@ -119,7 +119,7 @@ class MainMenu: SKScene {
         let firepit = SKSpriteNode(imageNamed: "firepit")
         firepit.size = self.size
         firepit.position = CGPoint(x: 960, y: 540)
-        firepit.zPosition = 0
+        firepit.zPosition = 3
         addChild(firepit)
     }
     
