@@ -24,7 +24,7 @@ class Onboarding: SKScene{
     var decreaseAmountOfMembersButton = MenuButtonNode()
     var doneSettingUpButton = MenuButtonNode()
     var buttons = [MenuButtonNode]()
-    var numberOfFamilyMembers: Int64 = 0
+    var numberOfFamilyMembers: Int64 = 2
     var context: NSManagedObjectContext?
     
     var didGoToOnboarding = Bool()
@@ -106,7 +106,7 @@ class Onboarding: SKScene{
     @objc func tapped(sender: AnyObject) {
         if let focussedItem = UIScreen.main.focusedItem as? MenuButtonNode {
             if focussedItem == decreaseAmountOfMembersButton {
-                if numberOfFamilyMembers > 0 {
+                if numberOfFamilyMembers > 2 {
                     numberOfFamilyMembers -= 1
                     updateNumberOfMembersLabel()
                 }
