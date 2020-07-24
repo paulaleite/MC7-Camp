@@ -76,14 +76,43 @@ class CompetetiveGame: SKScene {
             i = i + 1
         }
         
-        for i in 0 ..< 2 {
-            let buttonSelected = MenuButtonNode(name: buttonNames[i])
-            buttonSelected.position = CGPoint(x: 770 + (i * 400), y: 220)
+        var peopleInTeam2 = 0
+        var peopleInTeam1 = 0
+        for i in 0 ..< teamPerson.count {
+            if teamPerson[i] == 2 {
+                peopleInTeam2 += 1
+            } else {
+                peopleInTeam1 += 1
+            }
+        }
+        
+        if peopleInTeam1 == 0 {
+            let buttonSelected = MenuButtonNode(name: buttonNames[1])
+            buttonSelected.position = CGPoint(x: 960, y: 220)
             buttonSelected.zPosition = 1
             addChild(buttonSelected)
-            buttonSelected.selectedTeam = i + 1
+            buttonSelected.selectedTeam = 2
             buttons.append(buttonSelected)
+        } else if peopleInTeam2 == 0 {
+            let buttonSelected = MenuButtonNode(name: buttonNames[0])
+            buttonSelected.position = CGPoint(x: 960, y: 220)
+            buttonSelected.zPosition = 1
+            addChild(buttonSelected)
+            buttonSelected.selectedTeam = 1
+            buttons.append(buttonSelected)
+        } else {
+            for i in 0 ..< 2 {
+                let buttonSelected = MenuButtonNode(name: buttonNames[i])
+                buttonSelected.position = CGPoint(x: 770 + (i * 400), y: 220)
+                buttonSelected.zPosition = 1
+                addChild(buttonSelected)
+                buttonSelected.selectedTeam = i + 1
+                buttons.append(buttonSelected)
+            }
         }
+        
+        
+        
         
         for button in self.buttons {
             button.isUserInteractionEnabled = true
@@ -165,15 +194,17 @@ class CompetetiveGame: SKScene {
                 let scene = GameChoices(size: size)
                 loadScreens(scene: scene)
             } else {
-                for i in 0 ..< 2 {
+                for i in 0 ..< buttons.count {
                     let button = buttons[i]
                     if button != focussedItem {
                         continue
                     }
                     for i in 0 ..< teamPerson.count {
                         if button.selectedTeam == 1 {
-                            if buttons[1].position.y == 830 {
-                                buttons[1].position.y = 220
+                            if buttons.count > 1 {
+                                if buttons[1].position.y == 830 {
+                                    buttons[1].position.y = 220
+                                }
                             }
                             if teamPerson[i] == 1 {
                                 self.winningPlayers.append(i)
@@ -183,8 +214,10 @@ class CompetetiveGame: SKScene {
                             
                             defaults.set(Date(timeIntervalSinceNow: 0), forKey: "LastPlayed")
                         } else if button.selectedTeam == 2 {
-                            if buttons[0].position.y == 830 {
-                                buttons[0].position.y = 220
+                            if buttons.count > 1 {
+                                if buttons[0].position.y == 830 {
+                                    buttons[0].position.y = 220
+                                }
                             }
                             
                             if teamPerson[i] == 2 {
