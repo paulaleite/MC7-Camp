@@ -86,7 +86,7 @@ class PickPlayers: SKScene {
         let spaceBetweenFlags = 650/Int(numberOfPlayers)
         for i in 0 ..< Int(numberOfPlayers) {
             let flagSelected = MenuButtonNode(name: nameOfFlags[i])
-            flagSelected.position = CGPoint(x: 742, y: 680 - (spaceBetweenFlags  * i))
+            flagSelected.position = CGPoint(x: 742, y: 680 - (spaceBetweenFlags * i))
             flagSelected.zPosition = 1
             addChild(flagSelected)
             flagButtons.append(flagSelected)
