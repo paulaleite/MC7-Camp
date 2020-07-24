@@ -20,7 +20,7 @@
 		1EA884C424C249660024F018 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA884C324C249660024F018 /* CoreDataManager.swift */; };
 		1EA884CA24C24F540024F018 /* ColaborativeGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA884C924C24F540024F018 /* ColaborativeGame.swift */; };
 		1EBD18B824C7662B0036AF9B /* rewardMess5.0.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EBD18B624C7662A0036AF9B /* rewardMess5.0.png */; };
-		1EBD18B924C7662B0036AF9B /* rewardMess1.0.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EBD18B724C7662A0036AF9B /* rewardMess1.0.png */; };
+		1EBD18B924C7662B0036AF9B /* rewardBasketball1.0.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EBD18B724C7662A0036AF9B /* rewardBasketball1.0.png */; };
 		1EDC302124BE37E8000AE1A5 /* PickPlayers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EDC302024BE37E8000AE1A5 /* PickPlayers.swift */; };
 		1EF1790624BFA8110055C380 /* PickTeam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF1790524BFA8110055C380 /* PickTeam.swift */; };
 		1EF1790A24BFA9D50055C380 /* Camp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1EF1790824BFA9D50055C380 /* Camp.xcdatamodeld */; };
@@ -50,7 +50,7 @@
 		1EBD18AE24C7624D0036AF9B /* Family+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Family+CoreDataClass.swift"; sourceTree = "<group>"; };
 		1EBD18AF24C7624D0036AF9B /* Family+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Family+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		1EBD18B624C7662A0036AF9B /* rewardMess5.0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rewardMess5.0.png; sourceTree = "<group>"; };
-		1EBD18B724C7662A0036AF9B /* rewardMess1.0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rewardMess1.0.png; sourceTree = "<group>"; };
+		1EBD18B724C7662A0036AF9B /* rewardBasketball1.0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rewardBasketball1.0.png; sourceTree = "<group>"; };
 		1EDC302024BE37E8000AE1A5 /* PickPlayers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickPlayers.swift; sourceTree = "<group>"; };
 		1EF1790524BFA8110055C380 /* PickTeam.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickTeam.swift; sourceTree = "<group>"; };
 		1EF1790924BFA9D50055C380 /* Camp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Camp.xcdatamodel; sourceTree = "<group>"; };
@@ -76,7 +76,7 @@
 		1E6598BF24B6438D0085FEC0 /* assets.atlas */ = {
 			isa = PBXGroup;
 			children = (
-				1EBD18B724C7662A0036AF9B /* rewardMess1.0.png */,
+				1EBD18B724C7662A0036AF9B /* rewardBasketball1.0.png */,
 				1EBD18B624C7662A0036AF9B /* rewardMess5.0.png */,
 			);
 			path = assets.atlas;
@@ -233,7 +233,7 @@
 				1E6304DD24CA2B8F0070CB8C /* Assets.xcassets in Resources */,
 				1EBD18B824C7662B0036AF9B /* rewardMess5.0.png in Resources */,
 				1E6598CF24B652CF0085FEC0 /* Main.storyboard in Resources */,
-				1EBD18B924C7662B0036AF9B /* rewardMess1.0.png in Resources */,
+				1EBD18B924C7662B0036AF9B /* rewardBasketball1.0.png in Resources */,
 				1E78B00E24B62FF9007E0F75 /* LaunchScreen.storyboard in Resources */,
 				1E39D24924C92965001D34FC /* MyScene.sks in Resources */,
 			);

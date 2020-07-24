@@ -172,18 +172,27 @@ class CompetetiveGame: SKScene {
                     }
                     for i in 0 ..< teamPerson.count {
                         if button.selectedTeam == 1 {
+                            if buttons[1].position.y == 830 {
+                                buttons[1].position.y = 220
+                            }
                             if teamPerson[i] == 1 {
                                 self.winningPlayers.append(i)
                             }
                             self.teamWon = 1
-                            button.position.y = 840
+                            button.position.y = 830
+                            
                             defaults.set(Date(timeIntervalSinceNow: 0), forKey: "LastPlayed")
-                        } else {
+                        } else if button.selectedTeam == 2 {
+                            if buttons[0].position.y == 830 {
+                                buttons[0].position.y = 220
+                            }
+                            
                             if teamPerson[i] == 2 {
                                 self.winningPlayers.append(i)
                             }
                             self.teamWon = 2
-                            button.position.y = 840
+                            button.position.y = 830
+                            
                             defaults.set(Date(timeIntervalSinceNow: 0), forKey: "LastPlayed")
                         }
                     }
