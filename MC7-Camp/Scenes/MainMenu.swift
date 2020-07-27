@@ -127,9 +127,9 @@ class MainMenu: SKScene {
     func setupButtons() {
         playButtonLabel.fontColor = .black
         playButtonLabel.numberOfLines = 0
-        playButtonLabel.fontSize = 65
+        playButtonLabel.fontSize = 60
         playButtonLabel.text = NSLocalizedString("Play_Button", comment: "Play button text.")
-        playButtonLabel.position = CGPoint(x: 1800, y: 100)
+        playButtonLabel.position = CGPoint(x: 1800, y: 110)
         playButtonLabel.zPosition = 1
         addChild(playButtonLabel)
         

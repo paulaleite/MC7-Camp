@@ -11,3 +11,7 @@
 "Increase_Amount" = "ADD\nMEMBER";
 "Decrease_Amount" = "REMOVE\nMEMBER";
 "Play_Button" = "PLAY";
+"Back_Button" = "BACK";
+"Basketball_Game_Button" = "Basketball\nGame";
+"Mess_Game_Button" = "Mess\nGame";
+"Ask_Choose_Game" = "Choose a\nGame";
