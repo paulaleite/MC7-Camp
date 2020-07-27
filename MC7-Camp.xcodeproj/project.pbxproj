@@ -17,6 +17,7 @@
 		1E78B01624B63253007E0F75 /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E78B01524B63253007E0F75 /* MainMenu.swift */; };
 		1E78B01824B63467007E0F75 /* GameChoices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E78B01724B63467007E0F75 /* GameChoices.swift */; };
 		1EA6416E24CF6825008E9A61 /* Pompiere-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1EA6416D24CF6825008E9A61 /* Pompiere-Regular.otf */; };
+		1EA6417224CF6E32008E9A61 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1EA6417424CF6E32008E9A61 /* Localizable.strings */; };
 		1EA884C424C249660024F018 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA884C324C249660024F018 /* CoreDataManager.swift */; };
 		1EA884CA24C24F540024F018 /* ColaborativeGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA884C924C24F540024F018 /* ColaborativeGame.swift */; };
 		1EBD18B824C7662B0036AF9B /* rewardMess5.0.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EBD18B624C7662A0036AF9B /* rewardMess5.0.png */; };
@@ -45,6 +46,9 @@
 		1E78B01524B63253007E0F75 /* MainMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
 		1E78B01724B63467007E0F75 /* GameChoices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameChoices.swift; sourceTree = "<group>"; };
 		1EA6416D24CF6825008E9A61 /* Pompiere-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pompiere-Regular.otf"; sourceTree = "<group>"; };
+		1EA6417124CF6DFF008E9A61 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		1EA6417324CF6E32008E9A61 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		1EA6417524CF6E3A008E9A61 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		1EA884C324C249660024F018 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		1EA884C924C24F540024F018 /* ColaborativeGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColaborativeGame.swift; sourceTree = "<group>"; };
 		1EBD18AE24C7624D0036AF9B /* Family+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Family+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -141,6 +145,7 @@
 				1E6598D024B654FB0085FEC0 /* Scenes */,
 				1E6598BF24B6438D0085FEC0 /* assets.atlas */,
 				1E78AFFD24B62FF7007E0F75 /* AppDelegate.swift */,
+				1EA6417424CF6E32008E9A61 /* Localizable.strings */,
 				1E78B00524B62FF7007E0F75 /* GameViewController.swift */,
 				1E6304DC24CA2B8E0070CB8C /* Assets.xcassets */,
 				1E78B00C24B62FF9007E0F75 /* LaunchScreen.storyboard */,
@@ -222,6 +227,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"pt-BR",
 			);
 			mainGroup = 1E78AFF124B62FF7007E0F75;
 			productRefGroup = 1E78AFFB24B62FF7007E0F75 /* Products */;
@@ -241,6 +247,7 @@
 				1E6304DD24CA2B8F0070CB8C /* Assets.xcassets in Resources */,
 				1EBD18B824C7662B0036AF9B /* rewardMess5.0.png in Resources */,
 				1E6598CF24B652CF0085FEC0 /* Main.storyboard in Resources */,
+				1EA6417224CF6E32008E9A61 /* Localizable.strings in Resources */,
 				1EBD18B924C7662B0036AF9B /* rewardBasketball1.0.png in Resources */,
 				1E78B00E24B62FF9007E0F75 /* LaunchScreen.storyboard in Resources */,
 				1EA6416E24CF6825008E9A61 /* Pompiere-Regular.otf in Resources */,
@@ -279,8 +286,18 @@
 			isa = PBXVariantGroup;
 			children = (
 				1E78B00D24B62FF9007E0F75 /* Base */,
+				1EA6417124CF6DFF008E9A61 /* pt-BR */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		1EA6417424CF6E32008E9A61 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1EA6417324CF6E32008E9A61 /* pt-BR */,
+				1EA6417524CF6E3A008E9A61 /* en */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -290,6 +307,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -350,6 +368,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

@@ -19,6 +19,7 @@ class MainMenu: SKScene {
     var numberOfPlayers = Int64()
     var colorName = String()
     var playButton = MenuButtonNode()
+//    var playButtonLabel = SKLabelNode()
     var background = SKSpriteNode()
 
     var nameOfShacks = [String]()

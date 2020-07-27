@@ -11,21 +11,25 @@ import SpriteKit
 import CoreData
 import TVServices
 
-class Onboarding: SKScene{
+class Onboarding: SKScene {
     
     var familyMembers: [FamilyMember] = []
     var familyMember: FamilyMember?
     var families: [Family] = []
     var family: Family?
     var background = SKSpriteNode()
-    var askAmountOfMembersLabel = SKLabelNode()
-    var amountOfMembersLabel = SKLabelNode()
     var increaseAmountOfMembersButton = MenuButtonNode()
     var decreaseAmountOfMembersButton = MenuButtonNode()
     var doneSettingUpButton = MenuButtonNode()
     var buttons = [MenuButtonNode]()
     var numberOfFamilyMembers: Int64 = 2
     var context: NSManagedObjectContext?
+    
+    var askAmountOfMembersLabel = SKLabelNode()
+    var amountOfMembersLabel = SKLabelNode()
+    var increaseAmountOfMembersLabel = SKLabelNode(fontNamed: "Pompiere-Regular")
+    var decreaseAmountOfMembersLabel = SKLabelNode(fontNamed: "Pompiere-Regular")
+    var doneSettingUpLabel = SKLabelNode(fontNamed: "Pompiere-Regular")
     
     var didGoToOnboarding = Bool()
     
@@ -46,13 +50,15 @@ class Onboarding: SKScene{
     }
     
     func setupUI() {
+        askAmountOfMembersLabel.fontName = "Pompiere-Regular"
         askAmountOfMembersLabel.fontColor = .black
-        askAmountOfMembersLabel.fontSize = 60
-        askAmountOfMembersLabel.text = "Quantos membros tem sua família?"
-        askAmountOfMembersLabel.position = CGPoint(x: 960, y: 860)
+        askAmountOfMembersLabel.fontSize = 70
+        askAmountOfMembersLabel.text = NSLocalizedString("Ask_Amount_Members", comment: "Asks abuout the amount of members in the family.")
+        askAmountOfMembersLabel.position = CGPoint(x: 960, y: 940)
         askAmountOfMembersLabel.zPosition = 0
         addChild(askAmountOfMembersLabel)
         
+        amountOfMembersLabel.fontName = "Pompiere-Regular"
         amountOfMembersLabel.fontColor = .black
         amountOfMembersLabel.fontSize = 120
         amountOfMembersLabel.text = String(numberOfFamilyMembers)
@@ -60,16 +66,40 @@ class Onboarding: SKScene{
         amountOfMembersLabel.zPosition = 0
         addChild(amountOfMembersLabel)
         
+        increaseAmountOfMembersLabel.fontColor = .black
+        increaseAmountOfMembersLabel.numberOfLines = 0
+        increaseAmountOfMembersLabel.fontSize = 70
+        increaseAmountOfMembersLabel.text = NSLocalizedString("Increase_Amount", comment: "Button to increase amount of players.")
+        increaseAmountOfMembersLabel.position = CGPoint(x: 1420, y: 400)
+        increaseAmountOfMembersLabel.zPosition = 1
+        addChild(increaseAmountOfMembersLabel)
+        
         increaseAmountOfMembersButton = MenuButtonNode(name: "decreaseButtonImage")
         increaseAmountOfMembersButton.position = CGPoint(x: 1402.5, y: 440)
         increaseAmountOfMembersButton.zPosition = 0
         addChild(increaseAmountOfMembersButton)
         buttons.append(increaseAmountOfMembersButton)
         
+        decreaseAmountOfMembersLabel.fontColor = .black
+        decreaseAmountOfMembersLabel.numberOfLines = 0
+        decreaseAmountOfMembersLabel.fontSize = 70
+        decreaseAmountOfMembersLabel.text = NSLocalizedString("Decrease_Amount", comment: "Button to increase amount of players.")
+        decreaseAmountOfMembersLabel.position = CGPoint(x: 517.5, y: 400)
+        decreaseAmountOfMembersLabel.zPosition = 1
+        addChild(decreaseAmountOfMembersLabel)
+        
         decreaseAmountOfMembersButton = MenuButtonNode(name: "increaseButtonImage")
         decreaseAmountOfMembersButton.position = CGPoint(x: 517.5, y: 440)
         addChild(decreaseAmountOfMembersButton)
         buttons.append(decreaseAmountOfMembersButton)
+        
+        doneSettingUpLabel.fontColor = .black
+        doneSettingUpLabel.numberOfLines = 0
+        doneSettingUpLabel.fontSize = 65
+        doneSettingUpLabel.text = NSLocalizedString("Play_Button", comment: "Play button text.")
+        doneSettingUpLabel.position = CGPoint(x: 1800, y: 100)
+        doneSettingUpLabel.zPosition = 1
+        addChild(doneSettingUpLabel)
         
         doneSettingUpButton = MenuButtonNode(name: "playButton")
         doneSettingUpButton.position = CGPoint(x: 1800, y: 120)

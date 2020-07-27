@@ -1,0 +1,13 @@
+/* 
+  Localizable.strings
+  MC7-Camp
+
+  Created by Paula Leite on 27/07/20.
+  Copyright © 2020 Paula Leite. All rights reserved.
+*/
+
+// Amount of Members
+"Ask_Amount_Members" = "Quantos membros tem sua família?";
+"Increase_Amount" = "ADICIONAR\nMEMBRO";
+"Decrease_Amount" = "REMOVER\nMEMBRO";
+"Play_Button" = "JOGAR";
