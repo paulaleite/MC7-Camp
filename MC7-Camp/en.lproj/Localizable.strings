@@ -6,12 +6,21 @@
   Copyright © 2020 Paula Leite. All rights reserved.
 */
 
-// Amount of Members
 "Ask_Amount_Members" = "How many members are there in your family?";
+
 "Increase_Amount" = "ADD\nMEMBER";
+
 "Decrease_Amount" = "REMOVE\nMEMBER";
+
 "Play_Button" = "PLAY";
+
 "Back_Button" = "BACK";
-"Basketball_Game_Button" = "Basketball\nGame";
-"Mess_Game_Button" = "Mess\nGame";
-"Ask_Choose_Game" = "Choose a\nGame";
+
+"Basketball_Game_Button_Top" = "BASKETBALL";
+"Basketball_Game_Button_Bottom" = "GAME";
+
+"Mess_Game_Button_Top" = "MESS";
+"Mess_Game_Button_Bottom" = "GAME";
+
+"Ask_Choose_Game_Top" = "CHOOSE A";
+"Ask_Choose_Game_Bottom" = "GAME";

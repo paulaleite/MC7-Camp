@@ -18,9 +18,6 @@ class GameChoices: SKScene {
     var nameGameChosen = String()
     
     var backButtonLabel = SKLabelNode(fontNamed: "Pompiere-Regular")
-    var ballGameButtonLabel = SKLabelNode(fontNamed: "Pompiere-Regular")
-    var messGameButtonLabel = SKLabelNode(fontNamed: "Pompiere-Regular")
-    var chooseGameLabel = SKLabelNode(fontNamed: "Pompiere-Regular")
 
     override func didMove(to view: SKView) {
         setupBackground()
@@ -38,30 +35,40 @@ class GameChoices: SKScene {
         backButtonLabel.zPosition = 1
         addChild(backButtonLabel)
         
-        ballGameButtonLabel.fontColor = .black
-        ballGameButtonLabel.numberOfLines = 0
-        ballGameButtonLabel.fontSize = 50
-        ballGameButtonLabel.zRotation = .pi/12
-        ballGameButtonLabel.text = NSLocalizedString("Basketball_Game_Button", comment: "Basketball Game button text.")
-        ballGameButtonLabel.position = CGPoint(x: 800, y: 330)
-        ballGameButtonLabel.zPosition = 1
-        addChild(ballGameButtonLabel)
         
-        messGameButtonLabel.fontColor = .black
-        messGameButtonLabel.numberOfLines = 0
-        messGameButtonLabel.fontSize = 50
-        messGameButtonLabel.text = NSLocalizedString("Mess_Game_Button", comment: "Mess Game button text.")
-        messGameButtonLabel.position = CGPoint(x: 1186.5, y: 320)
-        messGameButtonLabel.zPosition = 1
-        addChild(messGameButtonLabel)
+        let ballGameText = ["Basketball_Game_Button_Top", "Basketball_Game_Button_Bottom"]
+        for i in 0 ..< ballGameText.count {
+            let ballGameButtonLabel = SKLabelNode(fontNamed: "Pompiere-Regular")
+            ballGameButtonLabel.fontColor = .black
+            ballGameButtonLabel.fontSize = 45
+            ballGameButtonLabel.zRotation = .pi/12
+            ballGameButtonLabel.text = NSLocalizedString(ballGameText[i], comment: "Basketball Game button text.")
+            ballGameButtonLabel.position = CGPoint(x: 800, y: 410 - (i * 40))
+            ballGameButtonLabel.zPosition = 1
+            addChild(ballGameButtonLabel)
+        }
         
-        chooseGameLabel.fontColor = .black
-        chooseGameLabel.fontSize = 80
-        chooseGameLabel.numberOfLines = 0
-        chooseGameLabel.text = NSLocalizedString("Ask_Choose_Game", comment: "Asks about which game the family will play.")
-        chooseGameLabel.position = CGPoint(x: 960, y: 840)
-        chooseGameLabel.zPosition = 1
-        addChild(chooseGameLabel)
+        let messGameText = ["Mess_Game_Button_Top", "Mess_Game_Button_Bottom"]
+        for i in 0 ..< messGameText.count {
+            let messGameButtonLabel = SKLabelNode(fontNamed: "Pompiere-Regular")
+            messGameButtonLabel.fontColor = .black
+            messGameButtonLabel.fontSize = 45
+            messGameButtonLabel.text = NSLocalizedString(messGameText[i], comment: "Basketball Game button text.")
+            messGameButtonLabel.position = CGPoint(x: 1186, y: 390 - (i * 40))
+            messGameButtonLabel.zPosition = 1
+            addChild(messGameButtonLabel)
+        }
+        
+        let chooseGameText = ["Ask_Choose_Game_Top", "Ask_Choose_Game_Bottom"]
+        for i in 0 ..< chooseGameText.count {
+            let chooseGameLabel = SKLabelNode(fontNamed: "Pompiere-Regular")
+            chooseGameLabel.fontColor = .black
+            chooseGameLabel.fontSize = 80
+            chooseGameLabel.text = NSLocalizedString(chooseGameText[i], comment: "Asks about which game the family will play.")
+            chooseGameLabel.position = CGPoint(x: 960, y: 910 - (i * 30))
+            chooseGameLabel.zPosition = 1
+            addChild(chooseGameLabel)
+        }
     }
     
     func setupBackground() {
@@ -125,14 +132,14 @@ class GameChoices: SKScene {
                 /* Load Pick Team scene */
                 guard let size = self.view?.frame.size else { return }
                 let scene = PickPlayers(size: size)
-                scene.nameGameChosen = "Basquete"
+                scene.nameGameChosen = "Bagunca"
                 loadScreens(scene: scene)
                 
             } else {
                 /* Load Pick Players scene */
                 guard let size = self.view?.frame.size else { return }
                 let scene = PickPlayers(size: size)
-                scene.nameGameChosen = "Bagunca"
+                scene.nameGameChosen = "Basquete"
                 loadScreens(scene: scene)
             }
         }
