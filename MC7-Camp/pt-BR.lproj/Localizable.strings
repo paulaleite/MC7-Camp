@@ -22,5 +22,6 @@
 "Mess_Game_Button_Top" = "JOGO DA";
 "Mess_Game_Button_Bottom" = "BAGUNÇA";
 
-"Ask_Choose_Game_Top" = "ESCOLHA UM";
-"Ask_Choose_Game_Bottom" = "JOGO";
+"Ask_Choose_Game" = "ESCOLHA UM JOGO";
+
+"Ask_Choose_Players" = "ESCOLHA QUAIS FAMILIARES VÃO JOGAR!";

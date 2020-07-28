@@ -35,7 +35,6 @@ class GameChoices: SKScene {
         backButtonLabel.zPosition = 1
         addChild(backButtonLabel)
         
-        
         let ballGameText = ["Basketball_Game_Button_Top", "Basketball_Game_Button_Bottom"]
         for i in 0 ..< ballGameText.count {
             let ballGameButtonLabel = SKLabelNode(fontNamed: "Pompiere-Regular")
@@ -59,16 +58,13 @@ class GameChoices: SKScene {
             addChild(messGameButtonLabel)
         }
         
-        let chooseGameText = ["Ask_Choose_Game_Top", "Ask_Choose_Game_Bottom"]
-        for i in 0 ..< chooseGameText.count {
-            let chooseGameLabel = SKLabelNode(fontNamed: "Pompiere-Regular")
-            chooseGameLabel.fontColor = .black
-            chooseGameLabel.fontSize = 80
-            chooseGameLabel.text = NSLocalizedString(chooseGameText[i], comment: "Asks about which game the family will play.")
-            chooseGameLabel.position = CGPoint(x: 960, y: 910 - (i * 30))
-            chooseGameLabel.zPosition = 1
-            addChild(chooseGameLabel)
-        }
+        let chooseGameLabel = SKLabelNode(fontNamed: "Pompiere-Regular")
+        chooseGameLabel.fontColor = .black
+        chooseGameLabel.fontSize = 80
+        chooseGameLabel.text = NSLocalizedString("Ask_Choose_Game", comment: "Asks about which game the family will play.")
+        chooseGameLabel.position = CGPoint(x: 960, y: 910)
+        chooseGameLabel.zPosition = 1
+        addChild(chooseGameLabel)
     }
     
     func setupBackground() {
