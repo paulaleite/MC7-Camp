@@ -30,6 +30,7 @@ class CompetetiveGame: SKScene {
     var coreDataManager: CoreDataManager?
     
     var explanationLabels = [SKLabelNode]()
+    let playButtonLabel = SKLabelNode(fontNamed: "Pompiere-Regular")
     
     override func didMove(to view: SKView) {
         setupBackground()
@@ -70,7 +71,6 @@ class CompetetiveGame: SKScene {
         backButtonLabel.zPosition = 1
         addChild(backButtonLabel)
         
-        let playButtonLabel = SKLabelNode(fontNamed: "Pompiere-Regular")
         playButtonLabel.fontColor = .black
         playButtonLabel.numberOfLines = 0
         playButtonLabel.fontSize = 60
@@ -91,6 +91,26 @@ class CompetetiveGame: SKScene {
             self.explanationLabels.append(competitiveGameExpLabel)
         }
         
+    }
+    
+    func setupConfirmText() {
+        let confirmButtonLabel = SKLabelNode(fontNamed: "Pompiere-Regular")
+        confirmButtonLabel.fontColor = .black
+        confirmButtonLabel.fontSize = 60
+        confirmButtonLabel.text = NSLocalizedString("Confirm_Button", comment: "Confirm button text.")
+        confirmButtonLabel.position = CGPoint(x: 1800, y: 110)
+        confirmButtonLabel.zPosition = 1
+        addChild(confirmButtonLabel)
+    }
+    
+    func setupTextAfterGame() {
+        let chooseTeamWonLabel = SKLabelNode(fontNamed: "Pompiere-Regular")
+        chooseTeamWonLabel.fontColor = .black
+        chooseTeamWonLabel.fontSize = 80
+        chooseTeamWonLabel.text = NSLocalizedString("Ask_Team_Won", comment: "Asks about which team won.")
+        chooseTeamWonLabel.position = CGPoint(x: 960, y: 910)
+        chooseTeamWonLabel.zPosition = 1
+        addChild(chooseTeamWonLabel)
     }
     
     func setupUIButtons() {
@@ -147,15 +167,14 @@ class CompetetiveGame: SKScene {
             }
         }
         
-        
-        
-        
         for button in self.buttons {
             button.isUserInteractionEnabled = true
         }
     }
     
     func setupConfirmButton() {
+        setupConfirmText()
+        
         confirmButton = MenuButtonNode(name: "playButton")
         confirmButton.position = CGPoint(x: 1773, y: 186.5)
         confirmButton.zPosition = 0
@@ -214,9 +233,11 @@ class CompetetiveGame: SKScene {
             if focussedItem == beginGameButton {
                 popUpBackground.removeFromParent()
                 beginGameButton.removeFromParent()
+                playButtonLabel.removeFromParent()
                 for i in 0 ..< explanationLabels.count {
                     explanationLabels[i].removeFromParent()
                 }
+                setupTextAfterGame()
                 setupTeamButtons()
             } else if focussedItem == confirmButton {
                 /* Load Game Won scene */

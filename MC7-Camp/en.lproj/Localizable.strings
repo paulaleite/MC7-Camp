@@ -37,3 +37,13 @@
 "Colaborative_Game_Explanation_2" = "mess around the camp. Your mission is";
 "Colaborative_Game_Explanation_3" = "put as many objects in your";
 "Colaborative_Game_Explanation_4" = "places in 5 minutes. Let's go!";
+
+"Expl_After_Timer" = "            Time's over! \nHow much did you clean up?";
+
+"Ask_Team_Won" = "WHICH TEAM WON?";
+
+"Confirm_Button" = "CONFIRM";
+
+"Won_Colaborative" = "You guys are great!";
+
+"Won_Competitive" = "The team %@ won!";
