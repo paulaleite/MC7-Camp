@@ -75,7 +75,7 @@ class CompetetiveGame: SKScene {
         playButtonLabel.numberOfLines = 0
         playButtonLabel.fontSize = 60
         playButtonLabel.text = NSLocalizedString("Play_Button", comment: "Play button text.")
-        playButtonLabel.position = CGPoint(x: 1800, y: 110)
+        playButtonLabel.position = CGPoint(x: 1795, y: 105)
         playButtonLabel.zPosition = 1
         addChild(playButtonLabel)
         
@@ -96,19 +96,25 @@ class CompetetiveGame: SKScene {
     func setupConfirmText() {
         let confirmButtonLabel = SKLabelNode(fontNamed: "Pompiere-Regular")
         confirmButtonLabel.fontColor = .black
-        confirmButtonLabel.fontSize = 60
+        confirmButtonLabel.fontSize = 55
         confirmButtonLabel.text = NSLocalizedString("Confirm_Button", comment: "Confirm button text.")
-        confirmButtonLabel.position = CGPoint(x: 1800, y: 110)
+        confirmButtonLabel.position = CGPoint(x: 1775, y: 120)
         confirmButtonLabel.zPosition = 1
         addChild(confirmButtonLabel)
     }
     
     func setupTextAfterGame() {
+        let signForText = SKSpriteNode(imageNamed: "textSign")
+        signForText.size = CGSize(width: self.size.width, height: self.size.height/3)
+        signForText.position = CGPoint(x: 960, y: 900)
+        signForText.zPosition = 0
+        addChild(signForText)
+        
         let chooseTeamWonLabel = SKLabelNode(fontNamed: "Pompiere-Regular")
         chooseTeamWonLabel.fontColor = .black
         chooseTeamWonLabel.fontSize = 80
         chooseTeamWonLabel.text = NSLocalizedString("Ask_Team_Won", comment: "Asks about which team won.")
-        chooseTeamWonLabel.position = CGPoint(x: 960, y: 910)
+        chooseTeamWonLabel.position = CGPoint(x: 960, y: 940)
         chooseTeamWonLabel.zPosition = 1
         addChild(chooseTeamWonLabel)
     }
@@ -175,8 +181,9 @@ class CompetetiveGame: SKScene {
     func setupConfirmButton() {
         setupConfirmText()
         
-        confirmButton = MenuButtonNode(name: "playButton")
-        confirmButton.position = CGPoint(x: 1773, y: 186.5)
+        confirmButton = MenuButtonNode(name: "confirmButton2")
+        confirmButton.size = CGSize(width: confirmButton.size.width/2.2, height: confirmButton.size.height/2.2)
+        confirmButton.position = CGPoint(x: 1780, y: 120)
         confirmButton.zPosition = 0
         addChild(confirmButton)
         

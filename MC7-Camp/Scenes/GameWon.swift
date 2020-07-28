@@ -78,9 +78,9 @@ class GameWon: SKScene {
     func setupConfirmButtonText() {
         let confirmButtonLabel = SKLabelNode(fontNamed: "Pompiere-Regular")
         confirmButtonLabel.fontColor = .black
-        confirmButtonLabel.fontSize = 60
+        confirmButtonLabel.fontSize = 55
         confirmButtonLabel.text = NSLocalizedString("Confirm_Button", comment: "Confirm button text.")
-        confirmButtonLabel.position = CGPoint(x: 1800, y: 110)
+        confirmButtonLabel.position =  CGPoint(x: 1775, y: 120)
         confirmButtonLabel.zPosition = 1
         addChild(confirmButtonLabel)
     }
@@ -88,8 +88,9 @@ class GameWon: SKScene {
     func setupUIButtons() {
         setupConfirmButtonText()
         
-        mainMenu = MenuButtonNode(name: "playButton")
-        mainMenu.position = CGPoint(x: 1800, y: 120)
+        mainMenu = MenuButtonNode(name: "confirmButton2")
+        mainMenu.size = CGSize(width: mainMenu.size.width/2.2, height: mainMenu.size.height/2.2)
+        mainMenu.position = CGPoint(x: 1780, y: 120)
         mainMenu.zPosition = 0
         addChild(mainMenu)
         

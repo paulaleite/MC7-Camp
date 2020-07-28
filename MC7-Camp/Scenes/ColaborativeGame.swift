@@ -29,7 +29,7 @@ class ColaborativeGame: SKScene {
 //    var totalSeconds = 300
     var totalSeconds = 5
     
-    var timerLabel = SKLabelNode()
+    var timerLabel = SKLabelNode(fontNamed: "Pompiere-Regular")
     
     var context: NSManagedObjectContext?
     var coreDataManager: CoreDataManager?
@@ -62,7 +62,6 @@ class ColaborativeGame: SKScene {
             if self.totalSeconds >= 0 {
                 self.restartTimer()
             } else {
-                self.timerLabel.numberOfLines = 0
                 self.timerLabel.text = NSLocalizedString("Expl_After_Timer", comment: "Explays Colaborative Game choise.")
                 self.timerLabel.fontSize = 60
                 self.setupMessButtons()
@@ -97,11 +96,17 @@ class ColaborativeGame: SKScene {
     }
     
     func setupTimer() {
+        let signForText = SKSpriteNode(imageNamed: "textSign")
+        signForText.size = CGSize(width: self.size.width, height: self.size.height/3)
+        signForText.position = CGPoint(x: 960, y: 900)
+        signForText.zPosition = 0
+        addChild(signForText)
+        
         timerLabel.fontColor = .black
-        timerLabel.fontSize = 120
+        timerLabel.fontSize = 80
         timerLabel.text = self.treatTime(totalInSeconds: (self.totalSeconds-1))
-        timerLabel.position = CGPoint(x: 960, y: 850)
-        timerLabel.zPosition = 0
+        timerLabel.position = CGPoint(x: 960, y: 940)
+        timerLabel.zPosition = 1
         addChild(timerLabel)
     }
     
@@ -147,7 +152,7 @@ class ColaborativeGame: SKScene {
         playButtonLabel.numberOfLines = 0
         playButtonLabel.fontSize = 60
         playButtonLabel.text = NSLocalizedString("Play_Button", comment: "Play button text.")
-        playButtonLabel.position = CGPoint(x: 1800, y: 110)
+        playButtonLabel.position = CGPoint(x: 1795, y: 105)
         playButtonLabel.zPosition = 1
         addChild(playButtonLabel)
         
@@ -169,9 +174,9 @@ class ColaborativeGame: SKScene {
         let confirmButtonLabel = SKLabelNode(fontNamed: "Pompiere-Regular")
         confirmButtonLabel.fontColor = .black
         confirmButtonLabel.numberOfLines = 0
-        confirmButtonLabel.fontSize = 60
+        confirmButtonLabel.fontSize = 55
         confirmButtonLabel.text = NSLocalizedString("Confirm_Button", comment: "Play button text.")
-        confirmButtonLabel.position = CGPoint(x: 1800, y: 110)
+        confirmButtonLabel.position = CGPoint(x: 1775, y: 115)
         confirmButtonLabel.zPosition = 1
         addChild(confirmButtonLabel)
     }
@@ -210,8 +215,9 @@ class ColaborativeGame: SKScene {
     }
     
     func setupConfirmButton() {
-        confirmButton = MenuButtonNode(name: "playButton")
-        confirmButton.position = CGPoint(x: 1800, y: 120)
+        confirmButton = MenuButtonNode(name: "confirmButton2")
+        confirmButton.size = CGSize(width: confirmButton.size.width/2.2, height: confirmButton.size.height/2.2)
+        confirmButton.position = CGPoint(x: 1780, y: 120)
         confirmButton.zPosition = 0
         addChild(confirmButton)
         

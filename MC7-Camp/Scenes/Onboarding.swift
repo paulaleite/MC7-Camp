@@ -97,7 +97,7 @@ class Onboarding: SKScene {
         doneSettingUpLabel.numberOfLines = 0
         doneSettingUpLabel.fontSize = 60
         doneSettingUpLabel.text = NSLocalizedString("Play_Button", comment: "Play button text.")
-        doneSettingUpLabel.position = CGPoint(x: 1800, y: 110)
+        doneSettingUpLabel.position = CGPoint(x: 1795, y: 105)
         doneSettingUpLabel.zPosition = 1
         addChild(doneSettingUpLabel)
         
