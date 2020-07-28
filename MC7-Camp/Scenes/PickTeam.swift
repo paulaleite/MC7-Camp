@@ -84,13 +84,13 @@ class PickTeam: SKScene {
         playButtonLabel.zPosition = 1
         addChild(playButtonLabel)
         
-        let chooseGameLabel = SKLabelNode(fontNamed: "Pompiere-Regular")
-        chooseGameLabel.fontColor = .black
-        chooseGameLabel.fontSize = 80
-        chooseGameLabel.text = NSLocalizedString("Ask_Choose_Team", comment: "Asks about which teams each person will be in.")
-        chooseGameLabel.position = CGPoint(x: 960, y: 910)
-        chooseGameLabel.zPosition = 1
-        addChild(chooseGameLabel)
+        let chooseTeamLabel = SKLabelNode(fontNamed: "Pompiere-Regular")
+        chooseTeamLabel.fontColor = .black
+        chooseTeamLabel.fontSize = 80
+        chooseTeamLabel.text = NSLocalizedString("Ask_Choose_Team", comment: "Asks about which teams each person will be in.")
+        chooseTeamLabel.position = CGPoint(x: 960, y: 910)
+        chooseTeamLabel.zPosition = 1
+        addChild(chooseTeamLabel)
     }
     
     func setupTeamButtons(peopleParticipating: [Int]) {

@@ -27,3 +27,8 @@
 "Ask_Choose_Players" = "CHOOSE WHICH FAMILY MEMBERS WILL PLAY!";
 
 "Ask_Choose_Team" = "CHOOSE WHICH TEAM YOU'LL BE IN!";
+
+"Competitive_Game_Explanation_1" = "Today we are going to play,";
+"Competitive_Game_Explanation_2" = "trowing clothes in the basketball hoop.";
+"Competitive_Game_Explanation_3" = "Your mission is to get";
+"Competitive_Game_Explanation_4" = "the biggest amount of shots! Let's go?";
