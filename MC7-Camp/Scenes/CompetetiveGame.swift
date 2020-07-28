@@ -29,6 +29,8 @@ class CompetetiveGame: SKScene {
     var context: NSManagedObjectContext?
     var coreDataManager: CoreDataManager?
     
+    var explanationLabels = [SKLabelNode]()
+    
     override func didMove(to view: SKView) {
         setupBackground()
         setupUIButtons()
@@ -86,6 +88,7 @@ class CompetetiveGame: SKScene {
             competitiveGameExpLabel.position = CGPoint(x: 960, y: 850 - (i * 80))
             competitiveGameExpLabel.zPosition = 2
             addChild(competitiveGameExpLabel)
+            self.explanationLabels.append(competitiveGameExpLabel)
         }
         
     }
@@ -211,6 +214,9 @@ class CompetetiveGame: SKScene {
             if focussedItem == beginGameButton {
                 popUpBackground.removeFromParent()
                 beginGameButton.removeFromParent()
+                for i in 0 ..< explanationLabels.count {
+                    explanationLabels[i].removeFromParent()
+                }
                 setupTeamButtons()
             } else if focussedItem == confirmButton {
                 /* Load Game Won scene */
@@ -222,6 +228,11 @@ class CompetetiveGame: SKScene {
                 saveRewardsCoreData(familyMemberIndexes: winningPlayers)
                 loadScreens(scene: scene)
             } else if focussedItem == backButton {
+                popUpBackground.removeFromParent()
+                beginGameButton.removeFromParent()
+                for i in 0 ..< explanationLabels.count {
+                    explanationLabels[i].removeFromParent()
+                }
                 /* Load Game Choices scene */
                 guard let size = view?.frame.size else { return }
                 let scene = GameChoices(size: size)

@@ -23,7 +23,7 @@ class ColaborativeGame: SKScene {
     var beginGameButton = MenuButtonNode()
     var rejectGameButton = MenuButtonNode()
     var popUpBackground = SKSpriteNode()
-    var explanationLabel = SKLabelNode()
+    var explanationLabels = [SKLabelNode]()
     
 //    var totalSeconds = 300
     var totalSeconds = 5
@@ -39,6 +39,7 @@ class ColaborativeGame: SKScene {
         setupBackground()
         setupUIButtons()
         popUpExplanation()
+        setupTexts()
         
         addTapGestureRecognizer()
     }
@@ -131,6 +132,39 @@ class ColaborativeGame: SKScene {
         }
     }
     
+    func setupTexts() {
+        let backButtonLabel = SKLabelNode(fontNamed: "Pompiere-Regular")
+        backButtonLabel.fontColor = .black
+        backButtonLabel.numberOfLines = 0
+        backButtonLabel.fontSize = 60
+        backButtonLabel.text = NSLocalizedString("Back_Button", comment: "Back button text.")
+        backButtonLabel.position = CGPoint(x: 120, y: 110)
+        backButtonLabel.zPosition = 1
+        addChild(backButtonLabel)
+        
+        let playButtonLabel = SKLabelNode(fontNamed: "Pompiere-Regular")
+        playButtonLabel.fontColor = .black
+        playButtonLabel.numberOfLines = 0
+        playButtonLabel.fontSize = 60
+        playButtonLabel.text = NSLocalizedString("Play_Button", comment: "Play button text.")
+        playButtonLabel.position = CGPoint(x: 1800, y: 110)
+        playButtonLabel.zPosition = 1
+        addChild(playButtonLabel)
+        
+        let explanationTexts = ["Colaborative_Game_Explanation_1", "Colaborative_Game_Explanation_2", "Colaborative_Game_Explanation_3", "Colaborative_Game_Explanation_4"]
+        for i in 0 ..< explanationTexts.count {
+            let competitiveGameExpLabel = SKLabelNode(fontNamed: "Pompiere-Regular")
+            competitiveGameExpLabel.fontColor = .black
+            competitiveGameExpLabel.fontSize = 80
+            competitiveGameExpLabel.text = NSLocalizedString(explanationTexts[i], comment: "Explains the Game.")
+            competitiveGameExpLabel.position = CGPoint(x: 960, y: 850 - (i * 80))
+            competitiveGameExpLabel.zPosition = 2
+            addChild(competitiveGameExpLabel)
+            self.explanationLabels.append(competitiveGameExpLabel)
+        }
+        
+    }
+    
     func setupUIButtons() {
         backButton = MenuButtonNode(name: "backButton")
         backButton.position = CGPoint(x: 120, y: 120)
@@ -195,8 +229,10 @@ class ColaborativeGame: SKScene {
         if let focussedItem = UIScreen.main.focusedItem as? MenuButtonNode {
             if focussedItem == beginGameButton {
                 popUpBackground.removeFromParent()
-                explanationLabel.removeFromParent()
                 beginGameButton.removeFromParent()
+                for i in 0 ..< explanationLabels.count {
+                    explanationLabels[i].removeFromParent()
+                }
                 setupTimer()
                 restartTimer()
             } else if focussedItem == confirmButton {
@@ -208,6 +244,10 @@ class ColaborativeGame: SKScene {
                 saveRewardsCoreData(familyMemberIndexes: participating)
                 loadScreens(scene: scene)
             } else if focussedItem == backButton {
+                beginGameButton.removeFromParent()
+                for i in 0 ..< explanationLabels.count {
+                    explanationLabels[i].removeFromParent()
+                }
                 /* Load Game Choices scene */
                 guard let size = view?.frame.size else { return }
                 let scene = GameChoices(size: size)
