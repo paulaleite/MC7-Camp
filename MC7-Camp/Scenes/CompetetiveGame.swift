@@ -241,6 +241,8 @@ class CompetetiveGame: SKScene {
             print("Could not get Skview")
             return
         }
+        skView.showsFPS = false
+        skView.showsNodeCount = false
         /* 3) Ensure correct aspect mode */
         scene.scaleMode = .aspectFill
         
