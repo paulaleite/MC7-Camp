@@ -35,6 +35,7 @@ class PickPlayers: SKScene {
         setupBackground()
         setupUIButtons()
         setupTeamButtons()
+        setupTexts()
         checkAmountOfPlayers()
         
         addTapGestureRecognizer()
@@ -65,6 +66,34 @@ class PickPlayers: SKScene {
         guard let numberPlayers = coreDataManager?.fetchNumberOfPlayersFromCoreData() else { return }
         
         self.numberOfPlayers = numberPlayers
+    }
+    
+    func setupTexts() {
+        let backButtonLabel = SKLabelNode(fontNamed: "Pompiere-Regular")
+        backButtonLabel.fontColor = .black
+        backButtonLabel.numberOfLines = 0
+        backButtonLabel.fontSize = 60
+        backButtonLabel.text = NSLocalizedString("Back_Button", comment: "Back button text.")
+        backButtonLabel.position = CGPoint(x: 120, y: 110)
+        backButtonLabel.zPosition = 1
+        addChild(backButtonLabel)
+        
+        let playButtonLabel = SKLabelNode(fontNamed: "Pompiere-Regular")
+        playButtonLabel.fontColor = .black
+        playButtonLabel.numberOfLines = 0
+        playButtonLabel.fontSize = 60
+        playButtonLabel.text = NSLocalizedString("Play_Button", comment: "Play button text.")
+        playButtonLabel.position = CGPoint(x: 1800, y: 110)
+        playButtonLabel.zPosition = 1
+        addChild(playButtonLabel)
+        
+        let chooseGameLabel = SKLabelNode(fontNamed: "Pompiere-Regular")
+        chooseGameLabel.fontColor = .black
+        chooseGameLabel.fontSize = 80
+        chooseGameLabel.text = NSLocalizedString("Ask_Choose_Players", comment: "Asks about which family members will play.")
+        chooseGameLabel.position = CGPoint(x: 960, y: 910)
+        chooseGameLabel.zPosition = 1
+        addChild(chooseGameLabel)
     }
     
     func setupUIButtons() {

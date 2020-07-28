@@ -34,6 +34,7 @@ class PickTeam: SKScene {
         setupUIButtons()
         
         setupTeamButtons(peopleParticipating: participating)
+        setupTexts()
         
         addTapGestureRecognizer()
     }
@@ -62,6 +63,34 @@ class PickTeam: SKScene {
         
         guard let nameFlags = coreDataManager?.fetchFlagsFromCoreData() else { return  }
         self.nameOfFlags = nameFlags
+    }
+    
+    func setupTexts() {
+        let backButtonLabel = SKLabelNode(fontNamed: "Pompiere-Regular")
+        backButtonLabel.fontColor = .black
+        backButtonLabel.numberOfLines = 0
+        backButtonLabel.fontSize = 60
+        backButtonLabel.text = NSLocalizedString("Back_Button", comment: "Back button text.")
+        backButtonLabel.position = CGPoint(x: 120, y: 110)
+        backButtonLabel.zPosition = 1
+        addChild(backButtonLabel)
+        
+        let playButtonLabel = SKLabelNode(fontNamed: "Pompiere-Regular")
+        playButtonLabel.fontColor = .black
+        playButtonLabel.numberOfLines = 0
+        playButtonLabel.fontSize = 60
+        playButtonLabel.text = NSLocalizedString("Play_Button", comment: "Play button text.")
+        playButtonLabel.position = CGPoint(x: 1800, y: 110)
+        playButtonLabel.zPosition = 1
+        addChild(playButtonLabel)
+        
+        let chooseTeamLabel = SKLabelNode(fontNamed: "Pompiere-Regular")
+        chooseTeamLabel.fontColor = .black
+        chooseTeamLabel.fontSize = 80
+        chooseTeamLabel.text = NSLocalizedString("Ask_Choose_Team", comment: "Asks about which teams each person will be in.")
+        chooseTeamLabel.position = CGPoint(x: 960, y: 910)
+        chooseTeamLabel.zPosition = 1
+        addChild(chooseTeamLabel)
     }
     
     func setupTeamButtons(peopleParticipating: [Int]) {

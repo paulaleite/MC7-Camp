@@ -63,9 +63,11 @@ class GameWon: SKScene {
         gameWonLabel.numberOfLines = 0
         
         if game == "Collaborative" {
-            gameWonLabel.text = "Vocês são muito bons!"
+            gameWonLabel.text = NSLocalizedString("Won_Colaborative", comment: "Colaborative Game won.")
         } else {
-            gameWonLabel.text = "O time " + "\(teamWon) " + "venceu!"
+            let localizedString = NSLocalizedString("Won_Competitive", comment: "Competetive Game won.")
+            let teamWonText = String(teamWon)
+            gameWonLabel.text = String(format: localizedString, teamWonText)
         }
         
         gameWonLabel.position = CGPoint(x: 960, y: 840)
@@ -73,7 +75,19 @@ class GameWon: SKScene {
         addChild(gameWonLabel)
     }
     
+    func setupConfirmButtonText() {
+        let confirmButtonLabel = SKLabelNode(fontNamed: "Pompiere-Regular")
+        confirmButtonLabel.fontColor = .black
+        confirmButtonLabel.fontSize = 60
+        confirmButtonLabel.text = NSLocalizedString("Confirm_Button", comment: "Confirm button text.")
+        confirmButtonLabel.position = CGPoint(x: 1800, y: 110)
+        confirmButtonLabel.zPosition = 1
+        addChild(confirmButtonLabel)
+    }
+    
     func setupUIButtons() {
+        setupConfirmButtonText()
+        
         mainMenu = MenuButtonNode(name: "playButton")
         mainMenu.position = CGPoint(x: 1800, y: 120)
         mainMenu.zPosition = 0

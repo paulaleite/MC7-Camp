@@ -1,0 +1,49 @@
+/* 
+  Localizable.strings
+  MC7-Camp
+
+  Created by Paula Leite on 27/07/20.
+  Copyright © 2020 Paula Leite. All rights reserved.
+*/
+
+"Ask_Amount_Members" = "How many members are there in your family?";
+
+"Increase_Amount" = "ADD\nMEMBER";
+
+"Decrease_Amount" = "REMOVE\nMEMBER";
+
+"Play_Button" = "PLAY";
+
+"Back_Button" = "BACK";
+
+"Basketball_Game_Button_Top" = "BASKETBALL";
+"Basketball_Game_Button_Bottom" = "GAME";
+
+"Mess_Game_Button_Top" = "MESS";
+"Mess_Game_Button_Bottom" = "GAME";
+
+"Ask_Choose_Game" = "CHOOSE A GAME";
+
+"Ask_Choose_Players" = "CHOOSE WHICH FAMILY MEMBERS WILL PLAY!";
+
+"Ask_Choose_Team" = "CHOOSE WHICH TEAM YOU'LL BE IN!";
+
+"Competitive_Game_Explanation_1" = "Today we are going to play,";
+"Competitive_Game_Explanation_2" = "trowing clothes in the basketball hoop.";
+"Competitive_Game_Explanation_3" = "Your mission is to get";
+"Competitive_Game_Explanation_4" = "the biggest amount of shots! Let's go?";
+
+"Colaborative_Game_Explanation_1" = "Today we will play to search";
+"Colaborative_Game_Explanation_2" = "mess around the camp. Your mission is";
+"Colaborative_Game_Explanation_3" = "put as many objects in your";
+"Colaborative_Game_Explanation_4" = "places in 5 minutes. Let's go!";
+
+"Expl_After_Timer" = "            Time's over! \nHow much did you clean up?";
+
+"Ask_Team_Won" = "WHICH TEAM WON?";
+
+"Confirm_Button" = "CONFIRM";
+
+"Won_Colaborative" = "You guys are great!";
+
+"Won_Competitive" = "The team %@ won!";

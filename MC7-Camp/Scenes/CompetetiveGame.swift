@@ -29,10 +29,14 @@ class CompetetiveGame: SKScene {
     var context: NSManagedObjectContext?
     var coreDataManager: CoreDataManager?
     
+    var explanationLabels = [SKLabelNode]()
+    let playButtonLabel = SKLabelNode(fontNamed: "Pompiere-Regular")
+    
     override func didMove(to view: SKView) {
         setupBackground()
         setupUIButtons()
         popUpExplanation()
+        setupTexts()
         addTapGestureRecognizer()
     }
     
@@ -55,6 +59,58 @@ class CompetetiveGame: SKScene {
         background.position = CGPoint(x: 960, y: 540)
         background.zPosition = -1
         addChild(background)
+    }
+    
+    func setupTexts() {
+        let backButtonLabel = SKLabelNode(fontNamed: "Pompiere-Regular")
+        backButtonLabel.fontColor = .black
+        backButtonLabel.numberOfLines = 0
+        backButtonLabel.fontSize = 60
+        backButtonLabel.text = NSLocalizedString("Back_Button", comment: "Back button text.")
+        backButtonLabel.position = CGPoint(x: 120, y: 110)
+        backButtonLabel.zPosition = 1
+        addChild(backButtonLabel)
+        
+        playButtonLabel.fontColor = .black
+        playButtonLabel.numberOfLines = 0
+        playButtonLabel.fontSize = 60
+        playButtonLabel.text = NSLocalizedString("Play_Button", comment: "Play button text.")
+        playButtonLabel.position = CGPoint(x: 1800, y: 110)
+        playButtonLabel.zPosition = 1
+        addChild(playButtonLabel)
+        
+        let explanationTexts = ["Competitive_Game_Explanation_1", "Competitive_Game_Explanation_2", "Competitive_Game_Explanation_3", "Competitive_Game_Explanation_4"]
+        for i in 0 ..< explanationTexts.count {
+            let competitiveGameExpLabel = SKLabelNode(fontNamed: "Pompiere-Regular")
+            competitiveGameExpLabel.fontColor = .black
+            competitiveGameExpLabel.fontSize = 80
+            competitiveGameExpLabel.text = NSLocalizedString(explanationTexts[i], comment: "Explains the Game.")
+            competitiveGameExpLabel.position = CGPoint(x: 960, y: 850 - (i * 80))
+            competitiveGameExpLabel.zPosition = 2
+            addChild(competitiveGameExpLabel)
+            self.explanationLabels.append(competitiveGameExpLabel)
+        }
+        
+    }
+    
+    func setupConfirmText() {
+        let confirmButtonLabel = SKLabelNode(fontNamed: "Pompiere-Regular")
+        confirmButtonLabel.fontColor = .black
+        confirmButtonLabel.fontSize = 60
+        confirmButtonLabel.text = NSLocalizedString("Confirm_Button", comment: "Confirm button text.")
+        confirmButtonLabel.position = CGPoint(x: 1800, y: 110)
+        confirmButtonLabel.zPosition = 1
+        addChild(confirmButtonLabel)
+    }
+    
+    func setupTextAfterGame() {
+        let chooseTeamWonLabel = SKLabelNode(fontNamed: "Pompiere-Regular")
+        chooseTeamWonLabel.fontColor = .black
+        chooseTeamWonLabel.fontSize = 80
+        chooseTeamWonLabel.text = NSLocalizedString("Ask_Team_Won", comment: "Asks about which team won.")
+        chooseTeamWonLabel.position = CGPoint(x: 960, y: 910)
+        chooseTeamWonLabel.zPosition = 1
+        addChild(chooseTeamWonLabel)
     }
     
     func setupUIButtons() {
@@ -111,15 +167,14 @@ class CompetetiveGame: SKScene {
             }
         }
         
-        
-        
-        
         for button in self.buttons {
             button.isUserInteractionEnabled = true
         }
     }
     
     func setupConfirmButton() {
+        setupConfirmText()
+        
         confirmButton = MenuButtonNode(name: "playButton")
         confirmButton.position = CGPoint(x: 1773, y: 186.5)
         confirmButton.zPosition = 0
@@ -178,6 +233,11 @@ class CompetetiveGame: SKScene {
             if focussedItem == beginGameButton {
                 popUpBackground.removeFromParent()
                 beginGameButton.removeFromParent()
+                playButtonLabel.removeFromParent()
+                for i in 0 ..< explanationLabels.count {
+                    explanationLabels[i].removeFromParent()
+                }
+                setupTextAfterGame()
                 setupTeamButtons()
             } else if focussedItem == confirmButton {
                 /* Load Game Won scene */
@@ -189,6 +249,11 @@ class CompetetiveGame: SKScene {
                 saveRewardsCoreData(familyMemberIndexes: winningPlayers)
                 loadScreens(scene: scene)
             } else if focussedItem == backButton {
+                popUpBackground.removeFromParent()
+                beginGameButton.removeFromParent()
+                for i in 0 ..< explanationLabels.count {
+                    explanationLabels[i].removeFromParent()
+                }
                 /* Load Game Choices scene */
                 guard let size = view?.frame.size else { return }
                 let scene = GameChoices(size: size)

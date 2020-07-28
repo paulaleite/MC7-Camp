@@ -19,6 +19,7 @@ class MainMenu: SKScene {
     var numberOfPlayers = Int64()
     var colorName = String()
     var playButton = MenuButtonNode()
+    var playButtonLabel = SKLabelNode(fontNamed: "Pompiere-Regular")
     var background = SKSpriteNode()
 
     var nameOfShacks = [String]()
@@ -124,6 +125,14 @@ class MainMenu: SKScene {
     }
     
     func setupButtons() {
+        playButtonLabel.fontColor = .black
+        playButtonLabel.numberOfLines = 0
+        playButtonLabel.fontSize = 60
+        playButtonLabel.text = NSLocalizedString("Play_Button", comment: "Play button text.")
+        playButtonLabel.position = CGPoint(x: 1800, y: 110)
+        playButtonLabel.zPosition = 1
+        addChild(playButtonLabel)
+        
         playButton = MenuButtonNode(name: "playButton")
         playButton.position = CGPoint(x: 1800, y: 120)
         playButton.zPosition = 0
