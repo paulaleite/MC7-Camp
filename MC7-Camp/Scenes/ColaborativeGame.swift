@@ -269,8 +269,10 @@ class ColaborativeGame: SKScene {
                 for i in 0 ..< 3 {
                     let button = buttons[i]
                     if button != focussedItem {
+                        button.alpha = 0.5
                         continue
                     }
+                    button.alpha = 1
                     self.amountCleaned = i
                     setupConfirmButton()
                     setupConfirmButtonText()
