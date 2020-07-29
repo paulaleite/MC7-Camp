@@ -89,7 +89,7 @@ class ColaborativeGame: SKScene {
     }
     
     func setupBackground() {
-        let background = SKSpriteNode(imageNamed: "mainMenuBackground")
+        let background = SKSpriteNode(imageNamed: "gameBackground")
         background.position = CGPoint(x: 960, y: 540)
         background.zPosition = -1
         addChild(background)

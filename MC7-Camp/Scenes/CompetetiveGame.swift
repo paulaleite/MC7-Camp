@@ -45,7 +45,7 @@ class CompetetiveGame: SKScene {
     }
     
     func setupBackground() {
-        let background = SKSpriteNode(imageNamed: "competetiveGameBackground")
+        let background = SKSpriteNode(imageNamed: "gameBackground")
         background.position = CGPoint(x: 960, y: 540)
         background.zPosition = -1
         addChild(background)

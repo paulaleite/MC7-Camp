@@ -75,8 +75,8 @@ class GameChoices: SKScene {
         addChild(background)
         
         let signForText = SKSpriteNode(imageNamed: "textSign")
-        signForText.size = CGSize(width: self.size.width/1.5, height: self.size.height/3)
-        signForText.position = CGPoint(x: 960, y: 900)
+        signForText.size = CGSize(width: self.size.width/2, height: self.size.height/3.5)
+        signForText.position = CGPoint(x: 960, y: 950)
         signForText.zPosition = 0
         addChild(signForText)
     }
