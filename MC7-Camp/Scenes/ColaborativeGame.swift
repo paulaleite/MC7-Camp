@@ -25,6 +25,7 @@ class ColaborativeGame: SKScene {
     var popUpBackground = SKSpriteNode()
     var explanationLabels = [SKLabelNode]()
     let playButtonLabel = SKLabelNode(fontNamed: "Pompiere-Regular")
+    let backButtonLabel = SKLabelNode(fontNamed: "Pompiere-Regular")
     
 //    var totalSeconds = 300
     var totalSeconds = 5
@@ -126,8 +127,7 @@ class ColaborativeGame: SKScene {
             let nameReward = "rewardMess"
             var rewardName = String()
             
-            
-            if Int(amountOfTimesPlayed[i]) % 5 == 0 {
+            if Int(amountOfTimesPlayed[i]) % 5 == 0 && amountOfTimesPlayed[i] <= 10.0 {
                 rewardName = nameReward + "\(amountOfTimesPlayed[i])"
                 coreDataManager?.addRewardToFamilyMember(familyMemberIndex: i, rewardImageName: rewardName, application: application)
             } else if amountOfTimesPlayed[i] == 1.0 {
@@ -138,7 +138,6 @@ class ColaborativeGame: SKScene {
     }
     
     func setupTexts() {
-        let backButtonLabel = SKLabelNode(fontNamed: "Pompiere-Regular")
         backButtonLabel.fontColor = .black
         backButtonLabel.numberOfLines = 0
         backButtonLabel.fontSize = 60
@@ -248,6 +247,8 @@ class ColaborativeGame: SKScene {
                 popUpBackground.removeFromParent()
                 beginGameButton.removeFromParent()
                 playButtonLabel.removeFromParent()
+                backButton.removeFromParent()
+                backButtonLabel.removeFromParent()
                 for i in 0 ..< explanationLabels.count {
                     explanationLabels[i].removeFromParent()
                 }
