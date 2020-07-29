@@ -192,16 +192,16 @@ class CompetetiveGame: SKScene {
     
     func setupTextAfterGame() {
         let signForText = SKSpriteNode(imageNamed: "textSign")
-        signForText.size = CGSize(width: self.size.width, height: self.size.height/3)
-        signForText.position = CGPoint(x: 960, y: 900)
+        signForText.size = CGSize(width: self.size.width/2, height: self.size.height/4)
+        signForText.position = CGPoint(x: 960, y: 950)
         signForText.zPosition = 0
         addChild(signForText)
         
         let chooseTeamWonLabel = SKLabelNode(fontNamed: "Pompiere-Regular")
         chooseTeamWonLabel.fontColor = .black
-        chooseTeamWonLabel.fontSize = 80
+        chooseTeamWonLabel.fontSize = 50
         chooseTeamWonLabel.text = NSLocalizedString("Ask_Team_Won", comment: "Asks about which team won.")
-        chooseTeamWonLabel.position = CGPoint(x: 960, y: 940)
+        chooseTeamWonLabel.position = CGPoint(x: 960, y: 980)
         chooseTeamWonLabel.zPosition = 1
         addChild(chooseTeamWonLabel)
     }

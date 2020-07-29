@@ -63,7 +63,6 @@ class ColaborativeGame: SKScene {
                 self.restartTimer()
             } else {
                 self.timerLabel.text = NSLocalizedString("Expl_After_Timer", comment: "Explays Colaborative Game choise.")
-                self.timerLabel.fontSize = 60
                 self.setupMessButtons()
             }
             
@@ -97,15 +96,15 @@ class ColaborativeGame: SKScene {
     
     func setupTimer() {
         let signForText = SKSpriteNode(imageNamed: "textSign")
-        signForText.size = CGSize(width: self.size.width, height: self.size.height/3)
-        signForText.position = CGPoint(x: 960, y: 900)
+        signForText.size = CGSize(width: self.size.width/1.5, height: self.size.height/4)
+        signForText.position = CGPoint(x: 960, y: 950)
         signForText.zPosition = 0
         addChild(signForText)
         
         timerLabel.fontColor = .black
-        timerLabel.fontSize = 80
+        timerLabel.fontSize = 50
         timerLabel.text = self.treatTime(totalInSeconds: (self.totalSeconds-1))
-        timerLabel.position = CGPoint(x: 960, y: 940)
+        timerLabel.position = CGPoint(x: 960, y: 980)
         timerLabel.zPosition = 1
         addChild(timerLabel)
     }

@@ -86,9 +86,9 @@ class PickTeam: SKScene {
         
         let chooseTeamLabel = SKLabelNode(fontNamed: "Pompiere-Regular")
         chooseTeamLabel.fontColor = .black
-        chooseTeamLabel.fontSize = 80
+        chooseTeamLabel.fontSize = 50
         chooseTeamLabel.text = NSLocalizedString("Ask_Choose_Team", comment: "Asks about which teams each person will be in.")
-        chooseTeamLabel.position = CGPoint(x: 960, y: 940)
+        chooseTeamLabel.position = CGPoint(x: 960, y: 980)
         chooseTeamLabel.zPosition = 1
         addChild(chooseTeamLabel)
     }
@@ -129,8 +129,8 @@ class PickTeam: SKScene {
         addChild(background)
         
         let signForText = SKSpriteNode(imageNamed: "textSign")
-        signForText.size = CGSize(width: self.size.width, height: self.size.height/3)
-        signForText.position = CGPoint(x: 960, y: 900)
+        signForText.size = CGSize(width: self.size.width/2, height: self.size.height/4)
+        signForText.position = CGPoint(x: 960, y: 950)
         signForText.zPosition = 0
         addChild(signForText)
     }

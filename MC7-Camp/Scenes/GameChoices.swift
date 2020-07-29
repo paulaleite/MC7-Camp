@@ -60,9 +60,9 @@ class GameChoices: SKScene {
         
         let chooseGameLabel = SKLabelNode(fontNamed: "Pompiere-Regular")
         chooseGameLabel.fontColor = .black
-        chooseGameLabel.fontSize = 80
+        chooseGameLabel.fontSize = 50
         chooseGameLabel.text = NSLocalizedString("Ask_Choose_Game", comment: "Asks about which game the family will play.")
-        chooseGameLabel.position = CGPoint(x: 960, y: 940)
+        chooseGameLabel.position = CGPoint(x: 960, y: 980)
         chooseGameLabel.zPosition = 1
         addChild(chooseGameLabel)
     }
@@ -75,7 +75,7 @@ class GameChoices: SKScene {
         addChild(background)
         
         let signForText = SKSpriteNode(imageNamed: "textSign")
-        signForText.size = CGSize(width: self.size.width/2, height: self.size.height/3.5)
+        signForText.size = CGSize(width: self.size.width/2, height: self.size.height/4)
         signForText.position = CGPoint(x: 960, y: 950)
         signForText.zPosition = 0
         addChild(signForText)
