@@ -16,6 +16,7 @@ extension SKNode {
         let effectNode = SKEffectNode()
         let texture = view.texture(from: self)
         effectNode.shouldRasterize = true
+        effectNode.blendMode = .add
         effectNode.filter = CIFilter(name: "CIGaussianBlur",parameters: ["inputRadius":radius])
         addChild(effectNode)
         effectNode.addChild(SKSpriteNode(texture: texture))
