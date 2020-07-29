@@ -134,12 +134,12 @@ class MainMenu: SKScene {
         playButtonLabel.fontSize = 60
         playButtonLabel.text = NSLocalizedString("Play_Button", comment: "Play button text.")
         playButtonLabel.position = CGPoint(x: 1795, y: 105)
-        playButtonLabel.zPosition = 1
+        playButtonLabel.zPosition = 5
         addChild(playButtonLabel)
         
         playButton = MenuButtonNode(name: "playButton")
         playButton.position = CGPoint(x: 1800, y: 120)
-        playButton.zPosition = 0
+        playButton.zPosition = 4
         addChild(playButton)
         buttons.append(playButton)
         

@@ -202,8 +202,9 @@ class ColaborativeGame: SKScene {
         
         for i in 0 ..< 3 {
             let buttonSelected = MenuButtonNode(name: buttonNames[i])
-            buttonSelected.position = CGPoint(x: 540 + (i * 420), y: 220)
-            buttonSelected.zPosition = 1
+            buttonSelected.size = CGSize(width: buttonSelected.size.width/4, height: buttonSelected.size.height/4)
+            buttonSelected.position = CGPoint(x: 370 + (i * 568), y: 420)
+            buttonSelected.zPosition = 0
             addChild(buttonSelected)
             buttons.append(buttonSelected)
         }
@@ -217,7 +218,7 @@ class ColaborativeGame: SKScene {
         confirmButton = MenuButtonNode(name: "confirmButton2")
         confirmButton.size = CGSize(width: confirmButton.size.width/2.2, height: confirmButton.size.height/2.2)
         confirmButton.position = CGPoint(x: 1780, y: 120)
-        confirmButton.zPosition = 0
+        confirmButton.zPosition = 1
         addChild(confirmButton)
         
         confirmButton.isUserInteractionEnabled = true

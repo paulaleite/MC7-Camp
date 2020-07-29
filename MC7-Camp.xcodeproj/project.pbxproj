@@ -20,6 +20,9 @@
 		1E9CA86D24D1F1A4007B711F /* pole.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 1E9CA86C24D1F1A4007B711F /* pole.pdf */; };
 		1E9CA86F24D1F1DA007B711F /* pole.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E9CA86E24D1F1DA007B711F /* pole.png */; };
 		1E9CA87524D1F27B007B711F /* teste.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E9CA87424D1F27B007B711F /* teste.png */; };
+		1E9CA87924D206C1007B711F /* qtt2.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E9CA87624D206C1007B711F /* qtt2.png */; };
+		1E9CA87A24D206C1007B711F /* qtt1.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E9CA87724D206C1007B711F /* qtt1.png */; };
+		1E9CA87B24D206C1007B711F /* qtt3.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E9CA87824D206C1007B711F /* qtt3.png */; };
 		1EA6416E24CF6825008E9A61 /* Pompiere-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1EA6416D24CF6825008E9A61 /* Pompiere-Regular.otf */; };
 		1EA6417224CF6E32008E9A61 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1EA6417424CF6E32008E9A61 /* Localizable.strings */; };
 		1EA884C424C249660024F018 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA884C324C249660024F018 /* CoreDataManager.swift */; };
@@ -51,6 +54,9 @@
 		1E9CA86C24D1F1A4007B711F /* pole.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = pole.pdf; sourceTree = "<group>"; };
 		1E9CA86E24D1F1DA007B711F /* pole.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pole.png; sourceTree = "<group>"; };
 		1E9CA87424D1F27B007B711F /* teste.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = teste.png; sourceTree = "<group>"; };
+		1E9CA87624D206C1007B711F /* qtt2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = qtt2.png; sourceTree = "<group>"; };
+		1E9CA87724D206C1007B711F /* qtt1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = qtt1.png; sourceTree = "<group>"; };
+		1E9CA87824D206C1007B711F /* qtt3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = qtt3.png; sourceTree = "<group>"; };
 		1EA6416D24CF6825008E9A61 /* Pompiere-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pompiere-Regular.otf"; sourceTree = "<group>"; };
 		1EA6417124CF6DFF008E9A61 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		1EA6417324CF6E32008E9A61 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
@@ -157,6 +163,9 @@
 				1E9CA86E24D1F1DA007B711F /* pole.png */,
 				1E9CA87424D1F27B007B711F /* teste.png */,
 				1E9CA86C24D1F1A4007B711F /* pole.pdf */,
+				1E9CA87724D206C1007B711F /* qtt1.png */,
+				1E9CA87624D206C1007B711F /* qtt2.png */,
+				1E9CA87824D206C1007B711F /* qtt3.png */,
 			);
 			path = imgsTeste;
 			sourceTree = "<group>";
@@ -254,11 +263,14 @@
 				1E6598CF24B652CF0085FEC0 /* Main.storyboard in Resources */,
 				1EA6417224CF6E32008E9A61 /* Localizable.strings in Resources */,
 				1E9CA86F24D1F1DA007B711F /* pole.png in Resources */,
+				1E9CA87A24D206C1007B711F /* qtt1.png in Resources */,
 				1E9CA86D24D1F1A4007B711F /* pole.pdf in Resources */,
 				1E78B00E24B62FF9007E0F75 /* LaunchScreen.storyboard in Resources */,
+				1E9CA87924D206C1007B711F /* qtt2.png in Resources */,
 				1EA6416E24CF6825008E9A61 /* Pompiere-Regular.otf in Resources */,
 				1E9CA86A24D1F191007B711F /* teste.sks in Resources */,
 				1E9CA87524D1F27B007B711F /* teste.png in Resources */,
+				1E9CA87B24D206C1007B711F /* qtt3.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
