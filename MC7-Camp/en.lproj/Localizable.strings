@@ -6,7 +6,7 @@
   Copyright © 2020 Paula Leite. All rights reserved.
 */
 
-"Ask_Amount_Members" = "How many members are there in your family?";
+"Ask_Amount_Members" = "HOW MANY MEMBERS ARE THERE IN YOUR FAMILY?";
 
 "Increase_Amount" = "ADD\nMEMBER";
 
@@ -38,7 +38,7 @@
 "Colaborative_Game_Explanation_3" = "put as many objects in your";
 "Colaborative_Game_Explanation_4" = "places in 5 minutes. Let's go!";
 
-"Expl_After_Timer" = "            Time's over! \nHow much did you clean up?";
+"Expl_After_Timer" = "HOW MUCH DID YOU GUYS CLEAN UP?";
 
 "Ask_Team_Won" = "WHICH TEAM WON?";
 

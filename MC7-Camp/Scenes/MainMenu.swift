@@ -105,19 +105,23 @@ class MainMenu: SKScene {
         let lastPlayedDate = defaults.object(forKey: "LastPlayed") as? Date
         let rightNow = Date(timeIntervalSinceNow: 0)
         let timeSincePLayed = rightNow.timeIntervalSince(lastPlayedDate ?? Date(timeIntervalSinceReferenceDate: 0))
-        if timeSincePLayed <= 259200 {
-             background = SKSpriteNode(imageNamed: "mainMenuBackground")
-        } else if timeSincePLayed <= 518400 {
-             background = SKSpriteNode(imageNamed: "mainMenuBackground2")
-        } else {
-            background = SKSpriteNode(imageNamed: "mainMenuBackground3")
-        }
+        background = SKSpriteNode(imageNamed: "mainMenuBackground")
+        
         background.size = self.size
         background.position = CGPoint(x: 960, y: 540)
         background.zPosition = -1
         addChild(background)
         
-        let firepit = SKSpriteNode(imageNamed: "firepit")
+        var firepit = SKSpriteNode(imageNamed: "firepit")
+        
+        if timeSincePLayed <= 259200 {
+             firepit = SKSpriteNode(imageNamed: "firepit")
+        } else if timeSincePLayed <= 518400 {
+             firepit = SKSpriteNode(imageNamed: "firepit2")
+        } else {
+            firepit = SKSpriteNode(imageNamed: "firepit3")
+        }
+        
         firepit.size = self.size
         firepit.position = CGPoint(x: 960, y: 540)
         firepit.zPosition = 3
@@ -129,13 +133,13 @@ class MainMenu: SKScene {
         playButtonLabel.numberOfLines = 0
         playButtonLabel.fontSize = 60
         playButtonLabel.text = NSLocalizedString("Play_Button", comment: "Play button text.")
-        playButtonLabel.position = CGPoint(x: 1800, y: 110)
-        playButtonLabel.zPosition = 1
+        playButtonLabel.position = CGPoint(x: 1795, y: 105)
+        playButtonLabel.zPosition = 5
         addChild(playButtonLabel)
         
         playButton = MenuButtonNode(name: "playButton")
         playButton.position = CGPoint(x: 1800, y: 120)
-        playButton.zPosition = 0
+        playButton.zPosition = 4
         addChild(playButton)
         buttons.append(playButton)
         

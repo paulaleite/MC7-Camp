@@ -83,15 +83,15 @@ class PickPlayers: SKScene {
         playButtonLabel.numberOfLines = 0
         playButtonLabel.fontSize = 60
         playButtonLabel.text = NSLocalizedString("Play_Button", comment: "Play button text.")
-        playButtonLabel.position = CGPoint(x: 1800, y: 110)
+        playButtonLabel.position = CGPoint(x: 1795, y: 105)
         playButtonLabel.zPosition = 1
         addChild(playButtonLabel)
         
         let chooseGameLabel = SKLabelNode(fontNamed: "Pompiere-Regular")
         chooseGameLabel.fontColor = .black
-        chooseGameLabel.fontSize = 80
+        chooseGameLabel.fontSize = 50
         chooseGameLabel.text = NSLocalizedString("Ask_Choose_Players", comment: "Asks about which family members will play.")
-        chooseGameLabel.position = CGPoint(x: 960, y: 910)
+        chooseGameLabel.position = CGPoint(x: 960, y: 980)
         chooseGameLabel.zPosition = 1
         addChild(chooseGameLabel)
     }
@@ -134,6 +134,12 @@ class PickPlayers: SKScene {
         background.position = CGPoint(x: 960, y: 540)
         background.zPosition = -1
         addChild(background)
+        
+        let signForText = SKSpriteNode(imageNamed: "textSign")
+        signForText.size = CGSize(width: self.size.width/1.5, height: self.size.height/4)
+        signForText.position = CGPoint(x: 960, y: 950)
+        signForText.zPosition = 0
+        addChild(signForText)
     }
     
     override func didUpdateFocus(in context: UIFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) {

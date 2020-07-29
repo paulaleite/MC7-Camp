@@ -47,15 +47,21 @@ class Onboarding: SKScene {
         background.position = CGPoint(x: 960, y: 540)
         background.zPosition = -1
         addChild(background)
+        
+        let signForText = SKSpriteNode(imageNamed: "textSign")
+        signForText.size = CGSize(width: self.size.width/1.5, height: self.size.height/4)
+        signForText.position = CGPoint(x: 960, y: 950)
+        signForText.zPosition = 0
+        addChild(signForText)
     }
     
-    func setupUI() {
+    func setupUIText() {
         askAmountOfMembersLabel.fontName = "Pompiere-Regular"
         askAmountOfMembersLabel.fontColor = .black
-        askAmountOfMembersLabel.fontSize = 70
+        askAmountOfMembersLabel.fontSize = 50
         askAmountOfMembersLabel.text = NSLocalizedString("Ask_Amount_Members", comment: "Asks abuout the amount of members in the family.")
-        askAmountOfMembersLabel.position = CGPoint(x: 960, y: 940)
-        askAmountOfMembersLabel.zPosition = 0
+        askAmountOfMembersLabel.position = CGPoint(x: 960, y: 980)
+        askAmountOfMembersLabel.zPosition = 1
         addChild(askAmountOfMembersLabel)
         
         amountOfMembersLabel.fontName = "Pompiere-Regular"
@@ -74,12 +80,6 @@ class Onboarding: SKScene {
         increaseAmountOfMembersLabel.zPosition = 1
         addChild(increaseAmountOfMembersLabel)
         
-        increaseAmountOfMembersButton = MenuButtonNode(name: "decreaseButtonImage")
-        increaseAmountOfMembersButton.position = CGPoint(x: 1402.5, y: 440)
-        increaseAmountOfMembersButton.zPosition = 0
-        addChild(increaseAmountOfMembersButton)
-        buttons.append(increaseAmountOfMembersButton)
-        
         decreaseAmountOfMembersLabel.fontColor = .black
         decreaseAmountOfMembersLabel.numberOfLines = 0
         decreaseAmountOfMembersLabel.fontSize = 70
@@ -88,18 +88,28 @@ class Onboarding: SKScene {
         decreaseAmountOfMembersLabel.zPosition = 1
         addChild(decreaseAmountOfMembersLabel)
         
-        decreaseAmountOfMembersButton = MenuButtonNode(name: "increaseButtonImage")
-        decreaseAmountOfMembersButton.position = CGPoint(x: 517.5, y: 440)
-        addChild(decreaseAmountOfMembersButton)
-        buttons.append(decreaseAmountOfMembersButton)
-        
         doneSettingUpLabel.fontColor = .black
         doneSettingUpLabel.numberOfLines = 0
         doneSettingUpLabel.fontSize = 60
         doneSettingUpLabel.text = NSLocalizedString("Play_Button", comment: "Play button text.")
-        doneSettingUpLabel.position = CGPoint(x: 1800, y: 110)
+        doneSettingUpLabel.position = CGPoint(x: 1795, y: 105)
         doneSettingUpLabel.zPosition = 1
         addChild(doneSettingUpLabel)
+    }
+    
+    func setupUI() {
+        setupUIText()
+        
+        increaseAmountOfMembersButton = MenuButtonNode(name: "increaseButtonImage")
+        increaseAmountOfMembersButton.position = CGPoint(x: 1402.5, y: 440)
+        increaseAmountOfMembersButton.zPosition = 0
+        addChild(increaseAmountOfMembersButton)
+        buttons.append(increaseAmountOfMembersButton)
+        
+        decreaseAmountOfMembersButton = MenuButtonNode(name: "decreaseButtonImage")
+        decreaseAmountOfMembersButton.position = CGPoint(x: 517.5, y: 440)
+        addChild(decreaseAmountOfMembersButton)
+        buttons.append(decreaseAmountOfMembersButton)
         
         doneSettingUpButton = MenuButtonNode(name: "playButton")
         doneSettingUpButton.position = CGPoint(x: 1800, y: 120)
