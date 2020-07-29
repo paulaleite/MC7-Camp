@@ -21,6 +21,7 @@ class CompetetiveGame: SKScene {
     
     var buttons = [MenuButtonNode]()
     var buttonNames = [String]()
+    var poles = [MenuButtonNode]()
     
     var beginGameButton = MenuButtonNode()
     var popUpBackground = SKSpriteNode()
@@ -32,12 +33,105 @@ class CompetetiveGame: SKScene {
     var explanationLabels = [SKLabelNode]()
     let playButtonLabel = SKLabelNode(fontNamed: "Pompiere-Regular")
     
+    var peopleInTeam2 = 0
+    var peopleInTeam1 = 0
+    
     override func didMove(to view: SKView) {
         setupBackground()
         setupUIButtons()
         popUpExplanation()
         setupTexts()
         addTapGestureRecognizer()
+    }
+    
+    func setupBackground() {
+        let background = SKSpriteNode(imageNamed: "competetiveGameBackground")
+        background.position = CGPoint(x: 960, y: 540)
+        background.zPosition = -1
+        addChild(background)
+    }
+    
+    func setupPoles() {
+        amountOfPeopleInTeams()
+        
+        if peopleInTeam1 == 0 || peopleInTeam2 == 0 {
+            let pole = MenuButtonNode(name: "pole")
+            pole.size = CGSize(width: pole.size.width/2, height: pole.size.height/2)
+            pole.position = CGPoint(x: 960, y: 470)
+            pole.zPosition = 0
+            addChild(pole)
+        } else {
+            for i in 0 ..< 2 {
+                let pole = MenuButtonNode(name: "pole")
+                pole.size = CGSize(width: pole.size.width/2, height: pole.size.height/2)
+                pole.position = CGPoint(x: 780 + (i * 360), y: 470)
+                pole.zPosition = 0
+                addChild(pole)
+            }
+        }
+        
+        
+    }
+    
+    func setupUIButtons() {
+        backButton = MenuButtonNode(name: "backButton")
+        backButton.position = CGPoint(x: 120, y: 120)
+        backButton.zPosition = 0
+        addChild(backButton)
+        backButton.isUserInteractionEnabled = true
+    }
+    
+    func amountOfPeopleInTeams() {
+        for i in 0 ..< teamPerson.count {
+            if teamPerson[i] == 2 {
+                peopleInTeam2 += 1
+            } else {
+                peopleInTeam1 += 1
+            }
+        }
+    }
+    
+    func setupTeamButtons() {
+        
+        let quantity = "team"
+        var i = 1
+        while(i <= 2) {
+            let quantityName = quantity + "\(i)"
+            buttonNames.append(quantityName)
+            
+            i = i + 1
+        }
+        
+        amountOfPeopleInTeams()
+        
+        if peopleInTeam1 == 0 {
+            let buttonSelected = MenuButtonNode(name: buttonNames[1])
+            buttonSelected.position = CGPoint(x: 1072, y: 220)
+            buttonSelected.zPosition = 1
+            addChild(buttonSelected)
+            buttonSelected.selectedTeam = 2
+            buttons.append(buttonSelected)
+        } else if peopleInTeam2 == 0 {
+            let buttonSelected = MenuButtonNode(name: buttonNames[0])
+            buttonSelected.position = CGPoint(x: 1072, y: 220)
+            buttonSelected.zPosition = 1
+            addChild(buttonSelected)
+            buttonSelected.selectedTeam = 1
+            buttons.append(buttonSelected)
+        } else {
+            for i in 0 ..< 2 {
+                let buttonSelected = MenuButtonNode(name: buttonNames[i])
+                buttonSelected.position = CGPoint(x: 892 + (i * 360), y: 220)
+                buttonSelected.zPosition = 1
+                addChild(buttonSelected)
+                buttonSelected.selectedTeam = i + 1
+                buttons.append(buttonSelected)
+            }
+        }
+        
+        for button in self.buttons {
+            button.isUserInteractionEnabled = true
+        }
     }
     
     func popUpExplanation() {
@@ -52,13 +146,6 @@ class CompetetiveGame: SKScene {
         addChild(beginGameButton)
         
         beginGameButton.isUserInteractionEnabled = true
-    }
-    
-    func setupBackground() {
-        let background = SKSpriteNode(imageNamed: "competetiveGameBackground")
-        background.position = CGPoint(x: 960, y: 540)
-        background.zPosition = -1
-        addChild(background)
     }
     
     func setupTexts() {
@@ -117,65 +204,6 @@ class CompetetiveGame: SKScene {
         chooseTeamWonLabel.position = CGPoint(x: 960, y: 940)
         chooseTeamWonLabel.zPosition = 1
         addChild(chooseTeamWonLabel)
-    }
-    
-    func setupUIButtons() {
-        backButton = MenuButtonNode(name: "backButton")
-        backButton.position = CGPoint(x: 120, y: 120)
-        backButton.zPosition = 0
-        addChild(backButton)
-        backButton.isUserInteractionEnabled = true
-    }
-    
-    func setupTeamButtons() {
-        
-        let quantity = "team"
-        var i = 1
-        while(i <= 2) {
-            let quantityName = quantity + "\(i)"
-            buttonNames.append(quantityName)
-            
-            i = i + 1
-        }
-        
-        var peopleInTeam2 = 0
-        var peopleInTeam1 = 0
-        for i in 0 ..< teamPerson.count {
-            if teamPerson[i] == 2 {
-                peopleInTeam2 += 1
-            } else {
-                peopleInTeam1 += 1
-            }
-        }
-        
-        if peopleInTeam1 == 0 {
-            let buttonSelected = MenuButtonNode(name: buttonNames[1])
-            buttonSelected.position = CGPoint(x: 960, y: 220)
-            buttonSelected.zPosition = 1
-            addChild(buttonSelected)
-            buttonSelected.selectedTeam = 2
-            buttons.append(buttonSelected)
-        } else if peopleInTeam2 == 0 {
-            let buttonSelected = MenuButtonNode(name: buttonNames[0])
-            buttonSelected.position = CGPoint(x: 960, y: 220)
-            buttonSelected.zPosition = 1
-            addChild(buttonSelected)
-            buttonSelected.selectedTeam = 1
-            buttons.append(buttonSelected)
-        } else {
-            for i in 0 ..< 2 {
-                let buttonSelected = MenuButtonNode(name: buttonNames[i])
-                buttonSelected.position = CGPoint(x: 770 + (i * 400), y: 220)
-                buttonSelected.zPosition = 1
-                addChild(buttonSelected)
-                buttonSelected.selectedTeam = i + 1
-                buttons.append(buttonSelected)
-            }
-        }
-        
-        for button in self.buttons {
-            button.isUserInteractionEnabled = true
-        }
     }
     
     func setupConfirmButton() {
@@ -246,6 +274,7 @@ class CompetetiveGame: SKScene {
                 }
                 setupTextAfterGame()
                 setupTeamButtons()
+                setupPoles()
             } else if focussedItem == confirmButton {
                 /* Load Game Won scene */
                 guard let size = view?.frame.size else { return }
@@ -274,7 +303,7 @@ class CompetetiveGame: SKScene {
                     for i in 0 ..< teamPerson.count {
                         if button.selectedTeam == 1 {
                             if buttons.count > 1 {
-                                if buttons[1].position.y == 830 {
+                                if buttons[1].position.y == 780 {
                                     buttons[1].position.y = 220
                                 }
                             }
@@ -282,12 +311,12 @@ class CompetetiveGame: SKScene {
                                 self.winningPlayers.append(i)
                             }
                             self.teamWon = 1
-                            button.position.y = 830
+                            button.position.y = 780
                             
                             defaults.set(Date(timeIntervalSinceNow: 0), forKey: "LastPlayed")
                         } else if button.selectedTeam == 2 {
                             if buttons.count > 1 {
-                                if buttons[0].position.y == 830 {
+                                if buttons[0].position.y == 780 {
                                     buttons[0].position.y = 220
                                 }
                             }
@@ -296,7 +325,7 @@ class CompetetiveGame: SKScene {
                                 self.winningPlayers.append(i)
                             }
                             self.teamWon = 2
-                            button.position.y = 830
+                            button.position.y = 780
                             
                             defaults.set(Date(timeIntervalSinceNow: 0), forKey: "LastPlayed")
                         }
