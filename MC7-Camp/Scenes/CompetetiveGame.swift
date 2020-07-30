@@ -235,12 +235,14 @@ class CompetetiveGame: SKScene {
             let nameReward = "rewardBasketball"
             var rewardName = String()
             
-            if Int(amountOfTimesPlayed[i]) % 5 == 0 && amountOfTimesPlayed[i] <= 10.0 {
-                rewardName = nameReward + "\(amountOfTimesPlayed[i])"
-                coreDataManager?.addRewardToFamilyMember(familyMemberIndex: familyMemberIndexes[i], rewardImageName: rewardName, application: application)
-            } else if amountOfTimesPlayed[i] == 1.0 {
-                rewardName = nameReward + "\(amountOfTimesPlayed[i])"
-                coreDataManager?.addRewardToFamilyMember(familyMemberIndex: familyMemberIndexes[i], rewardImageName: rewardName, application: application)
+            if amountOfTimesPlayed[i] > 0.0 {
+                if Int(amountOfTimesPlayed[i]) % 5 == 0 && amountOfTimesPlayed[i] <= 10.0 {
+                    rewardName = nameReward + "\(amountOfTimesPlayed[i])"
+                    coreDataManager?.addRewardToFamilyMember(familyMemberIndex: familyMemberIndexes[i], rewardImageName: rewardName, application: application)
+                } else if amountOfTimesPlayed[i] == 1.0 {
+                    rewardName = nameReward + "\(amountOfTimesPlayed[i])"
+                    coreDataManager?.addRewardToFamilyMember(familyMemberIndex: familyMemberIndexes[i], rewardImageName: rewardName, application: application)
+                }
             }
         }
     }

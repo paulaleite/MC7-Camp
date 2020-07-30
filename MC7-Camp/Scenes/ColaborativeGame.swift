@@ -127,13 +127,18 @@ class ColaborativeGame: SKScene {
             let nameReward = "rewardMess"
             var rewardName = String()
             
-            if Int(amountOfTimesPlayed[i]) % 5 == 0 && amountOfTimesPlayed[i] <= 10.0 {
-                rewardName = nameReward + "\(amountOfTimesPlayed[i])"
-                coreDataManager?.addRewardToFamilyMember(familyMemberIndex: i, rewardImageName: rewardName, application: application)
-            } else if amountOfTimesPlayed[i] == 1.0 {
-                rewardName = nameReward + "\(amountOfTimesPlayed[i])"
-                coreDataManager?.addRewardToFamilyMember(familyMemberIndex: i, rewardImageName: rewardName, application: application)
+            if familyMemberIndexes[i] == 1 {
+                if amountOfTimesPlayed[i] > 0.0 {
+                    if Int(amountOfTimesPlayed[i]) % 5 == 0 && amountOfTimesPlayed[i] <= 10.0 {
+                        rewardName = nameReward + "\(amountOfTimesPlayed[i])"
+                        coreDataManager?.addRewardToFamilyMember(familyMemberIndex: i, rewardImageName: rewardName, application: application)
+                    } else if amountOfTimesPlayed[i] == 1.0 {
+                        rewardName = nameReward + "\(amountOfTimesPlayed[i])"
+                        coreDataManager?.addRewardToFamilyMember(familyMemberIndex: i, rewardImageName: rewardName, application: application)
+                    }
+                }
             }
+            
         }
     }
     
@@ -223,6 +228,16 @@ class ColaborativeGame: SKScene {
         confirmButton.isUserInteractionEnabled = true
     }
     
+    func playersThatWon() -> [Int] {
+        var winningPlayers = [Int]()
+        for i in 0 ..< participating.count {
+            if participating[i] == 1 {
+                winningPlayers.append(i)
+            }
+        }
+        return winningPlayers
+    }
+    
     override func didUpdateFocus(in context: UIFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) {
         let prevItem = context.previouslyFocusedItem
         let nextItem = context.nextFocusedItem
@@ -261,6 +276,8 @@ class ColaborativeGame: SKScene {
                 scene.amountCleaned = self.amountCleaned
                 scene.game = "Collaborative"
                 saveRewardsCoreData(familyMemberIndexes: participating)
+                let playersWon = playersThatWon()
+                scene.playersThatWon = playersWon
                 loadScreens(scene: scene)
             } else if focussedItem == backButton {
                 playButtonLabel.removeFromParent()

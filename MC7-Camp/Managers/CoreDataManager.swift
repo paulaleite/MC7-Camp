@@ -146,7 +146,6 @@ class CoreDataManager {
             for i in 0 ..< familyMemberIndexes.count {
                 let index = familyMemberIndexes[i]
                 familyMembers[index].timesPlayedBasketballGame += 1.0
-                
             }
             application.saveContext()
         } catch let error {
@@ -201,6 +200,8 @@ class CoreDataManager {
             
             familyMembers = try context.fetch(FamilyMember.fetchRequest())
             
+            familyMembers = orderFamilyMembers(familyMembers: familyMembers)
+            
             for i in 0 ..< familyMemberIndexes.count {
                 self.numberOfTimesPlayed.append(familyMembers[i].timesPlayedMessGame)
             }
@@ -217,6 +218,8 @@ class CoreDataManager {
             guard let context = context else { return ["Error"] }
             
             familyMembers = try context.fetch(FamilyMember.fetchRequest())
+            
+            familyMembers = orderFamilyMembers(familyMembers: familyMembers)
             
             for j in 0 ..< players.count {
                 guard let amountOfBadges = familyMembers[players[j]].reward?.count else { return ["Not found amount of badges."] }
