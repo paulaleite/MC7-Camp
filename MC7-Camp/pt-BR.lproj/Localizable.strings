@@ -31,12 +31,14 @@
 "Competitive_Game_Explanation_1" = "Hoje nós vamos brincar de jogar";
 "Competitive_Game_Explanation_2" = "roupa suja na cesta de basquete.";
 "Competitive_Game_Explanation_3" = "Sua missão é que o seu time consiga";
-"Competitive_Game_Explanation_4" = "a maior quantidade de cestas! Vamos lá?";
+"Competitive_Game_Explanation_4" = "a maior quantidade de cestas!";
+"Competitive_Game_Explanation_5" = "Vamos lá?";
 
 "Colaborative_Game_Explanation_1" = "Hoje nós vamos brincar de procurar";
-"Colaborative_Game_Explanation_2" = "bagunça pelo acampamento. Sua missão é";
-"Colaborative_Game_Explanation_3" = "colocar o máximo de objetos em seus";
-"Colaborative_Game_Explanation_4" = "lugares em 5 minutos. Vamos lá";
+"Colaborative_Game_Explanation_2" = "bagunça pelo acampamento. Sua missão";
+"Colaborative_Game_Explanation_3" = "é colocar o máximo de objetos em seus";
+"Colaborative_Game_Explanation_4" = "lugares em 5 minutos.";
+"Colaborative_Game_Explanation_5" = "Vamos lá?";
 
 "Expl_After_Timer" = "QUANTO VOCÊS CONSEGUIRAM ARRUMAR?";
 

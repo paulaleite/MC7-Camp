@@ -38,6 +38,8 @@ class CoreDataManager {
             families = try context.fetch(Family.fetchRequest())
             familyMembers = try context.fetch(FamilyMember.fetchRequest())
             
+            familyMembers = orderFamilyMembers(familyMembers: familyMembers)
+            
             guard families.count > 0 else {
                 return ["Error with family count"]
             }
@@ -64,6 +66,8 @@ class CoreDataManager {
             families = try context.fetch(Family.fetchRequest())
             familyMembers = try context.fetch(FamilyMember.fetchRequest())
             
+            familyMembers = orderFamilyMembers(familyMembers: familyMembers)
+            
             guard families.count > 0 else {
                 return ["Error with family count"]
             }
@@ -79,7 +83,7 @@ class CoreDataManager {
             print(error.localizedDescription)
         }
         
-        return nameOfFlags.reversed()
+        return nameOfFlags
     }
     
     func fetchNumberOfPlayersFromCoreData() -> Int64 {
@@ -89,6 +93,8 @@ class CoreDataManager {
             
             families = try context.fetch(Family.fetchRequest())
             familyMembers = try context.fetch(FamilyMember.fetchRequest())
+            
+            familyMembers = orderFamilyMembers(familyMembers: familyMembers)
             
             guard families.count > 0 else {
                 return 1
@@ -112,6 +118,8 @@ class CoreDataManager {
             
             familyMembers = try context.fetch(FamilyMember.fetchRequest())
             
+            familyMembers = orderFamilyMembers(familyMembers: familyMembers)
+            
             guard let reward = NSEntityDescription.insertNewObject(forEntityName: "Reward", into: context) as? Reward else { return }
             
             reward.imageName = rewardImageName
@@ -133,10 +141,11 @@ class CoreDataManager {
             
             familyMembers = try context.fetch(FamilyMember.fetchRequest())
             
+            familyMembers = orderFamilyMembers(familyMembers: familyMembers)
+            
             for i in 0 ..< familyMemberIndexes.count {
                 let index = familyMemberIndexes[i]
                 familyMembers[index].timesPlayedBasketballGame += 1.0
-                
             }
             application.saveContext()
         } catch let error {
@@ -150,6 +159,8 @@ class CoreDataManager {
             guard let context = context else { return [1] }
             
             familyMembers = try context.fetch(FamilyMember.fetchRequest())
+            
+            familyMembers = orderFamilyMembers(familyMembers: familyMembers)
             
             for i in 0 ..< familyMemberIndexes.count {
                 let index = familyMemberIndexes[i]
@@ -169,6 +180,8 @@ class CoreDataManager {
             
             familyMembers = try context.fetch(FamilyMember.fetchRequest())
             
+            familyMembers = orderFamilyMembers(familyMembers: familyMembers)
+            
             for i in 0 ..< familyMemberIndexes.count {
                 if familyMemberIndexes[i] == 1 {
                     familyMembers[i].timesPlayedMessGame += 1.0
@@ -187,6 +200,8 @@ class CoreDataManager {
             
             familyMembers = try context.fetch(FamilyMember.fetchRequest())
             
+            familyMembers = orderFamilyMembers(familyMembers: familyMembers)
+            
             for i in 0 ..< familyMemberIndexes.count {
                 self.numberOfTimesPlayed.append(familyMembers[i].timesPlayedMessGame)
             }
@@ -203,6 +218,8 @@ class CoreDataManager {
             guard let context = context else { return ["Error"] }
             
             familyMembers = try context.fetch(FamilyMember.fetchRequest())
+            
+            familyMembers = orderFamilyMembers(familyMembers: familyMembers)
             
             for j in 0 ..< players.count {
                 guard let amountOfBadges = familyMembers[players[j]].reward?.count else { return ["Not found amount of badges."] }
@@ -226,6 +243,8 @@ class CoreDataManager {
             
             familyMembers = try context.fetch(FamilyMember.fetchRequest())
             
+            familyMembers = orderFamilyMembers(familyMembers: familyMembers)
+            
             guard let amountOfBadges = familyMembers[player].reward?.count else { return ["Not found amount of badges."] }
             guard let playerRewards = familyMembers[player].reward?.array as? [Reward] else { return ["Couldn't get rewards"] }
             
@@ -240,4 +259,22 @@ class CoreDataManager {
         
         return badgesWon
     }
+    
+    func orderFamilyMembers(familyMembers: [FamilyMember]) -> [FamilyMember] {
+        var familyMembersCorrected = [FamilyMember?](repeating: nil, count: 6)
+        
+        for familyMember in familyMembers {
+            guard let familyMemberSufix = familyMember.flagName?.suffix(1) else { return [FamilyMember]()}
+            guard let sufix = Int(familyMemberSufix) else { return [FamilyMember]() }
+            
+            familyMembersCorrected[sufix - 1] = familyMember
+        }
+        
+        return familyMembersCorrected.compactMap({
+            $0
+        })
+    }
 }
+
+
+

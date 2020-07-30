@@ -25,6 +25,7 @@ class ColaborativeGame: SKScene {
     var popUpBackground = SKSpriteNode()
     var explanationLabels = [SKLabelNode]()
     let playButtonLabel = SKLabelNode(fontNamed: "Pompiere-Regular")
+    let backButtonLabel = SKLabelNode(fontNamed: "Pompiere-Regular")
     
 //    var totalSeconds = 300
     var totalSeconds = 5
@@ -74,14 +75,14 @@ class ColaborativeGame: SKScene {
     }
     
     func popUpExplanation() {
-        popUpBackground = SKSpriteNode(imageNamed: "popUpMess")
+        popUpBackground = SKSpriteNode(imageNamed: "popUp")
         popUpBackground.position = CGPoint(x: 960, y: 540)
         popUpBackground.zPosition = 1
         addChild(popUpBackground)
         
-        beginGameButton = MenuButtonNode(name: "confirmButton")
-        beginGameButton.position = CGPoint(x: 960, y: 340)
-        beginGameButton.zPosition = 2
+        beginGameButton = MenuButtonNode(name: "playButton")
+        beginGameButton.position = CGPoint(x: 1800, y: 120)
+        beginGameButton.zPosition = 1
         addChild(beginGameButton)
         
         beginGameButton.isUserInteractionEnabled = true
@@ -126,19 +127,22 @@ class ColaborativeGame: SKScene {
             let nameReward = "rewardMess"
             var rewardName = String()
             
-            
-            if Int(amountOfTimesPlayed[i]) % 5 == 0 {
-                rewardName = nameReward + "\(amountOfTimesPlayed[i])"
-                coreDataManager?.addRewardToFamilyMember(familyMemberIndex: i, rewardImageName: rewardName, application: application)
-            } else if amountOfTimesPlayed[i] == 1.0 {
-                rewardName = nameReward + "\(amountOfTimesPlayed[i])"
-                coreDataManager?.addRewardToFamilyMember(familyMemberIndex: i, rewardImageName: rewardName, application: application)
+            if familyMemberIndexes[i] == 1 {
+                if amountOfTimesPlayed[i] > 0.0 {
+                    if Int(amountOfTimesPlayed[i]) % 5 == 0 && amountOfTimesPlayed[i] <= 10.0 {
+                        rewardName = nameReward + "\(amountOfTimesPlayed[i])"
+                        coreDataManager?.addRewardToFamilyMember(familyMemberIndex: i, rewardImageName: rewardName, application: application)
+                    } else if amountOfTimesPlayed[i] == 1.0 {
+                        rewardName = nameReward + "\(amountOfTimesPlayed[i])"
+                        coreDataManager?.addRewardToFamilyMember(familyMemberIndex: i, rewardImageName: rewardName, application: application)
+                    }
+                }
             }
+            
         }
     }
     
     func setupTexts() {
-        let backButtonLabel = SKLabelNode(fontNamed: "Pompiere-Regular")
         backButtonLabel.fontColor = .black
         backButtonLabel.numberOfLines = 0
         backButtonLabel.fontSize = 60
@@ -152,10 +156,10 @@ class ColaborativeGame: SKScene {
         playButtonLabel.fontSize = 60
         playButtonLabel.text = NSLocalizedString("Play_Button", comment: "Play button text.")
         playButtonLabel.position = CGPoint(x: 1795, y: 105)
-        playButtonLabel.zPosition = 1
+        playButtonLabel.zPosition = 2
         addChild(playButtonLabel)
         
-        let explanationTexts = ["Colaborative_Game_Explanation_1", "Colaborative_Game_Explanation_2", "Colaborative_Game_Explanation_3", "Colaborative_Game_Explanation_4"]
+        let explanationTexts = ["Colaborative_Game_Explanation_1", "Colaborative_Game_Explanation_2", "Colaborative_Game_Explanation_3", "Colaborative_Game_Explanation_4", "Colaborative_Game_Explanation_5"]
         for i in 0 ..< explanationTexts.count {
             let competitiveGameExpLabel = SKLabelNode(fontNamed: "Pompiere-Regular")
             competitiveGameExpLabel.fontColor = .black
@@ -176,12 +180,13 @@ class ColaborativeGame: SKScene {
         confirmButtonLabel.fontSize = 55
         confirmButtonLabel.text = NSLocalizedString("Confirm_Button", comment: "Play button text.")
         confirmButtonLabel.position = CGPoint(x: 1775, y: 115)
-        confirmButtonLabel.zPosition = 1
+        confirmButtonLabel.zPosition = 2
         addChild(confirmButtonLabel)
     }
     
     func setupUIButtons() {
         backButton = MenuButtonNode(name: "backButton")
+        backButton.size = CGSize(width: backButton.size.width/8, height: backButton.size.height/8)
         backButton.position = CGPoint(x: 120, y: 120)
         backButton.zPosition = 0
         addChild(backButton)
@@ -224,6 +229,16 @@ class ColaborativeGame: SKScene {
         confirmButton.isUserInteractionEnabled = true
     }
     
+    func playersThatWon() -> [Int] {
+        var winningPlayers = [Int]()
+        for i in 0 ..< participating.count {
+            if participating[i] == 1 {
+                winningPlayers.append(i)
+            }
+        }
+        return winningPlayers
+    }
+    
     override func didUpdateFocus(in context: UIFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) {
         let prevItem = context.previouslyFocusedItem
         let nextItem = context.nextFocusedItem
@@ -248,6 +263,8 @@ class ColaborativeGame: SKScene {
                 popUpBackground.removeFromParent()
                 beginGameButton.removeFromParent()
                 playButtonLabel.removeFromParent()
+                backButton.removeFromParent()
+                backButtonLabel.removeFromParent()
                 for i in 0 ..< explanationLabels.count {
                     explanationLabels[i].removeFromParent()
                 }
@@ -260,6 +277,8 @@ class ColaborativeGame: SKScene {
                 scene.amountCleaned = self.amountCleaned
                 scene.game = "Collaborative"
                 saveRewardsCoreData(familyMemberIndexes: participating)
+                let playersWon = playersThatWon()
+                scene.playersThatWon = playersWon
                 loadScreens(scene: scene)
             } else if focussedItem == backButton {
                 playButtonLabel.removeFromParent()

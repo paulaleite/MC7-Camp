@@ -28,6 +28,7 @@ class GameWon: SKScene {
         setupBackground()
         setupText()
         setupUIButtons()
+        setupPopUp()
         fetchDataFromCoreData()
         addTapGestureRecognizer()
     }
@@ -44,17 +45,25 @@ class GameWon: SKScene {
     func positionBadges(badges: [String]) {
         for i in 0 ..< badges.count {
             let badge = SKSpriteNode(imageNamed: badges[i])
-            badge.position = CGPoint(x: 400 + (500 * i), y: 400 + (200  * i))
+            badge.size = CGSize(width: badge.size.width/4, height: badge.size.width/4)
+            badge.position = CGPoint(x: 450 + (500 * i), y: 500)
             badge.zPosition = 1
             addChild(badge)
         }
     }
     
     func setupBackground() {
-        let background = SKSpriteNode(imageNamed: "winningBoard")
+        let background = SKSpriteNode(imageNamed: "gameBackground")
         background.position = CGPoint(x: 960, y: 540)
         background.zPosition = -1
         addChild(background)
+    }
+    
+    func setupPopUp() {
+        let popUpBackground = SKSpriteNode(imageNamed: "popUp")
+        popUpBackground.position = CGPoint(x: 960, y: 540)
+        popUpBackground.zPosition = 0
+        addChild(popUpBackground)
     }
     
     func setupText() {
