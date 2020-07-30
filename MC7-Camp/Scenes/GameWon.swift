@@ -45,8 +45,8 @@ class GameWon: SKScene {
     func positionBadges(badges: [String]) {
         for i in 0 ..< badges.count {
             let badge = SKSpriteNode(imageNamed: badges[i])
-            badge.size = CGSize(width: badge.size.width/2, height: badge.size.width/2)
-            badge.position = CGPoint(x: 400 + (500 * i), y: 500)
+            badge.size = CGSize(width: badge.size.width/4, height: badge.size.width/4)
+            badge.position = CGPoint(x: 450 + (500 * i), y: 500)
             badge.zPosition = 1
             addChild(badge)
         }
