@@ -75,6 +75,7 @@ class CompetetiveGame: SKScene {
     
     func setupUIButtons() {
         backButton = MenuButtonNode(name: "backButton")
+        backButton.size = CGSize(width: backButton.size.width/8, height: backButton.size.height/8)
         backButton.position = CGPoint(x: 120, y: 120)
         backButton.zPosition = 0
         addChild(backButton)
@@ -135,14 +136,14 @@ class CompetetiveGame: SKScene {
     }
     
     func popUpExplanation() {
-        popUpBackground = SKSpriteNode(imageNamed: "popUpBasketball")
+        popUpBackground = SKSpriteNode(imageNamed: "popUp")
         popUpBackground.position = CGPoint(x: 960, y: 540)
         popUpBackground.zPosition = 1
         addChild(popUpBackground)
         
-        beginGameButton = MenuButtonNode(name: "confirmButton")
-        beginGameButton.position = CGPoint(x: 960, y: 340)
-        beginGameButton.zPosition = 2
+        beginGameButton = MenuButtonNode(name: "playButton")
+        beginGameButton.position = CGPoint(x: 1800, y: 120)
+        beginGameButton.zPosition = 1
         addChild(beginGameButton)
         
         beginGameButton.isUserInteractionEnabled = true
@@ -163,10 +164,10 @@ class CompetetiveGame: SKScene {
         playButtonLabel.fontSize = 60
         playButtonLabel.text = NSLocalizedString("Play_Button", comment: "Play button text.")
         playButtonLabel.position = CGPoint(x: 1795, y: 105)
-        playButtonLabel.zPosition = 1
+        playButtonLabel.zPosition = 2
         addChild(playButtonLabel)
         
-        let explanationTexts = ["Competitive_Game_Explanation_1", "Competitive_Game_Explanation_2", "Competitive_Game_Explanation_3", "Competitive_Game_Explanation_4"]
+        let explanationTexts = ["Competitive_Game_Explanation_1", "Competitive_Game_Explanation_2", "Competitive_Game_Explanation_3", "Competitive_Game_Explanation_4", "Competitive_Game_Explanation_5"]
         for i in 0 ..< explanationTexts.count {
             let competitiveGameExpLabel = SKLabelNode(fontNamed: "Pompiere-Regular")
             competitiveGameExpLabel.fontColor = .black
@@ -186,7 +187,7 @@ class CompetetiveGame: SKScene {
         confirmButtonLabel.fontSize = 55
         confirmButtonLabel.text = NSLocalizedString("Confirm_Button", comment: "Confirm button text.")
         confirmButtonLabel.position = CGPoint(x: 1775, y: 120)
-        confirmButtonLabel.zPosition = 1
+        confirmButtonLabel.zPosition = 2
         addChild(confirmButtonLabel)
     }
     

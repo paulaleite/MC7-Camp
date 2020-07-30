@@ -42,7 +42,7 @@ class GameChoices: SKScene {
             ballGameButtonLabel.fontSize = 45
             ballGameButtonLabel.zRotation = .pi/12
             ballGameButtonLabel.text = NSLocalizedString(ballGameText[i], comment: "Basketball Game button text.")
-            ballGameButtonLabel.position = CGPoint(x: 800, y: 410 - (i * 40))
+            ballGameButtonLabel.position = CGPoint(x: 800, y: 420 - (i * 40))
             ballGameButtonLabel.zPosition = 1
             addChild(ballGameButtonLabel)
         }
@@ -53,7 +53,7 @@ class GameChoices: SKScene {
             messGameButtonLabel.fontColor = .black
             messGameButtonLabel.fontSize = 45
             messGameButtonLabel.text = NSLocalizedString(messGameText[i], comment: "Basketball Game button text.")
-            messGameButtonLabel.position = CGPoint(x: 1186, y: 390 - (i * 40))
+            messGameButtonLabel.position = CGPoint(x: 1186, y: 400 - (i * 40))
             messGameButtonLabel.zPosition = 1
             addChild(messGameButtonLabel)
         }
@@ -83,18 +83,21 @@ class GameChoices: SKScene {
     
     func setupButtons() {
         backButton = MenuButtonNode(name: "backButton")
+        backButton.size = CGSize(width: backButton.size.width/8, height: backButton.size.height/8)
         backButton.position = CGPoint(x: 120, y: 120)
         backButton.zPosition = 0
         addChild(backButton)
         buttons.append(backButton)
         
         ballGameButton = MenuButtonNode(name: "basketballGameButton")
+        ballGameButton.size = CGSize(width: ballGameButton.size.width/4, height: ballGameButton.size.height/4)
         ballGameButton.position = CGPoint(x: 800, y: 300)
         ballGameButton.zPosition = 0
         addChild(ballGameButton)
         buttons.append(ballGameButton)
         
         messGameButton = MenuButtonNode(name: "messGameButton")
+        messGameButton.size = CGSize(width: messGameButton.size.width/4, height: messGameButton.size.height/4)
         messGameButton.position = CGPoint(x: 1186.5, y: 282)
         messGameButton.zPosition = 0
         addChild(messGameButton)

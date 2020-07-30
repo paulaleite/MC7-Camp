@@ -101,12 +101,14 @@ class Onboarding: SKScene {
         setupUIText()
         
         increaseAmountOfMembersButton = MenuButtonNode(name: "increaseButtonImage")
+        increaseAmountOfMembersButton.size = CGSize(width: increaseAmountOfMembersButton.size.width/4, height: increaseAmountOfMembersButton.size.height/4)
         increaseAmountOfMembersButton.position = CGPoint(x: 1402.5, y: 440)
         increaseAmountOfMembersButton.zPosition = 0
         addChild(increaseAmountOfMembersButton)
         buttons.append(increaseAmountOfMembersButton)
         
         decreaseAmountOfMembersButton = MenuButtonNode(name: "decreaseButtonImage")
+        decreaseAmountOfMembersButton.size = CGSize(width: decreaseAmountOfMembersButton.size.width/4, height: decreaseAmountOfMembersButton.size.height/4)
         decreaseAmountOfMembersButton.position = CGPoint(x: 517.5, y: 440)
         addChild(decreaseAmountOfMembersButton)
         buttons.append(decreaseAmountOfMembersButton)
