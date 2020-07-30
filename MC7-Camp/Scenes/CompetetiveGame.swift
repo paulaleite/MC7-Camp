@@ -56,14 +56,12 @@ class CompetetiveGame: SKScene {
         
         if peopleInTeam1 == 0 || peopleInTeam2 == 0 {
             let pole = MenuButtonNode(name: "pole")
-            pole.size = CGSize(width: pole.size.width/2, height: pole.size.height/2)
             pole.position = CGPoint(x: 960, y: 470)
             pole.zPosition = 0
             addChild(pole)
         } else {
             for i in 0 ..< 2 {
                 let pole = MenuButtonNode(name: "pole")
-                pole.size = CGSize(width: pole.size.width/2, height: pole.size.height/2)
                 pole.position = CGPoint(x: 780 + (i * 360), y: 470)
                 pole.zPosition = 0
                 addChild(pole)
@@ -75,7 +73,6 @@ class CompetetiveGame: SKScene {
     
     func setupUIButtons() {
         backButton = MenuButtonNode(name: "backButton")
-        backButton.size = CGSize(width: backButton.size.width/8, height: backButton.size.height/8)
         backButton.position = CGPoint(x: 120, y: 120)
         backButton.zPosition = 0
         addChild(backButton)
@@ -142,7 +139,7 @@ class CompetetiveGame: SKScene {
         addChild(popUpBackground)
         
         beginGameButton = MenuButtonNode(name: "playButton")
-        beginGameButton.position = CGPoint(x: 1800, y: 120)
+        beginGameButton.position = CGPoint(x: 1775, y: 120)
         beginGameButton.zPosition = 1
         addChild(beginGameButton)
         
@@ -211,7 +208,6 @@ class CompetetiveGame: SKScene {
         setupConfirmText()
         
         confirmButton = MenuButtonNode(name: "confirmButton2")
-        confirmButton.size = CGSize(width: confirmButton.size.width/2.2, height: confirmButton.size.height/2.2)
         confirmButton.position = CGPoint(x: 1780, y: 120)
         confirmButton.zPosition = 0
         addChild(confirmButton)

@@ -83,21 +83,18 @@ class GameChoices: SKScene {
     
     func setupButtons() {
         backButton = MenuButtonNode(name: "backButton")
-        backButton.size = CGSize(width: backButton.size.width/8, height: backButton.size.height/8)
         backButton.position = CGPoint(x: 120, y: 120)
         backButton.zPosition = 0
         addChild(backButton)
         buttons.append(backButton)
         
         ballGameButton = MenuButtonNode(name: "basketballGameButton")
-        ballGameButton.size = CGSize(width: ballGameButton.size.width/4, height: ballGameButton.size.height/4)
         ballGameButton.position = CGPoint(x: 800, y: 300)
         ballGameButton.zPosition = 0
         addChild(ballGameButton)
         buttons.append(ballGameButton)
         
         messGameButton = MenuButtonNode(name: "messGameButton")
-        messGameButton.size = CGSize(width: messGameButton.size.width/4, height: messGameButton.size.height/4)
         messGameButton.position = CGPoint(x: 1186.5, y: 282)
         messGameButton.zPosition = 0
         addChild(messGameButton)

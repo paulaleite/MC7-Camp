@@ -49,7 +49,7 @@ class Onboarding: SKScene {
         addChild(background)
         
         let signForText = SKSpriteNode(imageNamed: "textSign")
-        signForText.size = CGSize(width: self.size.width/1.5, height: self.size.height/4)
+        signForText.size = CGSize(width: self.size.width/2, height: self.size.height/4)
         signForText.position = CGPoint(x: 960, y: 950)
         signForText.zPosition = 0
         addChild(signForText)
@@ -101,20 +101,18 @@ class Onboarding: SKScene {
         setupUIText()
         
         increaseAmountOfMembersButton = MenuButtonNode(name: "increaseButtonImage")
-        increaseAmountOfMembersButton.size = CGSize(width: increaseAmountOfMembersButton.size.width/4, height: increaseAmountOfMembersButton.size.height/4)
         increaseAmountOfMembersButton.position = CGPoint(x: 1402.5, y: 440)
         increaseAmountOfMembersButton.zPosition = 0
         addChild(increaseAmountOfMembersButton)
         buttons.append(increaseAmountOfMembersButton)
         
         decreaseAmountOfMembersButton = MenuButtonNode(name: "decreaseButtonImage")
-        decreaseAmountOfMembersButton.size = CGSize(width: decreaseAmountOfMembersButton.size.width/4, height: decreaseAmountOfMembersButton.size.height/4)
         decreaseAmountOfMembersButton.position = CGPoint(x: 517.5, y: 440)
         addChild(decreaseAmountOfMembersButton)
         buttons.append(decreaseAmountOfMembersButton)
         
         doneSettingUpButton = MenuButtonNode(name: "playButton")
-        doneSettingUpButton.position = CGPoint(x: 1800, y: 120)
+        doneSettingUpButton.position = CGPoint(x: 1775, y: 120)
         addChild(doneSettingUpButton)
         buttons.append(doneSettingUpButton)
         

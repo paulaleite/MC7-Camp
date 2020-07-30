@@ -98,14 +98,13 @@ class PickPlayers: SKScene {
     
     func setupUIButtons() {
         backButton = MenuButtonNode(name: "backButton")
-        backButton.size = CGSize(width: backButton.size.width/8, height: backButton.size.height/8)
         backButton.position = CGPoint(x: 120, y: 120)
         backButton.zPosition = 0
         addChild(backButton)
         backButton.isUserInteractionEnabled = true
         
         playButton = MenuButtonNode(name: "playButton")
-        playButton.position = CGPoint(x: 1800, y: 120)
+        playButton.position = CGPoint(x: 1775, y: 120)
         playButton.zPosition = 0
         addChild(playButton)
         
@@ -113,10 +112,10 @@ class PickPlayers: SKScene {
     
     func setupTeamButtons() {
         fetchDataFromCoreData()
-        let spaceBetweenFlags = 650/Int(numberOfPlayers)
+        let spaceBetweenFlags = 620/Int(numberOfPlayers)
         for i in 0 ..< Int(numberOfPlayers) {
             let flagSelected = MenuButtonNode(name: nameOfFlags[i])
-            flagSelected.position = CGPoint(x: 742, y: 680 - (spaceBetweenFlags * i))
+            flagSelected.position = CGPoint(x: 770, y: 680 - (spaceBetweenFlags * i))
             flagSelected.zPosition = 1
             addChild(flagSelected)
             flagButtons.append(flagSelected)
@@ -137,7 +136,7 @@ class PickPlayers: SKScene {
         addChild(background)
         
         let signForText = SKSpriteNode(imageNamed: "textSign")
-        signForText.size = CGSize(width: self.size.width/1.5, height: self.size.height/4)
+        signForText.size = CGSize(width: self.size.width/2, height: self.size.height/4)
         signForText.position = CGPoint(x: 960, y: 950)
         signForText.zPosition = 0
         addChild(signForText)
@@ -193,12 +192,12 @@ class PickPlayers: SKScene {
                     continue
                 }
                 if button.participating == true {
-                    button.position = CGPoint(x: 745, y: button.position.y)
+                    button.position = CGPoint(x: 770, y: button.position.y)
                     button.participating = false
                     participating[i] = 0
                     checkAmountOfPlayers()
                 } else {
-                    button.position = CGPoint(x: 1135, y: button.position.y)
+                    button.position = CGPoint(x: 1130, y: button.position.y)
                     button.participating = true
                     participating[i] = 1
                     checkAmountOfPlayers()

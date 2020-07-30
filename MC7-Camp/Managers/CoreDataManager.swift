@@ -222,7 +222,7 @@ class CoreDataManager {
             familyMembers = orderFamilyMembers(familyMembers: familyMembers)
             
             for j in 0 ..< players.count {
-                guard let amountOfBadges = familyMembers[players[j]].reward?.count else { return ["Not found amount of badges."] }
+                guard let amountOfBadges = familyMembers[players[j]].reward?.count, amountOfBadges > 0 else { return ["Not found amount of badges."] }
                 guard let playerRewards = familyMembers[players[j]].reward?.array as? [Reward] else { return ["Couldn't get rewards"] }
                 guard let rewardImages = playerRewards[amountOfBadges - 1].imageName else { return ["Couldn't get image names"] }
                 self.badgesWon.append(rewardImages)
