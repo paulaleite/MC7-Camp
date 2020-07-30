@@ -27,8 +27,7 @@ class ColaborativeGame: SKScene {
     let playButtonLabel = SKLabelNode(fontNamed: "Pompiere-Regular")
     let backButtonLabel = SKLabelNode(fontNamed: "Pompiere-Regular")
     
-//    var totalSeconds = 300
-    var totalSeconds = 5
+    var totalSeconds = 300
     
     var timerLabel = SKLabelNode(fontNamed: "Pompiere-Regular")
     
@@ -81,7 +80,7 @@ class ColaborativeGame: SKScene {
         addChild(popUpBackground)
         
         beginGameButton = MenuButtonNode(name: "playButton")
-        beginGameButton.position = CGPoint(x: 1800, y: 120)
+        beginGameButton.position = CGPoint(x: 1775, y: 120)
         beginGameButton.zPosition = 1
         addChild(beginGameButton)
         
@@ -179,14 +178,13 @@ class ColaborativeGame: SKScene {
         confirmButtonLabel.numberOfLines = 0
         confirmButtonLabel.fontSize = 55
         confirmButtonLabel.text = NSLocalizedString("Confirm_Button", comment: "Play button text.")
-        confirmButtonLabel.position = CGPoint(x: 1775, y: 115)
+        confirmButtonLabel.position = CGPoint(x: 1775, y: 120)
         confirmButtonLabel.zPosition = 2
         addChild(confirmButtonLabel)
     }
     
     func setupUIButtons() {
         backButton = MenuButtonNode(name: "backButton")
-        backButton.size = CGSize(width: backButton.size.width/8, height: backButton.size.height/8)
         backButton.position = CGPoint(x: 120, y: 120)
         backButton.zPosition = 0
         addChild(backButton)
@@ -207,7 +205,6 @@ class ColaborativeGame: SKScene {
         
         for i in 0 ..< 3 {
             let buttonSelected = MenuButtonNode(name: buttonNames[i])
-            buttonSelected.size = CGSize(width: buttonSelected.size.width/4, height: buttonSelected.size.height/4)
             buttonSelected.position = CGPoint(x: 370 + (i * 568), y: 420)
             buttonSelected.zPosition = 0
             addChild(buttonSelected)
@@ -221,7 +218,6 @@ class ColaborativeGame: SKScene {
     
     func setupConfirmButton() {
         confirmButton = MenuButtonNode(name: "confirmButton2")
-        confirmButton.size = CGSize(width: confirmButton.size.width/2.2, height: confirmButton.size.height/2.2)
         confirmButton.position = CGPoint(x: 1780, y: 120)
         confirmButton.zPosition = 1
         addChild(confirmButton)

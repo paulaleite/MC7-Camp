@@ -45,8 +45,7 @@ class GameWon: SKScene {
     func positionBadges(badges: [String]) {
         for i in 0 ..< badges.count {
             let badge = SKSpriteNode(imageNamed: badges[i])
-            badge.size = CGSize(width: badge.size.width/4, height: badge.size.width/4)
-            badge.position = CGPoint(x: 450 + (500 * i), y: 500)
+            badge.position = CGPoint(x: 500 + (500 * i), y: 500)
             badge.zPosition = 1
             addChild(badge)
         }
@@ -98,7 +97,6 @@ class GameWon: SKScene {
         setupConfirmButtonText()
         
         mainMenu = MenuButtonNode(name: "confirmButton2")
-        mainMenu.size = CGSize(width: mainMenu.size.width/2.2, height: mainMenu.size.height/2.2)
         mainMenu.position = CGPoint(x: 1780, y: 120)
         mainMenu.zPosition = 0
         addChild(mainMenu)

@@ -41,14 +41,13 @@ class PickTeam: SKScene {
     
     func setupUIButtons() {
         backButton = MenuButtonNode(name: "backButton")
-        backButton.size = CGSize(width: backButton.size.width/8, height: backButton.size.height/8)
         backButton.position = CGPoint(x: 120, y: 120)
         backButton.zPosition = 0
         addChild(backButton)
         buttons.append(backButton)
         
         playButton = MenuButtonNode(name: "playButton")
-        playButton.position = CGPoint(x: 1800, y: 120)
+        playButton.position = CGPoint(x: 1775, y: 120)
         playButton.zPosition = 0
         addChild(playButton)
         buttons.append(playButton)
@@ -106,10 +105,10 @@ class PickTeam: SKScene {
             i = i + 1
         }
         
-        let spaceBetweenFlags = 640/Int(activeFlags.count)
+        let spaceBetweenFlags = 600/Int(activeFlags.count)
         for i in 0 ..< activeFlags.count {
             let flagSelected = MenuButtonNode(name: activeFlags[i])
-            flagSelected.position = CGPoint(x: 745, y: 650 - (spaceBetweenFlags  * i))
+            flagSelected.position = CGPoint(x: 770, y: 650 - (spaceBetweenFlags  * i))
             flagSelected.zPosition = 1
             addChild(flagSelected)
             flagButtons.append(flagSelected)
@@ -162,11 +161,11 @@ class PickTeam: SKScene {
                     continue
                 }
                 if button.selectedTeam1 == true {
-                    button.position = CGPoint(x: 1135, y: button.position.y)
+                    button.position = CGPoint(x: 1130, y: button.position.y)
                     button.selectedTeam1 = false
                     teamPerson[i] = 2
                 } else {
-                    button.position = CGPoint(x: 745, y: button.position.y)
+                    button.position = CGPoint(x: 770, y: button.position.y)
                     button.selectedTeam1 = true
                     teamPerson[i] = 1
                 }

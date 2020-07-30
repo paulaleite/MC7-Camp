@@ -19,6 +19,7 @@ class PersonalView: SKScene {
     
     var mainScreenButton = MenuButtonNode()
     var badges2 = [MenuButtonNode]()
+    var badge = MenuButtonNode()
     
     override func didMove(to view: SKView) {
         setupBackground()
@@ -39,7 +40,6 @@ class PersonalView: SKScene {
     
     func setupUIButtons() {
         mainScreenButton = MenuButtonNode(name: "backButton")
-        mainScreenButton.size = CGSize(width: mainScreenButton.size.width/8, height: mainScreenButton.size.height/8)
         mainScreenButton.position = CGPoint(x: 120, y: 120)
         mainScreenButton.zPosition = 0
         addChild(mainScreenButton)
@@ -73,49 +73,35 @@ class PersonalView: SKScene {
     func positionBadges(badges: [String]) {
         
         for i in 0 ..< badges.count {
+            
+            badge.zPosition = 1
+            
             if badges[i] == "rewardMess1.0" {
-                let badge = MenuButtonNode(name: "rewardMess1.0")
-                badge.size = CGSize(width: badge.size.width/3, height: badge.size.height/3)
+                badge = MenuButtonNode(name: "rewardMess1.0")
                 badge.position = CGPoint(x: 737, y: 120)
-                badge.zPosition = 1
-                addChild(badge)
-                badges2.append(badge)
             } else if badges[i] == "rewardBasketball1.0" {
-                let badge = MenuButtonNode(name: "rewardBasketball1.0")
-                badge.size = CGSize(width: badge.size.width/3, height: badge.size.height/3)
+                badge = MenuButtonNode(name: "rewardBasketball1.0")
                 badge.position = CGPoint(x: 230, y: 283)
-                badge.zPosition = 1
-                addChild(badge)
-                badges2.append(badge)
             } else if badges[i] == "rewardMess10.0" {
-                let badge = MenuButtonNode(name: "rewardMess10.0")
-                badge.size = CGSize(width: badge.size.width/3, height: badge.size.height/3)
+                badge = MenuButtonNode(name: "rewardMess10.0")
                 badge.position = CGPoint(x: 680, y: 315)
-                badge.zPosition = 1
-                addChild(badge)
-                badges2.append(badge)
             } else if badges[i] == "rewardBasketball5.0"{
-                let badge = MenuButtonNode(name: "rewardBasketball5.0")
-                badge.size = CGSize(width: badge.size.width/3, height: badge.size.height/3)
+                badge = MenuButtonNode(name: "rewardBasketball5.0")
                 badge.position = CGPoint(x: 900, y: 540)
-                badge.zPosition = 1
-                addChild(badge)
-                badges2.append(badge)
             } else if badges[i] == "rewardBasketball10.0"{
-                let badge = MenuButtonNode(name: "rewardBasketball10.0")
-                badge.size = CGSize(width: badge.size.width/3, height: badge.size.height/3)
+                badge = MenuButtonNode(name: "rewardBasketball10.0")
                 badge.position = CGPoint(x: 108, y: 380)
-                badge.zPosition = 1
-                addChild(badge)
-                badges2.append(badge)
             } else if badges[i] == "rewardMess5.0"{
                 let badge = MenuButtonNode(name: "rewardMess5.0")
-                badge.size = CGSize(width: badge.size.width/3, height: badge.size.height/3)
                 badge.position = CGPoint(x: 120, y: 180)
-                badge.zPosition = 1
-                addChild(badge)
-                badges2.append(badge)
-            }            
+            }
+            
+            addChild(badge)
+            badges2.append(badge)
+        }
+        
+        for badge1 in badges2 {
+            badge1.isUserInteractionEnabled = true
         }
     }
     

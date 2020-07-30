@@ -138,7 +138,7 @@ class MainMenu: SKScene {
         addChild(playButtonLabel)
         
         playButton = MenuButtonNode(name: "playButton")
-        playButton.position = CGPoint(x: 1800, y: 120)
+        playButton.position = CGPoint(x: 1775, y: 120)
         playButton.zPosition = 4
         addChild(playButton)
         buttons.append(playButton)
