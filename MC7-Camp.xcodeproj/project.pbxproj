@@ -20,6 +20,7 @@
 		1EA6417224CF6E32008E9A61 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1EA6417424CF6E32008E9A61 /* Localizable.strings */; };
 		1EA884C424C249660024F018 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA884C324C249660024F018 /* CoreDataManager.swift */; };
 		1EA884CA24C24F540024F018 /* ColaborativeGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA884C924C24F540024F018 /* ColaborativeGame.swift */; };
+		1EB26ADF24D4B38E000D48E6 /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EB26ADE24D4B38E000D48E6 /* AudioManager.swift */; };
 		1EDC302124BE37E8000AE1A5 /* PickPlayers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EDC302024BE37E8000AE1A5 /* PickPlayers.swift */; };
 		1EF1790624BFA8110055C380 /* PickTeam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF1790524BFA8110055C380 /* PickTeam.swift */; };
 		1EF1790A24BFA9D50055C380 /* Camp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1EF1790824BFA9D50055C380 /* Camp.xcdatamodeld */; };
@@ -49,6 +50,7 @@
 		1EA6417524CF6E3A008E9A61 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		1EA884C324C249660024F018 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		1EA884C924C24F540024F018 /* ColaborativeGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColaborativeGame.swift; sourceTree = "<group>"; };
+		1EB26ADE24D4B38E000D48E6 /* AudioManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioManager.swift; sourceTree = "<group>"; };
 		1EBD18AE24C7624D0036AF9B /* Family+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Family+CoreDataClass.swift"; sourceTree = "<group>"; };
 		1EBD18AF24C7624D0036AF9B /* Family+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Family+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		1EDC302024BE37E8000AE1A5 /* PickPlayers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickPlayers.swift; sourceTree = "<group>"; };
@@ -153,6 +155,7 @@
 			isa = PBXGroup;
 			children = (
 				1EA884C324C249660024F018 /* CoreDataManager.swift */,
+				1EB26ADE24D4B38E000D48E6 /* AudioManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -255,6 +258,7 @@
 				1E78B00624B62FF7007E0F75 /* GameViewController.swift in Sources */,
 				1EF1790A24BFA9D50055C380 /* Camp.xcdatamodeld in Sources */,
 				1EF1790624BFA8110055C380 /* PickTeam.swift in Sources */,
+				1EB26ADF24D4B38E000D48E6 /* AudioManager.swift in Sources */,
 				1E70A8A024B7847800D0E44D /* SKSpriteNodeExtension.swift in Sources */,
 				1EA884CA24C24F540024F018 /* ColaborativeGame.swift in Sources */,
 				1E78AFFE24B62FF7007E0F75 /* AppDelegate.swift in Sources */,
