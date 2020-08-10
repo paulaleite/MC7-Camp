@@ -27,7 +27,7 @@ class ColaborativeGame: SKScene {
     let playButtonLabel = SKLabelNode(fontNamed: "Pompiere-Regular")
     let backButtonLabel = SKLabelNode(fontNamed: "Pompiere-Regular")
     
-    var totalSeconds = 300
+    var totalSeconds = 3
     
     var timerLabel = SKLabelNode(fontNamed: "Pompiere-Regular")
     
@@ -227,11 +227,21 @@ class ColaborativeGame: SKScene {
     
     func playersThatWon() -> [Int] {
         var winningPlayers = [Int]()
+        
+        guard let amountOfTimesPlayed = coreDataManager?.fetchTimesPlayedMessGame(familyMemberIndexes: participating) else {
+            return [-1]
+        }
+        
         for i in 0 ..< participating.count {
             if participating[i] == 1 {
-                winningPlayers.append(i)
+                if amountOfTimesPlayed[i] > 0.0 {
+                    if (Int(amountOfTimesPlayed[i]) % 5 == 0 && amountOfTimesPlayed[i] <= 10.0) || amountOfTimesPlayed[i] == 1.0 {
+                        winningPlayers.append(i)
+                    }
+                }
             }
         }
+        
         return winningPlayers
     }
     
