@@ -102,6 +102,7 @@ class PersonalView: SKScene {
         
         for badge1 in badges2 {
             badge1.isUserInteractionEnabled = true
+             
         }
     }
     
