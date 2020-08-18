@@ -244,6 +244,24 @@ class CompetetiveGame: SKScene {
         }
     }
     
+    func playersThatWonBadges() -> [Int] {
+        var winningPlayers = [Int]()
+        
+        guard let amountOfTimesPlayed = coreDataManager?.fetchTimesPlayedBasketballGame(familyMemberIndexes: winningPlayers) else {
+            return [-1]
+        }
+        
+        for i in 0 ..< winningPlayers.count {
+            if amountOfTimesPlayed[i] > 0.0 {
+                if (Int(amountOfTimesPlayed[i]) % 5 == 0 && amountOfTimesPlayed[i] <= 10.0) || amountOfTimesPlayed[i] == 1.0 {
+                    winningPlayers.append(i)
+                }
+            }
+        }
+        
+        return winningPlayers
+    }
+    
     override func didUpdateFocus(in context: UIFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) {
         let prevItem = context.previouslyFocusedItem
         let nextItem = context.nextFocusedItem
@@ -278,10 +296,12 @@ class CompetetiveGame: SKScene {
                 /* Load Game Won scene */
                 guard let size = view?.frame.size else { return }
                 let scene = GameWon(size: size)
-                scene.playersThatWon = self.winningPlayers
+                //                scene.playersThatWon = self.winningPlayers
                 scene.game = "Competitive"
                 scene.teamWon = self.teamWon
                 saveRewardsCoreData(familyMemberIndexes: winningPlayers)
+                let playersWon = playersThatWonBadges()
+                scene.playersThatWon = playersWon
                 loadScreens(scene: scene)
             } else if focussedItem == backButton {
                 popUpBackground.removeFromParent()
