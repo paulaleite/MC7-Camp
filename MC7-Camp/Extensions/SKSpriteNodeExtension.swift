@@ -20,6 +20,7 @@ extension SKNode {
         effectNode.filter = CIFilter(name: "CIGaussianBlur",parameters: ["inputRadius":radius])
         addChild(effectNode)
         effectNode.addChild(SKSpriteNode(texture: texture))
+        
         return effectNode
     }
     

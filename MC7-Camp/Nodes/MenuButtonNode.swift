@@ -40,11 +40,12 @@ class MenuButtonNode: SKSpriteNode {
     
     func buttonDidGetFocus() {
         effectNode = self.addGlow()
+        self.size = .init(width: self.size.width * 1.15, height: self.size.height * 1.15)
     }
     
     func buttonDidLoseFocus() {
         guard let effect = effectNode else { return }
         self.removeGlow(node: effect)
+        self.size = .init(width: self.size.width / 1.15, height: self.size.height / 1.15)
     }
-    
 }
