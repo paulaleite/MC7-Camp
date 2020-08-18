@@ -25,7 +25,8 @@ class PersonalView: SKScene {
         setupBackground()
         setupUIButtons()
         showRewardsCoreData()
-        addTapGestureRecognizer()
+        
+        pressMenuRecognizer()
     }
     
     func setupBackground() {
@@ -119,19 +120,22 @@ class PersonalView: SKScene {
         }
     }
     
-    func addTapGestureRecognizer() {
-        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.tapped(sender:)))
+    func pressMenuRecognizer() {
+        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.menuPressed(sender:)))
+        tapRecognizer.allowedPressTypes = [NSNumber(value: UIPress.PressType.menu.rawValue)]
         self.view?.addGestureRecognizer(tapRecognizer)
+    }
+    
+    @objc func menuPressed(sender: AnyObject) {
+        /* Load Main Menu scene */
+        guard let size = view?.frame.size else { return }
+        let scene = MainMenu(size: size)
+        loadScreen(scene: scene)
     }
     
     @objc func tapped(sender: AnyObject) {
         if let focussedItem = UIScreen.main.focusedItem as? MenuButtonNode {
-            if focussedItem == mainScreenButton {
-                /* Load Game Choices scene */
-                guard let size = view?.frame.size else { return }
-                let scene = MainMenu(size: size)
-                loadScreen(scene: scene)
-            }
+            // Add what will be done when the prize is pressed.
         }
     }
     
