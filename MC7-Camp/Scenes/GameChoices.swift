@@ -23,7 +23,9 @@ class GameChoices: SKScene {
         setupBackground()
         setupButtons()
         setupTexts()
+        
         addTapGestureRecognizer()
+        pressMenuRecognizer()
     }
     
     func setupTexts() {
@@ -123,6 +125,19 @@ class GameChoices: SKScene {
         self.view?.addGestureRecognizer(tapRecognizer)
     }
     
+    func pressMenuRecognizer() {
+        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.menuPressed(sender:)))
+        tapRecognizer.allowedPressTypes = [NSNumber(value: UIPress.PressType.menu.rawValue)]
+        self.view?.addGestureRecognizer(tapRecognizer)
+    }
+    
+    @objc func menuPressed(sender: AnyObject) {
+        /* Load Main Menu scene */
+        guard let size = view?.frame.size else { return }
+        let scene = MainMenu(size: size)
+        loadScreens(scene: scene)
+    }
+    
     @objc func tapped(sender: AnyObject) {
         if let focussedItem = UIScreen.main.focusedItem as? MenuButtonNode {
             if focussedItem == backButton {
@@ -133,7 +148,6 @@ class GameChoices: SKScene {
             } else if focussedItem == messGameButton {
                 /* Load Pick Team scene */
                 guard let size = self.view?.frame.size else { return }
-//                let scene = PickPlayers(size: size)
                 let scene = GameExplanation(size: size)
                 scene.nameGameChosen = "Bagunca"
                 loadScreens(scene: scene)
