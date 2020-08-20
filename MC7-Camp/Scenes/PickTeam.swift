@@ -37,6 +37,7 @@ class PickTeam: SKScene {
         setupTexts()
         
         addTapGestureRecognizer()
+        pressMenuRecognizer()
     }
     
     func setupUIButtons() {
@@ -151,6 +152,19 @@ class PickTeam: SKScene {
     func addTapGestureRecognizer() {
         let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.tapped(sender:)))
         self.view?.addGestureRecognizer(tapRecognizer)
+    }
+    
+    func pressMenuRecognizer() {
+        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.menuPressed(sender:)))
+        tapRecognizer.allowedPressTypes = [NSNumber(value: UIPress.PressType.menu.rawValue)]
+        self.view?.addGestureRecognizer(tapRecognizer)
+    }
+    
+    @objc func menuPressed(sender: AnyObject) {
+        /* Load Main Menu scene */
+        guard let size = view?.frame.size else { return }
+        let scene = GameChoices(size: size)
+        loadScreens(scene: scene)
     }
     
     @objc func tapped(sender: AnyObject) {

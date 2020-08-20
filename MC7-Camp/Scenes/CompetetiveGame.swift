@@ -23,14 +23,10 @@ class CompetetiveGame: SKScene {
     var buttonNames = [String]()
     var poles = [MenuButtonNode]()
     
-    var beginGameButton = MenuButtonNode()
-    var popUpBackground = SKSpriteNode()
-    
     let defaults = UserDefaults.standard
     var context: NSManagedObjectContext?
     var coreDataManager: CoreDataManager?
     
-    var explanationLabels = [SKLabelNode]()
     let playButtonLabel = SKLabelNode(fontNamed: "Pompiere-Regular")
     
     var peopleInTeam2 = 0
@@ -45,6 +41,7 @@ class CompetetiveGame: SKScene {
         setupPoles()
         
         addTapGestureRecognizer()
+        pressMenuRecognizer()
     }
     
     func setupBackground() {
@@ -248,6 +245,19 @@ class CompetetiveGame: SKScene {
         self.view?.addGestureRecognizer(tapRecognizer)
     }
     
+    func pressMenuRecognizer() {
+        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.menuPressed(sender:)))
+        tapRecognizer.allowedPressTypes = [NSNumber(value: UIPress.PressType.menu.rawValue)]
+        self.view?.addGestureRecognizer(tapRecognizer)
+    }
+    
+    @objc func menuPressed(sender: AnyObject) {
+        /* Load Main Menu scene */
+        guard let size = view?.frame.size else { return }
+        let scene = GameChoices(size: size)
+        loadScreens(scene: scene)
+    }
+    
     @objc func tapped(sender: AnyObject) {
         if let focussedItem = UIScreen.main.focusedItem as? MenuButtonNode {
             if focussedItem == confirmButton {
@@ -262,11 +272,6 @@ class CompetetiveGame: SKScene {
                 scene.playersThatWon = playersWon
                 loadScreens(scene: scene)
             } else if focussedItem == backButton {
-                popUpBackground.removeFromParent()
-                beginGameButton.removeFromParent()
-                for i in 0 ..< explanationLabels.count {
-                    explanationLabels[i].removeFromParent()
-                }
                 /* Load Game Choices scene */
                 guard let size = view?.frame.size else { return }
                 let scene = GameChoices(size: size)

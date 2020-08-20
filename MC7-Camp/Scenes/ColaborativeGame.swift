@@ -20,10 +20,7 @@ class ColaborativeGame: SKScene {
     var buttons = [MenuButtonNode]()
     var buttonNames = [String]()
     
-    var beginGameButton = MenuButtonNode()
     var rejectGameButton = MenuButtonNode()
-    var popUpBackground = SKSpriteNode()
-    var explanationLabels = [SKLabelNode]()
     let playButtonLabel = SKLabelNode(fontNamed: "Pompiere-Regular")
     let backButtonLabel = SKLabelNode(fontNamed: "Pompiere-Regular")
     
@@ -44,6 +41,7 @@ class ColaborativeGame: SKScene {
         restartTimer()
         
         addTapGestureRecognizer()
+        pressMenuRecognizer()
     }
     
     func treatTime(totalInSeconds: Int) -> String {
@@ -230,6 +228,19 @@ class ColaborativeGame: SKScene {
         self.view?.addGestureRecognizer(tapRecognizer)
     }
     
+    func pressMenuRecognizer() {
+        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.menuPressed(sender:)))
+        tapRecognizer.allowedPressTypes = [NSNumber(value: UIPress.PressType.menu.rawValue)]
+        self.view?.addGestureRecognizer(tapRecognizer)
+    }
+    
+    @objc func menuPressed(sender: AnyObject) {
+        /* Load Main Menu scene */
+        guard let size = view?.frame.size else { return }
+        let scene = GameChoices(size: size)
+        loadScreens(scene: scene)
+    }
+    
     @objc func tapped(sender: AnyObject) {
         if let focussedItem = UIScreen.main.focusedItem as? MenuButtonNode {
             if focussedItem == confirmButton {
@@ -243,11 +254,6 @@ class ColaborativeGame: SKScene {
                 scene.playersThatWon = playersWon
                 loadScreens(scene: scene)
             } else if focussedItem == backButton {
-                playButtonLabel.removeFromParent()
-                beginGameButton.removeFromParent()
-                for i in 0 ..< explanationLabels.count {
-                    explanationLabels[i].removeFromParent()
-                }
                 /* Load Game Choices scene */
                 guard let size = view?.frame.size else { return }
                 let scene = GameChoices(size: size)
