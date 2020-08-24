@@ -23,7 +23,6 @@ class PersonalView: SKScene {
     
     override func didMove(to view: SKView) {
         setupBackground()
-        setupUIButtons()
         showRewardsCoreData()
         
         pressMenuRecognizer()
@@ -38,14 +37,6 @@ class PersonalView: SKScene {
         background.position = CGPoint(x: 960, y: 540)
         background.zPosition = -1
         addChild(background)
-    }
-    
-    func setupUIButtons() {
-        mainScreenButton = MenuButtonNode(name: "backButton")
-        mainScreenButton.position = CGPoint(x: 120, y: 120)
-        mainScreenButton.zPosition = 0
-        addChild(mainScreenButton)
-        mainScreenButton.isUserInteractionEnabled = true
     }
     
     func shackNamesCoreData() {

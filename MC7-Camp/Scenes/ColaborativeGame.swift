@@ -24,7 +24,7 @@ class ColaborativeGame: SKScene {
     let playButtonLabel = SKLabelNode(fontNamed: "Pompiere-Regular")
     let backButtonLabel = SKLabelNode(fontNamed: "Pompiere-Regular")
     
-    var totalSeconds = 3
+    var totalSeconds = 300
     
     var timerLabel = SKLabelNode(fontNamed: "Pompiere-Regular")
     
