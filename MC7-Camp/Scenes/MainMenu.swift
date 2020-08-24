@@ -64,6 +64,8 @@ class MainMenu: SKScene {
         setupBackground()
         
         setupShacks()
+        
+        setupAudio()
     }
     
     func fetchDataFromCoreData() {
@@ -294,6 +296,14 @@ class MainMenu: SKScene {
         
         for shack in shacks {
             shack.isUserInteractionEnabled = true
+        }
+    }
+    
+    func setupAudio() {
+        
+        if (AudioManager.shared.audioPlayer?.isPlaying ?? false) == false {
+            AudioManager.shared.setAudio(named: "MenuMusic")
+            AudioManager.shared.audioPlayer?.play()
         }
     }
     
