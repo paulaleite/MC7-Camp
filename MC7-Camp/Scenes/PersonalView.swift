@@ -34,6 +34,7 @@ class PersonalView: SKScene {
         let nameOfBackground = "individualViewBackground" + "\(playerSelected + 1)"
         
         let background = SKSpriteNode(imageNamed: nameOfBackground)
+        background.size = self.size
         background.position = CGPoint(x: 960, y: 540)
         background.zPosition = -1
         addChild(background)
