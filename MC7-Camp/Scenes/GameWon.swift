@@ -29,6 +29,8 @@ class GameWon: SKScene {
         setupText()
         setupUIButtons()
         setupPopUp()
+        setupAudio()
+        
         fetchDataFromCoreData()
         addTapGestureRecognizer()
     }
@@ -102,6 +104,12 @@ class GameWon: SKScene {
         addChild(mainMenu)
         
         mainMenu.isUserInteractionEnabled = true
+    }
+    
+    func setupAudio() {
+        AudioManager.shared.audioPlayer?.stop()
+        AudioManager.shared.setAudio(named: "MenuMusic")
+        AudioManager.shared.audioPlayer?.play()
     }
     
     override func didUpdateFocus(in context: UIFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) {

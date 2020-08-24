@@ -39,6 +39,7 @@ class CompetetiveGame: SKScene {
         setupTextAfterGame()
         setupTeamButtons()
         setupPoles()
+        setupAudio()
         
         addTapGestureRecognizer()
         pressMenuRecognizer()
@@ -178,6 +179,12 @@ class CompetetiveGame: SKScene {
         addChild(confirmButton)
         
         confirmButton.isUserInteractionEnabled = true
+    }
+    
+    func setupAudio() {
+        AudioManager.shared.audioPlayer?.stop()
+        AudioManager.shared.setAudio(named: "GameMusic")
+        AudioManager.shared.audioPlayer?.play()
     }
     
     func saveRewardsCoreData(familyMemberIndexes: [Int]) {

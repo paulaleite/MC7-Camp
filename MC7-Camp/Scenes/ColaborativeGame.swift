@@ -38,6 +38,7 @@ class ColaborativeGame: SKScene {
         setupUIButtons()
         setupTexts()
         setupTimer()
+        setupAudio()
         restartTimer()
         
         addTapGestureRecognizer()
@@ -92,6 +93,12 @@ class ColaborativeGame: SKScene {
         timerLabel.position = CGPoint(x: 960, y: 980)
         timerLabel.zPosition = 1
         addChild(timerLabel)
+    }
+    
+    func setupAudio() {
+        AudioManager.shared.audioPlayer?.stop()
+        AudioManager.shared.setAudio(named: "GameMusic")
+        AudioManager.shared.audioPlayer?.play()
     }
     
     func saveRewardsCoreData(familyMemberIndexes: [Int]) {

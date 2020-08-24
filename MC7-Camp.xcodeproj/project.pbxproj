@@ -27,6 +27,8 @@
 		1EF1790A24BFA9D50055C380 /* Camp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1EF1790824BFA9D50055C380 /* Camp.xcdatamodeld */; };
 		1EF64ED124B90524006762DE /* CompetetiveGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF64ED024B90524006762DE /* CompetetiveGame.swift */; };
 		1EFEB6AD24B7B8CE00E0FECF /* PersonalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EFEB6AC24B7B8CE00E0FECF /* PersonalView.swift */; };
+		A73CD89E24F36F0800BA60B9 /* MenuMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A73CD89C24F36F0700BA60B9 /* MenuMusic.mp3 */; };
+		A73CD89F24F36F0800BA60B9 /* GameMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A73CD89D24F36F0800BA60B9 /* GameMusic.mp3 */; };
 		E36CEE1124C0C1950064F262 /* GameWon.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36CEE1024C0C1950064F262 /* GameWon.swift */; };
 		E36CEE1F24C0C8200064F262 /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36CEE1E24C0C8200064F262 /* Onboarding.swift */; };
 /* End PBXBuildFile section */
@@ -60,6 +62,8 @@
 		1EF1790924BFA9D50055C380 /* Camp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Camp.xcdatamodel; sourceTree = "<group>"; };
 		1EF64ED024B90524006762DE /* CompetetiveGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompetetiveGame.swift; sourceTree = "<group>"; };
 		1EFEB6AC24B7B8CE00E0FECF /* PersonalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalView.swift; sourceTree = "<group>"; };
+		A73CD89C24F36F0700BA60B9 /* MenuMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = MenuMusic.mp3; sourceTree = "<group>"; };
+		A73CD89D24F36F0800BA60B9 /* GameMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = GameMusic.mp3; sourceTree = "<group>"; };
 		E36CEE1024C0C1950064F262 /* GameWon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameWon.swift; sourceTree = "<group>"; };
 		E36CEE1424C0C1E20064F262 /* Reward+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Reward+CoreDataClass.swift"; sourceTree = "<group>"; };
 		E36CEE1524C0C1E20064F262 /* Reward+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Reward+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -131,6 +135,7 @@
 			children = (
 				1EA6416C24CF6811008E9A61 /* fonts */,
 				1EA884C224C249520024F018 /* Managers */,
+				A73CD89B24F36BE600BA60B9 /* Music */,
 				1EF1790724BFA9BE0055C380 /* Core Data */,
 				1E70A89E24B7846800D0E44D /* Extensions */,
 				1E6598D124B6552C0085FEC0 /* Nodes */,
@@ -175,6 +180,15 @@
 				1EF1790824BFA9D50055C380 /* Camp.xcdatamodeld */,
 			);
 			path = "Core Data";
+			sourceTree = "<group>";
+		};
+		A73CD89B24F36BE600BA60B9 /* Music */ = {
+			isa = PBXGroup;
+			children = (
+				A73CD89D24F36F0800BA60B9 /* GameMusic.mp3 */,
+				A73CD89C24F36F0700BA60B9 /* MenuMusic.mp3 */,
+			);
+			path = Music;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -239,8 +253,10 @@
 				1E6304DD24CA2B8F0070CB8C /* Assets.xcassets in Resources */,
 				1E6598CF24B652CF0085FEC0 /* Main.storyboard in Resources */,
 				1EA6417224CF6E32008E9A61 /* Localizable.strings in Resources */,
+				A73CD89F24F36F0800BA60B9 /* GameMusic.mp3 in Resources */,
 				1E78B00E24B62FF9007E0F75 /* LaunchScreen.storyboard in Resources */,
 				1EA6416E24CF6825008E9A61 /* Pompiere-Regular.otf in Resources */,
+				A73CD89E24F36F0800BA60B9 /* MenuMusic.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
